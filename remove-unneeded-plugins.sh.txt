@@ -1,0 +1,64 @@
+#can't be executed directly
+#!/bin/sh
+
+
+plugins="$(cat <<EOF
+org.eclipse.cdt.codan.checkers
+org.eclipse.cdt.codan.checkers.ui
+org.eclipse.cdt.codan.core
+org.eclipse.cdt.codan.core.cxx
+org.eclipse.cdt.codan.ui
+org.eclipse.cdt.codan.ui.cfgview
+org.eclipse.cdt.codan.ui.cxx
+org.eclipse.cdt.core
+org.eclipse.cdt.core.native
+org.eclipse.cdt.core.linux
+org.eclipse.cdt.core.linux.x86_64
+org.eclipse.cdt.core.win32
+org.eclipse.cdt.core.win32.x86
+org.eclipse.cdt.core.win32.x86_64
+org.eclipse.cdt.debug.core
+org.eclipse.cdt.debug.mi.core
+org.eclipse.cdt.debug.mi.ui
+org.eclipse.cdt.debug.ui
+org.eclipse.cdt.dsf
+org.eclipse.cdt.dsf.gdb
+org.eclipse.cdt.dsf.gdb.ui
+org.eclipse.cdt.dsf.ui
+org.eclipse.cdt.gdb
+org.eclipse.cdt.gdb.ui
+org.eclipse.cdt.launch
+org.eclipse.cdt.make.core
+org.eclipse.cdt.make.ui
+org.eclipse.cdt.managedbuilder.core
+org.eclipse.cdt.managedbuilder.gnu.ui
+org.eclipse.cdt.managedbuilder.ui
+org.eclipse.cdt.ui
+org.eclipse.cdt.target
+EOF
+)"
+
+
+
+for plugin_dir in $(find . -mindepth 2 -maxdepth 2 -type d ! -wholename '*/.git/*' -a ! -wholename '*/~git-tools~/*')
+do
+    #echo $plugin_dir
+    remove=yes
+    for plugin in $plugins
+    do
+        #echo $plugin
+        if [ $(basename $plugin_dir) == $plugin ] ; then
+            remove=no
+            break
+        fi
+     done
+     if [ $remove == yes ] ; then
+        echo $plugin_dir
+        rm -rf $plugin_dir
+     fi
+done
+
+
+
+echo Completed!
+read

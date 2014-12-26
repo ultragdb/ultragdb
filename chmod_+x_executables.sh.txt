@@ -1,0 +1,7 @@
+#can't be executed directly
+#!/bin/sh
+
+
+find . -name "*.exe" | xargs -n 1 chmod --verbose +x ;
+
+echo Completed!
