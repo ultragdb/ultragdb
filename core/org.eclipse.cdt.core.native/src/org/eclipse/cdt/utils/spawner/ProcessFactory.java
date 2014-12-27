@@ -93,6 +93,14 @@ public class ProcessFactory {
 	public Process exec(String cmdarray[], String[] envp, File dir) throws IOException {
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
+			/*
+			 * TODO : use the statement in comment below to replace the next statement. 
+			 * this will require plugin org.eclipse.cdt.core,
+			 * which also require plugin org.eclipse.cdt.core.native, this is cause a cycle in dependency graph, which is not allowed.
+			 * The solution is to move ProcessFactory.java, PTY2.java, PTY2Utils.java to plugin org.eclipse.cdt.core, and make
+			 * plugin org.eclipse.cdt.core.native empty.
+			 */
+			//String cygwinDir = Cygwin.getCygwinDir();
 			String cygwinDir = System.getenv("CYGWIN_DIR"); //$NON-NLS-1$
 			if (cygwinDir != null) {
 				// bash -c ls£¬ bash can't use --login option, because it change the current directory to HOME
