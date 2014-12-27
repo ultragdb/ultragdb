@@ -218,7 +218,6 @@ public class ErrorPattern {
 				}
 			} catch (UnsupportedOperationException e) {
 				isCygwin = false;
-			} catch (IOException e) {
 			}
 		}
 		return path ;

@@ -339,7 +339,6 @@ public class RegexErrorPattern implements Cloneable {
 				}
 			} catch (UnsupportedOperationException e) {
 				isCygwin = false;
-			} catch (IOException e) {
 			}
 		}
 		return path ;

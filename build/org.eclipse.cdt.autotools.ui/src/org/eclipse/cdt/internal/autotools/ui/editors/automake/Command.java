@@ -13,6 +13,8 @@ package org.eclipse.cdt.internal.autotools.ui.editors.automake;
 import java.io.File;
 import java.io.IOException;
 
+import org.eclipse.cdt.utils.spawner.ProcessFactory;
+
 /**
  * Makefile : ( statement ) *
  * statement : command | ..  
@@ -113,7 +115,7 @@ public class Command extends Directive implements ICommand {
 	 */
 	public Process execute(String shell, String[] envp, File dir) throws IOException {
 		String[] cmdArray = new String[] { shell, "-c", command}; //$NON-NLS-1$
-		return Runtime.getRuntime().exec(cmdArray, envp, dir);
+		return ProcessFactory.getFactory().exec(cmdArray, envp, dir);
 	}
 
 }

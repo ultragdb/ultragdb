@@ -11,10 +11,18 @@
 package org.eclipse.cdt.ui.testplugin;
 
 // copied from startup.jar. planned to be removed soon
-import java.net.*;
-import java.lang.reflect.*;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileFilter;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+import java.util.Vector;
+
+import org.eclipse.cdt.utils.spawner.ProcessFactory;
 /**
  * Startup class for Eclipse. Creates a class loader using
  * supplied URL of platform installation, loads and calls
@@ -382,7 +390,7 @@ public static void endSplash() {
 	if (endSplash == null)
 		return;
 	try {
-		Runtime.getRuntime().exec(endSplash);
+		ProcessFactory.getFactory().exec(endSplash);
 	} catch (Exception e) {
 	}
 }

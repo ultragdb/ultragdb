@@ -35,6 +35,7 @@ import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
 import org.eclipse.cdt.core.settings.model.TestCfgDataProvider;
 import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.internal.core.pdom.indexer.IndexerPreferences;
+import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -581,7 +582,7 @@ public class ResourceHelper {
 		}
 
 		String command[] = { "ln", "-s", realPath.toOSString(), linkPath.toOSString()};
-		Process process = Runtime.getRuntime().exec(command);
+		Process process = ProcessFactory.getFactory().exec(command);
 
 		// Wait for up to 2.5s...
 		for (int i = 0; i < 5; i++) {

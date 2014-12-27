@@ -122,7 +122,7 @@ public class CygwinPathResolver implements IBuildPathResolver {
 	 */
 	@Deprecated
 	public static String getRootPath() {
-		return Cygwin.getCygwinHome();
+		return Cygwin.getCygwinDir();
 	}
 
 	public static boolean isWindows() {
@@ -158,7 +158,7 @@ public class CygwinPathResolver implements IBuildPathResolver {
 	 * @return The absolute path to the pattern or {@code null} if path does not exist.
 	 */
 	private static String getPathFromRoot(String relativePath) {
-		String rootCygwin = Cygwin.getCygwinHome();
+		String rootCygwin = Cygwin.getCygwinDir();
 		if (rootCygwin != null) {
 			String path = rootCygwin + relativePath;
 			File file = new File(path);

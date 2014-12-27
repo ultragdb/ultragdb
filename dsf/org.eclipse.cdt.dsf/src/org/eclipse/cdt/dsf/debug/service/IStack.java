@@ -38,6 +38,9 @@ public interface IStack extends IDsfService {
      */
     public interface IFrameDMData extends IDMData {
         IAddress getAddress();
+        /**
+         * @return the host source path of this frame, not the debugger source path
+         */
         String getFile();
         String getFunction();
         int getLine();

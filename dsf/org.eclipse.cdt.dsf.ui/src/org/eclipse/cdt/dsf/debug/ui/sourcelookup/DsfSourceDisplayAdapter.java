@@ -121,6 +121,9 @@ public class DsfSourceDisplayAdapter implements ISourceDisplay, ISteppingControl
 		IFrameDMContext fDmc;
         int fLine;
         int fLevel;
+        /**
+         * host source path of the file to be displayed in an editor
+         */
 		String fFile;
 		
 		@Override
@@ -718,6 +721,11 @@ public class DsfSourceDisplayAdapter implements ISourceDisplay, ISteppingControl
 						// Document line numbers are 0-based. While debugger line numbers are 1-based.
 						IFrameDMData data = getData();
 						frameData.fLine = data.getLine() - 1;
+						/*
+						 * Chiheng Xu : note : this is statement is crucial. 
+						 * We must make sure that we get the host source path, not the debugger path. 
+						 * Otherwise, the source file can't be displayed in an editor
+						 */
 						frameData.fFile = data.getFile();
 						if (!force && frameData.equals(fPrevFrameData)) {
 							fPrevResult.updateArtifact(context);

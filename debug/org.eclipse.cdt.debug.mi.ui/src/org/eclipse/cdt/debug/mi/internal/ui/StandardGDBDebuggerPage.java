@@ -18,14 +18,16 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Observable;
 import java.util.Observer;
+
 import org.eclipse.cdt.debug.mi.core.IMILaunchConfigurationConstants;
 import org.eclipse.cdt.debug.mi.core.MIPlugin;
 import org.eclipse.cdt.debug.mi.core.command.factories.CommandFactoryDescriptor;
 import org.eclipse.cdt.debug.mi.ui.IMILaunchConfigurationComponent;
 import org.eclipse.cdt.debug.mi.ui.MIUIUtils;
 import org.eclipse.cdt.debug.ui.AbstractCDebuggerPage;
-import org.eclipse.cdt.utils.ui.controls.ControlFactory;
 import org.eclipse.cdt.utils.Platform;
+import org.eclipse.cdt.utils.spawner.ProcessFactory;
+import org.eclipse.cdt.utils.ui.controls.ControlFactory;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -118,7 +120,7 @@ public class StandardGDBDebuggerPage extends AbstractCDebuggerPage implements Ob
 
 				while (interruptedRetryCount >= 0) {
 					try {
-						unameProcess = Runtime.getRuntime().exec(cmd);
+						unameProcess = ProcessFactory.getFactory().exec(cmd);
 						int exitStatus = unameProcess.waitFor();
 
 						cachedGdb64Exists = (exitStatus == 0);

@@ -30,6 +30,7 @@ import org.eclipse.cdt.dsf.mi.service.command.CommandFactory;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIInfo;
 import org.eclipse.cdt.dsf.service.AbstractDsfService;
 import org.eclipse.cdt.dsf.service.DsfSession;
+import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -37,6 +38,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.sourcelookup.ISourceContainer;
@@ -157,6 +159,18 @@ public class CSourceLookup extends AbstractDsfService implements ISourceLookup {
             return;
         }
         final String sourceString = (String) source;
+
+        if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			String debuggerPath = sourceString;
+			try {
+				debuggerPath = Cygwin.windowsToCygwinPath(sourceString);
+			} catch (UnsupportedOperationException e) {
+				e.printStackTrace();
+			}
+			rm.setData(debuggerPath);
+			rm.done();
+			return;
+		}
         
         if (!fDirectors.containsKey(sourceLookupCtx) ){
             rm.setStatus(new Status(IStatus.ERROR, GdbPlugin.PLUGIN_ID, IDsfStatusConstants.INVALID_HANDLE, "No source director configured for given context", null)); //$NON-NLS-1$);
@@ -182,6 +196,18 @@ public class CSourceLookup extends AbstractDsfService implements ISourceLookup {
 
 	@Override
     public void getSource(ISourceLookupDMContext sourceLookupCtx, final String debuggerPath, final DataRequestMonitor<Object> rm) {
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			String sourcePath = debuggerPath;
+			try {
+				sourcePath = Cygwin.cygwinToWindowsPath(debuggerPath);
+			} catch (UnsupportedOperationException e) {
+				e.printStackTrace();
+			}
+			rm.setData(sourcePath);
+			rm.done();
+			return;
+		}
+
         if (!fDirectors.containsKey(sourceLookupCtx)) {
             rm.setStatus(new Status(IStatus.ERROR, GdbPlugin.PLUGIN_ID,
             		IDsfStatusConstants.INVALID_HANDLE, "No source director configured for given context", null)); //$NON-NLS-1$);

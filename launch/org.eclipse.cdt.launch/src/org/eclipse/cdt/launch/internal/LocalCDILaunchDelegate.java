@@ -48,6 +48,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
@@ -98,6 +99,9 @@ public class LocalCDILaunchDelegate extends AbstractCLaunchDelegate {
 			String[] commandArray = (String[])command.toArray(new String[command.size()]);
 			boolean usePty = config.getAttribute(ICDTLaunchConfigurationConstants.ATTR_USE_TERMINAL, ICDTLaunchConfigurationConstants.USE_TERMINAL_DEFAULT);
 			monitor.worked(2);
+			if (Platform.getOS().equals(Platform.OS_WIN32)) {
+				commandArray[0] = Path.fromOSString(commandArray[0]).toPortableString();
+			}
 			String[] terminalEmulatorCommandArray = PTY2Util.getTerminalEmulatorCommandArray(commandArray);
 			Process process = exec(terminalEmulatorCommandArray, getEnvironment(config), wd, usePty);
 			monitor.worked(6);

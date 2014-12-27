@@ -22,6 +22,9 @@ public class MIFrame {
     String func = ""; //$NON-NLS-1$
     String file = ""; //$NON-NLS-1$
     // since gdb 6.4
+    /**
+     * debugger path, not host source path
+     */
     String fullname = ""; //$NON-NLS-1$
     int line;
     MIArg[] args = new MIArg[0];
@@ -34,6 +37,9 @@ public class MIFrame {
         return args;
     }
 
+    /**
+     * @return the debugger path, not the host source path
+     */
     public String getFile() {
         String fname = getFullname();
         return ( fname.length() != 0 ) ? fname : file;

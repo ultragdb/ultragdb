@@ -11,41 +11,49 @@
  *******************************************************************************/
 package org.eclipse.cdt.utils.spawner;
 
-
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-import org.eclipse.cdt.internal.core.natives.CNativePlugin;
 import org.eclipse.cdt.internal.core.natives.Messages;
 import org.eclipse.cdt.utils.pty.PTY;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 
 /**
  * @noextend This class is not intended to be subclassed by clients.
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
-public class ProcessFactory {
 
+/**
+ * 
+ * use ProcessBuilder to launch process
+ * 
+ * @see http://docs.oracle.com/javase/8/docs/api/java/lang/ProcessBuilder.html
+ *
+ */
+
+public class ProcessFactory {
 	static private ProcessFactory instance;
-	private boolean hasSpawner;
-	private Runtime runtime;
+
+	private static Map<String, String> envpToEnvMap(String[] envp) {
+		TreeMap<String, String> environment = new TreeMap<String, String>();
+		if (envp != null) {
+			for (String envstring : envp) {
+				int eqlsign = envstring.indexOf('=');
+				// Silently ignore envstrings lacking the required `='.
+				if (eqlsign != -1)
+					environment.put(envstring.substring(0, eqlsign),
+							envstring.substring(eqlsign + 1));
+			}
+		}
+		return environment;
+	}
 
 	private ProcessFactory() {
-		hasSpawner = false;
-		String OS = System.getProperty("os.name").toLowerCase(); //$NON-NLS-1$
-		runtime = Runtime.getRuntime();
-		try {
-			// Spawner does not work for Windows 98 fallback
-			if (OS != null && OS.equals("windows 98")) { //$NON-NLS-1$
-				hasSpawner = false;
-			} else {
-				System.loadLibrary("spawner"); //$NON-NLS-1$
-				hasSpawner = true;
-			}
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (UnsatisfiedLinkError e) {
-			CNativePlugin.log(e.getMessage());
-		}
 	}
 
 	public static ProcessFactory getFactory() {
@@ -55,47 +63,98 @@ public class ProcessFactory {
 	}
 
 	public Process exec(String cmd) throws IOException {
-		if (hasSpawner)
-			return new Spawner(cmd);
-		return runtime.exec(cmd);
+		String[] cmdarray = new String[] { cmd };
+		Process p = exec(cmdarray, null, null);
+		return p;
 	}
 
 	public Process exec(String[] cmdarray) throws IOException {
-		if (hasSpawner)
-			return new Spawner(cmdarray);
-		return runtime.exec(cmdarray);
+		Process p = exec(cmdarray, null, null);
+		return p;
 	}
 
 	public Process exec(String[] cmdarray, String[] envp) throws IOException {
-		if (hasSpawner)
-			return new Spawner(cmdarray, envp);
-		return runtime.exec(cmdarray, envp);
+		Process p = exec(cmdarray, envp, null);
+		return p;
 	}
 
 	public Process exec(String cmd, String[] envp) throws IOException {
-		if (hasSpawner)
-			return new Spawner(cmd, envp);
-		return runtime.exec(cmd, envp);
+		String[] cmdarray = new String[] { cmd };
+		Process p = exec(cmdarray, envp, null);
+		return p;
 	}
 
-	public Process exec(String cmd, String[] envp, File dir)
-		throws IOException {
-		if (hasSpawner)
-			return new Spawner(cmd, envp, dir);
-		return runtime.exec(cmd, envp, dir);
+	public Process exec(String cmd, String[] envp, File dir) throws IOException {
+		String[] cmdarray = new String[] { cmd };
+		Process p = exec(cmdarray, envp, dir);
+		return p;
 	}
 
-	public Process exec(String cmdarray[], String[] envp, File dir)
-		throws IOException {
-		if (hasSpawner)
-			return new Spawner(cmdarray, envp, dir);
-		return runtime.exec(cmdarray, envp, dir);
+	public Process exec(String cmdarray[], String[] envp, File dir) throws IOException {
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
+			String cygwinDir = System.getenv("CYGWIN_DIR"); //$NON-NLS-1$
+			if (cygwinDir != null) {
+				// bash -c ls£¬ bash can't use --login option, because it change the current directory to HOME
+				// directory.
+				String cygwinBashBinPath = Path.fromOSString(cygwinDir).toPortableString()
+						+ "/bin/bash.exe"; //$NON-NLS-1$
+				String[] newCmdArray = new String[3];
+				newCmdArray[0] = cygwinBashBinPath;
+				newCmdArray[1] = "-c"; //$NON-NLS-1$
+
+				StringBuilder builder = new StringBuilder();
+				for (int i = 0; i < cmdarray.length; i++) {
+					String arg = cmdarray[i];
+					if (i != 0) {
+						builder.append(' ');
+					}
+					builder.append('\'');
+					builder.append(arg);
+					builder.append('\'');
+				}
+				newCmdArray[2] = builder.toString();
+
+				cmdarray = newCmdArray;
+			}
+		}
+		List<String> cmdList = Arrays.asList(cmdarray);
+		ProcessBuilder pb = new ProcessBuilder(cmdList);
+		Map<String, String> env = pb.environment();
+		if (envp != null) {
+			Map<String, String> environment = envpToEnvMap(envp);
+			env.clear();
+			env.putAll(environment);
+		}
+
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			String pathEnvVarValue = env.get("PATH"); //$NON-NLS-1$
+			pathEnvVarValue = "/usr/local/bin;/usr/bin;/bin;" + pathEnvVarValue; //$NON-NLS-1$
+			env.put("PATH", pathEnvVarValue); //$NON-NLS-1$
+			/*
+			 * The CYGWIN environment variable is used to configure many global settings for the Cygwin
+			 * runtime system. It contains the options listed below, separated by blank characters.
+			 * 
+			 * @see https://cygwin.com/cygwin-ug-net/using-cygwinenv.html
+			 */
+			String cygwinEnvVarValue = env.get("CYGWIN"); //$NON-NLS-1$
+			if (cygwinEnvVarValue == null) {
+				env.put("CYGWIN", "nodosfilewarning"); //$NON-NLS-1$ //$NON-NLS-2$
+			} else if (cygwinEnvVarValue.indexOf("nodosfilewarning") == -1) { //$NON-NLS-1$
+				cygwinEnvVarValue += " nodosfilewarning"; //$NON-NLS-1$
+				env.put("CYGWIN", cygwinEnvVarValue); //$NON-NLS-1$
+			}
+		}
+		if (dir != null) {
+			pb.directory(dir);
+		}
+
+		Process p = pb.start();
+		return p;
 	}
 
-	public Process exec(String cmdarray[], String[] envp, File dir, PTY pty)
-		throws IOException {
-		if (hasSpawner)
-			return new Spawner(cmdarray, envp, dir, pty);
+	@Deprecated
+	public Process exec(String cmdarray[], String[] envp, File dir, PTY pty) throws IOException {
 		throw new UnsupportedOperationException(Messages.Util_exception_cannotCreatePty);
 	}
 }

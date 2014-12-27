@@ -57,9 +57,11 @@ import org.eclipse.cdt.dsf.mi.service.command.output.MIStackListLocalsInfo;
 import org.eclipse.cdt.dsf.service.AbstractDsfService;
 import org.eclipse.cdt.dsf.service.DsfServiceEventHandler;
 import org.eclipse.cdt.dsf.service.DsfSession;
+import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.utils.Addr32;
 import org.eclipse.cdt.utils.Addr64;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleContext;
 
@@ -446,7 +448,22 @@ public class MIStack extends AbstractDsfService
             public int getColumn() { return 0; }
 
         	@Override
-            public String getFile() { return getMIFrame().getFile(); }
+        	/**
+        	 * @return the host source path of this frame, not the debugger source path
+        	 */
+        	public String getFile() { 
+        		//translate debugger path to host source path
+        		String debuggerPath = getMIFrame().getFile(); 
+        		String sourcePath = debuggerPath;
+        		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+        			try {
+        				sourcePath = Cygwin.cygwinToWindowsPath(debuggerPath);
+        			} catch (UnsupportedOperationException e) {
+        				e.printStackTrace();
+        			}
+        		}
+        		return sourcePath;
+        	}
         	@Override
             public int getLine() { return getMIFrame().getLine(); }
         	@Override

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.eclipse.cdt.core.CCorePlugin;
+import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.osgi.framework.Bundle;
 
 /**
@@ -58,7 +59,7 @@ public final class Platform {
 				String cmd[] = {"uname", "-p"};  //$NON-NLS-1$//$NON-NLS-2$
 	
 				try {
-					unameProcess = Runtime.getRuntime().exec(cmd);
+					unameProcess = ProcessFactory.getFactory().exec(cmd);
 	
 					InputStreamReader inputStreamReader = new InputStreamReader(unameProcess.getInputStream());
 					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -86,7 +87,7 @@ public final class Platform {
 				}
 	
 				try {
-					unameProcess = Runtime.getRuntime().exec(cmd);
+					unameProcess = ProcessFactory.getFactory().exec(cmd);
 					unameProcess.getOutputStream().close();
 					unameProcess.getErrorStream().close();
 					InputStreamReader inputStreamReader = new InputStreamReader(unameProcess.getInputStream());

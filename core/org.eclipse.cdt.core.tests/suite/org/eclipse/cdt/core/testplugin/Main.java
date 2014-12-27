@@ -23,6 +23,8 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import org.eclipse.cdt.utils.spawner.ProcessFactory;
 /**
  * Startup class for Eclipse. Creates a class loader using
  * supplied URL of platform installation, loads and calls
@@ -397,7 +399,7 @@ public class Main {
 		if (endSplash == null)
 			return;
 		try {
-			Runtime.getRuntime().exec(endSplash);
+			ProcessFactory.getFactory().exec(endSplash);
 		} catch (Exception e) {
 		}
 	}

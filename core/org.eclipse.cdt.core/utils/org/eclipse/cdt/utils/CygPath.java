@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import org.eclipse.cdt.internal.core.Cygwin;
+import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
@@ -38,7 +39,7 @@ public class CygPath {
 			// Don't run this on non-windows platforms
 			throw new IOException("Not Windows"); //$NON-NLS-1$
 		String[] args = {command, "--windows", "--file", "-"}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		cygpath = Runtime.getRuntime().exec(args);
+		cygpath = ProcessFactory.getFactory().exec(args);
 		stdin = new BufferedWriter(new OutputStreamWriter(cygpath.getOutputStream()));
 		stdout = new BufferedReader(new InputStreamReader(cygpath.getInputStream()));
 		try {
@@ -105,7 +106,7 @@ public class CygPath {
 		Process cygPath = null;
 		BufferedReader reader = null;
 		try {
-			cygPath = Runtime.getRuntime().exec(new String[]{"cygpath", "-w", path}); //$NON-NLS-1$ //$NON-NLS-2$
+			cygPath = ProcessFactory.getFactory().exec(new String[]{"cygpath", "-w", path}); //$NON-NLS-1$ //$NON-NLS-2$
 			reader = new BufferedReader(new InputStreamReader(cygPath.getInputStream()));
 			String newPath = reader.readLine();
 			IPath ipath;
