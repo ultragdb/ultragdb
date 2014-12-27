@@ -98,8 +98,6 @@ public class ErrorParserManager extends OutputStream implements IConsoleParser, 
 	private URI cachedWorkingDirectory = null;
 	private IFile cachedFile = null;
 
-	private static boolean isCygwin = true;
-
 	/**
 	 * Constructor.
 	 *
@@ -460,8 +458,8 @@ outer:
 			}
 		}
 
-		// Could be cygwin path
-		if (file==null && isCygwin && path.isAbsolute()) {
+		// Could be Cygwin path
+		if (file==null && Cygwin.isAvailable() && path.isAbsolute()) {
 			file = findCygwinFile(partialLoc);
 		}
 
@@ -528,8 +526,8 @@ outer:
 		IPath path = new Path(filePath);
 		IFile file = findFileInWorkspace(path);
 
-		// That didn't work, see if it is a cygpath
-		if (file == null && isCygwin) {
+		// That didn't work, see if it is a Cygwin path
+		if (file == null && Cygwin.isAvailable()) {
 			file = findCygwinFile(filePath);
 		}
 
@@ -542,8 +540,6 @@ outer:
 			IPath path = new Path(Cygwin.cygwinToWindowsPath(filePath));
 			file = findFileInWorkspace(path);
 		} catch (UnsupportedOperationException e) {
-			isCygwin = false;
-		} catch (Exception e) {
 		}
 		return file;
 	}

@@ -22,6 +22,7 @@ import java.util.Vector;
 
 import org.eclipse.cdt.core.IMarkerGenerator;
 import org.eclipse.cdt.core.ProblemMarkerInfo;
+import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.make.core.MakeCorePlugin;
 import org.eclipse.cdt.make.internal.core.MakeMessages;
 import org.eclipse.cdt.make.internal.core.scannerconfig.util.CCommandDSC;
@@ -60,15 +61,14 @@ public class XLCBuildOutputParserUtility {
         }
     }
     public static IPath convertCygpath(IPath path) {
-    	if (path.segmentCount() > 1 && path.segment(0).equals("cygdrive")) { //$NON-NLS-1$
-            StringBuffer buf = new StringBuffer(2);
-            buf.append(Character.toUpperCase(path.segment(1).charAt(0)));
-            buf.append(':');
-            path = path.removeFirstSegments(2);
-            path = path.setDevice(buf.toString());
-            path = path.makeAbsolute();
-        }
-    	return path;
+    	String pathStr = path.toPortableString();
+    	String newPathStr = pathStr;
+    	try {
+    		newPathStr = Cygwin.cygwinToWindowsPath(pathStr);
+		} catch (UnsupportedOperationException e) {
+		}
+    	IPath newPath = Path.fromPortableString(newPathStr);
+    	return newPath;
 	}
     private List commandsList2;
     private int commandsN = 0;

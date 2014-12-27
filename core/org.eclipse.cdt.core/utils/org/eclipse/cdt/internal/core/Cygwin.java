@@ -91,7 +91,7 @@ public class Cygwin {
 			throw new UnsupportedOperationException("Not a Windows system, Cygwin is unavailable."); //$NON-NLS-1$
 		}
 		String windowsPath;
-		IPath path = Path.fromPortableString(cygwinPath);
+		IPath path = Path.fromOSString(cygwinPath);
 		if (path.getDevice() != null) {
 			// already a windows path
 			windowsPath = path.toPortableString();
@@ -102,7 +102,7 @@ public class Cygwin {
 
 		String cygwinDir = getCygwinDir();
 		if (cygwinDir == null) {
-			throw new UnsupportedOperationException("no CYGWIN_DIR environment variable defined"); //$NON-NLS-1$
+			throw new UnsupportedOperationException("can not get Cygwin installation directory"); //$NON-NLS-1$
 		}
 		if (cygwinPath.startsWith("/")) { //$NON-NLS-1$
 			// absolute path
@@ -198,7 +198,7 @@ public class Cygwin {
 		}
 		String cygwinDir = getCygwinDir();
 		if (cygwinDir == null) {
-			throw new UnsupportedOperationException("no CYGWIN_DIR environment variable defined"); //$NON-NLS-1$
+			throw new UnsupportedOperationException("can not get Cygwin installation directory"); //$NON-NLS-1$
 		}
 
 		IPath cygwinDirPath = Path.fromOSString(cygwinDir);

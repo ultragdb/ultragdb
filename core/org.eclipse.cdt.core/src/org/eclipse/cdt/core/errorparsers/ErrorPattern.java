@@ -12,7 +12,6 @@
 package org.eclipse.cdt.core.errorparsers;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +36,6 @@ public class ErrorPattern {
 	private final int groupVarName;
 	private final int severity;
 
-	private static boolean isCygwin = true;
 
 	/**
 	 * Full Pattern Constructor. Note that a group equal -1 means that
@@ -200,7 +198,7 @@ public class ErrorPattern {
 
 	/**
 	 * If the file designated by filename exists, return the IPath representation of the filename
-	 * If it does not exist, try cygpath translation
+	 * If it does not exist, try to use  Cygwin.cygwinToWindowsPath
 	 *
 	 * @param filename - file name
 	 * @return location (outside of the workspace).
@@ -208,7 +206,7 @@ public class ErrorPattern {
 	protected IPath getLocation(String filename)  {
 		IPath path = new Path(filename);
 		File file = path.toFile() ;
-		if (!file.exists() && isCygwin && path.isAbsolute())  {
+		if (!file.exists() && Cygwin.isAvailable() && path.isAbsolute())  {
 			try {
 				String cygfilename = Cygwin.cygwinToWindowsPath(filename);
 				IPath convertedPath = new Path(cygfilename);
@@ -217,7 +215,6 @@ public class ErrorPattern {
 					path = convertedPath;
 				}
 			} catch (UnsupportedOperationException e) {
-				isCygwin = false;
 			}
 		}
 		return path ;
