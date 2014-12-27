@@ -16,6 +16,7 @@ import java.io.OutputStream;
 
 /**
  */
+@Deprecated
 public interface IMITTY {
 
 	/**

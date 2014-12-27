@@ -18,6 +18,7 @@ import java.io.InputStream;
 
 import org.eclipse.cdt.utils.pty.PTY.MasterFD;
 
+@Deprecated
 class PTYInputStream extends InputStream {
 
 	MasterFD master;

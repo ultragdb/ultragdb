@@ -14,6 +14,7 @@ package org.eclipse.cdt.dsf.gdb.launching;
 import java.util.Map;
 
 import org.eclipse.cdt.dsf.gdb.IGdbDebugConstants;
+import org.eclipse.cdt.launch.ILaunchConstants;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.IProcessFactory;
 import org.eclipse.debug.core.model.IProcess;
@@ -36,6 +37,10 @@ public class GdbProcessFactory implements IProcessFactory {
 
 			if (IGdbDebugConstants.INFERIOR_PROCESS_CREATION_VALUE.equals(attributes.get(IGdbDebugConstants.PROCESS_TYPE_CREATION_ATTR))) {
 				return new InferiorRuntimeProcess(launch, process, label, attributes);
+			}
+
+			if (ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE.equals(attributes.get(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR))) {
+				return new TerminalEmulatorRuntimeProcess(launch, process, label, attributes);
 			}
 		}	
 		

@@ -27,7 +27,9 @@ import com.ibm.icu.text.MessageFormat;
  * A process for the inferior to know it belongs to a DSF-GDB session
  * 
  * @since 4.0
+ * @deprecated Chiheng Xu : use system terminal emulator, not Eclipe's console view, as the inferior's stdin/stdout/stderr. 
  */
+@Deprecated
 public class InferiorRuntimeProcess extends RuntimeProcess {
 	
 	public InferiorRuntimeProcess(ILaunch launch, Process process, String name,

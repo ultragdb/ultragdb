@@ -23,15 +23,18 @@ import org.eclipse.cdt.dsf.debug.service.IProcesses;
 import org.eclipse.cdt.dsf.debug.service.IProcesses.IProcessDMContext;
 import org.eclipse.cdt.dsf.gdb.internal.ui.GdbUIPlugin;
 import org.eclipse.cdt.dsf.gdb.launching.GdbLaunch;
+import org.eclipse.cdt.dsf.gdb.launching.TerminalEmulatorRuntimeProcess;
 import org.eclipse.cdt.dsf.gdb.service.command.IGDBControl;
 import org.eclipse.cdt.dsf.service.DsfServicesTracker;
 import org.eclipse.cdt.dsf.service.DsfSession;
 import org.eclipse.cdt.dsf.service.DsfSession.SessionEndedListener;
 import org.eclipse.cdt.dsf.ui.viewmodel.datamodel.IDMVMContext;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.commands.IDebugCommandRequest;
 import org.eclipse.debug.core.commands.IEnabledStateRequest;
 import org.eclipse.debug.core.commands.ITerminateHandler;
+import org.eclipse.debug.core.model.IProcess;
 
 public class DsfTerminateCommand implements ITerminateHandler {
 	private final DsfSession fSession;
@@ -111,6 +114,25 @@ public class DsfTerminateCommand implements ITerminateHandler {
             fExecutor.execute(new DsfRunnable() { 
                 @Override
                 public void run() {
+                	//Chiheng Xu : kill the terminal emulator process, which is not known by DSF GDB, and can not be terminated by IGDBControl.
+                	if (request.getElements()[0] instanceof GdbLaunch) {
+                		GdbLaunch launch = (GdbLaunch)request.getElements()[0];
+                		IProcess[] processes = launch.getProcesses();
+                		for (int i = 0; i < processes.length; i++) {
+                			IProcess process = processes[i];
+                			if (process instanceof TerminalEmulatorRuntimeProcess) {
+                				//The terminal emulator runtime process
+                				if (process.canTerminate()) {
+                					try {
+                						process.terminate();
+                					} catch (DebugException e) {
+                						//
+                					}
+                				}
+                			}
+                		}
+                	}	
+
                 	final IGDBControl commandControl = fTracker.getService(IGDBControl.class);
                     if (commandControl != null) {
                     	commandControl.terminate(new ImmediateRequestMonitor() {

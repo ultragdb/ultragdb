@@ -43,7 +43,9 @@ import org.eclipse.cdt.dsf.mi.service.command.output.MIBreakInsertInfo;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIBreakpoint;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIInfo;
 import org.eclipse.cdt.dsf.service.DsfServicesTracker;
+import org.eclipse.cdt.launch.ILaunchConstants;
 import org.eclipse.cdt.utils.pty.PTY;
+import org.eclipse.cdt.utils.pty.PTY2;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
@@ -89,6 +91,7 @@ public class StartOrRestartProcessSequence_7_0 extends ReflectionSequence {
 	private final boolean fRestart;
 	
 	private PTY fPty;
+	private PTY2 fPty2;
 	
 	// Store the dataRM so that we can fill it with the new container context, which we must return
 	// Although we can access this through Sequence.getRequestMonitor(), we would loose the type-checking.
@@ -269,12 +272,22 @@ public class StartOrRestartProcessSequence_7_0 extends ReflectionSequence {
     		// Every other type of session that can get to this code, is starting a new process
     		// and requires a pty for it.
     		try {
-    			fPty = new PTY();
-				fPty.validateSlaveName();
+    			//fPty = new PTY();
+				//fPty.validateSlaveName();
+    			ILaunch launch = (ILaunch)getContainerContext().getAdapter(ILaunch.class);
+
+    			fPty2 = new PTY2();
+    			Process process = fPty2.getTerminalEmulator();
+
+    			Map<String, String> attributes = new HashMap<String, String>();
+    		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
+    		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
+
+    			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes);
 
     			// Tell GDB to use this PTY
     			fCommandControl.queueCommand(
-    					fCommandFactory.createMIInferiorTTYSet((IMIContainerDMContext)getContainerContext(), fPty.getSlaveName()), 
+    					fCommandFactory.createMIInferiorTTYSet((IMIContainerDMContext)getContainerContext(), fPty2.getSlaveName()), 
     					new ImmediateDataRequestMonitor<MIInfo>(rm) {
     						@Override
     						protected void handleFailure() {
@@ -295,7 +308,19 @@ public class StartOrRestartProcessSequence_7_0 extends ReflectionSequence {
 	 * Before running the program, we must create its console for IO.
 	 */
 	@Execute
+	@SuppressWarnings("unused") 
 	public void stepCreateConsole(final RequestMonitor rm) {
+		if (true) {
+			/*
+			 * Chiheng Xu : don't create Eclipse's console on the inferior, a.k.a, for the inferior,  don't create instance of 
+			 * org.eclipse.cdt.dsf.mi.service.command.MIInferiorProcess
+			 * org.eclipse.cdt.dsf.gdb.launching.InferiorRuntimeProcess
+			 * org.eclipse.debug.internal.ui.views.console.ProcessConsole
+			 */
+			rm.done();
+			return;
+		}
+
     	if (fBackend.getSessionType() == SessionType.REMOTE) {
     		// The program output for a remote session is handled by gdbserver. Therefore,
     		// no need to create an inferior process and add it to the launch.

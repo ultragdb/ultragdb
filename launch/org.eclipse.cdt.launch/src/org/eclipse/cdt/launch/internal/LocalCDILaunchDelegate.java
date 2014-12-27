@@ -16,11 +16,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.cdt.core.CCorePlugin;
+import org.eclipse.cdt.core.IBinaryParser.IBinaryObject;
 import org.eclipse.cdt.core.IProcessInfo;
 import org.eclipse.cdt.core.IProcessList;
-import org.eclipse.cdt.core.IBinaryParser.IBinaryObject;
 import org.eclipse.cdt.core.model.ICProject;
 import org.eclipse.cdt.debug.core.CDIDebugModel;
 import org.eclipse.cdt.debug.core.CDebugUtils;
@@ -33,9 +35,11 @@ import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRuntimeOptions;
 import org.eclipse.cdt.debug.core.cdi.model.ICDITarget;
 import org.eclipse.cdt.launch.AbstractCLaunchDelegate;
+import org.eclipse.cdt.launch.ILaunchConstants;
 import org.eclipse.cdt.launch.internal.ui.LaunchMessages;
 import org.eclipse.cdt.launch.internal.ui.LaunchUIPlugin;
 import org.eclipse.cdt.utils.pty.PTY;
+import org.eclipse.cdt.utils.pty.PTY2Util;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -94,9 +98,15 @@ public class LocalCDILaunchDelegate extends AbstractCLaunchDelegate {
 			String[] commandArray = (String[])command.toArray(new String[command.size()]);
 			boolean usePty = config.getAttribute(ICDTLaunchConfigurationConstants.ATTR_USE_TERMINAL, ICDTLaunchConfigurationConstants.USE_TERMINAL_DEFAULT);
 			monitor.worked(2);
-			Process process = exec(commandArray, getEnvironment(config), wd, usePty);
+			String[] terminalEmulatorCommandArray = PTY2Util.getTerminalEmulatorCommandArray(commandArray);
+			Process process = exec(terminalEmulatorCommandArray, getEnvironment(config), wd, usePty);
 			monitor.worked(6);
-			DebugPlugin.newProcess(launch, process, renderProcessLabel(commandArray[0]));
+			
+			Map<String, String> attributes = new HashMap<String, String>();
+		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
+		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
+
+			DebugPlugin.newProcess(launch, process, renderProcessLabel(commandArray[0]), attributes);
 		} finally {
 			monitor.done();
 		}		

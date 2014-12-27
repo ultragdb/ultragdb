@@ -69,8 +69,10 @@ import org.eclipse.debug.core.model.IProcess;
  * by GDB.  The process object is displayed in Debug view and is used to
  * channel the STDIO of the interior process to the console view.  
  * 
- * @see org.eclipse.debug.core.model.IProcess 
+ * @see org.eclipse.debug.core.model.IProcess
+ * @deprecated Chiheng Xu : use system terminal emulator, not Eclipe's console view, as the inferior's stdin/stdout/stderr. 
  */
+@Deprecated
 public class MIInferiorProcess extends Process 
     implements IEventListener, ICommandListener 
 {

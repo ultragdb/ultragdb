@@ -380,13 +380,14 @@ abstract public class AbstractCLaunchDelegate extends LaunchConfigurationDelegat
 	protected String renderTargetLabel(ICDebugConfiguration debugConfig) {
 		String format = "{0} ({1})"; //$NON-NLS-1$
 		String timestamp = DateFormat.getInstance().format(new Date(System.currentTimeMillis()));
-		return MessageFormat.format(format, new String[]{debugConfig.getName(), timestamp});
+		return MessageFormat.format(format, new Object[]{debugConfig.getName(), timestamp});
 	}
 
 	protected String renderProcessLabel(String commandLine) {
-		String format = "{0} ({1})"; //$NON-NLS-1$
-		String timestamp = DateFormat.getInstance().format(new Date(System.currentTimeMillis()));
-		return MessageFormat.format(format, new String[]{commandLine, timestamp});
+		String format = "{0} (runing {1})"; //$NON-NLS-1$
+		//String timestamp = DateFormat.getInstance().format(new Date(System.currentTimeMillis()));
+		String str = "Terminal Emulator"; //$NON-NLS-1$
+		return MessageFormat.format(format, new Object[]{str, commandLine});
 	}
 
 	// temporary fix for #66015
@@ -887,16 +888,21 @@ abstract public class AbstractCLaunchDelegate extends LaunchConfigurationDelegat
 	 */
 	protected String[] getEnvironment(ILaunchConfiguration config) throws CoreException {
 		try {
+			/*
+			 * Chiheng Xu : This block of code has been fixed, so that at any case, value of ILaunchManager.ATTR_ENVIRONMENT_VARIABLES will be non-null.
+			 * otherwise, if value of ILaunchManager.ATTR_ENVIRONMENT_VARIABLES is null,  org.eclipse.debug.internal.core.LaunchManager.getEnvironment to return null immediately,
+			 * then we can't get the system environment variables.
+			 */
 			// Migrate old env settings to new.
-			Map map = config.getAttribute(ICDTLaunchConfigurationConstants.ATTR_PROGRAM_ENVIROMENT_MAP, (Map)null);
 			ILaunchConfigurationWorkingCopy wc = config.getWorkingCopy();
-			if (map != null) {
-				wc.setAttribute(ILaunchManager.ATTR_ENVIRONMENT_VARIABLES, map);
-				wc.setAttribute(ICDTLaunchConfigurationConstants.ATTR_PROGRAM_ENVIROMENT_MAP, (Map)null);
-				config = wc.doSave();
-			}
+
+			Map map = config.getAttribute(ICDTLaunchConfigurationConstants.ATTR_PROGRAM_ENVIROMENT_MAP, (Map)new HashMap<String, String>());
+			wc.setAttribute(ILaunchManager.ATTR_ENVIRONMENT_VARIABLES, map);
+
 			boolean append = config.getAttribute(ICDTLaunchConfigurationConstants.ATTR_PROGRAM_ENVIROMENT_INHERIT, true);
 			wc.setAttribute(ILaunchManager.ATTR_APPEND_ENVIRONMENT_VARIABLES, append);
+
+			config = wc.doSave();
 		} catch (CoreException e) {
 		}		
 		String[] array = DebugPlugin.getDefault().getLaunchManager().getEnvironment(config);

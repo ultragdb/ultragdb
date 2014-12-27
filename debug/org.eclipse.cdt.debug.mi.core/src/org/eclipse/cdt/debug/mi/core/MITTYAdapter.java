@@ -20,6 +20,7 @@ import org.eclipse.cdt.utils.pty.PTY;
  * Adapt the PTY code to IMITTY
  * 
  */
+@Deprecated
 public class MITTYAdapter implements IMITTY {
 
 	PTY fPty;

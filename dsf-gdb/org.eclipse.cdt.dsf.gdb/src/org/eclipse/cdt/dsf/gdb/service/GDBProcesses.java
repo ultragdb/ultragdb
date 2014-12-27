@@ -59,7 +59,9 @@ import org.eclipse.cdt.dsf.mi.service.command.output.MIBreakInsertInfo;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIInfo;
 import org.eclipse.cdt.dsf.service.DsfServiceEventHandler;
 import org.eclipse.cdt.dsf.service.DsfSession;
+import org.eclipse.cdt.launch.ILaunchConstants;
 import org.eclipse.cdt.utils.pty.PTY;
+import org.eclipse.cdt.utils.pty.PTY2;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -69,6 +71,9 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IProcess;
 import org.osgi.framework.BundleContext;
 
+/**
+ * Chiheng Xu : For newer version of GDB(7.x), This class is not used. 
+ */
 public class GDBProcesses extends MIProcesses implements IGDBProcesses {
     
 	private class GDBContainerDMC extends MIContainerDMC implements IMemoryDMContext {
@@ -95,6 +100,7 @@ public class GDBProcesses extends MIProcesses implements IGDBProcesses {
     
     // If we can use a PTY, we store it here
 	private PTY fPty;
+	private PTY2 fPty2;
 
     public GDBProcesses(DsfSession session) {
     	super(session);
@@ -506,12 +512,22 @@ public class GDBProcesses extends MIProcesses implements IGDBProcesses {
     	} else {
     		// These types always use a PTY
     		try {
-    			fPty = new PTY();
-				fPty.validateSlaveName();
+    			//fPty = new PTY();
+				//fPty.validateSlaveName();
+    			ILaunch launch = (ILaunch)getSession().getModelAdapter(ILaunch.class);
+
+    			fPty2 = new PTY2();
+    			Process process = fPty2.getTerminalEmulator();
+
+    			Map<String, String> attributes = new HashMap<String, String>();
+    		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
+    		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
+
+    			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes);
 
     			// Tell GDB to use this PTY
     			fGdb.queueCommand(
-    					fCommandFactory.createMIInferiorTTYSet((IMIContainerDMContext)containerDmc, fPty.getSlaveName()), 
+    					fCommandFactory.createMIInferiorTTYSet((IMIContainerDMContext)containerDmc, fPty2.getSlaveName()), 
     					new ImmediateDataRequestMonitor<MIInfo>(rm) {
     						@Override
     						protected void handleFailure() {
@@ -530,7 +546,18 @@ public class GDBProcesses extends MIProcesses implements IGDBProcesses {
 	/**
 	 * @since 4.0
 	 */
+	@SuppressWarnings("unused") 
 	protected void createConsole(final IContainerDMContext containerDmc, final boolean restart, final RequestMonitor rm) {
+		if (true) {
+			/*
+			 * Chiheng Xu : don't create Eclipse's console on the inferior, a.k.a, for the inferior,  don't create instance of 
+			 * org.eclipse.cdt.dsf.mi.service.command.MIInferiorProcess
+			 * org.eclipse.cdt.dsf.gdb.launching.InferiorRuntimeProcess
+			 * org.eclipse.debug.internal.ui.views.console.ProcessConsole
+			 */
+			rm.done();
+			return;
+		}
     	if (fBackend.getSessionType() == SessionType.REMOTE || fBackend.getIsAttachSession()) {
     		// Remote or attach sessions shouldn't have a console, since the inferior is not started
     		// by eclipse but by gdbserver

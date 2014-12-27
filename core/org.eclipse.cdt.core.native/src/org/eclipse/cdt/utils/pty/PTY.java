@@ -22,6 +22,10 @@ import org.eclipse.core.runtime.Platform;
 /**
  * PTY - pseudo terminal support.
  */
+/**
+ * Chiheng Xu : do not use this class, Use PTY2 to create a pty and the termainal emulator
+ */
+@Deprecated
 public class PTY {
 
 	/**
@@ -138,7 +142,15 @@ public class PTY {
 	 * @since 5.2
 	 */
 	@Deprecated
+	@SuppressWarnings("unused") 
 	public PTY(boolean console) throws IOException {
+		if (true) {
+			/*
+			 * Chiheng Xu : throw an IOException unconditionally on PTY's contructor, to let caller know that Eclipse's PTY is not used.
+			*/
+			throw new IOException("Trying to create a PTY, but PTY is not used"); //$NON-NLS-1$
+		}
+
 		this.console = console;
 		if (console && !isConsoleModeSupported) {
 			throw new IOException(Messages.Util_exception_cannotCreatePty);
