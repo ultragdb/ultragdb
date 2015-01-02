@@ -24,7 +24,6 @@ import org.eclipse.cdt.launch.internal.ui.LaunchImages;
 import org.eclipse.cdt.launch.internal.ui.LaunchMessages;
 import org.eclipse.cdt.launch.internal.ui.LaunchUIPlugin;
 import org.eclipse.cdt.ui.CElementLabelProvider;
-import org.eclipse.cdt.utils.pty.PTY;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -152,7 +151,7 @@ public class CMainTab extends CAbstractMainTab {
 				updateLaunchConfigurationDialog();
 			}
 		});
-		fTerminalButton.setEnabled(PTY.isSupported());
+		fTerminalButton.setEnabled(false/*PTY.isSupported()*/);
 	}
 
 	/*

@@ -165,7 +165,7 @@ public class LocalRunLaunchDelegate extends AbstractCLaunchDelegate {
 			if (workingDirectory == null) {
 				p = ProcessFactory.getFactory().exec(cmdLine, environ);
 			} else {
-				if (usePty && PTY.isSupported()) {
+				if (false/*usePty && PTY.isSupported()*/) {
 					p = ProcessFactory.getFactory().exec(cmdLine, environ, workingDirectory, new PTY());
 				} else {
 					p = ProcessFactory.getFactory().exec(cmdLine, environ, workingDirectory);

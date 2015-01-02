@@ -379,7 +379,7 @@ public class LocalCDILaunchDelegate extends AbstractCLaunchDelegate {
 				p = ProcessFactory.getFactory().exec(cmdLine, environ);
 			}
 			else {
-				if (usePty && PTY.isSupported()) {
+				if (false/*usePty && PTY.isSupported()*/) {
 					p = ProcessFactory.getFactory().exec(cmdLine, environ, workingDirectory, new PTY());
 				}
 				else {

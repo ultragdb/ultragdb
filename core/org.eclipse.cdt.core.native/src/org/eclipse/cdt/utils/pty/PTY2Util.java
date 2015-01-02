@@ -17,7 +17,16 @@ public class PTY2Util {
 		String command = null;
 		Bundle bundle = Platform.getBundle(CNativePlugin.PLUGIN_ID);
 
-		URL url = FileLocator.find(bundle, new Path("$os$/mintty.exe"), null); //$NON-NLS-1$
+		String terminalEmulatorExeName = "konsole"; //$NON-NLS-1$
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			terminalEmulatorExeName = "mintty.exe"; //$NON-NLS-1$
+		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
+			terminalEmulatorExeName = "konsole"; //$NON-NLS-1$
+		} else {
+			throw new IOException("can not find terminal emulator executable of currrent platform"); //$NON-NLS-1$
+		}
+
+		URL url = FileLocator.find(bundle, new Path("$os$/" + terminalEmulatorExeName), null); //$NON-NLS-1$
 		if (url != null) {
 			url = FileLocator.resolve(url);
 			String path = url.getFile();
@@ -35,13 +44,23 @@ public class PTY2Util {
 	}
 
 	public static String[] getTerminalEmulatorCommandArray(String[] commandArray) {
-		String command = null;
+		String command = "konsole"; //$NON-NLS-1$
 		try {
 			command = PTY2Util.getTerminalEmulatorCommand();
 		} catch (IOException e) {
 		}
-		String[] terminalEmulatorCommand = { command, "--hold=always", "--exec" }; //$NON-NLS-1$  //$NON-NLS-2$ 
+		String[] terminalEmulatorCommand;
 
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			terminalEmulatorCommand = new String[]{ command, "--hold=always", "--exec" }; //$NON-NLS-1$  //$NON-NLS-2$ 
+		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
+			terminalEmulatorCommand = new String[]{ command, "--nofork", "--hold", "-e" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
+		} else {
+			terminalEmulatorCommand = new String[]{ command, "--nofork", "--hold", "-e" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
+		}
+
+		
+		
 		String[] result = new String[terminalEmulatorCommand.length + commandArray.length];
 		System.arraycopy(terminalEmulatorCommand, 0, result, 0, terminalEmulatorCommand.length);
 		System.arraycopy(commandArray, 0, result, terminalEmulatorCommand.length,
