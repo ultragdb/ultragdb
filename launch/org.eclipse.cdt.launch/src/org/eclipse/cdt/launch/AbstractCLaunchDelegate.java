@@ -384,10 +384,11 @@ abstract public class AbstractCLaunchDelegate extends LaunchConfigurationDelegat
 	}
 
 	protected String renderProcessLabel(String commandLine) {
-		String format = "{0} (runing {1})"; //$NON-NLS-1$
-		//String timestamp = DateFormat.getInstance().format(new Date(System.currentTimeMillis()));
-		String str = "Terminal Emulator"; //$NON-NLS-1$
-		return MessageFormat.format(format, new Object[]{str, commandLine});
+//		String format = "{0} (runing {1})"; //$NON-NLS-1$
+//		//String timestamp = DateFormat.getInstance().format(new Date(System.currentTimeMillis()));
+//		String str = "Terminal Emulator"; //$NON-NLS-1$
+//		return MessageFormat.format(format, new Object[]{str, commandLine});
+		return "Terminal Emulator"; //$NON-NLS-1$
 	}
 
 	// temporary fix for #66015
@@ -398,7 +399,7 @@ abstract public class AbstractCLaunchDelegate extends LaunchConfigurationDelegat
 	protected String renderDebuggerProcessLabel() {
 		String format = "{0} ({1})"; //$NON-NLS-1$
 		String timestamp = DateFormat.getInstance().format(new Date(System.currentTimeMillis()));
-		return MessageFormat.format(format, new String[]{
+		return MessageFormat.format(format, new Object[]{
 				LaunchMessages.AbstractCLaunchDelegate_Debugger_Process, timestamp}); 
 	}
 

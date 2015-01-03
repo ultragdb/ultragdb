@@ -285,7 +285,7 @@ public class StartOrRestartProcessSequence_7_0 extends ReflectionSequence {
     		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
     		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
 
-    			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes);
+    			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes); //$NON-NLS-1$
 
     			// Tell GDB to use this PTY
     			fCommandControl.queueCommand(
