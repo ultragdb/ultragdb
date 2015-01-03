@@ -39,6 +39,8 @@
 
 using namespace Konsole;
 
+extern bool is_use_openpty;
+
 Application::Application() : KUniqueApplication()
 {
     init();
@@ -105,7 +107,7 @@ int Application::newInstance()
         if (processHelpArgs(args))
             return 0;
 
-        bool openpty = checkOpenpty(args);
+        bool openpty = is_use_openpty;
 
 
         // create a new window or use an existing one
@@ -344,14 +346,6 @@ bool Application::processHelpArgs(KCmdLineArgs* args)
         return true;
     } else if (args->isSet("list-profile-properties")) {
         listProfilePropertyInfo();
-        return true;
-    }
-    return false;
-}
-
-bool Application::checkOpenpty(KCmdLineArgs* args)
-{
-    if (args->isSet("openpty")) {
         return true;
     }
     return false;

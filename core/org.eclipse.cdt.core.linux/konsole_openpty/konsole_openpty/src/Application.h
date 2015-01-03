@@ -77,7 +77,6 @@ private:
     void listProfilePropertyInfo();
     void startBackgroundMode(MainWindow* window);
     bool processHelpArgs(KCmdLineArgs* args);
-    bool checkOpenpty(KCmdLineArgs* args);
     MainWindow* processWindowArgs(KCmdLineArgs* args);
     Profile::Ptr processProfileSelectArgs(KCmdLineArgs* args);
     Profile::Ptr processProfileChangeArgs(KCmdLineArgs* args, Profile::Ptr baseProfile);

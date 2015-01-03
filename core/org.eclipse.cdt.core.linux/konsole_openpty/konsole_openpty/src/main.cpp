@@ -46,11 +46,28 @@ bool shouldUseNewProcess();
 // restore sessions saved by KDE.
 void restoreSession(Application& app);
 
+bool is_use_openpty = false;
+
 // ***
 // Entry point into the Konsole terminal application.
 // ***
 extern "C" int KDE_EXPORT kdemain(int argc, char** argv)
 {
+    int newArgc = 0;
+    char ** newArgv = (char **)(malloc(sizeof(char *) * argc));
+
+    for (int i = 0; i < argc; i++) {
+        char * arg = argv[i];
+        if (strcmp(arg, "--openpty") == 0) {
+            is_use_openpty =  true;
+        } else {
+            newArgv[newArgc++] = arg;
+        }
+    }
+    argc =  newArgc;
+    argv = newArgv;
+    
+
     KAboutData about("konsole", 0,
                      ki18n("Konsole"),
                      KONSOLE_VERSION,
@@ -181,7 +198,6 @@ void fillCommandLineOptions(KCmdLineOptions& options)
     options.add("list-profile-properties",
                 ki18n("List all the profile properties names and their type"
                       " (for use with -p)"));
-    options.add("openpty", ki18n(" "));
     options.add("p <property=value>",
                 ki18n("Change the value of a profile property."));
     options.add("!e <cmd>",
