@@ -166,6 +166,7 @@ ${CMAKE_CURRENT_BINARY_DIR}/tests/CTestCustom.cmake)
     kde4_add_app_icon(konsole_KDEINIT_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/utilities-terminal.png")
 
     kde4_add_kdeinit_executable( konsole ${konsole_KDEINIT_SRCS})
+    set_property(TARGET "konsole" APPEND PROPERTY LINK_FLAGS "-Wl,-R,'$ORIGIN:$ORIGIN/../lib'")
     target_link_libraries(kdeinit_konsole konsoleprivate)
 
     install(TARGETS kdeinit_konsole konsole konsoleprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
