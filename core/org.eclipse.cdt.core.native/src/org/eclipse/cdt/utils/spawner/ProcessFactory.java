@@ -125,6 +125,27 @@ public class ProcessFactory {
 
 				cmdarray = newCmdArray;
 			}
+		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
+			String[] newCmdArray = new String[4];
+			newCmdArray[0] = "/bin/bash"; //$NON-NLS-1$
+			newCmdArray[1] = "--login"; //$NON-NLS-1$
+			newCmdArray[2] = "-c"; //$NON-NLS-1$
+
+			StringBuilder builder = new StringBuilder();
+			for (int i = 0; i < cmdarray.length; i++) {
+				String arg = cmdarray[i];
+				if (i != 0) {
+					builder.append(' ');
+				}
+				builder.append('\'');
+				builder.append(arg);
+				builder.append('\'');
+			}
+			newCmdArray[3] = builder.toString();
+
+			cmdarray = newCmdArray;
+		} else {
+
 		}
 		List<String> cmdList = Arrays.asList(cmdarray);
 		ProcessBuilder pb = new ProcessBuilder(cmdList);
