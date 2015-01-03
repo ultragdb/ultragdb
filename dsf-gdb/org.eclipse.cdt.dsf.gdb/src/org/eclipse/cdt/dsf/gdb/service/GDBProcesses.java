@@ -523,7 +523,7 @@ public class GDBProcesses extends MIProcesses implements IGDBProcesses {
     		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
     		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
 
-    			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes);
+    			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes); //$NON-NLS-1$
 
     			// Tell GDB to use this PTY
     			fGdb.queueCommand(
@@ -548,16 +548,6 @@ public class GDBProcesses extends MIProcesses implements IGDBProcesses {
 	 */
 	@SuppressWarnings("unused") 
 	protected void createConsole(final IContainerDMContext containerDmc, final boolean restart, final RequestMonitor rm) {
-		if (true) {
-			/*
-			 * Chiheng Xu : don't create Eclipse's console on the inferior, a.k.a, for the inferior,  don't create instance of 
-			 * org.eclipse.cdt.dsf.mi.service.command.MIInferiorProcess
-			 * org.eclipse.cdt.dsf.gdb.launching.InferiorRuntimeProcess
-			 * org.eclipse.debug.internal.ui.views.console.ProcessConsole
-			 */
-			rm.done();
-			return;
-		}
     	if (fBackend.getSessionType() == SessionType.REMOTE || fBackend.getIsAttachSession()) {
     		// Remote or attach sessions shouldn't have a console, since the inferior is not started
     		// by eclipse but by gdbserver
@@ -568,6 +558,28 @@ public class GDBProcesses extends MIProcesses implements IGDBProcesses {
 		initializeInputOutput(containerDmc, new ImmediateRequestMonitor(rm) {
 			@Override
 			protected void handleSuccess() {
+				if (true) {
+					/*
+					 * Chiheng Xu : don't create Eclipse's console on the inferior, a.k.a, for the inferior,  don't create instance of 
+					 * org.eclipse.cdt.dsf.mi.service.command.MIInferiorProcess
+					 * org.eclipse.cdt.dsf.gdb.launching.InferiorRuntimeProcess
+					 * org.eclipse.debug.internal.ui.views.console.ProcessConsole
+					 */
+					fGdb.queueCommand(
+							//Cygwin and Linux all set TERM environment to xterm
+							fCommandFactory.createMIGDBSetEnv((ICommandControlDMContext)containerDmc, "TERM", "xterm"), //$NON-NLS-1$ //$NON-NLS-2$
+							new ImmediateDataRequestMonitor<MIInfo>(rm) {
+								@Override
+								protected void handleFailure() {
+					        		rm.done();
+								}
+								@Override
+								public void handleSuccess() {
+									rm.done();
+								}
+							});
+					return;
+				}
 				Process inferiorProcess;
 		    	if (fPty == null) {
 		    		inferiorProcess = new MIInferiorProcess(containerDmc, fBackend.getMIOutputStream());
