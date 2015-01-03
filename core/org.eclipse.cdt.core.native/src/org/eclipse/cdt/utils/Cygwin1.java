@@ -271,7 +271,11 @@ public class Cygwin1 {
 				}
 			}
 			// Cygwin not found, set cygwinDir to default
-			_cygwinDir = "C:/cygwin64"; //$NON-NLS-1$
+			if (Platform.getOSArch().equals(Platform.ARCH_X86_64)) {
+				_cygwinDir = "C:/cygwin64"; //$NON-NLS-1$
+			} else {
+				_cygwinDir = "C:/cygwin"; //$NON-NLS-1$
+			}
 		}
 	}
 
