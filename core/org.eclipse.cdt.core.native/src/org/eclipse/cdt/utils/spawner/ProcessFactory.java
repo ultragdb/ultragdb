@@ -32,7 +32,7 @@ import org.eclipse.core.runtime.Platform;
  * 
  * use ProcessBuilder to launch process
  * 
- * @see http://docs.oracle.com/javase/8/docs/api/java/lang/ProcessBuilder.html
+ * @see "http://docs.oracle.com/javase/8/docs/api/java/lang/ProcessBuilder.html"
  *
  */
 
@@ -103,7 +103,7 @@ public class ProcessFactory {
 			//String cygwinDir = Cygwin.getCygwinDir();
 			String cygwinDir = System.getenv("CYGWIN_DIR"); //$NON-NLS-1$
 			if (cygwinDir != null) {
-				// bash -c ls£¬ bash can't use --login option, because it change the current directory to HOME
+				// bash -c bash can't use --login option, because it change the current directory to HOME
 				// directory.
 				String cygwinBashBinPath = Path.fromOSString(cygwinDir).toPortableString()
 						+ "/bin/bash.exe"; //$NON-NLS-1$

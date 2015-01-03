@@ -28,6 +28,7 @@ import org.eclipse.cdt.dsf.datamodel.DMContexts;
 import org.eclipse.cdt.dsf.debug.service.IBreakpoints.IBreakpointsTargetDMContext;
 import org.eclipse.cdt.dsf.debug.service.IRunControl.IContainerDMContext;
 import org.eclipse.cdt.dsf.debug.service.command.ICommand;
+import org.eclipse.cdt.dsf.debug.service.command.ICommandControlService.ICommandControlDMContext;
 import org.eclipse.cdt.dsf.gdb.IGDBLaunchConfigurationConstants;
 import org.eclipse.cdt.dsf.gdb.IGdbDebugConstants;
 import org.eclipse.cdt.dsf.gdb.internal.GdbPlugin;
@@ -135,6 +136,7 @@ public class StartOrRestartProcessSequence_7_0 extends ReflectionSequence {
 					"stepInsertStopOnMainBreakpoint",  //$NON-NLS-1$
 					"stepSetBreakpointForReverse",   //$NON-NLS-1$
 					"stepInitializeInputOutput",   //$NON-NLS-1$
+					"stepSetTermEnvironmentVariable",   //$NON-NLS-1$
 					"stepCreateConsole",    //$NON-NLS-1$
 					"stepRunProgram",   //$NON-NLS-1$
 					"stepSetReverseOff",   //$NON-NLS-1$
@@ -303,7 +305,24 @@ public class StartOrRestartProcessSequence_7_0 extends ReflectionSequence {
     		}
     	}
     }
-	
+	@Execute
+    public void stepSetTermEnvironmentVariable(final RequestMonitor rm) {
+		ICommandControlDMContext cmdCtlDmc = DMContexts.getAncestorOfType(getContainerContext(),
+				ICommandControlDMContext.class);
+		fCommandControl.queueCommand(
+				//Cygwin and Linux all set TERM environment to xterm
+				fCommandFactory.createMIGDBSetEnv(cmdCtlDmc, "TERM", "xterm"), //$NON-NLS-1$ //$NON-NLS-2$
+				new ImmediateDataRequestMonitor<MIInfo>(rm) {
+					@Override
+					protected void handleFailure() {
+		        		rm.done();
+					}
+					@Override
+					public void handleSuccess() {
+						rm.done();
+					}
+				});
+	}	
 	/**
 	 * Before running the program, we must create its console for IO.
 	 */
