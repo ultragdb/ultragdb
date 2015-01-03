@@ -94,24 +94,36 @@ public class ProcessFactory {
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
 			/*
-			 * TODO : use the statement in comment below to replace the next statement. 
-			 * this will require plugin org.eclipse.cdt.core,
-			 * which also require plugin org.eclipse.cdt.core.native, this is cause a cycle in dependency graph, which is not allowed.
-			 * The solution is to move ProcessFactory.java, PTY2.java, PTY2Utils.java to plugin org.eclipse.cdt.core, and make
-			 * plugin org.eclipse.cdt.core.native empty.
+			 * TODO : use the statement in comment below to replace the next statement. this will require
+			 * plugin org.eclipse.cdt.core, which also require plugin org.eclipse.cdt.core.native, this is
+			 * cause a cycle in dependency graph, which is not allowed. The solution is to move
+			 * ProcessFactory.java, PTY2.java, PTY2Utils.java to plugin org.eclipse.cdt.core, and make plugin
+			 * org.eclipse.cdt.core.native empty.
 			 */
-			//String cygwinDir = Cygwin.getCygwinDir();
+			// String cygwinDir = Cygwin.getCygwinDir();
 			String cygwinDir = System.getenv("CYGWIN_DIR"); //$NON-NLS-1$
 			if (cygwinDir != null) {
-				// bash -c bash can't use --login option, because it change the current directory to HOME
-				// directory.
+				// In Cygwin, bash --login option will change the current directory to HOME directory.
 				String cygwinBashBinPath = Path.fromOSString(cygwinDir).toPortableString()
 						+ "/bin/bash.exe"; //$NON-NLS-1$
-				String[] newCmdArray = new String[3];
+				String[] newCmdArray = new String[4];
 				newCmdArray[0] = cygwinBashBinPath;
-				newCmdArray[1] = "-c"; //$NON-NLS-1$
+				newCmdArray[1] = "--login"; //$NON-NLS-1$
+				newCmdArray[2] = "-c"; //$NON-NLS-1$
 
 				StringBuilder builder = new StringBuilder();
+
+				String directory;
+				if (dir == null) {
+					directory = System.getProperty("user.dir"); //$NON-NLS-1$
+				} else {
+					directory = dir.getAbsolutePath();
+				}
+				directory = Path.fromOSString(directory).toPortableString();
+				builder.append("cd \'"); //$NON-NLS-1$
+				builder.append(directory);
+				builder.append("\'; "); //$NON-NLS-1$
+
 				for (int i = 0; i < cmdarray.length; i++) {
 					String arg = cmdarray[i];
 					if (i != 0) {
@@ -121,13 +133,19 @@ public class ProcessFactory {
 					builder.append(arg);
 					builder.append('\'');
 				}
-				newCmdArray[2] = builder.toString();
+				newCmdArray[3] = builder.toString();
 
 				cmdarray = newCmdArray;
 			}
-		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
+		} else {
+			String bashPath = "bash"; //$NON-NLS-1$
+			if (Platform.getOS().equals(Platform.OS_LINUX)) {
+				bashPath = "/bin/bash"; //$NON-NLS-1$
+			} else {
+				// expect bash in PATH
+			}
 			String[] newCmdArray = new String[4];
-			newCmdArray[0] = "/bin/bash"; //$NON-NLS-1$
+			newCmdArray[0] = bashPath;
 			newCmdArray[1] = "--login"; //$NON-NLS-1$
 			newCmdArray[2] = "-c"; //$NON-NLS-1$
 
@@ -144,9 +162,9 @@ public class ProcessFactory {
 			newCmdArray[3] = builder.toString();
 
 			cmdarray = newCmdArray;
-		} else {
 
 		}
+
 		List<String> cmdList = Arrays.asList(cmdarray);
 		ProcessBuilder pb = new ProcessBuilder(cmdList);
 		Map<String, String> env = pb.environment();
