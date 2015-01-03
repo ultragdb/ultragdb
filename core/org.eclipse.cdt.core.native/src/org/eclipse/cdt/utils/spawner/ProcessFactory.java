@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.eclipse.cdt.internal.core.natives.Messages;
+import org.eclipse.cdt.utils.Cygwin1;
 import org.eclipse.cdt.utils.pty.PTY;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
@@ -93,50 +94,42 @@ public class ProcessFactory {
 	public Process exec(String cmdarray[], String[] envp, File dir) throws IOException {
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
-			/*
-			 * TODO : use the statement in comment below to replace the next statement. this will require
-			 * plugin org.eclipse.cdt.core, which also require plugin org.eclipse.cdt.core.native, this is
-			 * cause a cycle in dependency graph, which is not allowed. The solution is to move
-			 * ProcessFactory.java, PTY2.java, PTY2Utils.java to plugin org.eclipse.cdt.core, and make plugin
-			 * org.eclipse.cdt.core.native empty.
-			 */
-			// String cygwinDir = Cygwin.getCygwinDir();
-			String cygwinDir = System.getenv("CYGWIN_DIR"); //$NON-NLS-1$
-			if (cygwinDir != null) {
-				// In Cygwin, bash --login option will change the current directory to HOME directory.
-				String cygwinBashBinPath = Path.fromOSString(cygwinDir).toPortableString()
-						+ "/bin/bash.exe"; //$NON-NLS-1$
-				String[] newCmdArray = new String[4];
-				newCmdArray[0] = cygwinBashBinPath;
-				newCmdArray[1] = "--login"; //$NON-NLS-1$
-				newCmdArray[2] = "-c"; //$NON-NLS-1$
 
-				StringBuilder builder = new StringBuilder();
+			String cygwinDir = Cygwin1.getCygwinDir();
 
-				String directory;
-				if (dir == null) {
-					directory = System.getProperty("user.dir"); //$NON-NLS-1$
-				} else {
-					directory = dir.getAbsolutePath();
-				}
-				directory = Path.fromOSString(directory).toPortableString();
-				builder.append("cd \'"); //$NON-NLS-1$
-				builder.append(directory);
-				builder.append("\'; "); //$NON-NLS-1$
+			// In Cygwin, bash --login option will change the current directory to HOME directory.
+			String cygwinBashBinPath = cygwinDir + "/bin/bash.exe"; //$NON-NLS-1$
+			String[] newCmdArray = new String[4];
+			newCmdArray[0] = cygwinBashBinPath;
+			newCmdArray[1] = "--login"; //$NON-NLS-1$
+			newCmdArray[2] = "-c"; //$NON-NLS-1$
 
-				for (int i = 0; i < cmdarray.length; i++) {
-					String arg = cmdarray[i];
-					if (i != 0) {
-						builder.append(' ');
-					}
-					builder.append('\'');
-					builder.append(arg);
-					builder.append('\'');
-				}
-				newCmdArray[3] = builder.toString();
+			StringBuilder builder = new StringBuilder();
 
-				cmdarray = newCmdArray;
+			String directory;
+			if (dir == null) {
+				directory = System.getProperty("user.dir"); //$NON-NLS-1$
+			} else {
+				directory = dir.getAbsolutePath();
 			}
+			directory = Path.fromOSString(directory).toPortableString();
+			builder.append("cd \'"); //$NON-NLS-1$
+			builder.append(directory);
+			builder.append("\'; "); //$NON-NLS-1$
+
+			for (int i = 0; i < cmdarray.length; i++) {
+				String arg = cmdarray[i];
+				if (i != 0) {
+					builder.append(' ');
+				}
+				builder.append('\'');
+				builder.append(arg);
+				builder.append('\'');
+			}
+			newCmdArray[3] = builder.toString();
+
+			cmdarray = newCmdArray;
+
 		} else {
 			String bashPath = "bash"; //$NON-NLS-1$
 			if (Platform.getOS().equals(Platform.OS_LINUX)) {
