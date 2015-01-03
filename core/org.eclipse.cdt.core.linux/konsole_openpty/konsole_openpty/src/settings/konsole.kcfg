@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="konsolerc" />
+  <group name="KonsoleWindow">
+    <entry name="ShowMenuBarByDefault" type="Bool">
+      <label>Show menubar by default</label>
+      <tooltip>Show menubar by default in each Konsole window</tooltip>
+      <default>true</default>
+    </entry>
+    <entry name="ShowWindowTitleOnTitleBar" type="Bool">
+      <label>Show window title on the titlebar</label>
+      <tooltip>Show window title set by escape sequence on the titlebar</tooltip>
+      <default>false</default>
+    </entry>
+    <entry name="AllowMenuAccelerators" type="Bool">
+      <label>Enable menu accelerators</label>
+      <tooltip>Allow users to access top menu through Alt+Key combination</tooltip>
+      <default>false</default>
+    </entry>
+    <entry name="ShowTerminalSizeHint" type="Bool">
+      <label>Show hint for terminal size after resizing</label>
+      <tooltip>Show terminal size in columns and lines in the center of window after resizing</tooltip>
+      <default>true</default>
+    </entry>
+    <entry name="SaveGeometryOnExit" type="Bool">
+      <label>Save window size on exit</label>
+      <tooltip>The window size will be saved upon exiting Konsole</tooltip>
+      <default>true</default>
+    </entry>
+  </group>
+  <group name="TabBar">
+    <entry name="TabBarVisibility" type="Enum">
+      <label>Control the visibility of the whole tab bar</label>
+      <choices>
+        <choice name="AlwaysShowTabBar" />
+        <choice name="ShowTabBarWhenNeeded" />
+        <choice name="AlwaysHideTabBar" />
+      </choices>
+      <default>AlwaysShowTabBar</default>
+    </entry>
+    <entry name="TabBarPosition" type="Enum">
+      <label>Control the position of the tab bar</label>
+      <choices>
+        <choice name="Top" />
+        <choice name="Bottom" />
+      </choices>
+      <default>Bottom</default>
+    </entry>
+    <entry name="TabBarStyleSheet" type="String">
+      <label>Control the visual style of the tab bar</label>
+      <default>QTabBar::tab { min-width: 2em ; max-width: 25em }</default>
+    </entry>
+    <entry name="ShowQuickButtons" type="Bool">
+      <label>Control the visibility of quick buttons on the tab bar</label>
+      <default>false</default>
+    </entry>
+    <entry name="NewTabBehavior" type="Enum">
+      <label>Control where to put the new tab</label>
+      <choices>
+        <choice name="PutNewTabAtTheEnd" />
+        <choice name="PutNewTabAfterCurrentTab" />
+      </choices>
+      <default>PutNewTabAtTheEnd</default>
+    </entry>
+  </group>
+</kcfg>
