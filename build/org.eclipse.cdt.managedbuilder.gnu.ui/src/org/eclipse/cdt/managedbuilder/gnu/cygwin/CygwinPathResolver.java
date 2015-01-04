@@ -157,10 +157,12 @@ public class CygwinPathResolver implements IBuildPathResolver {
 	 */
 	private static String getPathFromRoot(String relativePath) {
 		String rootCygwin = Cygwin.getCygwinDir();
-		String path = rootCygwin + relativePath;
-		File file = new File(path);
-		if (file.exists() && file.isDirectory()) {
-			return path.replace(BACKSLASH, SLASH);
+		if (rootCygwin != null) {
+			String path = rootCygwin + relativePath;
+			File file = new File(path);
+			if (file.exists() && file.isDirectory()) {
+				return path.replace(BACKSLASH, SLASH);
+			}
 		}
 		return null;
 	}
