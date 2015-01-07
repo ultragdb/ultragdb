@@ -31,7 +31,9 @@ import org.eclipse.cdt.dsf.mi.service.command.output.CLIInfoSharedLibraryInfo;
 import org.eclipse.cdt.dsf.mi.service.command.output.CLIInfoSharedLibraryInfo.DsfMISharedInfo;
 import org.eclipse.cdt.dsf.service.AbstractDsfService;
 import org.eclipse.cdt.dsf.service.DsfSession;
+import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleContext;
 
@@ -102,13 +104,16 @@ public class MIModules extends AbstractDsfService implements IModules, ICachingS
     }
     
     static class ModuleDMData implements IModuleDMData {
-        private final String fFile;
+        private String fFile;
         private final String fFromAddress;
         private final String fToAddress;
         private final boolean fIsSymbolsRead;
         
         public ModuleDMData(ModuleDMContext dmc) {
         	fFile = dmc.fFile;
+    		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+    			fFile = Cygwin.cygwinToWindowsPath(fFile);
+    		}
         	fFromAddress = null;
         	fToAddress = null;
         	fIsSymbolsRead = false;
@@ -116,6 +121,9 @@ public class MIModules extends AbstractDsfService implements IModules, ICachingS
         
         public ModuleDMData(String fileName, String fromAddress, String toAddress, boolean isSymsRead){
         	fFile = fileName;
+    		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+    			fFile = Cygwin.cygwinToWindowsPath(fFile);
+    		}
         	fFromAddress = fromAddress;
         	fToAddress = toAddress;
         	fIsSymbolsRead = isSymsRead;
