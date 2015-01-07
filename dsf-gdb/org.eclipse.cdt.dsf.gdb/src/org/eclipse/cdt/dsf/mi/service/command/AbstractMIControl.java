@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -662,7 +663,7 @@ public abstract class AbstractMIControl extends AbstractDsfService
                 
                 try {
                     if (fOutputStream != null) {
-                        fOutputStream.write(str.getBytes());
+                        fOutputStream.write(str.getBytes("UTF-8")); //$NON-NLS-1$
                         fOutputStream.flush();
                         
                         if (GdbDebugOptions.DEBUG) {
@@ -722,9 +723,14 @@ public abstract class AbstractMIControl extends AbstractDsfService
             fInputStream = inputStream;
         }
 
-        @Override
+        @SuppressWarnings("null")
+		@Override
         public void run() {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fInputStream));
+            BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(fInputStream, "UTF-8")); //$NON-NLS-1$
+			} catch (UnsupportedEncodingException e1) {
+			}
             try {
                 String line;
                 while ((line = reader.readLine()) != null) {
@@ -1066,9 +1072,14 @@ public abstract class AbstractMIControl extends AbstractDsfService
             fErrorStream = errorStream;
         }
 
-        @Override
+        @SuppressWarnings("null")
+		@Override
         public void run() {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fErrorStream));
+            BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(fErrorStream, "UTF-8")); //$NON-NLS-1$
+			} catch (UnsupportedEncodingException e1) {
+			}
             try {
                 String line;
                 while ((line = reader.readLine()) != null) {
