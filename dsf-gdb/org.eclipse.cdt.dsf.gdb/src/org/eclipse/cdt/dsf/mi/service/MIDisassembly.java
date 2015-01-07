@@ -133,6 +133,12 @@ public class MIDisassembly extends AbstractDsfService implements IDisassembly {
                     drm.setData(result);
                     drm.done();
                 }
+                @Override
+                protected void handleFailure() {
+                    IInstruction[] result = null;
+                    drm.setData(result);
+                    drm.done();
+                }
             });
     }
 
@@ -169,6 +175,12 @@ public class MIDisassembly extends AbstractDsfService implements IDisassembly {
                 @Override
                 protected void handleSuccess() {
                     IInstruction[] result = getData().getMIAssemblyCode();
+                    drm.setData(result);
+                    drm.done();
+                }
+                @Override
+                protected void handleFailure() {
+                    IInstruction[] result = null;
                     drm.setData(result);
                     drm.done();
                 }
@@ -259,6 +271,12 @@ public class MIDisassembly extends AbstractDsfService implements IDisassembly {
                 @Override
                 protected void handleSuccess() {
                     IMixedInstruction[] result = getData().getMIMixedCode();
+                    drm.setData(result);
+                    drm.done();
+                }
+                @Override
+                protected void handleFailure() {
+                    IMixedInstruction[] result = null;
                     drm.setData(result);
                     drm.done();
                 }
