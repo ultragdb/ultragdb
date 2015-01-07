@@ -30,6 +30,7 @@ import javax.xml.bind.DatatypeConverter;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ICompileOptionsFinder;
 import org.eclipse.cdt.core.ISymbolReader;
+import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.utils.coff.Coff.SectionHeader;
 import org.eclipse.cdt.utils.coff.PE;
 import org.eclipse.cdt.utils.debug.IDebugEntryRequestor;
@@ -38,6 +39,7 @@ import org.eclipse.cdt.utils.elf.Elf.Section;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 
 /**
  * Light-weight parser of Dwarf2 data which is intended for getting only 
@@ -589,7 +591,11 @@ public class DwarfReader extends Dwarf implements ISymbolReader, ICompileOptions
 
 		// This convert the path to canonical path (but not necessarily absolute, which
 		// is different from java.io.File.getCanonicalPath()).
-		fullName = pa.toOSString();
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			fullName = Cygwin.cygwinToWindowsPath(pa.toPortableString());
+		} else {
+			fullName = pa.toOSString();
+		}
 		
 		if (!m_fileCollection.contains(fullName))
 			m_fileCollection.add(fullName);
