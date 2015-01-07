@@ -81,7 +81,7 @@ class ExecutablesContentProvider extends ColumnLabelProvider implements IStructu
 			if (cell.getColumnIndex() == 1)
 				cellText = exe.getProject().getName();
 			else if (cell.getColumnIndex() == 2)
-				cellText = exe.getPath().toOSString();
+				cellText = exe.getPath().toPortableString();
 			else if (cell.getColumnIndex() == 3) {
 				cellText = ""; //$NON-NLS-1$
 				IPath path = exe.getPath();
