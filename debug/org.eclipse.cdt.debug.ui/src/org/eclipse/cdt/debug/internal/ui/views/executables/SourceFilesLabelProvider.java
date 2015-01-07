@@ -76,7 +76,7 @@ public class SourceFilesLabelProvider extends TreeColumnViewerLabelProvider impl
 			cell.setText(null);
 			if (tuInfo != null) {
 				if (tuInfo.location != null) {
-					cell.setText(tuInfo.location.toOSString());
+					cell.setText(tuInfo.location.toPortableString());
 					if (tuInfo.exists)
 						cell.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
 					else
@@ -87,7 +87,7 @@ public class SourceFilesLabelProvider extends TreeColumnViewerLabelProvider impl
 		} else if (orgColumnIndex == 2) {
 			cell.setText(null);
 			if (tuInfo != null && tuInfo.originalLocation != null) {
-				cell.setText(tuInfo.originalLocation.toOSString());
+				cell.setText(tuInfo.originalLocation.toPortableString());
 				if (tuInfo.originalExists)
 					cell.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
 				else
