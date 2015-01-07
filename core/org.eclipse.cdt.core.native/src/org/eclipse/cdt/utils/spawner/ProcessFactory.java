@@ -168,9 +168,6 @@ public class ProcessFactory {
 		}
 
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
-			String pathEnvVarValue = env.get("PATH"); //$NON-NLS-1$
-			pathEnvVarValue = "/usr/local/bin;/usr/bin;/bin;" + pathEnvVarValue; //$NON-NLS-1$
-			env.put("PATH", pathEnvVarValue); //$NON-NLS-1$
 			/*
 			 * The CYGWIN environment variable is used to configure many global settings for the Cygwin
 			 * runtime system. It contains the options listed below, separated by blank characters.
@@ -184,6 +181,8 @@ public class ProcessFactory {
 				cygwinEnvVarValue += " nodosfilewarning"; //$NON-NLS-1$
 				env.put("CYGWIN", cygwinEnvVarValue); //$NON-NLS-1$
 			}
+			env.put("LC_ALL", "en_US.UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
+			env.put("LANG", "en_US.UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 		if (dir != null) {
 			pb.directory(dir);
