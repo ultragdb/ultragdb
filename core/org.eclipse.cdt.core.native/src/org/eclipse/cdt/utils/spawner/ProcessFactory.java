@@ -181,9 +181,37 @@ public class ProcessFactory {
 				cygwinEnvVarValue += " nodosfilewarning"; //$NON-NLS-1$
 				env.put("CYGWIN", cygwinEnvVarValue); //$NON-NLS-1$
 			}
-			env.put("LC_ALL", "en_US.UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
-			env.put("LANG", "en_US.UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
+
+		{
+			boolean setLangEnvVartoDefault = false;
+			String langEnvValue = env.get("LANG"); //$NON-NLS-1$
+			if (langEnvValue == null) {
+				setLangEnvVartoDefault = true;
+			} else {
+				String[] array = langEnvValue.split("\\."); //$NON-NLS-1$
+				if (array == null || array.length != 2) {
+					setLangEnvVartoDefault = true;
+				} else {
+					String country = array[0];
+					String charset = array[1];
+					if (country.equals("C")) { //$NON-NLS-1$
+						country = "en_US"; //$NON-NLS-1$
+					}
+					if (!charset.equals("UTF-8")) { //$NON-NLS-1$
+						charset = "UTF-8"; //$NON-NLS-1$
+					}
+					langEnvValue = country + '.' + charset;
+					env.put("LANG", langEnvValue); //$NON-NLS-1$
+					env.put("LC_ALL", langEnvValue); //$NON-NLS-1$
+				}
+			}
+			if (setLangEnvVartoDefault) {
+				env.put("LANG", "en_US.UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
+				env.put("LC_ALL", "en_US.UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
+			}
+		}
+
 		if (dir != null) {
 			pb.directory(dir);
 		}
