@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.concurrent.RejectedExecutionException;
 
 import org.eclipse.cdt.dsf.concurrent.ConfinedToDsfExecutor;
@@ -230,7 +231,7 @@ public abstract class AbstractCLIProcess extends Process
                 setPrompt(str);
                 try {
                 	if (fMIOutConsolePipe != null) {
-                		fMIOutConsolePipe.write(str.getBytes());
+                		fMIOutConsolePipe.write(str.getBytes("UTF-8")); //$NON-NLS-1$
                 		fMIOutConsolePipe.flush();
                 	}
                 } catch (IOException e) {
@@ -241,7 +242,7 @@ public abstract class AbstractCLIProcess extends Process
                 if (str != null) {
                     try {
                     	if (fMIOutLogPipe != null) {
-	                        fMIOutLogPipe.write(str.getBytes());
+	                        fMIOutLogPipe.write(str.getBytes("UTF-8")); //$NON-NLS-1$
 	                        fMIOutLogPipe.flush();
                     	}
                     } catch (IOException e) {
@@ -322,7 +323,7 @@ public abstract class AbstractCLIProcess extends Process
                 	String str = SECONDARY_PROMPT + ' ';
     				try {
                     	if (fMIOutConsolePipe != null) {
-                    		fMIOutConsolePipe.write(str.getBytes());
+                    		fMIOutConsolePipe.write(str.getBytes("UTF-8")); //$NON-NLS-1$
                     		fMIOutConsolePipe.flush();
                     	}
     				} catch (IOException e) {
@@ -400,15 +401,38 @@ public abstract class AbstractCLIProcess extends Process
     }
 
     private class CLIOutputStream extends OutputStream {
-        private final StringBuffer buf = new StringBuffer();
-        
+    	//private final StringBuffer buf = new StringBuffer();
+    	private static final int BUF1_INITIAL_LEN = 512;
+    	int buf1Len = 0;
+    	int buf1MaxLen = BUF1_INITIAL_LEN;
+    	private byte[] buf1 = new byte[buf1MaxLen];
+
         @Override
         public void write(int b) throws IOException {
-            buf.append((char)b);
+        	//buf.append((char)b);
+        	buf1[buf1Len++] = (byte)b;
+        	if (buf1Len == buf1MaxLen) {
+        		buf1MaxLen *= 2;
+        		byte[] buf2 = new byte[buf1MaxLen];
+        		System.arraycopy(buf1, 0, buf2, 0, buf1Len);
+        		buf1 = buf2;
+        	}
+
             if (b == '\n') {
                 // Throw away the newline.
-                final String bufString = buf.toString().trim();
-                buf.setLength(0);
+            	//final String bufString = buf.toString().trim();
+            	//buf.setLength(0);
+            	String bufString1 = null;
+            	try {
+            		bufString1 = new String(buf1, 0, buf1Len, "UTF-8").trim(); //$NON-NLS-1$
+            	} catch (UnsupportedEncodingException e) {
+            	}
+            	final String bufString = bufString1;
+
+            	buf1Len = 0;
+            	buf1MaxLen = BUF1_INITIAL_LEN;
+            	buf1 = new byte[buf1MaxLen];
+
                 try {
                     fSession.getExecutor().execute(new DsfRunnable() { @Override public void run() {
                         try {
@@ -458,13 +482,13 @@ public abstract class AbstractCLIProcess extends Process
         }
     }
     
-    private class ProcessCLICommand extends CLICommand<MIInfo> {
+    public class ProcessCLICommand extends CLICommand<MIInfo> {
         public ProcessCLICommand(IDMContext ctx, String oper) {
             super(ctx, oper);
         }
     }
     
-    private class ProcessMIInterpreterExecConsole extends MIInterpreterExecConsole<MIInfo> {
+    public class ProcessMIInterpreterExecConsole extends MIInterpreterExecConsole<MIInfo> {
         public ProcessMIInterpreterExecConsole(IDMContext ctx, String cmd) {
             super(ctx, cmd);
         }
