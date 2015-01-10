@@ -459,6 +459,10 @@ public abstract class AbstractCLIProcess extends Process
         		//forbidden commands
         		return;
 			}
+        	if (str.trim().length() == 0) {
+        		//empty command
+        		return;
+        	}
         	
             if (isDisposed()) return;
             ICommand<MIInfo> cmd = null;
