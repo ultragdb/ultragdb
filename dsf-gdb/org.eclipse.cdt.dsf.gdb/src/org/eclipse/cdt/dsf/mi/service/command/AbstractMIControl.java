@@ -68,6 +68,7 @@ import org.eclipse.cdt.dsf.service.AbstractDsfService;
 import org.eclipse.cdt.dsf.service.DsfSession;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.ui.console.IOConsoleOutputStream;
 
 import com.ibm.icu.text.MessageFormat;
 
@@ -679,9 +680,9 @@ public abstract class AbstractMIControl extends AbstractDsfService
                         		while (message.length() > 100) {
                         			String partial = message.substring(0, 100) + "\\\n"; //$NON-NLS-1$
                         			message = message.substring(100);
-                        			getMITracingStream().write(partial.getBytes());
+                        			((IOConsoleOutputStream)getMITracingStream()).write(partial);
                         		}
-                        		getMITracingStream().write(message.getBytes());
+                        		((IOConsoleOutputStream)getMITracingStream()).write(message);
                         	} catch (IOException e) {
                         		// The tracing stream could be closed at any time
                         		// since the user can set a preference to turn off
@@ -797,9 +798,9 @@ public abstract class AbstractMIControl extends AbstractDsfService
                         		while (message.length() > 100) {
                         			String partial = message.substring(0, 100) + "\\\n"; //$NON-NLS-1$
                         			message = message.substring(100);
-                        			getMITracingStream().write(partial.getBytes());
+                        			((IOConsoleOutputStream)getMITracingStream()).write(partial);
                         		}
-                        		getMITracingStream().write(message.getBytes());
+                        		((IOConsoleOutputStream)getMITracingStream()).write(message);
                         	} catch (IOException e) {
                         		// The tracing stream could be closed at any time
                         		// since the user can set a preference to turn off
