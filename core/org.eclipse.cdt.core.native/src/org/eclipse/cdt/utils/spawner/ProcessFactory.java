@@ -143,11 +143,12 @@ public class ProcessFactory {
 			 * 
 			 * @see https://cygwin.com/cygwin-ug-net/using-cygwinenv.html
 			 */
+			String nodosfilewarnings = "nodosfilewarning"; //$NON-NLS-1$
 			String cygwinEnvVarValue = env.get("CYGWIN"); //$NON-NLS-1$
 			if (cygwinEnvVarValue == null) {
-				env.put("CYGWIN", "nodosfilewarning"); //$NON-NLS-1$ //$NON-NLS-2$
-			} else if (cygwinEnvVarValue.indexOf("nodosfilewarning") == -1) { //$NON-NLS-1$
-				cygwinEnvVarValue += " nodosfilewarning"; //$NON-NLS-1$
+				env.put("CYGWIN", nodosfilewarnings); //$NON-NLS-1$
+			} else if (cygwinEnvVarValue.indexOf(nodosfilewarnings) == -1) {
+				cygwinEnvVarValue += " " + nodosfilewarnings; //$NON-NLS-1$
 				env.put("CYGWIN", cygwinEnvVarValue); //$NON-NLS-1$
 			}
 		}
