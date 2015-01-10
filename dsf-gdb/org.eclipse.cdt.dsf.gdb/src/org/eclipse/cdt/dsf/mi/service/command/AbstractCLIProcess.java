@@ -450,6 +450,16 @@ public abstract class AbstractCLIProcess extends Process
         // Encapsulate the string sent to gdb in a fake
         // command and post it to the TxThread.
         public void post(String str) throws IOException {
+        	if (str.matches("^\\s*-inferior-tty-set(|\\s+.*)") //$NON-NLS-1$
+        			 || str.matches("^\\s*-inferior-tty-show(|\\s+.*)") //$NON-NLS-1$
+        			 || str.matches("^\\s*set\\s+inferior-tty(|\\s+.*)") //$NON-NLS-1$
+        			 || str.matches("^\\s*show\\s+inferior-tty(|\\s+.*)") //$NON-NLS-1$
+        			 || str.matches("^\\s*-gdb-set\\s+host-charset(|\\s+.*)") //$NON-NLS-1$
+        			 || str.matches("^\\s*-gdb-set\\s+target-charset(|\\s+.*)")) { //$NON-NLS-1$
+        		//forbidden commands
+        		return;
+			}
+        	
             if (isDisposed()) return;
             ICommand<MIInfo> cmd = null;
             // 1-
