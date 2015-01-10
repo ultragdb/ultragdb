@@ -92,71 +92,52 @@ public class ProcessFactory {
 	}
 
 	public Process exec(String cmdarray[], String[] envp, File dir) throws IOException {
+		String bashPath;
+		String[] newCmdArray = new String[4];
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
 
 			String cygwinDir = Cygwin1.getCygwinDir();
 
 			// In Cygwin, bash --login option will change the current directory to HOME directory.
-			String cygwinBashBinPath = cygwinDir + "/bin/bash.exe"; //$NON-NLS-1$
-			String[] newCmdArray = new String[4];
-			newCmdArray[0] = cygwinBashBinPath;
-			newCmdArray[1] = "--login"; //$NON-NLS-1$
-			newCmdArray[2] = "-c"; //$NON-NLS-1$
-
-			StringBuilder builder = new StringBuilder();
-
-			String directory;
-			if (dir == null) {
-				directory = System.getProperty("user.dir"); //$NON-NLS-1$
-			} else {
-				directory = dir.getAbsolutePath();
-			}
-			directory = Path.fromOSString(directory).toPortableString();
-			builder.append("cd \'"); //$NON-NLS-1$
-			builder.append(directory);
-			builder.append("\'; "); //$NON-NLS-1$
-
-			for (int i = 0; i < cmdarray.length; i++) {
-				String arg = cmdarray[i];
-				if (i != 0) {
-					builder.append(' ');
-				}
-				builder.append('\'');
-				builder.append(arg);
-				builder.append('\'');
-			}
-			newCmdArray[3] = builder.toString();
-
-			cmdarray = newCmdArray;
-
+			bashPath = cygwinDir + "/bin/bash.exe"; //$NON-NLS-1$
+		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
+			bashPath = "/bin/bash"; //$NON-NLS-1$
 		} else {
-			String bashPath = "bash"; //$NON-NLS-1$
-			if (Platform.getOS().equals(Platform.OS_LINUX)) {
-				bashPath = "/bin/bash"; //$NON-NLS-1$
-			} else {
-				// expect bash in PATH
-			}
-			String[] newCmdArray = new String[4];
-			newCmdArray[0] = bashPath;
-			newCmdArray[1] = "--login"; //$NON-NLS-1$
-			newCmdArray[2] = "-c"; //$NON-NLS-1$
-
-			StringBuilder builder = new StringBuilder();
-			for (int i = 0; i < cmdarray.length; i++) {
-				String arg = cmdarray[i];
-				if (i != 0) {
-					builder.append(' ');
-				}
-				builder.append('\'');
-				builder.append(arg);
-				builder.append('\'');
-			}
-			newCmdArray[3] = builder.toString();
-
-			cmdarray = newCmdArray;
-
+			// expect bash in PATH
+			bashPath = "bash"; //$NON-NLS-1$
 		}
+
+		newCmdArray[0] = bashPath;
+		newCmdArray[1] = "--login"; //$NON-NLS-1$
+		newCmdArray[2] = "-c"; //$NON-NLS-1$
+
+		StringBuilder builder = new StringBuilder();
+
+		String directory;
+		if (dir == null) {
+			directory = System.getProperty("user.dir"); //$NON-NLS-1$
+		} else {
+			directory = dir.getAbsolutePath();
+		}
+		directory = Path.fromOSString(directory).toPortableString();
+		builder.append("cd \'"); //$NON-NLS-1$
+		builder.append(directory);
+		builder.append("\'; "); //$NON-NLS-1$
+
+		for (int i = 0; i < cmdarray.length; i++) {
+			String arg = cmdarray[i];
+			if (i != 0) {
+				builder.append(' ');
+			}
+			builder.append('\'');
+			builder.append(arg);
+			builder.append('\'');
+		}
+		builder.append(';');
+		newCmdArray[3] = builder.toString();
+
+		cmdarray = newCmdArray;
 
 		List<String> cmdList = Arrays.asList(cmdarray);
 		ProcessBuilder pb = new ProcessBuilder(cmdList);
