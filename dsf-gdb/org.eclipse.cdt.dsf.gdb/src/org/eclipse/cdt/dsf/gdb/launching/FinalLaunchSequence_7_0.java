@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.cdt.dsf.gdb.launching;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -117,11 +116,11 @@ public class FinalLaunchSequence_7_0 extends FinalLaunchSequence {
 							protected void handleCompleted() {
 								// Set the target charset. The target charset is the charset used by the char type of
 								// the inferior program. Note that GDB only accepts upper case charset names.
-								String charset = 
-										Platform.getPreferencesService().getString(CDebugCorePlugin.PLUGIN_ID, 
-												                                   ICDebugConstants.PREF_DEBUG_CHARSET, 
-												                                   Charset.defaultCharset().name(),
-												                                   null);
+								String charset = "UTF-8"; //$NON-NLS-1$
+//										Platform.getPreferencesService().getString(CDebugCorePlugin.PLUGIN_ID, 
+//												                                   ICDebugConstants.PREF_DEBUG_CHARSET, 
+//												                                   Charset.defaultCharset().name(),
+//												                                   null);
 								fCommandControl.queueCommand(
 									fCommandFactory.createMIGDBSetTargetCharset(fCommandControl.getContext(), charset.toUpperCase()),
 									new ImmediateDataRequestMonitor<MIInfo>(rm) {
