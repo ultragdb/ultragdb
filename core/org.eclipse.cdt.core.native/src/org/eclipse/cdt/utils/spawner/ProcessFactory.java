@@ -93,7 +93,7 @@ public class ProcessFactory {
 
 	public Process exec(String cmdarray[], String[] envp, File dir) throws IOException {
 		String bashPath;
-		String[] newCmdArray = new String[4];
+		String[] newCmdArray = new String[5];
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
 
@@ -109,24 +109,10 @@ public class ProcessFactory {
 
 		newCmdArray[0] = bashPath;
 		newCmdArray[1] = "--login"; //$NON-NLS-1$
-		newCmdArray[2] = "-c"; //$NON-NLS-1$
+		newCmdArray[2] = "--posix"; //$NON-NLS-1$
+		newCmdArray[3] = "-c"; //$NON-NLS-1$
 
 		StringBuilder builder = new StringBuilder();
-
-		if (Platform.getOS().equals(Platform.OS_WIN32)) {
-			// In Cygwin, bash --login option will change the current directory to HOME directory.
-			// But this will cause a minor problem on Windows : When use "Terminate" button to terminate the debug or run session. the Terminal Emulator process will not be terminated.
-			String directory;
-			if (dir == null) {
-				directory = System.getProperty("user.dir"); //$NON-NLS-1$
-			} else {
-				directory = dir.getAbsolutePath();
-			}
-			directory = Path.fromOSString(directory).toPortableString();
-			builder.append("cd \'"); //$NON-NLS-1$
-			builder.append(directory);
-			builder.append("\'; "); //$NON-NLS-1$
-		}
 
 		for (int i = 0; i < cmdarray.length; i++) {
 			String arg = cmdarray[i];
@@ -138,7 +124,7 @@ public class ProcessFactory {
 			builder.append('\'');
 		}
 		builder.append(';');
-		newCmdArray[3] = builder.toString();
+		newCmdArray[4] = builder.toString();
 
 		cmdarray = newCmdArray;
 
