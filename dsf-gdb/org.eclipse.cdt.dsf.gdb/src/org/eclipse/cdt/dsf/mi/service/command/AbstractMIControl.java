@@ -755,7 +755,15 @@ public abstract class AbstractMIControl extends AbstractDsfService
             					String lastLine = token + '^' + "done"; //$NON-NLS-1$
             					StringBuffer buf = new StringBuffer();
             					while (true) {
-            						if (line.equals(lastLine)) {
+            						int index = line.lastIndexOf(lastLine);
+            						if (index != -1) {
+            							if (index != 0) {
+            								String substr1 = line.substring(0, index);
+            								String substr2 = line.substring(index);
+            								buf.append(substr1);
+            								buf.append('\n');
+            								line = substr2;
+            							}
             							String str = buf.toString();
             							final MIConsoleStreamOutput oob = new MIConsoleStreamOutput();
             							oob.setCString(str);
