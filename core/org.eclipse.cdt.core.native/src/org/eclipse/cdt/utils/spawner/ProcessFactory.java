@@ -99,7 +99,6 @@ public class ProcessFactory {
 
 			String cygwinDir = Cygwin1.getCygwinDir();
 
-			// In Cygwin, bash --login option will change the current directory to HOME directory.
 			bashPath = cygwinDir + "/bin/bash.exe"; //$NON-NLS-1$
 		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
 			bashPath = "/bin/bash"; //$NON-NLS-1$
@@ -114,16 +113,20 @@ public class ProcessFactory {
 
 		StringBuilder builder = new StringBuilder();
 
-		String directory;
-		if (dir == null) {
-			directory = System.getProperty("user.dir"); //$NON-NLS-1$
-		} else {
-			directory = dir.getAbsolutePath();
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			// In Cygwin, bash --login option will change the current directory to HOME directory.
+			// But this will cause a minor problem on Windows : When use "Terminate" button to terminate the debug or run session. the Terminal Emulator process will not be terminated.
+			String directory;
+			if (dir == null) {
+				directory = System.getProperty("user.dir"); //$NON-NLS-1$
+			} else {
+				directory = dir.getAbsolutePath();
+			}
+			directory = Path.fromOSString(directory).toPortableString();
+			builder.append("cd \'"); //$NON-NLS-1$
+			builder.append(directory);
+			builder.append("\'; "); //$NON-NLS-1$
 		}
-		directory = Path.fromOSString(directory).toPortableString();
-		builder.append("cd \'"); //$NON-NLS-1$
-		builder.append(directory);
-		builder.append("\'; "); //$NON-NLS-1$
 
 		for (int i = 0; i < cmdarray.length; i++) {
 			String arg = cmdarray[i];
