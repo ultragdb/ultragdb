@@ -51,6 +51,10 @@ import org.eclipse.cdt.dsf.mi.service.IMIContainerDMContext;
 import org.eclipse.cdt.dsf.mi.service.IMIExecutionDMContext;
 import org.eclipse.cdt.dsf.mi.service.command.AbstractCLIProcess.ProcessMIInterpreterExecConsole;
 import org.eclipse.cdt.dsf.mi.service.command.commands.MICommand;
+import org.eclipse.cdt.dsf.mi.service.command.commands.MIGDBSetEnv;
+import org.eclipse.cdt.dsf.mi.service.command.commands.MIGDBSetHostCharset;
+import org.eclipse.cdt.dsf.mi.service.command.commands.MIGDBSetTargetCharset;
+import org.eclipse.cdt.dsf.mi.service.command.commands.MIInferiorTTYSet;
 import org.eclipse.cdt.dsf.mi.service.command.commands.RawCommand;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIConsoleStreamOutput;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIConst;
@@ -600,7 +604,39 @@ public abstract class AbstractMIControl extends AbstractDsfService
         }
     }
 
-    /*
+    public static boolean isHiddenCommand(MICommand<MIInfo> command) {
+    	if (command instanceof MIInferiorTTYSet
+    			|| command instanceof MIGDBSetHostCharset
+    			|| command instanceof MIGDBSetTargetCharset
+    			|| command instanceof MIGDBSetEnv) {
+    		return true;
+    	}
+    	return false;
+    }
+
+    private void dumpToTraces(String str) {
+        if (GdbDebugOptions.DEBUG) {
+        	GdbDebugOptions.trace(String.format( "%s %s  %s", GdbPlugin.getDebugTime(), MI_TRACE_IDENTIFIER, str)); //$NON-NLS-1$
+        }
+
+        if (getMITracingStream() != null) {
+        	try {
+        		String message = GdbPlugin.getDebugTime() + " " + str; //$NON-NLS-1$
+        		while (message.length() > 100) {
+        			String partial = message.substring(0, 100) + "\\\n"; //$NON-NLS-1$
+        			message = message.substring(100);
+        			((IOConsoleOutputStream)getMITracingStream()).write(partial);
+        		}
+        		((IOConsoleOutputStream)getMITracingStream()).write(message);
+        	} catch (IOException e) {
+        		// The tracing stream could be closed at any time
+        		// since the user can set a preference to turn off
+        		// this tracing.
+        		setMITracingStream(null);
+        	}
+        }
+    }
+     /*
      *  This is the transmitter thread. When a command is given to this thread it has been
      *  considered to be sent, even if it has not actually been sent yet.  This assumption
      *  makes it easier from state management.  Whomever fill this pipeline handles all of
@@ -671,25 +707,9 @@ public abstract class AbstractMIControl extends AbstractDsfService
                         fOutputStream.write(str.getBytes("UTF-8")); //$NON-NLS-1$
                         fOutputStream.flush();
                         
-                        if (GdbDebugOptions.DEBUG) {
-                        	GdbDebugOptions.trace(String.format( "%s %s  %s", GdbPlugin.getDebugTime(), MI_TRACE_IDENTIFIER, str)); //$NON-NLS-1$
-                        }
-                        if (getMITracingStream() != null) {
-                        	try {
-                        		String message = GdbPlugin.getDebugTime() + " " + str; //$NON-NLS-1$
-                        		while (message.length() > 100) {
-                        			String partial = message.substring(0, 100) + "\\\n"; //$NON-NLS-1$
-                        			message = message.substring(100);
-                        			((IOConsoleOutputStream)getMITracingStream()).write(partial);
-                        		}
-                        		((IOConsoleOutputStream)getMITracingStream()).write(message);
-                        	} catch (IOException e) {
-                        		// The tracing stream could be closed at any time
-                        		// since the user can set a preference to turn off
-                        		// this tracing.
-                        		setMITracingStream(null);
-                        	}
-                        }
+                        if (!isHiddenCommand(commandHandle.getCommand())) {
+                            dumpToTraces(str);
+						}
                     }
                 } catch (IOException e) {
                     // Shutdown thread in case of IO error.
@@ -708,6 +728,7 @@ public abstract class AbstractMIControl extends AbstractDsfService
     private class RxThread extends Thread {
         private final InputStream fInputStream;
         private final MIParser fMiParser = new MIParser();
+        private boolean hideCurrentLine;
 
 		/**
 		 * List of out of band records since the last result record. Out of band
@@ -786,30 +807,29 @@ public abstract class AbstractMIControl extends AbstractDsfService
             			break;
             		}
             		if (line.length() != 0) {
-                    	//Write Gdb response to sysout or file
-                    	if(GdbDebugOptions.DEBUG) {
-                    		GdbDebugOptions.trace(String.format( "%s %s  %s\n", GdbPlugin.getDebugTime(), MI_TRACE_IDENTIFIER, line)); //$NON-NLS-1$
-                    	}
-                        
-                        final String finalLine = line;
-                        if (getMITracingStream() != null) {
-                        	try {
-                        		String message = GdbPlugin.getDebugTime() + " " + finalLine + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
-                        		while (message.length() > 100) {
-                        			String partial = message.substring(0, 100) + "\\\n"; //$NON-NLS-1$
-                        			message = message.substring(100);
-                        			((IOConsoleOutputStream)getMITracingStream()).write(partial);
-                        		}
-                        		((IOConsoleOutputStream)getMITracingStream()).write(message);
-                        	} catch (IOException e) {
-                        		// The tracing stream could be closed at any time
-                        		// since the user can set a preference to turn off
-                        		// this tracing.
-                        		setMITracingStream(null);
-                        	}
-                        }
-                        
-                    	processMIOutput(line);
+            			hideCurrentLine = false;
+
+            			MIParser.RecordType recordType = fMiParser.getRecordType(line);
+
+            			if (recordType == MIParser.RecordType.ResultRecord) {
+            				final MIResultRecord rr = fMiParser.parseMIResultRecord(line);
+            				processResultRecord(rr);
+            			} else if (recordType == MIParser.RecordType.OOBRecord) {
+            				// Process OOBs
+            				final MIOOBRecord oob = fMiParser.parseMIOOBRecord(line);
+            				processOOBRecord(oob);
+            			}
+            			if (!hideCurrentLine) {
+            				//Write Gdb response to sysout or file
+            				dumpToTraces(line + '\n');
+            			}
+
+            			getExecutor().execute(new DsfRunnable() {
+            				@Override
+            				public void run() {
+            					processNextQueuedCommand();
+            				}
+            			});
                     }
                 }
             } catch (IOException e) {
@@ -825,141 +845,7 @@ public abstract class AbstractMIControl extends AbstractDsfService
 			} catch (IOException e) {
 			}
         }
-        
-        private MIResult findResultRecord(MIResult[] results, String variable) {
-            for (int i = 0; i < results.length; i++) {
-                if (variable.equals(results[i].getVariable())) {
-                    return results[i];
-                }
-            }
-            return null;
-        }
-        
-        private String getStatusString(MICommand<MIInfo> origCommand, MIOutput response ) {
-            
-        	// Attempt to extract a message from the result record:
-        	String message = null;
-        	String[] parameters = null;
-        	if (response != null && response.getMIResultRecord() != null) {
-        		MIResult[] results = response.getMIResultRecord().getMIResults();
 
-        		// Extract the parameters
-        		MIResult paramsRes = findResultRecord(results, "parameters"); //$NON-NLS-1$
-        		if (paramsRes != null && paramsRes.getMIValue() instanceof MIList) {
-        			MIValue[] paramValues = ((MIList)paramsRes.getMIValue()).getMIValues();
-        			parameters = new String[paramValues.length];
-        			for (int i = 0; i < paramValues.length; i++) {
-        				if (paramValues[i] instanceof MIConst) {
-        					parameters[i] = ((MIConst)paramValues[i]).getString();
-        				} else {
-        					parameters[i] = ""; //$NON-NLS-1$
-        				}
-        			}
-        		}
-        		MIResult messageRes = findResultRecord(results, "message"); //$NON-NLS-1$
-        		if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
-        			message = ((MIConst)messageRes.getMIValue()).getString();
-        		}
-        		// FRCH: I believe that the actual string is "msg" ...
-        		// FRCH: (at least for the version of gdb I'm using)
-        		else {
-        			messageRes = findResultRecord(results, "msg"); //$NON-NLS-1$
-        			if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
-        				message = ((MIConst)messageRes.getMIValue()).getString();
-        			}
-        		}
-        	}
-        	StringBuilder clientMsg = new StringBuilder();
-        	clientMsg.append("Failed to execute MI command:\n"); //$NON-NLS-1$
-        	clientMsg.append(origCommand.toString());
-        	if (message != null) {
-        		clientMsg.append("Error message from debugger back end:\n"); //$NON-NLS-1$
-        		if (parameters != null) {
-        			try {
-        				clientMsg.append(MessageFormat.format(message, parameters));
-        			} catch(IllegalArgumentException e2) {
-        				// Message format string invalid.  Fallback to just appending the strings. 
-        				clientMsg.append(message);
-        				clientMsg.append(Arrays.toString(parameters));
-        			}
-        		} else {
-        			clientMsg.append(message);
-        		}
-        	}
-        	return clientMsg.toString();
-        }
-
-       private String getBackendMessage(MIOutput response) {
-            
-        	// Attempt to extract a message from the result record:
-        	String message = null;
-        	String[] parameters = null;
-        	if (response != null && response.getMIResultRecord() != null) {
-        		MIResult[] results = response.getMIResultRecord().getMIResults();
-
-        		// Extract the parameters
-        		MIResult paramsRes = findResultRecord(results, "parameters"); //$NON-NLS-1$
-        		if (paramsRes != null && paramsRes.getMIValue() instanceof MIList) {
-        			MIValue[] paramValues = ((MIList)paramsRes.getMIValue()).getMIValues();
-        			parameters = new String[paramValues.length];
-        			for (int i = 0; i < paramValues.length; i++) {
-        				if (paramValues[i] instanceof MIConst) {
-        					parameters[i] = ((MIConst)paramValues[i]).getString();
-        				} else {
-        					parameters[i] = ""; //$NON-NLS-1$
-        				}
-        			}
-        		}
-        		MIResult messageRes = findResultRecord(results, "message"); //$NON-NLS-1$
-        		if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
-        			message = ((MIConst)messageRes.getMIValue()).getString();
-        		}
-        		// FRCH: I believe that the actual string is "msg" ...
-        		// FRCH: (at least for the version of gdb I'm using)
-        		else {
-        			messageRes = findResultRecord(results, "msg"); //$NON-NLS-1$
-        			if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
-        				message = ((MIConst)messageRes.getMIValue()).getString();
-        			}
-        		}
-        	}
-        	StringBuilder clientMsg = new StringBuilder();
-        	if (message != null) {
-        		if (parameters != null) {
-        			try {
-        				clientMsg.append(MessageFormat.format(message, parameters));
-        			} catch(IllegalArgumentException e2) {
-        				// Message format string invalid.  Fallback to just appending the strings. 
-        				clientMsg.append(message);
-        				clientMsg.append(Arrays.toString(parameters));
-        			}
-        		} else {
-        			clientMsg.append(message);
-        		}
-        	}
-        	return clientMsg.toString();
-        }
-
-        void processMIOutput(String line) {
-
-            MIParser.RecordType recordType = fMiParser.getRecordType(line);
-            
-            if (recordType == MIParser.RecordType.ResultRecord) {
-                final MIResultRecord rr = fMiParser.parseMIResultRecord(line);
-                processResultRecord(rr);
-        	} else if (recordType == MIParser.RecordType.OOBRecord) {
-				// Process OOBs
-        		final MIOOBRecord oob = fMiParser.parseMIOOBRecord(line);
-        		processOOBRecord(oob);
-           }
-            
-            getExecutor().execute(new DsfRunnable() {
-            	@Override
-            	public void run() {
-        			processNextQueuedCommand();
-            	}
-            });
-        }
         void processResultRecord(MIResultRecord rr) {
 
         	/*
@@ -971,6 +857,10 @@ public abstract class AbstractMIControl extends AbstractDsfService
         	final CommandHandle commandHandle = fRxCommands.remove(id);
 
         	if (commandHandle != null) {
+        		if (isHiddenCommand(commandHandle.getCommand())) {
+        			hideCurrentLine = true;
+				}
+        		
         		final MIOutput response = new MIOutput(
         				rr, fAccumulatedOOBRecords.toArray(new MIOOBRecord[fAccumulatedOOBRecords.size()]) );
         		fAccumulatedOOBRecords.clear();
@@ -1102,6 +992,121 @@ public abstract class AbstractMIControl extends AbstractDsfService
         		}
         	});
         }
+        
+        private MIResult findResultRecord(MIResult[] results, String variable) {
+            for (int i = 0; i < results.length; i++) {
+                if (variable.equals(results[i].getVariable())) {
+                    return results[i];
+                }
+            }
+            return null;
+        }
+        
+        private String getStatusString(MICommand<MIInfo> origCommand, MIOutput response ) {
+            
+        	// Attempt to extract a message from the result record:
+        	String message = null;
+        	String[] parameters = null;
+        	if (response != null && response.getMIResultRecord() != null) {
+        		MIResult[] results = response.getMIResultRecord().getMIResults();
+
+        		// Extract the parameters
+        		MIResult paramsRes = findResultRecord(results, "parameters"); //$NON-NLS-1$
+        		if (paramsRes != null && paramsRes.getMIValue() instanceof MIList) {
+        			MIValue[] paramValues = ((MIList)paramsRes.getMIValue()).getMIValues();
+        			parameters = new String[paramValues.length];
+        			for (int i = 0; i < paramValues.length; i++) {
+        				if (paramValues[i] instanceof MIConst) {
+        					parameters[i] = ((MIConst)paramValues[i]).getString();
+        				} else {
+        					parameters[i] = ""; //$NON-NLS-1$
+        				}
+        			}
+        		}
+        		MIResult messageRes = findResultRecord(results, "message"); //$NON-NLS-1$
+        		if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
+        			message = ((MIConst)messageRes.getMIValue()).getString();
+        		}
+        		// FRCH: I believe that the actual string is "msg" ...
+        		// FRCH: (at least for the version of gdb I'm using)
+        		else {
+        			messageRes = findResultRecord(results, "msg"); //$NON-NLS-1$
+        			if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
+        				message = ((MIConst)messageRes.getMIValue()).getString();
+        			}
+        		}
+        	}
+        	StringBuilder clientMsg = new StringBuilder();
+        	clientMsg.append("Failed to execute MI command:\n"); //$NON-NLS-1$
+        	clientMsg.append(origCommand.toString());
+        	if (message != null) {
+        		clientMsg.append("Error message from debugger back end:\n"); //$NON-NLS-1$
+        		if (parameters != null) {
+        			try {
+        				clientMsg.append(MessageFormat.format(message, parameters));
+        			} catch(IllegalArgumentException e2) {
+        				// Message format string invalid.  Fallback to just appending the strings. 
+        				clientMsg.append(message);
+        				clientMsg.append(Arrays.toString(parameters));
+        			}
+        		} else {
+        			clientMsg.append(message);
+        		}
+        	}
+        	return clientMsg.toString();
+        }
+
+       private String getBackendMessage(MIOutput response) {
+            
+        	// Attempt to extract a message from the result record:
+        	String message = null;
+        	String[] parameters = null;
+        	if (response != null && response.getMIResultRecord() != null) {
+        		MIResult[] results = response.getMIResultRecord().getMIResults();
+
+        		// Extract the parameters
+        		MIResult paramsRes = findResultRecord(results, "parameters"); //$NON-NLS-1$
+        		if (paramsRes != null && paramsRes.getMIValue() instanceof MIList) {
+        			MIValue[] paramValues = ((MIList)paramsRes.getMIValue()).getMIValues();
+        			parameters = new String[paramValues.length];
+        			for (int i = 0; i < paramValues.length; i++) {
+        				if (paramValues[i] instanceof MIConst) {
+        					parameters[i] = ((MIConst)paramValues[i]).getString();
+        				} else {
+        					parameters[i] = ""; //$NON-NLS-1$
+        				}
+        			}
+        		}
+        		MIResult messageRes = findResultRecord(results, "message"); //$NON-NLS-1$
+        		if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
+        			message = ((MIConst)messageRes.getMIValue()).getString();
+        		}
+        		// FRCH: I believe that the actual string is "msg" ...
+        		// FRCH: (at least for the version of gdb I'm using)
+        		else {
+        			messageRes = findResultRecord(results, "msg"); //$NON-NLS-1$
+        			if (messageRes != null && messageRes.getMIValue() instanceof MIConst) {
+        				message = ((MIConst)messageRes.getMIValue()).getString();
+        			}
+        		}
+        	}
+        	StringBuilder clientMsg = new StringBuilder();
+        	if (message != null) {
+        		if (parameters != null) {
+        			try {
+        				clientMsg.append(MessageFormat.format(message, parameters));
+        			} catch(IllegalArgumentException e2) {
+        				// Message format string invalid.  Fallback to just appending the strings. 
+        				clientMsg.append(message);
+        				clientMsg.append(Arrays.toString(parameters));
+        			}
+        		} else {
+        			clientMsg.append(message);
+        		}
+        	}
+        	return clientMsg.toString();
+        }
+
     }
 
     /**
