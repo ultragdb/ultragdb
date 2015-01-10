@@ -100,8 +100,6 @@ public class ProcessFactory {
 			String cygwinDir = Cygwin1.getCygwinDir();
 
 			bashPath = cygwinDir + "/bin/bash.exe"; //$NON-NLS-1$
-		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
-			bashPath = "/bin/bash"; //$NON-NLS-1$
 		} else {
 			// expect bash in PATH
 			bashPath = "bash"; //$NON-NLS-1$
@@ -109,6 +107,7 @@ public class ProcessFactory {
 
 		newCmdArray[0] = bashPath;
 		newCmdArray[1] = "--login"; //$NON-NLS-1$
+		//The Cygwin bash will change current directory to HOME When --login option is given, but --posix option is not given.
 		newCmdArray[2] = "--posix"; //$NON-NLS-1$
 		newCmdArray[3] = "-c"; //$NON-NLS-1$
 
