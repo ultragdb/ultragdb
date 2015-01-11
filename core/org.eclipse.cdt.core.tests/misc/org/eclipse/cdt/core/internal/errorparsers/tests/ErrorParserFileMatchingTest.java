@@ -18,6 +18,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ErrorParserManager;
 import org.eclipse.cdt.core.IErrorParser;
@@ -27,7 +28,6 @@ import org.eclipse.cdt.core.errorparsers.AbstractErrorParser;
 import org.eclipse.cdt.core.errorparsers.ErrorPattern;
 import org.eclipse.cdt.core.testplugin.CTestPlugin;
 import org.eclipse.cdt.core.testplugin.ResourceHelper;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.core.internal.registry.ExtensionRegistry;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -900,15 +900,13 @@ public class ErrorParserFileMatchingTest extends TestCase {
 	 * @throws Exception...
 	 */
 	public void testCygwinCygdrive() throws Exception {
+		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
+			return;
+		}
 		String fileName = "testCygwinCygdrive.c";
 		String windowsFileName = fProject.getLocation().append(fileName).toOSString();
 		String cygwinFileName;
-		try {
-			cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
-		} catch (UnsupportedOperationException e) {
-			// Skip the test if Cygwin is not available.
-			return;
-		}
+		cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
 		assertTrue("cygwinFileName=["+cygwinFileName+"]", cygwinFileName.startsWith("/cygdrive/"));
 
 		ResourceHelper.createFile(fProject, fileName);
@@ -927,16 +925,14 @@ public class ErrorParserFileMatchingTest extends TestCase {
 	 * @throws Exception...
 	 */
 	public void testCygwinUsrUnclude() throws Exception {
+		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
+			return;
+		}
 		String cygwinFolder = "/usr/include/";
 		String fileName = "stdio.h";
 
 		String usrIncludeWindowsPath;
-		try {
-			usrIncludeWindowsPath = Cygwin.cygwinToWindowsPath(cygwinFolder);
-		} catch (UnsupportedOperationException e) {
-			// Skip the test if Cygwin is not available.
-			return;
-		}
+		usrIncludeWindowsPath = Cygwin.cygwinToWindowsPath(cygwinFolder);
 
 		assertTrue("usrIncludeWindowsPath=["+usrIncludeWindowsPath+"]",
 			usrIncludeWindowsPath.charAt(1)==IPath.DEVICE_SEPARATOR);
@@ -960,17 +956,15 @@ public class ErrorParserFileMatchingTest extends TestCase {
 	 * @throws Exception...
 	 */
 	public void testCygwinAnotherProject() throws Exception {
+		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
+			return;
+		}
 		String fileName = "testCygwinAnotherProject.c";
 		IProject anotherProject = ResourceHelper.createCDTProject("AnotherProject");
 
 		String windowsFileName = anotherProject.getLocation().append(fileName).toOSString();
 		String cygwinFileName;
-		try {
-			cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
-		} catch (UnsupportedOperationException e) {
-			// Skip the test if Cygwin is not available.
-			return;
-		}
+		cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
 		assertTrue("cygwinFileName=["+cygwinFileName+"]", cygwinFileName.startsWith("/cygdrive/"));
 
 		ResourceHelper.createFile(anotherProject, fileName);
@@ -1011,15 +1005,13 @@ public class ErrorParserFileMatchingTest extends TestCase {
 	 * @throws Exception...
 	 */
 	public void testCygwinAndMakeErrorParserBug270772() throws Exception {
+		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
+			return;
+		}
 		String fileName = "testCygwinAndMakeErrorParser.c";
 		String windowsFileName = fProject.getLocation().append(fileName).toOSString();
 		String cygwinFileName;
-		try {
-			cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
-		} catch (UnsupportedOperationException e) {
-			// Skip the test if Cygwin is not available.
-			return;
-		}
+		cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
 		assertTrue("cygwinFileName=["+cygwinFileName+"]", cygwinFileName.startsWith("/cygdrive/"));
 
 		ResourceHelper.createFile(fProject, fileName);

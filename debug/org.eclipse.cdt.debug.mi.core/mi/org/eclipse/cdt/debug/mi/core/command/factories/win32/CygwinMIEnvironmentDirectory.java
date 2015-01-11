@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.cdt.debug.mi.core.command.factories.win32;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.debug.mi.core.command.MIEnvironmentDirectory;
-import org.eclipse.cdt.internal.core.Cygwin;
 
 /**
  * Cygwin implementation of the MIEnvironmentDirectory command. In the Cygwin
@@ -26,11 +26,7 @@ public class CygwinMIEnvironmentDirectory extends MIEnvironmentDirectory {
 		String[] newPaths = new String[paths.length];
 		for (int i = 0; i < paths.length; i++) {
 			String path = paths[i];
-			String newPath = path;
-			try {
-				newPath = Cygwin.windowsToCygwinPath(path);
-			} catch (UnsupportedOperationException e) {
-			}
+			String newPath = Cygwin.windowsToCygwinPath(path);
 			newPaths[i] = newPath;
 		}
 

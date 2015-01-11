@@ -22,11 +22,11 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.IPDOMManager;
@@ -34,7 +34,6 @@ import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
 import org.eclipse.cdt.core.settings.model.TestCfgDataProvider;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.internal.core.pdom.indexer.IndexerPreferences;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.eclipse.core.resources.IContainer;
@@ -628,7 +627,7 @@ public class ResourceHelper {
 	 * @throws UnsupportedOperationException if Cygwin is unavailable.
 	 * @throws IOException on IO problem.
 	 */
-	public static String windowsToCygwinPath(String windowsPath) throws IOException, UnsupportedOperationException {
+	public static String windowsToCygwinPath(String windowsPath) {
 		return Cygwin.windowsToCygwinPath(windowsPath);
 	}
 
@@ -640,7 +639,7 @@ public class ResourceHelper {
 	 * @throws UnsupportedOperationException if Cygwin is unavailable.
 	 * @throws IOException on IO problem.
 	 */
-	public static String cygwinToWindowsPath(String cygwinPath) throws IOException, UnsupportedOperationException {
+	public static String cygwinToWindowsPath(String cygwinPath) {
 		return Cygwin.cygwinToWindowsPath(cygwinPath);
 	}
 

@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.internal.core.natives.Messages;
-import org.eclipse.cdt.utils.Cygwin1;
 import org.eclipse.cdt.utils.pty.PTY;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
@@ -97,9 +97,7 @@ public class ProcessFactory {
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
 
-			String cygwinDir = Cygwin1.getCygwinDir();
-
-			bashPath = cygwinDir + "/bin/bash.exe"; //$NON-NLS-1$
+			bashPath = Cygwin.cygwinToWindowsPath("/bin/bash.exe"); //$NON-NLS-1$
 		} else {
 			// expect bash in PATH
 			bashPath = "bash"; //$NON-NLS-1$

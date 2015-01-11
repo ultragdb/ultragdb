@@ -11,11 +11,9 @@
  *******************************************************************************/
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
-import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.managedbuilder.core.IManagedIsToolChainSupported;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
-import org.eclipse.cdt.managedbuilder.internal.envvar.EnvironmentVariableManagerToolChain;
+import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Version;
 
 /**
@@ -24,12 +22,12 @@ import org.osgi.framework.Version;
  * @noextend This class is not intended to be subclassed by clients.
  */
 public class IsGnuCygwinToolChainSupported implements IManagedIsToolChainSupported {
-	private static final String ENV_PATH = "PATH"; //$NON-NLS-1$
+//	private static final String ENV_PATH = "PATH"; //$NON-NLS-1$
 
 	@Override
 	public boolean isSupported(IToolChain toolChain, Version version, String instance) {
-		IEnvironmentVariable var = new EnvironmentVariableManagerToolChain(toolChain).getVariable(ENV_PATH, true);
-		String envPath = var != null ? var.getValue() : null;
-		return Cygwin.isAvailable(envPath);
+//		IEnvironmentVariable var = new EnvironmentVariableManagerToolChain(toolChain).getVariable(ENV_PATH, true);
+//		String envPath = var != null ? var.getValue() : null;
+		return Platform.getOS().equals(Platform.OS_WIN32);
 	}
 }

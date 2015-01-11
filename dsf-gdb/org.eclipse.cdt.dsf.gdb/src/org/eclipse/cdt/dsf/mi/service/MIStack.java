@@ -20,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.IAddress;
 import org.eclipse.cdt.dsf.concurrent.CountingRequestMonitor;
 import org.eclipse.cdt.dsf.concurrent.DataRequestMonitor;
@@ -57,7 +58,6 @@ import org.eclipse.cdt.dsf.mi.service.command.output.MIStackListLocalsInfo;
 import org.eclipse.cdt.dsf.service.AbstractDsfService;
 import org.eclipse.cdt.dsf.service.DsfServiceEventHandler;
 import org.eclipse.cdt.dsf.service.DsfSession;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.utils.Addr32;
 import org.eclipse.cdt.utils.Addr64;
 import org.eclipse.core.runtime.IStatus;
@@ -456,11 +456,7 @@ public class MIStack extends AbstractDsfService
         		String debuggerPath = getMIFrame().getFile(); 
         		String sourcePath = debuggerPath;
         		if (Platform.getOS().equals(Platform.OS_WIN32)) {
-        			try {
-        				sourcePath = Cygwin.cygwinToWindowsPath(debuggerPath);
-        			} catch (UnsupportedOperationException e) {
-        				e.printStackTrace();
-        			}
+        			sourcePath = Cygwin.cygwinToWindowsPath(debuggerPath);
         		}
         		return sourcePath;
         	}

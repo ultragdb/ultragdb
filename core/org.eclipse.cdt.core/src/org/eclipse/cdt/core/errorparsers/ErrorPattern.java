@@ -15,12 +15,13 @@ import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.ErrorParserManager;
 import org.eclipse.cdt.core.IMarkerGenerator;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 
 /**
  * Error Pattern - used by Error Parser to convert build output to problem markers
@@ -206,15 +207,12 @@ public class ErrorPattern {
 	protected IPath getLocation(String filename)  {
 		IPath path = new Path(filename);
 		File file = path.toFile() ;
-		if (!file.exists() && Cygwin.isAvailable() && path.isAbsolute())  {
-			try {
-				String cygfilename = Cygwin.cygwinToWindowsPath(filename);
-				IPath convertedPath = new Path(cygfilename);
-				file = convertedPath.toFile() ;
-				if (file.exists()) {
-					path = convertedPath;
-				}
-			} catch (UnsupportedOperationException e) {
+		if (!file.exists() && Platform.getOS().equals(Platform.OS_WIN32) && path.isAbsolute())  {
+			String cygfilename = Cygwin.cygwinToWindowsPath(filename);
+			IPath convertedPath = new Path(cygfilename);
+			file = convertedPath.toFile() ;
+			if (file.exists()) {
+				path = convertedPath;
 			}
 		}
 		return path ;

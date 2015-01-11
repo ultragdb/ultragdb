@@ -13,20 +13,10 @@
  *******************************************************************************/
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
-import java.io.File;
-
-import org.eclipse.cdt.common.Encoding;
-import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
-import org.eclipse.cdt.internal.core.Cygwin;
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.managedbuilder.core.IBuildPathResolver;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
-import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
-import org.eclipse.cdt.managedbuilder.gnu.ui.GnuUIPlugin;
-import org.eclipse.cdt.utils.PathUtil;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 
 /**
  * @noextend This class is not intended to be subclassed by clients.
@@ -35,19 +25,6 @@ public class CygwinPathResolver implements IBuildPathResolver {
 //	private static final String ENV_PATH = "PATH"; //$NON-NLS-1$
 	private static final String DELIMITER_UNIX = ":";    //$NON-NLS-1$
 	private static final String DELIMITER_WIN  = ";";    //$NON-NLS-1$
-
-//	private static final String PROPERTY_OS_NAME = "os.name"; //$NON-NLS-1$
-//	private static final String OS_WINDOWS = "windows";//$NON-NLS-1$
-	private static final char SLASH = '/';
-	private static final char BACKSLASH = '\\';
-
-//	private static final String CYGPATH_PATH_LIST_TO_WINDOWS = "cygpath -w -p "; //$NON-NLS-1$
-
-//	// note that in Cygwin 1.7 the mount point storage has been moved out of the registry
-//	private static final String REGISTRY_KEY_MOUNTS = "SOFTWARE\\Cygnus Solutions\\Cygwin\\mounts v2\\"; //$NON-NLS-1$
-//	private static final String PATH_NAME = "native";   //$NON-NLS-1$
-	private static final String BINPATTERN = "/bin"; //$NON-NLS-1$
-	private static final String ETCPATTERN = "/etc";     //$NON-NLS-1$
 
 //	private static final String GCC_VERSION_CMD  = "gcc --version";    //$NON-NLS-1$
 //	private static final String MINGW_SPECIAL = "mingw ";    //$NON-NLS-1$
@@ -72,53 +49,12 @@ public class CygwinPathResolver implements IBuildPathResolver {
 		String[] newPaths = new String[paths.length];
 		for (int i = 0; i < paths.length; i++) {
 			String path = paths[i];
-			String newPath = path;
-			try {
-				newPath = Cygwin.cygwinToWindowsPath(path);
-			} catch (UnsupportedOperationException e) {
-			}
+			String newPath = Cygwin.cygwinToWindowsPath(path);
 			newPaths[i] = newPath;
 		}
 		return newPaths;
 	}
 
-	/**
-	 * @return "/etc" path in Windows format for workspace.
-	 * @deprecated. Deprecated as of CDT 8.2. Note that Cygwin root path in general may depend on configuration.
-	 *
-	 * If you use this do not cache results to ensure user preferences are accounted for.
-	 * Please rely on internal caching.
-	 */
-	@Deprecated
-	public static String getEtcPath() {
-		String etcCygwin = getPathFromRoot(ETCPATTERN);
-		return etcCygwin;
-	}
-
-	/**
-	 * @return "/usr/bin" path in Windows format for workspace.
-	 * @deprecated. Deprecated as of CDT 8.2. Note that Cygwin root path in general may depend on configuration.
-	 *
-	 * If you use this do not cache results to ensure user preferences are accounted for.
-	 * Please rely on internal caching.
-	 */
-	@Deprecated
-	public static String getBinPath() {
-		String binCygwin = getPathFromRoot(BINPATTERN);
-		return binCygwin;
-	}
-
-	/**
-	 * @return Cygwin root ("/") path in Windows format for workspace.
-	 * @deprecated. Deprecated as of CDT 8.2. Note that Cygwin root path in general may depend on configuration.
-	 *
-	 * If you use this do not cache results to ensure user preferences are accounted for.
-	 * Please rely on internal caching.
-	 */
-	@Deprecated
-	public static String getRootPath() {
-		return Cygwin.getCygwinDir();
-	}
 
 	public static boolean isWindows() {
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
@@ -150,24 +86,6 @@ public class CygwinPathResolver implements IBuildPathResolver {
 //		return null;
 //	}
 
-	/**
-	 * Returns the absolute path of the pattern by simply appending the relativePath to the root.
-	 *
-	 * @param relativePath - the pattern to find.
-	 * @return The absolute path to the pattern or {@code null} if path does not exist.
-	 */
-	private static String getPathFromRoot(String relativePath) {
-		String rootCygwin = Cygwin.getCygwinDir();
-		if (rootCygwin != null) {
-			String path = rootCygwin + relativePath;
-			File file = new File(path);
-			if (file.exists() && file.isDirectory()) {
-				return path.replace(BACKSLASH, SLASH);
-			}
-		}
-		return null;
-	}
-
 //	/**
 //	 * Resolve and return full path to program in context of configuration.
 //	 *
@@ -186,7 +104,7 @@ public class CygwinPathResolver implements IBuildPathResolver {
 //					program = progPath.toOSString();
 //				}
 //				// this resolves cygwin symbolic links
-//				program = Cygwin.cygwinToWindowsPath(program, envPathValue);
+//				program = Cygwin.cygwinToWindowsPath(program);
 //			}
 //		} catch (Exception e) {
 //			GnuUIPlugin.getDefault().log(new Status(IStatus.WARNING, GnuUIPlugin.PLUGIN_ID, "Problem trying to find program [" + program + "] in $PATH=[" + envPathValue + "]", e));

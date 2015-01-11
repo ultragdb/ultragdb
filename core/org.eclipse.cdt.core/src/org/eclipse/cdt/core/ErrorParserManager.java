@@ -25,10 +25,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.errorparsers.ErrorParserNamedWrapper;
 import org.eclipse.cdt.core.language.settings.providers.IWorkingDirectoryTracker;
 import org.eclipse.cdt.core.resources.ACBuilder;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.internal.core.IErrorMarkeredOutputStream;
 import org.eclipse.cdt.internal.core.ProblemMarkerFilterManager;
 import org.eclipse.cdt.internal.core.resources.ResourceLookup;
@@ -43,6 +43,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.URIUtil;
 import org.osgi.service.prefs.BackingStoreException;
 
@@ -459,7 +460,7 @@ outer:
 		}
 
 		// Could be Cygwin path
-		if (file==null && Cygwin.isAvailable() && path.isAbsolute()) {
+		if (file==null && Platform.getOS().equals(Platform.OS_WIN32) && path.isAbsolute()) {
 			file = findCygwinFile(partialLoc);
 		}
 
@@ -527,7 +528,7 @@ outer:
 		IFile file = findFileInWorkspace(path);
 
 		// That didn't work, see if it is a Cygwin path
-		if (file == null && Cygwin.isAvailable()) {
+		if (file == null && Platform.getOS().equals(Platform.OS_WIN32)) {
 			file = findCygwinFile(filePath);
 		}
 
@@ -535,12 +536,8 @@ outer:
 	}
 
 	private IFile findCygwinFile(String filePath) {
-		IFile file=null;
-		try {
-			IPath path = new Path(Cygwin.cygwinToWindowsPath(filePath));
-			file = findFileInWorkspace(path);
-		} catch (UnsupportedOperationException e) {
-		}
+		IPath path = new Path(Cygwin.cygwinToWindowsPath(filePath));
+		IFile file = findFileInWorkspace(path);
 		return file;
 	}
 

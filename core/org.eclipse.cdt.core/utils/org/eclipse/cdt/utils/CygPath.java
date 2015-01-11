@@ -13,7 +13,7 @@ package org.eclipse.cdt.utils;
 
 import java.io.IOException;
 
-import org.eclipse.cdt.internal.core.Cygwin;
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.core.runtime.Platform;
 
 /**
@@ -25,9 +25,6 @@ public class CygPath {
 		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
 			throw new IOException("Not Windows"); //$NON-NLS-1$
 		}
-		if (!Cygwin.isAvailable()) {
-			throw new IOException("Cygwin is not available"); //$NON-NLS-1$
-		}
 	}
 
 	public CygPath() throws IOException {
@@ -38,12 +35,7 @@ public class CygPath {
 	 * Use this method for series of translations of paths.
 	 */
 	public String getFileName(String name) throws IOException {
-		String fileName = name;
-		try {
-			fileName = Cygwin.cygwinToWindowsPath(name);
-		} catch (UnsupportedOperationException e) {
-			throw new IOException();
-		}
+		String fileName = Cygwin.cygwinToWindowsPath(name);
 		return fileName;
 	}
 

@@ -17,6 +17,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.debug.core.sourcelookup.CProjectSourceContainer;
 import org.eclipse.cdt.debug.internal.core.sourcelookup.CSourceLookupDirector;
 import org.eclipse.cdt.dsf.concurrent.DataRequestMonitor;
@@ -30,7 +31,6 @@ import org.eclipse.cdt.dsf.mi.service.command.CommandFactory;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIInfo;
 import org.eclipse.cdt.dsf.service.AbstractDsfService;
 import org.eclipse.cdt.dsf.service.DsfSession;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -161,12 +161,7 @@ public class CSourceLookup extends AbstractDsfService implements ISourceLookup {
         final String sourceString = (String) source;
 
         if (Platform.getOS().equals(Platform.OS_WIN32)) {
-			String debuggerPath = sourceString;
-			try {
-				debuggerPath = Cygwin.windowsToCygwinPath(sourceString);
-			} catch (UnsupportedOperationException e) {
-				e.printStackTrace();
-			}
+			String debuggerPath = Cygwin.windowsToCygwinPath(sourceString);
 			rm.setData(debuggerPath);
 			rm.done();
 			return;
@@ -198,11 +193,7 @@ public class CSourceLookup extends AbstractDsfService implements ISourceLookup {
     public void getSource(ISourceLookupDMContext sourceLookupCtx, final String debuggerPath, final DataRequestMonitor<Object> rm) {
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			String sourcePath = debuggerPath;
-			try {
-				sourcePath = Cygwin.cygwinToWindowsPath(debuggerPath);
-			} catch (UnsupportedOperationException e) {
-				e.printStackTrace();
-			}
+			sourcePath = Cygwin.cygwinToWindowsPath(debuggerPath);
 			rm.setData(sourcePath);
 			rm.done();
 			return;

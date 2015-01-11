@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import org.eclipse.cdt.internal.core.Cygwin;
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.internal.core.Messages;
 import org.eclipse.cdt.internal.core.ProcessClosure;
 import org.eclipse.cdt.utils.PathUtil;
@@ -176,11 +176,7 @@ public class CommandLauncher implements ICommandLauncher {
 			IPath location = PathUtil.findProgramLocation(command, envPathValue);
 			isFound = location != null;
 			if (location != null) {
-				try {
-					fCommandArgs[0] = Cygwin.cygwinToWindowsPath(location.toString(), envPathValue);
-				} catch (Exception e) {
-					// if no cygwin nothing to worry about
-				}
+				fCommandArgs[0] = Cygwin.cygwinToWindowsPath(location.toString());
 			}
 		}
 

@@ -28,7 +28,6 @@ import org.eclipse.cdt.core.settings.model.ICProjectDescriptionManager;
 import org.eclipse.cdt.core.settings.model.ICSettingEntry;
 import org.eclipse.cdt.core.testplugin.ResourceHelper;
 import org.eclipse.cdt.core.testplugin.util.BaseTestCase;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.core.ITool;
 import org.eclipse.cdt.managedbuilder.core.ManagedBuildManager;
@@ -40,6 +39,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 
 /**
  * Test cases to test GCC built-in specs detector.
@@ -500,8 +500,7 @@ public class GCCBuiltinSpecsDetectorTest extends BaseTestCase {
 	 * Test parsing of include directives for Cygwin for global provider.
 	 */
 	public void testGCCBuiltinSpecsDetector_Cygwin_NoProject() throws Exception {
-		if (!Cygwin.isAvailable()) {
-			// Skip the test if Cygwin is not available.
+		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
 			return;
 		}
 
@@ -529,8 +528,7 @@ public class GCCBuiltinSpecsDetectorTest extends BaseTestCase {
 	 * Test parsing of include directives for Cygwin for provider running for a configuration.
 	 */
 	public void testGCCBuiltinSpecsDetector_Cygwin_Configuration() throws Exception {
-		if (!Cygwin.isAvailable()) {
-			// Skip the test if Cygwin is not available.
+		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
 			return;
 		}
 

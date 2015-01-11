@@ -11,7 +11,7 @@
 
 package org.eclipse.cdt.debug.mi.core.command.factories.win32;
 
-import org.eclipse.cdt.internal.core.Cygwin;
+import org.eclipse.cdt.common.Cygwin;
 
 /**
  * CygwinMIEnvironmentCD
@@ -21,12 +21,7 @@ public class CygwinMIEnvironmentCD extends WinMIEnvironmentCD {
 	CygwinMIEnvironmentCD(String miVersion, String path) {
 		super(miVersion, path);
 
-		String cygwinPath = path;
-
-		try {
-			cygwinPath = Cygwin.windowsToCygwinPath(path);
-		} catch (UnsupportedOperationException e) {
-		}
+		String cygwinPath = Cygwin.windowsToCygwinPath(path);
 
 		setParameters(new String[] { cygwinPath });
 	}

@@ -14,8 +14,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.ISymbolReader;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 public class StabsReader implements ISymbolReader {
@@ -115,39 +115,7 @@ public class StabsReader implements ISymbolReader {
 	private String fixUpPath(String path) {
 		// some compilers generate extra back slashes
 		path = path.replaceAll("\\\\\\\\", "\\\\");  //$NON-NLS-1$//$NON-NLS-2$
-		
-//		// translate any cygwin drive paths, e.g. //G/System/main.cpp or /cygdrive/c/system/main.c
-//		if (path.startsWith("/cygdrive/") && ('/' == path.charAt(11))) { //$NON-NLS-1$
-//			char driveLetter = path.charAt(10);
-//			driveLetter = (Character.isLowerCase(driveLetter)) ? Character.toUpperCase(driveLetter) : driveLetter;
-//
-//			StringBuffer buf = new StringBuffer(path);
-//			buf.delete(0, 11);
-//			buf.insert(0, driveLetter);
-//			buf.insert(1, ':');
-//
-//			path = buf.toString();
-//		}
-//
-//		// translate any cygwin drive paths, e.g. //G/System/main.cpp or /cygdrive/c/system/main.c
-//		if (path.startsWith("//") && ('/' == path.charAt(3))) { //$NON-NLS-1$
-//			char driveLetter = path.charAt(2);
-//			driveLetter = (Character.isLowerCase(driveLetter)) ? Character.toUpperCase(driveLetter) : driveLetter;
-//
-//			StringBuffer buf = new StringBuffer(path);
-//			buf.delete(0, 3);
-//			buf.insert(0, driveLetter);
-//			buf.insert(1, ':');
-//
-//			path = buf.toString();
-//		}
-//		
-		String newPath = path;
-		try {
-			newPath = Cygwin.cygwinToWindowsPath(path);
-		} catch (UnsupportedOperationException e) {
-		}
-
+		String newPath = Cygwin.cygwinToWindowsPath(path);
 		return newPath;
 	}
 	

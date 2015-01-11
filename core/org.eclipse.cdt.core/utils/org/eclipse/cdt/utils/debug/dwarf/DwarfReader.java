@@ -27,10 +27,10 @@ import java.util.Set;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ICompileOptionsFinder;
 import org.eclipse.cdt.core.ISymbolReader;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.utils.coff.Coff.SectionHeader;
 import org.eclipse.cdt.utils.coff.PE;
 import org.eclipse.cdt.utils.debug.IDebugEntryRequestor;

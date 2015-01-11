@@ -11,15 +11,12 @@
  *******************************************************************************/
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
-import org.eclipse.cdt.core.CCorePlugin;
-import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
-import org.eclipse.cdt.internal.core.Cygwin;
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.envvar.IBuildEnvironmentVariable;
 import org.eclipse.cdt.managedbuilder.envvar.IConfigurationEnvironmentVariableSupplier;
 import org.eclipse.cdt.managedbuilder.envvar.IEnvironmentVariableProvider;
 import org.eclipse.cdt.managedbuilder.internal.envvar.BuildEnvVar;
-import org.eclipse.core.runtime.Path;
 
 /**
  * @noextend This class is not intended to be subclassed by clients.
@@ -44,22 +41,9 @@ public class GnuCygwinConfigurationEnvironmentSupplier implements IConfiguration
 		}
 
 		if (variableName.equalsIgnoreCase(ENV_PATH)) {
-			@SuppressWarnings("nls")
-			String path = Cygwin.getCygwinDir() + BACKSLASH + "bin";
-			return new BuildEnvVar(ENV_PATH, path, IBuildEnvironmentVariable.ENVVAR_PREPEND);
 
-//		} else if (variableName.equals(Cygwin.ENV_CYGWIN_DIR)) {
-//			IEnvironmentVariable varCygwinHome = CCorePlugin.getDefault().getBuildEnvironmentManager().getVariable(Cygwin.ENV_CYGWIN_DIR, null, false);
-//			if (varCygwinHome == null) {
-//				// Contribute if the variable does not already come from workspace environment
-//				String home = Cygwin.getCygwinDir();
-//				if (home == null) {
-//					// If the variable is not defined still show it in the environment variables list as a hint to user
-//					home = ""; //$NON-NLS-1$
-//				}
-//				return new BuildEnvVar(Cygwin.ENV_CYGWIN_DIR, new Path(home).toOSString());
-//			}
-//			return null;
+			String path = Cygwin.cygwinToWindowsPath("/bin"); //$NON-NLS-1$
+			return new BuildEnvVar(ENV_PATH, path, IBuildEnvironmentVariable.ENVVAR_PREPEND);
 
 		} else if (variableName.equalsIgnoreCase(ENV_LANG)) {
 			// Workaround for not being able to select encoding for CDT console -> change codeset to Latin1

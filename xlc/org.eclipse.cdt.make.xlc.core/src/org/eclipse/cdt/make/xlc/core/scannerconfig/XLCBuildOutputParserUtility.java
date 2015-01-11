@@ -20,9 +20,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.IMarkerGenerator;
 import org.eclipse.cdt.core.ProblemMarkerInfo;
-import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.make.core.MakeCorePlugin;
 import org.eclipse.cdt.make.internal.core.MakeMessages;
 import org.eclipse.cdt.make.internal.core.scannerconfig.util.CCommandDSC;
@@ -62,11 +62,7 @@ public class XLCBuildOutputParserUtility {
     }
     public static IPath convertCygpath(IPath path) {
     	String pathStr = path.toPortableString();
-    	String newPathStr = pathStr;
-    	try {
-    		newPathStr = Cygwin.cygwinToWindowsPath(pathStr);
-		} catch (UnsupportedOperationException e) {
-		}
+    	String newPathStr = Cygwin.cygwinToWindowsPath(pathStr);
     	IPath newPath = Path.fromPortableString(newPathStr);
     	return newPath;
 	}

@@ -13,9 +13,8 @@ package org.eclipse.cdt.managedbuilder.internal.language.settings.providers;
 
 import java.net.URI;
 
+import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.core.EFSExtensionProvider;
-import org.eclipse.cdt.internal.core.Cygwin;
-import org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin;
 import org.eclipse.cdt.managedbuilder.language.settings.providers.GCCBuiltinSpecsDetector;
 
 /**
@@ -44,12 +43,8 @@ public class GCCBuiltinSpecsDetectorCygwin extends GCCBuiltinSpecsDetector {
 		@Override
 		public String getMappedPath(URI locationURI) {
 			String windowsPath = null;
-			try {
-				String cygwinPath = getPathFromURI(locationURI);
-				windowsPath = Cygwin.cygwinToWindowsPath(cygwinPath, envPathValue);
-			} catch (Exception e) {
-				ManagedBuilderCorePlugin.log(e);
-			}
+			String cygwinPath = getPathFromURI(locationURI);
+			windowsPath = Cygwin.cygwinToWindowsPath(cygwinPath);
 			if (windowsPath != null) {
 				return windowsPath;
 			}
