@@ -170,7 +170,7 @@ public class AddressRulerColumn extends DisassemblyRulerColumn implements IVerti
 		BigInteger address = doc.getAddressOfLine(line);
 		SourceFileInfo info = doc.getSourceInfo(address);
 		if (info != null) {
-			return info.fFile.getFullPath().toOSString();
+			return info.fFile.getFullPath().toPortableString();
 		}
 		return null;
 	}

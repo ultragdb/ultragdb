@@ -181,7 +181,7 @@ public class CGlobalVariableManager implements ICGlobalVariableManager {
 				if (descriptor != null) {
 					Element child = document.createElement( GLOBAL_VARIABLE );
 					child.setAttribute( ATTR_GLOBAL_VARIABLE_NAME, descriptor.getName() );
-					child.setAttribute( ATTR_GLOBAL_VARIABLE_PATH, descriptor.getPath().toOSString() );
+					child.setAttribute( ATTR_GLOBAL_VARIABLE_PATH, descriptor.getPath().toPortableString() );
 					node.appendChild( child );
 				}
 			}

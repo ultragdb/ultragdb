@@ -37,7 +37,7 @@ public class DefaultGnuToolFactory implements IGnuToolFactory {
 		Addr2line addr2line = null;
 		if (addr2LinePath != null && !addr2LinePath.isEmpty()) {
 			try {
-				addr2line = new Addr2line(addr2LinePath.toOSString(), path.toOSString());
+				addr2line = new Addr2line(addr2LinePath.toPortableString(), path.toPortableString());
 			} catch (IOException e1) {
 			}
 		}
@@ -53,7 +53,7 @@ public class DefaultGnuToolFactory implements IGnuToolFactory {
 		CPPFilt cppfilt = null;
 		if (cppFiltPath != null && ! cppFiltPath.isEmpty()) {
 			try {
-				cppfilt = new CPPFilt(cppFiltPath.toOSString());
+				cppfilt = new CPPFilt(cppFiltPath.toPortableString());
 			} catch (IOException e2) {
 			}
 		}
@@ -70,7 +70,7 @@ public class DefaultGnuToolFactory implements IGnuToolFactory {
 		Objdump objdump = null;
 		if (objdumpPath != null && !objdumpPath.isEmpty()) {
 			try {
-				objdump = new Objdump(objdumpPath.toOSString(), objdumpArgs, path.toOSString());
+				objdump = new Objdump(objdumpPath.toPortableString(), objdumpArgs, path.toPortableString());
 			} catch (IOException e1) {
 			}
 		}
@@ -87,7 +87,7 @@ public class DefaultGnuToolFactory implements IGnuToolFactory {
 		NM nm = null;
 		if (nmPath != null && !nmPath.isEmpty()) {
 			try {
-				nm = new NM(nmPath.toOSString(), nmArgs, path.toOSString());
+				nm = new NM(nmPath.toPortableString(), nmArgs, path.toPortableString());
 			} catch (IOException e1) {
 			}
 		}

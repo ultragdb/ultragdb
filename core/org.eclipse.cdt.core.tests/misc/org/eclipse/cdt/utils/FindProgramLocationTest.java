@@ -160,7 +160,7 @@ public class FindProgramLocationTest extends TestCase {
 		file3_exe.createNewFile();
 		assertTrue(file3_exe.exists());
 
-		String path1 = dir1.toOSString();
+		String path1 = dir1.toPortableString();
 		{
 			// file.com
 			IPath actual = PathUtil.findProgramLocation(name1, path1);
@@ -172,7 +172,7 @@ public class FindProgramLocationTest extends TestCase {
 			assertEquals(filePath2_exe, actual);
 		}
 		
-		String path12 = dir1.toOSString() + PATH_SEPARATOR + dir2.toOSString();
+		String path12 = dir1.toPortableString() + PATH_SEPARATOR + dir2.toPortableString();
 		{
 			// dir2/file.exe is preferred to dir1/file
 			IPath actual = PathUtil.findProgramLocation(name3, path12);

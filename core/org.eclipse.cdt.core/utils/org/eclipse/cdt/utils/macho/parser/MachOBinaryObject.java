@@ -98,9 +98,9 @@ public class MachOBinaryObject extends BinaryObjectAdapter {
 		IPath path = getPath();
 		if (path != null) {
 			if (header != null) {
-				return new MachOHelper(path.toOSString(), header.getObjectDataOffset());
+				return new MachOHelper(path.toPortableString(), header.getObjectDataOffset());
 			} else {
-				return new MachOHelper(path.toOSString());
+				return new MachOHelper(path.toPortableString());
 			}
 		}
 		return null;
@@ -402,7 +402,7 @@ public class MachOBinaryObject extends BinaryObjectAdapter {
 	public Object getAdapter(Class adapter) {
 		if (adapter.equals(MachO.class)) {
 			try {
-				return new MachO(getPath().toOSString());
+				return new MachO(getPath().toPortableString());
 			} catch (IOException e) {
 			}
 		}

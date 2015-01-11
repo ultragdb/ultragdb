@@ -1316,7 +1316,7 @@ public class BuildDescription implements IBuildDescription {
 						String inExt = resPath.getFileExtension();
 						String outExt = tool.getOutputExtension(inExt);
 						if (namePattern == null || namePattern.length() == 0) {
-							namePattern = /*outDirPath.toOSString() +*/ outputPrefix + IManagedBuilderMakefileGenerator.WILDCARD;
+							namePattern = /*outDirPath.toPortableString() +*/ outputPrefix + IManagedBuilderMakefileGenerator.WILDCARD;
 							if (outExt != null && outExt.length() > 0) {
 								namePattern += DOT + outExt;
 							}
@@ -1329,7 +1329,7 @@ public class BuildDescription implements IBuildDescription {
 							namePatternPath = Path.fromOSString(namePattern);
 							//  If only a file name is specified, add the relative path of this output directory
 							if (namePatternPath.segmentCount() == 1) {
-								namePatternPath = Path.fromOSString(/*outDirPath.toOSString() +*/ namePatternPath.toString());
+								namePatternPath = Path.fromOSString(/*outDirPath.toPortableString() +*/ namePatternPath.toString());
 							}
 						}
 
@@ -1361,7 +1361,7 @@ public class BuildDescription implements IBuildDescription {
 			//     the output extension.
 
 				String outPrefix = tool.getOutputPrefix();
-				IPath outFullPath = Path.fromOSString(outDirPath.toOSString() + outPrefix + WILDCARD);
+				IPath outFullPath = Path.fromOSString(outDirPath.toPortableString() + outPrefix + WILDCARD);
 				IPath outLocation;
 				String inExt = resPath.getFileExtension();
 				String outExt = tool.getOutputExtension(inExt);
@@ -1380,7 +1380,7 @@ public class BuildDescription implements IBuildDescription {
 				IInputType type = action.getInputType();
 				String ext = null;
 				if(type != null){
-					String location = buildRc.getLocation().toOSString();
+					String location = buildRc.getLocation().toPortableString();
 					for (String srcExt : type.getSourceExtensions(tool)) {
 						if(location.endsWith(srcExt)){
 							ext = srcExt;
@@ -1448,7 +1448,7 @@ public class BuildDescription implements IBuildDescription {
 		//  Get the input file name
 		String fileName = sourceLocation.removeFileExtension().lastSegment();
 		//  Replace the % with the file name
-		String outName = outPath.toOSString().replaceAll("%", fileName); //$NON-NLS-1$
+		String outName = outPath.toPortableString().replaceAll("%", fileName); //$NON-NLS-1$
 		return Path.fromOSString(outName);
 	}
 

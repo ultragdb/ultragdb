@@ -581,7 +581,7 @@ public class AutotoolsNewMakeGenerator extends MarkerGenerator {
 			else if (makefileCvsExists()) {
 				String[] makeargs = new String[1];
 				IPath makeCmd = builder.getBuildCommand();
-				makeargs[0] = "-f" + getMakefileCVSPath().toOSString(); //$NON-NLS-1$
+				makeargs[0] = "-f" + getMakefileCVSPath().toPortableString(); //$NON-NLS-1$
 				rc = runCommand(makeCmd,
 						getProjectLocation().append(buildDir),
 						makeargs,
@@ -1381,7 +1381,7 @@ public class AutotoolsNewMakeGenerator extends MarkerGenerator {
 		targetElem.setAttribute(TARGET_ATTR_ID, target.getTargetBuilderID());
 		targetElem.setAttribute(TARGET_ATTR_PATH, target.getContainer().getProjectRelativePath().toString());
 		ICStorageElement elem = targetElem.createChild(TARGET_COMMAND);
-		elem.setValue(target.getBuildAttribute(IMakeCommonBuildInfo.BUILD_COMMAND, builder.getBuildCommand().toOSString()));
+		elem.setValue(target.getBuildAttribute(IMakeCommonBuildInfo.BUILD_COMMAND, builder.getBuildCommand().toPortableString()));
 
 		String targetAttr = target.getBuildAttribute(IMakeCommonBuildInfo.BUILD_ARGUMENTS, null);
 		if ( targetAttr != null) {

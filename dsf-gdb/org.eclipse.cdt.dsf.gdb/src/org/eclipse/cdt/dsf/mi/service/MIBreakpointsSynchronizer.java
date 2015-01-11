@@ -1253,7 +1253,7 @@ public class MIBreakpointsSynchronizer extends AbstractDsfService implements IMI
             		String fileName = null;
         			if (isSuccess()) {
                 		if (getData() instanceof IFile) {
-                			fileName = ((IFile)getData()).getLocation().toOSString();
+                			fileName = ((IFile)getData()).getLocation().toPortableString();
                 		}
                 		else if (getData() instanceof File) {
                 			fileName = ((File)getData()).getAbsolutePath();
@@ -1261,7 +1261,7 @@ public class MIBreakpointsSynchronizer extends AbstractDsfService implements IMI
                 		else if (getData() instanceof ITranslationUnit) {
                 			IPath location = ((ITranslationUnit)getData()).getLocation();
                 			if (location != null)
-                				fileName = location.toOSString();
+                				fileName = location.toPortableString();
                 		}
                 		else if (getData() instanceof LocalFileStorage) {
                 			fileName = ((LocalFileStorage)getData()).getFile().getAbsolutePath();

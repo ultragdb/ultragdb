@@ -436,7 +436,7 @@ public class CProjectHelper {
 	 */
 	public static File freshDir() throws IOException, CoreException {
 		IPath folderPath = ResourceHelper.createTemporaryFolder();
-		File folder = new File(folderPath.toOSString());
+		File folder = new File(folderPath.toPortableString());
 		Assert.assertTrue(folder.exists());
 		Assert.assertTrue(folder.isDirectory());
 		Assert.assertTrue(folder.canWrite());

@@ -65,7 +65,7 @@ public class CDebugHelper {
 	 */	
 	public static ICDISession createSession(String exe, ICProject project) throws IOException, MIException, CModelException  {
 		MIPlugin mi;
-		String  workspacePath= Platform.getLocation().toOSString();
+		String  workspacePath= Platform.getLocation().toPortableString();
 		ICDISession session;
 		mi=MIPlugin.getDefault();
 		
@@ -78,7 +78,7 @@ public class CDebugHelper {
 			return(null);        
 		}
 		
-		session=mi.createCSession(null, MIVersion.MI1, new File(workspacePath +bins[0].getPath().toOSString()), new File("."), null, null);
+		session=mi.createCSession(null, MIVersion.MI1, new File(workspacePath +bins[0].getPath().toPortableString()), new File("."), null, null);
 		return(session);
 	}
 	

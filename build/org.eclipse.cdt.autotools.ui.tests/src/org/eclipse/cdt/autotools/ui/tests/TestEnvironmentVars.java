@@ -62,7 +62,7 @@ public class TestEnvironmentVars extends AbstractTest {
 		// sleep a bit and look for it...give up after 40 seconds
 		for (int i = 0; i < 80; ++i) {
 			bot.sleep(500);
-			f = new File(path.append("config.status").toOSString());
+			f = new File(path.append("config.status").toPortableString());
 			if (f.exists()) {
 				break;
 			}
@@ -107,7 +107,7 @@ public class TestEnvironmentVars extends AbstractTest {
 		// sleep a bit and look for it...give up after 40 seconds
 		for (int i = 0; i < 80; ++i) {
 			bot.sleep(500);
-			f = new File(path.append("config.status").toOSString());
+			f = new File(path.append("config.status").toPortableString());
 			if (f.exists()) {
 				break;
 			}
@@ -131,7 +131,7 @@ public class TestEnvironmentVars extends AbstractTest {
 		IPath path = checkProject().getLocation();
 		// Create a fake configure script which prints out the values of
 		// envvars some_var1, some_var2, and some_var3
-		File f = new File(path.append("fake_configure").toOSString());
+		File f = new File(path.append("fake_configure").toPortableString());
 		BufferedWriter w = new BufferedWriter(new FileWriter(f));
 		w.append("echo VAR1 is ${some_var1}");
 		w.newLine();

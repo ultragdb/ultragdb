@@ -62,8 +62,8 @@ public class MapEntrySourceContainerType extends AbstractSourceContainerTypeDele
 		MapEntrySourceContainer entry = (MapEntrySourceContainer) container;
 		Document document = newDocument();
 		Element element = document.createElement(ELEMENT_NAME);
-		element.setAttribute(BACKEND_PATH, entry.getBackendPath().toOSString());
-		element.setAttribute(LOCAL_PATH, entry.getLocalPath().toOSString());
+		element.setAttribute(BACKEND_PATH, entry.getBackendPath().toPortableString());
+		element.setAttribute(LOCAL_PATH, entry.getLocalPath().toPortableString());
 		document.appendChild(element);
 		return serializeDocument(document);
 	}

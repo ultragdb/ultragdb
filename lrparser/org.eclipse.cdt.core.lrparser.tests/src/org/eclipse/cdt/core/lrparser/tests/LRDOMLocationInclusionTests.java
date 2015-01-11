@@ -47,7 +47,7 @@ public class LRDOMLocationInclusionTests extends DOMLocationInclusionTests {
 		// TODO: total freakin hack! the test suite needs to be refactored
 		ILanguage lang = code.getName().endsWith("cc") ? getCPPLanguage() : getCLanguage(); //$NON-NLS-1$
 		
-		CodeReader codeReader = new CodeReader(code.getLocation().toOSString());
+		CodeReader codeReader = new CodeReader(code.getLocation().toPortableString());
 		IASTTranslationUnit tu = lang.getASTTranslationUnit(codeReader, s, SavedCodeReaderFactory.getInstance(), null, ILanguage.OPTION_ADD_COMMENTS, ParserUtil.getParserLogService());
 
 		return tu;

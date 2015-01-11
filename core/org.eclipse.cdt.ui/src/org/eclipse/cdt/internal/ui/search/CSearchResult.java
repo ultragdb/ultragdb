@@ -95,7 +95,7 @@ public class CSearchResult extends AbstractTextSearchResult implements IEditorMa
 			}
 		}
 		if (path != null)
-			return path.toOSString();
+			return path.toPortableString();
 
 		return null;
 	}
@@ -142,7 +142,7 @@ public class CSearchResult extends AbstractTextSearchResult implements IEditorMa
 	@Override
 	public Match[] computeContainedMatches(AbstractTextSearchResult result, IFile file) {
 		try {
-			String filename = file.getLocation().toOSString();
+			String filename = file.getLocation().toPortableString();
 			return computeContainedMatches(result, filename);
 		} catch (CoreException e) {
 			CUIPlugin.log(e);

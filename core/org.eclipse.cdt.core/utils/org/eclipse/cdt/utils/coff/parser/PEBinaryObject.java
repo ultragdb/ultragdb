@@ -108,9 +108,9 @@ public class PEBinaryObject extends BinaryObjectAdapter {
 		if (adapter.equals(PE.class)) {
 			try {
 				if (header != null) {
-					return new PE(getPath().toOSString(), header.getObjectDataOffset());
+					return new PE(getPath().toPortableString(), header.getObjectDataOffset());
 				}
-				return new PE(getPath().toOSString());
+				return new PE(getPath().toPortableString());
 			} catch (IOException e) {
 			}
 		}
@@ -125,9 +125,9 @@ public class PEBinaryObject extends BinaryObjectAdapter {
 	
 	protected PE getPE() throws IOException {
 		if (header != null) {
-			return new PE(getPath().toOSString(), header.getObjectDataOffset());
+			return new PE(getPath().toPortableString(), header.getObjectDataOffset());
 		}
-		return new PE(getPath().toOSString());
+		return new PE(getPath().toPortableString());
 	}
 
 	protected void loadAll() throws IOException {

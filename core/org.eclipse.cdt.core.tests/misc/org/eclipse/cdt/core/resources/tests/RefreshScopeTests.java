@@ -530,7 +530,7 @@ public class RefreshScopeTests extends TestCase {
 
 	private void createTestFile(IPath path) {
 		path = path.append("foo.cpp");
-		File file = new File(path.toOSString());
+		File file = new File(path.toPortableString());
 		try {
 			file.createNewFile();
 		} catch (IOException e) {

@@ -57,9 +57,9 @@ public class TestMakeTargets extends AbstractTest {
 		assertTrue(project != null);
 		IPath path = project.getLocation();
 		path = path.append("config.status");
-		File f = new File(path.toOSString());
+		File f = new File(path.toPortableString());
 		assertTrue(f.exists());
-		f = new File(path.toOSString());
+		f = new File(path.toPortableString());
 		assertTrue(f.exists());
 
 		projectExplorer.bot().tree().getTreeItem(projectName).select();

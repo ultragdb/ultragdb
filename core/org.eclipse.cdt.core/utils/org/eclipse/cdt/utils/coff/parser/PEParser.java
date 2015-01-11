@@ -56,7 +56,7 @@ public class PEParser extends AbstractCExtension implements IBinaryParser {
 			}
 			// the hints may have to small, keep on trying.
 			if (attribute == null) {
-				attribute = PE.getAttribute(path.toOSString());
+				attribute = PE.getAttribute(path.toPortableString());
 			}
 	
 			if (attribute != null) {

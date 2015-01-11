@@ -104,7 +104,7 @@ public class HeaderFileReferenceAdjuster {
 		this.movedFiles = movedFiles;
 		this.movedFilesByLocation = new HashMap<>();
 		for (Entry<IFile, IFile> entry : movedFiles.entrySet()) {
-			this.movedFilesByLocation.put(entry.getKey().getLocation().toOSString(), entry.getValue().getLocation());
+			this.movedFilesByLocation.put(entry.getKey().getLocation().toPortableString(), entry.getValue().getLocation());
 		}
 	}
 

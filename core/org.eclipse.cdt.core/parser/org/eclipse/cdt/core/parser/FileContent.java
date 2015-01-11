@@ -93,14 +93,14 @@ public abstract class FileContent {
 			return create(tu.getElementName(), tu.getContents());
 		
 		if (tu.isWorkingCopy()) {
-			return create(location.toOSString(), tu.getContents());
+			return create(location.toPortableString(), tu.getContents());
 		}
 		
 		IResource res= tu.getResource();
 		if (res instanceof IFile) {
 			return create((IFile) res);
 		}
-		return createForExternalFileLocation(location.toOSString());
+		return createForExternalFileLocation(location.toPortableString());
 	}
 	
 	/**

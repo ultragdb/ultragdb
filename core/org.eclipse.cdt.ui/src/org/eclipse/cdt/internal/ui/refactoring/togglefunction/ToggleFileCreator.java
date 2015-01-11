@@ -82,7 +82,7 @@ public class ToggleFileCreator {
 	}
 	
 	private String getPath() {
-		String result = context.getSelectionFile().getFullPath().toOSString();
+		String result = context.getSelectionFile().getFullPath().toPortableString();
 		return result.replaceAll("(\\w)*\\.(\\w)*", EMPTY_STRING); //$NON-NLS-1$
 	}
 }

@@ -298,7 +298,7 @@ public class PDOMMacro implements IIndexMacro, IPDOMBinding, IASTFileLocation {
 			// how to implement this. Existing implementations return
 			// the absolute path, so here we attempt to do the same.
 			IPath location = IndexLocationFactory.getAbsolutePath(file.getLocation());
-			return location != null ? location.toOSString() : null;
+			return location != null ? location.toPortableString() : null;
 		} catch (CoreException e) {
 			CCorePlugin.log(e);
 		}

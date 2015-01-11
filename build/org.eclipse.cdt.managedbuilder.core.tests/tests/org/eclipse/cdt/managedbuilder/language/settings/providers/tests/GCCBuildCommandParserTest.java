@@ -973,7 +973,7 @@ public class GCCBuildCommandParserTest extends BaseTestCase {
 		parser.processLine("gcc "
 				+ "-I/path0 "
 				+ "-I. "
-				+ '"' + file.getLocation().toOSString() + '"');
+				+ '"' + file.getLocation().toPortableString() + '"');
 		parser.shutdown();
 
 		// check entries
@@ -1004,7 +1004,7 @@ public class GCCBuildCommandParserTest extends BaseTestCase {
 		parser.processLine("gcc "
 				+ "-I/path0 "
 				+ "-I. "
-				+ '"' + file.getLocation().toOSString() + '"');
+				+ '"' + file.getLocation().toPortableString() + '"');
 		parser.shutdown();
 
 		// check entries
@@ -1774,7 +1774,7 @@ public class GCCBuildCommandParserTest extends BaseTestCase {
 		parser.processLine("gcc "
 				+ "-I. "
 				+ "-Iinclude "
-				+ '"' + file.getLocation().toOSString() + '"'
+				+ '"' + file.getLocation().toPortableString() + '"'
 			);
 		parser.shutdown();
 

@@ -75,7 +75,7 @@ public class LocalAttachLaunchDelegate extends AbstractCLaunchDelegate {
 					abort(LaunchMessages.AbstractCLaunchDelegate_Program_file_does_not_exist,
 							new FileNotFoundException(
 									NLS.bind(LaunchMessages.AbstractCLaunchDelegate_PROGRAM_PATH_not_found,
-											exePath.toOSString())),
+											exePath.toPortableString())),
 							ICDTLaunchConfigurationConstants.ERR_PROGRAM_NOT_EXIST);
 				}
 				exeFile = verifyBinary(cproject, exePath);

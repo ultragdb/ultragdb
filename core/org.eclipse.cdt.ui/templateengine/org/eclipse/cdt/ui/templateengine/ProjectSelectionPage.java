@@ -274,7 +274,7 @@ public class ProjectSelectionPage extends WizardPage implements IWizardDataPage 
 		ICProject cProject= chooseProject();
 		if (cProject != null) {
 			IPath path= cProject.getProject().getFullPath().makeRelative();
-			projectName = path.toOSString();
+			projectName = path.toPortableString();
 			projectNameText.setText(projectName);
 		}
 	}

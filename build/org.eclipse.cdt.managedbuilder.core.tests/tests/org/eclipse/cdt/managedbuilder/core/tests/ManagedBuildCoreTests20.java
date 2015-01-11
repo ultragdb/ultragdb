@@ -112,8 +112,8 @@ public class ManagedBuildCoreTests20 extends TestCase {
 	/**
 	 * Convert path to OS specific representation
 	 */
-	private String toOSString(String path) {
-		return new Path(path).toOSString();
+	private String toPortableString(String path) {
+		return new Path(path).toPortableString();
 	}
 
 
@@ -249,9 +249,9 @@ public class ManagedBuildCoreTests20 extends TestCase {
 					toOSLocation("/opt/gnome/include"),
 					toOSLocation("C:\\home\\tester/include"),
 					// relative paths from MBS will make 3 entries
-					project.getLocation().append("includes").toOSString(),
-					buildCWD.append("includes").toOSString(),
-					toOSString("includes"),
+					project.getLocation().append("includes").toPortableString(),
+					buildCWD.append("includes").toPortableString(),
+					toPortableString("includes"),
 					"/usr/gnu/include", // Not converted to OS string due to being flagged as ICSettingEntry.RESOLVED
 			};
 		} else {
@@ -261,13 +261,13 @@ public class ManagedBuildCoreTests20 extends TestCase {
 					toOSLocation("/opt/gnome/include"),
 					// on unix "C:\\home\\tester/include" is relative path
 					// looks like nonsense but it this way due to MBS converting entry to keep "Sub Config/C:\\home\\tester/include" in its storage
-					project.getLocation().append("Sub Config/C:\\home\\tester/include").toOSString(),
-					buildCWD.append("Sub Config/C:\\home\\tester/include").toOSString(),
-					toOSString("Sub Config/C:\\home\\tester/include"),
+					project.getLocation().append("Sub Config/C:\\home\\tester/include").toPortableString(),
+					buildCWD.append("Sub Config/C:\\home\\tester/include").toPortableString(),
+					toPortableString("Sub Config/C:\\home\\tester/include"),
 					// relative paths from MBS will make 3 entries
-					project.getLocation().append("includes").toOSString(),
-					buildCWD.append("includes").toOSString(),
-					toOSString("includes"),
+					project.getLocation().append("includes").toPortableString(),
+					buildCWD.append("includes").toPortableString(),
+					toPortableString("includes"),
 					"/usr/gnu/include", // Not converted to OS string due to being flagged as ICSettingEntry.RESOLVED
 			};
 		}

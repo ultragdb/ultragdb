@@ -602,7 +602,7 @@ public class CMainTab extends CAbstractMainTab {
 
 		if (binary != null) {
 			String path;
-			path = binary.getResource().getProjectRelativePath().toOSString();
+			path = binary.getResource().getProjectRelativePath().toPortableString();
 			config.setAttribute(ICDTLaunchConfigurationConstants.ATTR_PROGRAM_NAME, path);
 			if (!renamed)
 			{

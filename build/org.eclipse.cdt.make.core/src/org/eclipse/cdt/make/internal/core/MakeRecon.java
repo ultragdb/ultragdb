@@ -80,7 +80,7 @@ public class MakeRecon extends OutputStream {
 	private void invokeMakeRecon() {
 		int i = 0;
 		String[] array = new String[args.length + 1];
-		array[0] = make.toOSString();
+		array[0] = make.toPortableString();
 		System.arraycopy(args, 0, array, 1, args.length);
 		Process p;
 		try {

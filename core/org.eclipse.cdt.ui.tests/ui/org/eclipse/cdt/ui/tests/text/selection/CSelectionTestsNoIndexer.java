@@ -175,9 +175,9 @@ public class CSelectionTestsNoIndexer extends BaseUITestCase {
         //Obtain file handle
         IFile file = project.getProject().getFile(fileName);
         
-        IPath location = new Path(project.getLocation().removeLastSegments(1).toOSString() + File.separator + fileName);
+        IPath location = new Path(project.getLocation().removeLastSegments(1).toPortableString() + File.separator + fileName);
         
-        File linkFile = new File(location.toOSString());
+        File linkFile = new File(location.toPortableString());
         if (!linkFile.exists()) {
         	linkFile.createNewFile();
         }
@@ -198,7 +198,7 @@ public class CSelectionTestsNoIndexer extends BaseUITestCase {
     
     protected IFile importFileInsideLinkedFolder(String fileName, String contents, String folderName) throws Exception{
     	IFolder linkedFolder = project.getFolder(folderName);
-    	IPath folderLocation = new Path(project.getLocation().toOSString() + File.separator + folderName + "_this_is_linked"); //$NON-NLS-1$
+    	IPath folderLocation = new Path(project.getLocation().toPortableString() + File.separator + folderName + "_this_is_linked"); //$NON-NLS-1$
     	IFolder actualFolder = project.getFolder(folderName + "_this_is_linked"); //$NON-NLS-1$
     	if (!actualFolder.exists())
     		actualFolder.create(true, true, monitor);
@@ -228,9 +228,9 @@ public class CSelectionTestsNoIndexer extends BaseUITestCase {
     	//Obtain file handle
         IFile file = project.getProject().getFile(fileName);
         
-        IPath location = new Path(folder.getLocation().toOSString() + File.separator + fileName);
+        IPath location = new Path(folder.getLocation().toPortableString() + File.separator + fileName);
         
-        File linkFile = new File(location.toOSString());
+        File linkFile = new File(location.toPortableString());
         if (!linkFile.exists()) {
         	linkFile.createNewFile();
         }

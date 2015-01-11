@@ -121,9 +121,9 @@ public class BaseSelectionTestsIndexer extends BaseUITestCase {
         //Obtain file handle
         IFile file = fCProject.getProject().getFile(fileName);
         
-        IPath location = new Path(fCProject.getProject().getLocation().removeLastSegments(1).toOSString() + File.separator + fileName); 
+        IPath location = new Path(fCProject.getProject().getLocation().removeLastSegments(1).toPortableString() + File.separator + fileName); 
         
-        File linkFile = new File(location.toOSString());
+        File linkFile = new File(location.toPortableString());
         if (linkFile.exists()) {
         	linkFile.delete();
         }
@@ -150,7 +150,7 @@ public class BaseSelectionTestsIndexer extends BaseUITestCase {
     protected IFile importFileInsideLinkedFolder(String fileName, String contents, String folderName) throws Exception{
     	IProject project= fCProject.getProject();
     	IFolder linkedFolder = project.getFolder(folderName);
-    	IPath folderLocation = new Path(project.getLocation().toOSString() + File.separator + folderName + "_this_is_linked"); //$NON-NLS-1$
+    	IPath folderLocation = new Path(project.getLocation().toPortableString() + File.separator + folderName + "_this_is_linked"); //$NON-NLS-1$
     	IFolder actualFolder = project.getFolder(folderName + "_this_is_linked"); //$NON-NLS-1$
     	if (!actualFolder.exists())
     		actualFolder.create(true, true, monitor);

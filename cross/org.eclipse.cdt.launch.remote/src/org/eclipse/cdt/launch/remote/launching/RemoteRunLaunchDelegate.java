@@ -264,7 +264,7 @@ public class RemoteRunLaunchDelegate extends AbstractCLaunchDelegate {
 								if (process != null) {
 									iprocess = DebugPlugin.newProcess(launch,
 											process, renderProcessLabel(exePath
-													.toOSString()),
+													.toPortableString()),
 													getDefaultProcessMap());
 								}
 								CDIDebugModel.newDebugTarget(launch, project
@@ -304,7 +304,7 @@ public class RemoteRunLaunchDelegate extends AbstractCLaunchDelegate {
 							remoteExePath, arguments, new SubProgressMonitor(
 									monitor, 20));
 					DebugPlugin.newProcess(launch, remoteProcess,
-							renderProcessLabel(exePath.toOSString()));
+							renderProcessLabel(exePath.toPortableString()));
 				} catch (CoreException e) {
 					throw e;
 				} finally {

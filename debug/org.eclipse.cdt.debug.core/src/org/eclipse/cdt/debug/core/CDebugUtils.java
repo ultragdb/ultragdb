@@ -409,7 +409,7 @@ public class CDebugUtils {
 		if (!isEmpty(handle)) {
 			IPath path = new Path(handle);
 			if (path.isValidPath(handle)) {
-				label.append(qualified ? path.toOSString() : path.lastSegment());
+				label.append(qualified ? path.toPortableString() : path.lastSegment());
 			}
 		}
 		return label;
@@ -689,7 +689,7 @@ public class CDebugUtils {
 				throwCoreException(
 						DebugCoreMessages.getString("CDebugUtils.Program_file_does_not_exist"), //$NON-NLS-1$
 						new FileNotFoundException(
-								DebugCoreMessages.getFormattedString("CDebugUtils.PROGRAM_PATH_not_found", programPath.toOSString())), //$NON-NLS-1$
+								DebugCoreMessages.getFormattedString("CDebugUtils.PROGRAM_PATH_not_found", programPath.toPortableString())), //$NON-NLS-1$
 						ICDTLaunchConfigurationConstants.ERR_PROGRAM_NOT_EXIST);
 			}
 		}

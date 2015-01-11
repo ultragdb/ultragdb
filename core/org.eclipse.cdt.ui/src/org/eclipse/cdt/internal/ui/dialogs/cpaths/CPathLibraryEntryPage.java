@@ -472,7 +472,7 @@ public class CPathLibraryEntryPage extends CPathBasePage {
 			IPath path= filterPath.append(fileNames[i]).makeAbsolute();	
 			elems[i]= newCPLibraryElement(path);
 		}
-		//fDialogSettings.put(IUIConstants.DIALOGSTORE_LASTEXTJAR, filterPath.toOSString());
+		//fDialogSettings.put(IUIConstants.DIALOGSTORE_LASTEXTJAR, filterPath.toPortableString());
 		
 		return elems;	
 	}

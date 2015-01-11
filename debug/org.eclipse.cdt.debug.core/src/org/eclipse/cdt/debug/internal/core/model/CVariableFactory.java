@@ -49,7 +49,7 @@ public class CVariableFactory {
 
 			@Override
 			public String toString() {
-				return MessageFormat.format( "{0}::{1}", new String[] { getPath().toOSString(), getName() } ); //$NON-NLS-1$
+				return MessageFormat.format( "{0}::{1}", new String[] { getPath().toPortableString(), getName() } ); //$NON-NLS-1$
 			}
 
 		    @Override

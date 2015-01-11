@@ -88,7 +88,7 @@ public abstract class IncludesTestBase extends BaseTestCase {
 				CProjectHelper.createCCProject(getName() + System.currentTimeMillis(), "bin", IPDOMManager.ID_NO_INDEXER) :
 				CProjectHelper.createCProject(getName() + System.currentTimeMillis(), "bin", IPDOMManager.ID_NO_INDEXER);
 		IProject project = cproject.getProject();
-		TestScannerProvider.sLocalIncludes = new String[] { project.getLocation().toOSString() };
+		TestScannerProvider.sLocalIncludes = new String[] { project.getLocation().toPortableString() };
 		QualifiedName scannerInfoProviderName = new QualifiedName(CCorePlugin.PLUGIN_ID, SCANNER_INFO_PROVIDER2_NAME);
 		project.setSessionProperty(scannerInfoProviderName, new TestScannerProvider());
 

@@ -468,7 +468,7 @@ public abstract class CSearchQuery implements ISearchQuery {
 					if (editorInput instanceof IPathEditorInput) {
 						IPathEditorInput pathEditorInput = (IPathEditorInput) editorInput;
 						IPath path = pathEditorInput.getPath();
-						if (fullPath.equals(path.toOSString())) {
+						if (fullPath.equals(path.toPortableString())) {
 							dirtyTextEditor = textEditor;
 							break;
 						}

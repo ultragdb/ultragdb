@@ -100,7 +100,7 @@ public class CodeReaderCache implements ICodeReaderCache {
                     if (delta.getResource().getType() == IResource.PROJECT || delta.getResource().getType() == IResource.FOLDER) {
                         removeKeys(delta.getAffectedChildren());
                     } else if (delta.getResource() instanceof IFile && ((IFile)delta.getResource()).getLocation() != null) {
-                        removeKey(((IFile)delta.getResource()).getLocation().toOSString());
+                        removeKey(((IFile)delta.getResource()).getLocation().toPortableString());
                     }
                 }
             }

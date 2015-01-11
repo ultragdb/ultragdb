@@ -64,7 +64,7 @@ public class GDBJtagLaunchConfigurationDelegate extends AbstractCLaunchDelegate 
 					Process process = targets[i].getProcess();
 					IProcess iprocess = null;
 					if ( process != null ) {
-						iprocess = DebugPlugin.newProcess(launch, process, renderProcessLabel(exePath != null ? exePath.toOSString() : "???"),
+						iprocess = DebugPlugin.newProcess(launch, process, renderProcessLabel(exePath != null ? exePath.toPortableString() : "???"),
 								getDefaultProcessMap() );
 					}
 					CDIDebugModel.newDebugTarget(launch, project.getProject(), targets[i],

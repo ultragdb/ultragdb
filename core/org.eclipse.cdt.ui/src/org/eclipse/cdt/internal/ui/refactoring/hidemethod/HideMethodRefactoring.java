@@ -202,7 +202,7 @@ public class HideMethodRefactoring extends CRefactoring {
 				if (editorInput instanceof ITranslationUnitEditorInput) {
 					ITranslationUnit tu =
 							CModelUtil.toWorkingCopy(((ITranslationUnitEditorInput) editorInput).getTranslationUnit());
-					searchedFiles.add(tu.getLocation().toOSString());
+					searchedFiles.add(tu.getLocation().toPortableString());
 					IASTTranslationUnit ast = getAST(tu, loopProgress.newChild(1));
 					for (IASTName reference : ast.getReferences(methodBinding)) {
 						if (!AccessContext.isAccessible(methodBinding, ICPPMember.v_private, reference)) {
@@ -222,7 +222,7 @@ public class HideMethodRefactoring extends CRefactoring {
 				}
 				ITranslationUnit tu = CoreModelUtil.findTranslationUnitForLocation(
 						name.getFile().getLocation(), null);
-				if (searchedFiles.add(tu.getLocation().toOSString())) {
+				if (searchedFiles.add(tu.getLocation().toPortableString())) {
 					IASTTranslationUnit ast = getAST(tu, loopProgress.newChild(1));
 					for (IASTName reference : ast.getReferences(methodBinding)) {
 						if (!AccessContext.isAccessible(methodBinding, ICPPMember.v_private, reference)) {

@@ -108,7 +108,7 @@ public class ProcessLauncher {
 	 * @param _show If true, print command line before launching
 	 */
 	public ProcessLauncher(IPath _cmd, String[] args, String[] _env, IPath _cwd, OutputStream _out, OutputStream _err, IProgressMonitor _monitor, boolean _show) {
-		cmd = createCmdArray(_cmd.toOSString(), args);
+		cmd = createCmdArray(_cmd.toPortableString(), args);
 		env = _env;
 		cwd = _cwd.toFile(); 
 		out = _out;

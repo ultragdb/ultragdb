@@ -100,7 +100,7 @@ public class CDirectorySourceLocation implements IDirectorySourceLocation {
 				IPath path = new Path(name);
 				if (path.segmentCount() > 1 && getAssociation().isPrefixOf(path)) {
 					path = getDirectory().append(path.removeFirstSegments(getAssociation().segmentCount()));
-					result = findFileByAbsolutePath(path.toOSString());
+					result = findFileByAbsolutePath(path.toPortableString());
 				}
 			}
 		}
@@ -281,9 +281,9 @@ public class CDirectorySourceLocation implements IDirectorySourceLocation {
             document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             Element node = document.createElement(ELEMENT_NAME);
             document.appendChild(node);
-    		node.setAttribute(ATTR_DIRECTORY, getDirectory().toOSString());
+    		node.setAttribute(ATTR_DIRECTORY, getDirectory().toPortableString());
     		if (getAssociation() != null)
-    			node.setAttribute(ATTR_ASSOCIATION, getAssociation().toOSString());
+    			node.setAttribute(ATTR_ASSOCIATION, getAssociation().toPortableString());
     		node.setAttribute(ATTR_SEARCH_SUBFOLDERS, Boolean.valueOf(searchSubfolders()).toString());
 			return CDebugUtils.serializeDocument(document);
         } catch (ParserConfigurationException e) {
@@ -293,7 +293,7 @@ public class CDirectorySourceLocation implements IDirectorySourceLocation {
 		} catch (TransformerException e) {
 			ex = e;
 		}
-		abort(NLS.bind(InternalSourceLookupMessages.CDirectorySourceLocation_0, getDirectory().toOSString()), ex);
+		abort(NLS.bind(InternalSourceLookupMessages.CDirectorySourceLocation_0, getDirectory().toPortableString()), ex);
 		// execution will not reach here
 		return null;
 	}
@@ -386,8 +386,8 @@ public class CDirectorySourceLocation implements IDirectorySourceLocation {
 		int segCount = prefix.segmentCount();
 		if (segCount >= path.segmentCount())
 			return false;
-		String prefixString = prefix.toOSString();
-		String pathString = path.removeLastSegments(path.segmentCount() - segCount).toOSString();
+		String prefixString = prefix.toPortableString();
+		String pathString = path.removeLastSegments(path.segmentCount() - segCount).toPortableString();
 		return prefixString.equalsIgnoreCase(pathString);
 	}
 
@@ -461,7 +461,7 @@ public class CDirectorySourceLocation implements IDirectorySourceLocation {
 	 */
 	@Override
 	public String toString() {
-		return (getDirectory() != null) ? getDirectory().toOSString() : ""; //$NON-NLS-1$
+		return (getDirectory() != null) ? getDirectory().toPortableString() : ""; //$NON-NLS-1$
 	}
 
 	/* (non-Javadoc)

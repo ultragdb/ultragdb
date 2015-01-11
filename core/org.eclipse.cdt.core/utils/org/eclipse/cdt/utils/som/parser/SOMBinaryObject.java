@@ -144,9 +144,9 @@ public class SOMBinaryObject extends BinaryObjectAdapter {
 
 	protected SOM getSOM() throws IOException {
 		if (header != null) {
-			return new SOM(getPath().toOSString(), header.getObjectDataOffset());
+			return new SOM(getPath().toPortableString(), header.getObjectDataOffset());
 		}
-		return new SOM(getPath().toOSString());
+		return new SOM(getPath().toPortableString());
 	}
 
 	protected void loadAll() throws IOException {

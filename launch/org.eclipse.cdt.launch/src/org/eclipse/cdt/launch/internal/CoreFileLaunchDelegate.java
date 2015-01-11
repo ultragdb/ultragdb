@@ -94,7 +94,7 @@ public class CoreFileLaunchDelegate extends AbstractCLaunchDelegate {
 						Process process = targets[i].getProcess();
 						IProcess iprocess = null;
 						if (process != null) {
-							iprocess = DebugPlugin.newProcess(launch, process, renderProcessLabel(exePath.toOSString()), getDefaultProcessMap());
+							iprocess = DebugPlugin.newProcess(launch, process, renderProcessLabel(exePath.toPortableString()), getDefaultProcessMap());
 						}
 						CDIDebugModel.newDebugTarget(launch, project.getProject(), targets[i], renderTargetLabel(debugConfig),
 								iprocess, exeFile, true, false, false);

@@ -105,7 +105,7 @@ public class AddIncludeAction extends TextEditorAction {
 			public IStatus runOnAST(ILanguage lang, IASTTranslationUnit ast) throws CoreException {
 				if (ast == null) {
 					return CUIPlugin.createErrorStatus(
-							NLS.bind(CEditorMessages.AddInclude_ast_not_available, tu.getPath().toOSString()));
+							NLS.bind(CEditorMessages.AddInclude_ast_not_available, tu.getPath().toPortableString()));
 				}
 
 				IIndex index= CCorePlugin.getIndexManager().getIndex(tu.getCProject(),

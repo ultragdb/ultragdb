@@ -1269,7 +1269,7 @@ public abstract class CPPSelectionTestsAnyIndexer extends BaseSelectionTestsInde
         assertTrue(def instanceof IASTName);
         assertEquals("func", def.toString());
         IASTFileLocation location = def.getFileLocation();
-        assertEquals(hfile.getLocation().toOSString(), location.getFileName());
+        assertEquals(hfile.getLocation().toPortableString(), location.getFileName());
         assertEquals(hoffset, location.getNodeOffset());
 	}
 	

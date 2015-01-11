@@ -99,10 +99,10 @@ public class CodeReaderCacheTest extends CDOMTestBase {
 		ICodeReaderCache cache = getCodeReaderCache();
 		cache.flush();
 		assertEquals(0, cache.getCurrentSpace());
-		CodeReader reader = cache.get(file.getLocation().toOSString());
+		CodeReader reader = cache.get(file.getLocation().toPortableString());
 		assertNotNull(reader);
 		assertEquals(1, cache.getCurrentSpace());
-		assertEquals(String.valueOf(reader.filename), file.getLocation().toOSString());
+		assertEquals(String.valueOf(reader.filename), file.getLocation().toPortableString());
 		cache.remove(String.valueOf(reader.filename));
 		assertEquals(0, cache.getCurrentSpace());
 	}

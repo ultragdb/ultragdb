@@ -169,7 +169,7 @@ public class CommandLauncher implements ICommandLauncher {
 		String envPathValue = (String) getEnvironment().get(PATH_ENV);
 
 		Boolean isFound = null;
-		String command = commandPath.toOSString();
+		String command = commandPath.toPortableString();
 		fCommandArgs = constructCommandArray(command, args);
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			// Handle cygwin link

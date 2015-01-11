@@ -161,7 +161,7 @@ public class CProjectSourceLocation implements IProjectSourceLocation {
 			IPath path = folders[i].getLocation();
 			if (path != null) {
 				path = path.append(fileName);
-				File file = new File(path.toOSString());
+				File file = new File(path.toPortableString());
 				if (file.exists()) {
 					IFile[] wsFiles = ResourceLookup.findFilesForLocation(path);
 					for (int j = 0; j < wsFiles.length; ++j) {

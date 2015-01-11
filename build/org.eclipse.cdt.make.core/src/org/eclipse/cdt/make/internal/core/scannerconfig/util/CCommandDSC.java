@@ -84,7 +84,7 @@ public class CCommandDSC {
 		{
 			String value = option.getValue();
 			value = CygpathTranslator.translateIncludePaths(project, Collections.singletonList(value)).get(0);
-			value = SafeStringInterner.safeIntern(makeRelative(project, new Path(value)).toOSString());
+			value = SafeStringInterner.safeIntern(makeRelative(project, new Path(value)).toPortableString());
 			option = new KVStringPair(option.getKey(), value);
 		}
 		compilerCommand.add(option);
@@ -411,7 +411,7 @@ public class CCommandDSC {
 		List<String> list = new ArrayList<String>(paths.size());
 		for (Iterator<String> iter=paths.iterator(); iter.hasNext(); ) {
 			String path = iter.next();
-			path = makeRelative(project, new Path(path)).toOSString();
+			path = makeRelative(project, new Path(path)).toPortableString();
 			list.add(SafeStringInterner.safeIntern(path));
 		}
 		return list;
@@ -429,10 +429,10 @@ public class CCommandDSC {
 			if (res != null) {
 				ppath = res.getLocation();
 				if (ppath != null) {
-					path = ppath.toOSString();
+					path = ppath.toPortableString();
 				}
 			}
-//			path = new File(project.getLocation().toOSString(), path).getAbsolutePath();
+//			path = new File(project.getLocation().toPortableString(), path).getAbsolutePath();
 		}
 		return SafeStringInterner.safeIntern(path);
 	}

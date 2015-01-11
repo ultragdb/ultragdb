@@ -183,8 +183,8 @@ public class PathMappingDialog extends TitleAreaDialog {
 
 		private void initialize() {
 			if (fEntry != null) {
-				fBackendPathText.setText(fEntry.getBackendPath().toOSString());
-				fLocalPathText.setText(fEntry.getLocalPath().toOSString());
+				fBackendPathText.setText(fEntry.getBackendPath().toPortableString());
+				fLocalPathText.setText(fEntry.getLocalPath().toPortableString());
 			}
 		}
 

@@ -142,7 +142,7 @@ public class GCCPerFileSCDProfilePage extends AbstractDiscoveryPage {
                     IPath filePath = new Path(fileName);
                     filterPath = filePath.removeLastSegments(1).makeAbsolute();
                 }
-                dialog.setFilterPath(filterPath.toOSString());
+                dialog.setFilterPath(filterPath.toPortableString());
                 String res = dialog.open();
                 if (res == null) {
                     return;

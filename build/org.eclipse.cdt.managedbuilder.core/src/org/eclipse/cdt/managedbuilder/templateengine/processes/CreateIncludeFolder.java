@@ -50,7 +50,7 @@ public class CreateIncludeFolder extends CreateSourceFolder {
 		try {
 			IConfiguration[] configs = info.getManagedProject().getConfigurations();
 			for (IConfiguration config : configs) {
-				String path = projectHandle.getFolder(targetPath).getLocation().toOSString();
+				String path = projectHandle.getFolder(targetPath).getLocation().toPortableString();
 				IToolChain toolChain = config.getToolChain();
 				setIncludePathOptionForConfig(path, config, toolChain.getOptions(), toolChain);
 

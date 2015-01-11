@@ -586,7 +586,7 @@ public class ManagedBuildTestHelper {
 
 					final IWorkspace workspace = ResourcesPlugin.getWorkspace();
 					final IWorkspaceRoot root = workspace.getRoot();
-					final String workspaceLocation = root.getLocation().toOSString();
+					final String workspaceLocation = root.getLocation().toPortableString();
 					final String platformFileSeparator = System.getProperty("file.separator", Character.toString(IPath.SEPARATOR)); //$NON-NLS-1$
 
 					for (int j=0;j<testSubstrings.length;j++) {

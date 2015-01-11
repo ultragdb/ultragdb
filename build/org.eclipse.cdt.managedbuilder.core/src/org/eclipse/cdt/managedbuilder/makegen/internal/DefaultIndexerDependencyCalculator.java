@@ -27,7 +27,7 @@ public class DefaultIndexerDependencyCalculator implements IManagedDependencyGen
 	public IResource[] findDependencies(IResource resource, IProject project) {
 //		PathCollector pathCollector = new PathCollector();
 //		ICSearchScope scope = SearchEngine.createWorkspaceScope();
-//		CSearchPattern pattern = CSearchPattern.createPattern(resource.getLocation().toOSString(), ICSearchConstants.INCLUDE, ICSearchConstants.REFERENCES, ICSearchConstants.EXACT_MATCH, true);
+//		CSearchPattern pattern = CSearchPattern.createPattern(resource.getLocation().toPortableString(), ICSearchConstants.INCLUDE, ICSearchConstants.REFERENCES, ICSearchConstants.EXACT_MATCH, true);
 //		IndexManager indexManager = CCorePlugin.getDefault().getCoreModel().getIndexManager();
 //		indexManager.performConcurrentJob(
 //			new PatternSearchJob(

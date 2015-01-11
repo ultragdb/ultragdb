@@ -827,7 +827,7 @@ public abstract class AbstractBuiltinSpecsDetector extends AbstractLanguageSetti
 		IPath workingLocation = ManagedBuilderCorePlugin.getDefault().getStateLocation();
 		IPath fileLocation = workingLocation.append(specFileName);
 
-		specFile = new java.io.File(fileLocation.toOSString());
+		specFile = new java.io.File(fileLocation.toPortableString());
 		// will preserve spec file if it was already there otherwise will delete upon finishing
 		preserveSpecFile = specFile.exists();
 		if (!preserveSpecFile) {

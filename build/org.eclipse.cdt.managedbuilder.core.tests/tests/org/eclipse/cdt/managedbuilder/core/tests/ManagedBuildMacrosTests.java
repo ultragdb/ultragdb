@@ -363,7 +363,7 @@ public class ManagedBuildMacrosTests extends TestCase {
 ////				assertEquals(p0,     mp.getMacro(names[4], IBuildMacroProvider.CONTEXT_FILE, fd, flag).getStringValue());
 ////				assertEquals(p0+AUS, mp.getMacro(names[8], IBuildMacroProvider.CONTEXT_FILE, fd, flag).getStringValue());
 ////				assertEquals(p0,     mp.getMacro(names[9], IBuildMacroProvider.CONTEXT_FILE, fd, flag).getStringValue());
-//////				p0 = Path.fromOSString(p0).removeLastSegments(2).addTrailingSeparator().toOSString();
+//////				p0 = Path.fromOSString(p0).removeLastSegments(2).addTrailingSeparator().toPortableString();
 //////				p0 = dev0+KLMN+"x\\";
 //////				TestMacro.topBuildDir = Path.fromOSString(p0);
 ////				assertEquals(p0+EIN, mp.getMacro(names[3], IBuildMacroProvider.CONTEXT_FILE, fd, flag).getStringValue());

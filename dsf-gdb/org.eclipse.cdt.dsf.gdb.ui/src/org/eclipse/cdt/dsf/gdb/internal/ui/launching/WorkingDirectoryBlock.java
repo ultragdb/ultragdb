@@ -258,7 +258,7 @@ public class WorkingDirectoryBlock extends CLaunchConfigurationTab {
 			if (config != null) {
 				ICProject cProject = LaunchUtils.getCProject(config);
 				if (cProject != null) {
-					fWorkingDirText.setText("${workspace_loc:" + cProject.getPath().makeRelative().toOSString() + "}"); //$NON-NLS-1$ //$NON-NLS-2$
+					fWorkingDirText.setText("${workspace_loc:" + cProject.getPath().makeRelative().toPortableString() + "}"); //$NON-NLS-1$ //$NON-NLS-2$
 					return;
 				}
 			}

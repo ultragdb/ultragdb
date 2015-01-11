@@ -329,11 +329,11 @@ public abstract class AbstractDisassemblyBreakpointsTarget
 				if ( location == null ) {
 					return;
 				}
-				filePath = location.toOSString();
+				filePath = location.toPortableString();
 			}
 			else {
 				resource = ResourcesPlugin.getWorkspace().getRoot();
-				filePath = URIUtil.toPath( fileUri ).toOSString();
+				filePath = URIUtil.toPath( fileUri ).toPortableString();
 			}
 			int srcLine = selection.getSourceLine();
 			if (interactive) {

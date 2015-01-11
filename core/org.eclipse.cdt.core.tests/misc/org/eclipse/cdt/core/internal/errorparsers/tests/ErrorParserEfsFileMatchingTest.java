@@ -438,7 +438,7 @@ public class ErrorParserEfsFileMatchingTest extends TestCase {
 		ResourceHelper.createEfsFolder(fProject, "BuildDir", "null:/BuildDir");
 		ResourceHelper.createEfsFile(fProject, "BuildDir/testBuildDir.c", "null:/BuildDir/testBuildDir.c");
 
-		String buildDir = fProject.getLocation().append("BuildDir").toOSString();
+		String buildDir = fProject.getLocation().append("BuildDir").toPortableString();
 		parseOutput(fProject, buildDir, "testBuildDir.c:1:error");
 		assertEquals(1, errorList.size());
 

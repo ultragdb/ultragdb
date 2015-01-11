@@ -239,7 +239,7 @@ public class CommonTabLite extends AbstractLaunchConfigurationTab {
 				for (int i = 0; i < res.length; i++) {
 					proj = res[i].getProject();
 					if(proj != null && proj.isAccessible()) {
-						return proj.getFullPath().toOSString();
+						return proj.getFullPath().toPortableString();
 					}
 				}
 			}
@@ -271,7 +271,7 @@ public class CommonTabLite extends AbstractLaunchConfigurationTab {
 		Object[] results = dialog.getResult();	
 		if ((results != null) && (results.length > 0) && (results[0] instanceof IPath)) {
 			IPath path = (IPath)results[0];
-			String containerName = path.toOSString();
+			String containerName = path.toPortableString();
 			fSharedLocationText.setText(containerName);
 		}		
 	}
@@ -302,7 +302,7 @@ public class CommonTabLite extends AbstractLaunchConfigurationTab {
 			if (file != null) {
 				IContainer parent = file.getParent();
 				if (parent != null) {
-					containerName = parent.getFullPath().toOSString();
+					containerName = parent.getFullPath().toPortableString();
 				}
 			}
 			fSharedLocationText.setText(containerName);

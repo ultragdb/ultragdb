@@ -159,7 +159,7 @@ public class ModuleDetailPane extends AbstractDetailPane implements IAdaptable, 
 
         // Symbols file
         sb.append( ModulesMessages.getString( "ModulesView.7" ) ); //$NON-NLS-1$
-        sb.append( module.getSymbolsFileName().toOSString() );
+        sb.append( module.getSymbolsFileName().toPortableString() );
         sb.append( '\n' );
 
         // CPU

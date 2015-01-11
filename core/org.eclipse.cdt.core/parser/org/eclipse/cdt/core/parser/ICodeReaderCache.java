@@ -33,7 +33,7 @@ public interface ICodeReaderCache {
 	 * is created for the path and then returned.
 	 * 
 	 * @param key the path corresponding to the CodeReader, generally: 
-	 * fileToParse.getLocation().toOSString()
+	 * fileToParse.getLocation().toPortableString()
 	 * @return the CodeReader corresponding to the path specified by the key
 	 */
 	public CodeReader get(String key);
@@ -44,7 +44,7 @@ public interface ICodeReaderCache {
 	 * is created for the ifl and then returned.
 	 * 
 	 * @param key the path corresponding to the CodeReader, generally: 
-	 * fileToParse.getLocation().toOSString()
+	 * fileToParse.getLocation().toPortableString()
 	 * @return the CodeReader corresponding to the path specified by the key
 	 * @throws IOException 
 	 * @throws CoreException 

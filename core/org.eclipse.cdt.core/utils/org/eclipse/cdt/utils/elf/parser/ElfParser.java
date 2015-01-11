@@ -57,7 +57,7 @@ public class ElfParser extends AbstractCExtension implements IBinaryParser {
 	
 				//Take a second run at it if the data array failed.
 	 			if(attribute == null) {
-					attribute = Elf.getAttributes(path.toOSString());
+					attribute = Elf.getAttributes(path.toPortableString());
 	 			}
 	
 				if (attribute != null) {

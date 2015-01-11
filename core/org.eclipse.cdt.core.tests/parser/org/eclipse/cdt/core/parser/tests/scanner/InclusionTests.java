@@ -125,9 +125,9 @@ public class InclusionTests extends PreprocessorTestsBase {
     	importFile("one/three/bar/foo.h", i3Next); //$NON-NLS-1$
     	
     	String[] path = new String[3];
-    	path[0] = one.getLocation().toOSString();
-    	path[1] = oneTwo.getLocation().toOSString();
-    	path[2] = oneThree.getLocation().toOSString();
+    	path[0] = one.getLocation().toPortableString();
+    	path[1] = oneTwo.getLocation().toPortableString();
+    	path[2] = oneThree.getLocation().toPortableString();
     	
     	IScannerInfo scannerInfo = new ExtendedScannerInfo(Collections.EMPTY_MAP, path, new String[]{}, null);
     	FileContent reader= FileContent.create(base);
@@ -166,8 +166,8 @@ public class InclusionTests extends PreprocessorTestsBase {
     	importFile("two/foo.h", foo2); //$NON-NLS-1$
     	
     	String[] path = new String[2];
-    	path[0] = one.getLocation().toOSString();
-    	path[1] = two.getLocation().toOSString();
+    	path[0] = one.getLocation().toPortableString();
+    	path[1] = two.getLocation().toPortableString();
     	
     	IScannerInfo scannerInfo = new ExtendedScannerInfo(Collections.EMPTY_MAP, path, new String[]{}, null);
     	FileContent reader= FileContent.create(base);
@@ -204,8 +204,8 @@ public class InclusionTests extends PreprocessorTestsBase {
     	importFile( "three/foo.h", i3Next ); //$NON-NLS-1$
     	
     	String [] path = new String[2];
-    	path[0] = twof.getLocation().toOSString();
-       	path[1] = threef.getLocation().toOSString();
+    	path[0] = twof.getLocation().toPortableString();
+       	path[1] = threef.getLocation().toPortableString();
    	
     	IScannerInfo scannerInfo = new ExtendedScannerInfo( Collections.EMPTY_MAP, path, new String[]{}, null );
     	FileContent reader= FileContent.create(base);
@@ -216,8 +216,8 @@ public class InclusionTests extends PreprocessorTestsBase {
     	validateToken(IToken.tSEMI);
     	validateEOF();
     	 	
-    	path[0] = threef.getLocation().toOSString();
-       	path[1] = twof.getLocation().toOSString();
+    	path[0] = threef.getLocation().toPortableString();
+       	path[1] = twof.getLocation().toPortableString();
 
     	scannerInfo = new ExtendedScannerInfo( Collections.EMPTY_MAP, path, new String[]{}, null );
     	initializeScanner(reader, ParserLanguage.C, ParserMode.COMPLETE_PARSE, scannerInfo);
@@ -231,7 +231,7 @@ public class InclusionTests extends PreprocessorTestsBase {
     public void testBug91086() throws Exception {
         IFile inclusion = importFile( "file.h", "#define FOUND 666\n" ); //$NON-NLS-1$ //$NON-NLS-2$
         StringBuffer buffer = new StringBuffer( "#include \"" ); //$NON-NLS-1$
-        buffer.append( inclusion.getLocation().toOSString() );
+        buffer.append( inclusion.getLocation().toPortableString() );
         buffer.append( "\"\n"); //$NON-NLS-1$
         buffer.append( "int var = FOUND;\n"); //$NON-NLS-1$
     	IFile base = importFile( "base.cpp", buffer.toString() ); //$NON-NLS-1$

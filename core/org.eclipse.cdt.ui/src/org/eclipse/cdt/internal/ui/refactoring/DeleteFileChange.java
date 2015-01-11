@@ -50,7 +50,7 @@ public class DeleteFileChange extends Change {
 
 	@Override
 	public String getName() {
-		return Messages.DeleteFileChange_0 + path.toOSString(); 
+		return Messages.DeleteFileChange_0 + path.toPortableString(); 
 	}
 
 

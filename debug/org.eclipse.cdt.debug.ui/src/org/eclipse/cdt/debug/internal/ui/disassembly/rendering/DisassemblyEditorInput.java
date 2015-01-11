@@ -198,10 +198,10 @@ public class DisassemblyEditorInput implements IEditorInput {
 		if ( fBlock != null ) {
 			Object element = fBlock.getSourceElement();
 			if ( element instanceof IFile ) {
-				return ((IFile)element).getLocation().toOSString();
+				return ((IFile)element).getLocation().toPortableString();
 			}
 			else if ( element instanceof IStorage ) {
-				return ((IStorage)element).getFullPath().toOSString();
+				return ((IStorage)element).getFullPath().toPortableString();
 			}
 		}
 		return null;

@@ -759,7 +759,7 @@ public class GDBProcesses_7_0 extends AbstractDsfService
 				} else if (name.length() == 0) {
 					// Probably will not happen, but just in case...use the
 					// binary file name (absolute path)
-					name = fBackend.getProgramPath().toOSString();
+					name = fBackend.getProgramPath().toPortableString();
 					fDebuggedProcessesAndNames.put(id, name);
 				}
 			}

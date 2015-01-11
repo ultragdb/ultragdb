@@ -594,7 +594,7 @@ public class DwarfReader extends Dwarf implements ISymbolReader, ICompileOptions
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			fullName = Cygwin.cygwinToWindowsPath(pa.toPortableString());
 		} else {
-			fullName = pa.toOSString();
+			fullName = pa.toPortableString();
 		}
 		
 		if (!m_fileCollection.contains(fullName))

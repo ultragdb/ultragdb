@@ -115,11 +115,11 @@ class InclusionRequest {
 		for (int i = 0; i < fCandidatePaths.size(); i++) {
 			if (i != 0)
 				buf.append(", "); //$NON-NLS-1$
-			buf.append(fCandidatePaths.get(i).toOSString());
+			buf.append(fCandidatePaths.get(i).toPortableString());
 		}
 		if (fResolvedPath != null) {
 			buf.append(" represented by "); //$NON-NLS-1$
-			buf.append(fResolvedPath.toOSString());
+			buf.append(fResolvedPath.toPortableString());
 		}
 		return buf.toString();
 	}

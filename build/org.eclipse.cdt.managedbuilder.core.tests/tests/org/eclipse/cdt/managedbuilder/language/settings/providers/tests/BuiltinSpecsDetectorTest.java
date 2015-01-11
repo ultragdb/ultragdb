@@ -818,7 +818,7 @@ public class BuiltinSpecsDetectorTest extends BaseTestCase {
 		IPath folder = ResourceHelper.createWorkspaceFolder(getName());
 
 		// Create test "compiler"
-		java.io.File compiler = new java.io.File(folder.append("compiler").toOSString());
+		java.io.File compiler = new java.io.File(folder.append("compiler").toPortableString());
 		compiler.createNewFile();
 		assertTrue(compiler.exists());
 		String compilerPath = compiler.getAbsolutePath();
@@ -867,13 +867,13 @@ public class BuiltinSpecsDetectorTest extends BaseTestCase {
 
 		// Create test "compiler"
 		IPath compilerLocation = folder.append("compiler");
-		java.io.File compiler = new java.io.File(compilerLocation.toOSString());
+		java.io.File compiler = new java.io.File(compilerLocation.toPortableString());
 		compiler.createNewFile();
 		assertTrue(compiler.exists());
 		// Create symbolic link to the test compiler
 		IPath compilerLinkLocation = folder.append("compilerLink");
 		ResourceHelper.createSymbolicLink(compilerLinkLocation, compilerLocation);
-		java.io.File compilerLink = new java.io.File(compilerLinkLocation.toOSString());
+		java.io.File compilerLink = new java.io.File(compilerLinkLocation.toPortableString());
 		assertTrue(compilerLink.exists());
 		String compilerLinkPath = compilerLink.getAbsolutePath();
 

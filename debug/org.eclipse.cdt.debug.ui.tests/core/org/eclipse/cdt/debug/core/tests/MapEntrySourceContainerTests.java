@@ -35,6 +35,6 @@ public class MapEntrySourceContainerTests extends TestCase {
 
 		uncPath = "\\\\server\\path\\on\\server";
 		path = MapEntrySourceContainer.createPath(uncPath);
-		assertEquals(uncPath, path.toOSString());
+		assertEquals(uncPath, path.toPortableString());
 	}
 }

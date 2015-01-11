@@ -257,7 +257,7 @@ public class CProjectSourceContainer extends CompositeSourceContainer {
 			return false;
 		}
 		IPath path = fProject.getFullPath().append(name);
-		return ResourcesPlugin.getWorkspace().validatePath(path.toOSString(), IResource.FILE).isOK();
+		return ResourcesPlugin.getWorkspace().validatePath(path.toPortableString(), IResource.FILE).isOK();
 	}
 
 	/**

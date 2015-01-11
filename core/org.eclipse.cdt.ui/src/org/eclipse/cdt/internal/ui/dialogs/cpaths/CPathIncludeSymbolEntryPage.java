@@ -905,7 +905,7 @@ public class CPathIncludeSymbolEntryPage extends CPathIncludeSymbolEntryBasePage
 			dialog = new SelectPathInputDialog(
 					getShell(),
 					CPathEntryMessages.IncludeSymbolEntryPage_editExternal_title, 
-					CPathEntryMessages.IncludeSymbolEntryPage_editExternal_message, ((IPath)existing.getAttribute(CPElement.INCLUDE)).toOSString(), null); 
+					CPathEntryMessages.IncludeSymbolEntryPage_editExternal_message, ((IPath)existing.getAttribute(CPElement.INCLUDE)).toPortableString(), null); 
 		}
 		String newItem = null;
 		if (dialog.open() == Window.OK) {

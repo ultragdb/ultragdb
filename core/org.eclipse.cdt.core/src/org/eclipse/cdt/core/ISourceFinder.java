@@ -103,7 +103,7 @@ public interface ISourceFinder {
 	 * @param compilationPath
 	 *            the path of a file as found in the debug information
 	 * @return if we are able to find the file, the location on the host machine, otherwise null. The result
-	 *         is in OS specific format, along the lines of what {@link IPath#toOSString()} would return. Note
+	 *         is in OS specific format, along the lines of what {@link IPath#toPortableString()} would return. Note
 	 *         that by "on the host machine", we simply mean a specification that is <i>accessible by the host
 	 *         machine</i>. The file may be on a network drive, e.g., and thus not really be "local".
 	 */

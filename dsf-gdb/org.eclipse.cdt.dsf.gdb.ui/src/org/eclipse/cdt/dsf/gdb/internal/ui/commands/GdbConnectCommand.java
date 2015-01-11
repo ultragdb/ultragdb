@@ -497,7 +497,7 @@ public class GdbConnectCommand extends RefreshableDebugCommand implements IConne
     									if (fProcessNameToBinaryMap.isEmpty()) {
    											IPath binaryPath = backend.getProgramPath();
    											if (binaryPath != null && !binaryPath.isEmpty()) {
-   												fProcessNameToBinaryMap.put(binaryPath.lastSegment(), binaryPath.toOSString());
+   												fProcessNameToBinaryMap.put(binaryPath.lastSegment(), binaryPath.toPortableString());
    											}
     									}
     									

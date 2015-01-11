@@ -731,7 +731,7 @@ public abstract class IndexBindingResolutionTestBase extends BaseTestCase {
 
 			referenced = createReferencedContent();
 
-			TestScannerProvider.sIncludes= new String[] {referenced.getProject().getLocation().toOSString()};
+			TestScannerProvider.sIncludes= new String[] {referenced.getProject().getLocation().toPortableString()};
 			IFile references= TestSourceReader.createFile(cproject.getProject(), new Path("refs.c" + (cpp ? "pp" : "")), testData[1].toString());
 
 			IProject[] refs = new IProject[] {referenced.getProject()};

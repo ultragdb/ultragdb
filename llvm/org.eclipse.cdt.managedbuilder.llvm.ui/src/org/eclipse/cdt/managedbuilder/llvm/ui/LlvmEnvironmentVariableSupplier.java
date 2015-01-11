@@ -315,7 +315,7 @@ public class LlvmEnvironmentVariableSupplier implements
 		//get mingw bin path
 		IPath mingwBinPath = MingwEnvironmentVariableSupplier.getBinDir();
 		if (mingwBinPath != null) {
-			StringBuilder sB = new StringBuilder(mingwBinPath.toOSString());
+			StringBuilder sB = new StringBuilder(mingwBinPath.toPortableString());
 			// drop bin
 			if (sB.length() >= 3) {
 				sB.delete(sB.length() - 3, sB.length());

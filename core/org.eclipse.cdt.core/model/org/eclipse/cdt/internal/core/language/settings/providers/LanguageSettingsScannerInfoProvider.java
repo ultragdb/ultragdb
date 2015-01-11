@@ -218,7 +218,7 @@ public class LanguageSettingsScannerInfoProvider implements IScannerInfoProvider
 			IPath buildCWD = getBuildCWD(cfgDescription);
 			// again, we avoid using org.eclipse.core.runtime.Path for manipulations being careful
 			// to preserve "../" segments and not let collapsing them which is not correct for symbolic links.
-			location = buildCWD.addTrailingSeparator().toOSString() + location;
+			location = buildCWD.addTrailingSeparator().toPortableString() + location;
 		}
 		return location;
 	}
@@ -227,7 +227,7 @@ public class LanguageSettingsScannerInfoProvider implements IScannerInfoProvider
 	 * Convert path delimiters to OS representation avoiding using org.eclipse.core.runtime.Path
 	 * being careful to preserve "../" segments and not let collapsing them which is not correct for symbolic links.
 	 */
-	private String toOSString(String loc) {
+	private String toPortableString(String loc) {
 		// use OS file separators (i.e. '\' on Windows)
 		if (java.io.File.separatorChar != IPath.SEPARATOR) {
 			loc = loc.replace(IPath.SEPARATOR, java.io.File.separatorChar);
@@ -258,10 +258,10 @@ public class LanguageSettingsScannerInfoProvider implements IScannerInfoProvider
 					if (loc != null) {
 						if (checkBit(resolved.getFlags(), ICSettingEntry.FRAMEWORKS_MAC)) {
 							// handle frameworks, see IScannerInfo.getIncludePaths()
-							locations.add(loc.append(FRAMEWORK_HEADERS_INCLUDE).toOSString());
-							locations.add(loc.append(FRAMEWORK_PRIVATE_HEADERS_INCLUDE).toOSString());
+							locations.add(loc.append(FRAMEWORK_HEADERS_INCLUDE).toPortableString());
+							locations.add(loc.append(FRAMEWORK_PRIVATE_HEADERS_INCLUDE).toPortableString());
 						} else {
-							locations.add(loc.toOSString());
+							locations.add(loc.toPortableString());
 						}
 					}
 				}
@@ -275,16 +275,16 @@ public class LanguageSettingsScannerInfoProvider implements IScannerInfoProvider
 					if (loc != null) {
 						if (checkBit(entryPath.getFlags(), ICSettingEntry.FRAMEWORKS_MAC)) {
 							// handle frameworks, see IScannerInfo.getIncludePaths()
-							locations.add(toOSString(loc + FRAMEWORK_HEADERS_INCLUDE));
-							locations.add(toOSString(loc + FRAMEWORK_PRIVATE_HEADERS_INCLUDE));
+							locations.add(toPortableString(loc + FRAMEWORK_HEADERS_INCLUDE));
+							locations.add(toPortableString(loc + FRAMEWORK_PRIVATE_HEADERS_INCLUDE));
 						} else {
-							locations.add(toOSString(loc));
+							locations.add(toPortableString(loc));
 							String unresolvedPath = entryPath.getName();
 							if (!new Path(unresolvedPath).isAbsolute()) {
 								// add relative paths again for indexer to resolve from source file location
 								String expandedPath = expandVariables(unresolvedPath, cfgDescription);
 								if (!expandedPath.isEmpty() && !new Path(expandedPath).isAbsolute()) {
-									locations.add(toOSString(expandedPath));
+									locations.add(toPortableString(expandedPath));
 								}
 							}
 						}

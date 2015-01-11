@@ -94,7 +94,7 @@ public class IncludeUtil {
 	 * @return The path.
 	 */
 	public static String getPath(IIndexFileLocation fileLocation) {
-		return IndexLocationFactory.getAbsolutePath(fileLocation).toOSString();
+		return IndexLocationFactory.getAbsolutePath(fileLocation).toPortableString();
 	}
 
 	public static boolean isContainedInRegion(IASTNode node, IRegion region) {

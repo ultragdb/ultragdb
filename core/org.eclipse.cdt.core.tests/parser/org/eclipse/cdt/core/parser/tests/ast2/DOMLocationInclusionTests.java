@@ -64,8 +64,8 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
         buffer.append("};\n"); //$NON-NLS-1$
         buffer.append("#endif /*_INCLUDE_H_*/\n"); //$NON-NLS-1$
         String[] macros = { importFile(
-                "macro.h", "#define JEDEN 1\n#define DVA 2\n#define TRI 3\n").getLocation().toOSString() }; //$NON-NLS-1$ //$NON-NLS-2$
-        String[] includes = { importFile("include.h", buffer.toString()).getLocation().toOSString() }; //$NON-NLS-1$
+                "macro.h", "#define JEDEN 1\n#define DVA 2\n#define TRI 3\n").getLocation().toPortableString() }; //$NON-NLS-1$ //$NON-NLS-2$
+        String[] includes = { importFile("include.h", buffer.toString()).getLocation().toPortableString() }; //$NON-NLS-1$
         IExtendedScannerInfo scannerInfo = new ExtendedScannerInfo(
                 Collections.EMPTY_MAP, EMPTY_STRING_ARRAY, macros, includes);
         String code = "int main() { return BEAST * sizeof( Include ); } "; //$NON-NLS-1$
@@ -119,7 +119,7 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
 
         public TestParserConfiguration(IScannerInfo s, IFile code) {
             this.info = s;
-            String filename = code.getLocation().toOSString();
+            String filename = code.getLocation().toPortableString();
             IProject prj = code.getProject();
 
             // FIXME: ALAIN, for headers should we assume CPP ??
@@ -402,8 +402,8 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
         buffer.append("#endif /*_INCLUDE_H_*/\n"); //$NON-NLS-1$
         final String inc_file_code = buffer.toString();
         IFile include_file = importFile("include.h", inc_file_code); //$NON-NLS-1$ 
-        String[] macros = { imacro_file.getLocation().toOSString() };
-        String[] includes = { include_file.getLocation().toOSString() };
+        String[] macros = { imacro_file.getLocation().toPortableString() };
+        String[] includes = { include_file.getLocation().toPortableString() };
         IExtendedScannerInfo scannerInfo = new ExtendedScannerInfo(Collections.EMPTY_MAP, EMPTY_STRING_ARRAY, macros, includes);
         
         for (ParserLanguage p : ParserLanguage.values()) {
@@ -419,7 +419,7 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
             assertEquals(nodeLocations.length, 1);
             final IASTFileLocation flatLoc = INCLUDE_H.getName().getFileLocation();
             assertNotNull(flatLoc);
-            assertEquals(include_file.getLocation().toOSString(), flatLoc.getFileName());
+            assertEquals(include_file.getLocation().toPortableString(), flatLoc.getFileName());
             assertEquals(inc_file_code.indexOf("#define _INCLUDE_H_") + "#define ".length(), flatLoc.getNodeOffset()); //$NON-NLS-1$ //$NON-NLS-2$
             assertEquals("_INCLUDE_H_".length(), flatLoc.getNodeLength()); //$NON-NLS-1$
         }
@@ -465,8 +465,8 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
         buffer.append("#endif /*_INCLUDE_H_*/\n"); //$NON-NLS-1$
         final String inc_file_code = buffer.toString();
         IFile include_file = importFile("include.h", inc_file_code); //$NON-NLS-1$ 
-        String[] macros = { imacro_file.getLocation().toOSString() };
-        String[] includes = { include_file.getLocation().toOSString() };
+        String[] macros = { imacro_file.getLocation().toPortableString() };
+        String[] includes = { include_file.getLocation().toPortableString() };
         IExtendedScannerInfo scannerInfo = new ExtendedScannerInfo(
                 Collections.EMPTY_MAP, EMPTY_STRING_ARRAY, macros, includes);
         for (ParserLanguage p : ParserLanguage.values()) {
@@ -483,7 +483,7 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
             assertEquals(nodeLocations.length, 1);
             final IASTFileLocation flatLoc = INCLUDE_H.getName().getFileLocation();
             assertNotNull(flatLoc);
-            assertEquals(include_file.getLocation().toOSString(), flatLoc.getFileName());
+            assertEquals(include_file.getLocation().toPortableString(), flatLoc.getFileName());
             assertEquals(inc_file_code.indexOf("#define _INCLUDE_H_") + "#define ".length(), flatLoc.getNodeOffset()); //$NON-NLS-1$ //$NON-NLS-2$
             assertEquals("_INCLUDE_H_".length(), flatLoc.getNodeLength()); //$NON-NLS-1$
             for (int j = 0; j < macro_defs.length; ++j)
@@ -506,8 +506,8 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
         buffer.append("#endif /*_INCLUDE_H_*/\n"); //$NON-NLS-1$
         final String inc_file_code = buffer.toString();
         IFile include_file = importFile("include.h", inc_file_code); //$NON-NLS-1$ 
-        String[] macros = { imacro_file1.getLocation().toOSString(), imacro_file2.getLocation().toOSString() };
-        String[] includes = { include_file.getLocation().toOSString() };
+        String[] macros = { imacro_file1.getLocation().toPortableString(), imacro_file2.getLocation().toPortableString() };
+        String[] includes = { include_file.getLocation().toPortableString() };
         IExtendedScannerInfo scannerInfo = new ExtendedScannerInfo(Collections.EMPTY_MAP, EMPTY_STRING_ARRAY, macros, includes);
         
         for (ParserLanguage p : ParserLanguage.values()) {
@@ -524,7 +524,7 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
             assertEquals(nodeLocations.length, 1);
             final IASTFileLocation flatLoc = INCLUDE_H.getName().getFileLocation();
             assertNotNull(flatLoc);
-            assertEquals(include_file.getLocation().toOSString(), flatLoc.getFileName());
+            assertEquals(include_file.getLocation().toPortableString(), flatLoc.getFileName());
             assertEquals(inc_file_code.indexOf("#define _INCLUDE_H_") + "#define ".length(), flatLoc.getNodeOffset()); //$NON-NLS-1$ //$NON-NLS-2$
             assertEquals("_INCLUDE_H_".length(), flatLoc.getNodeLength()); //$NON-NLS-1$
             for (int j = 0; j < macro_defs.length; ++j)
@@ -541,7 +541,7 @@ public class DOMLocationInclusionTests extends AST2FileBasePluginTestCase {
         buffer.append("#define TARG <incs.h>\n");
         buffer.append("#include TARG\n"); 
         String code= buffer.toString();
-        IExtendedScannerInfo scannerInfo = new ExtendedScannerInfo(Collections.EMPTY_MAP, new String[] {incsh.getLocation().removeLastSegments(1).toOSString()}, null, null);
+        IExtendedScannerInfo scannerInfo = new ExtendedScannerInfo(Collections.EMPTY_MAP, new String[] {incsh.getLocation().removeLastSegments(1).toPortableString()}, null, null);
         
         for (ParserLanguage p : ParserLanguage.values()) {
             String filename = (p == ParserLanguage.CPP) ? "main.cc" : "main.c"; 

@@ -157,7 +157,7 @@ public class MapEntrySourceContainer extends AbstractSourceContainer {
 
 	@Override
 	public String getName() {
-		return MessageFormat.format("{0} - {1}", new Object[] { getBackendPath().toOSString(), getLocalPath().toOSString() }); //$NON-NLS-1$
+		return MessageFormat.format("{0} - {1}", new Object[] { getBackendPath().toPortableString(), getLocalPath().toPortableString() }); //$NON-NLS-1$
 	}
 
 	@Override

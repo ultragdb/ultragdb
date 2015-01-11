@@ -116,7 +116,7 @@ public class ElfBinaryObject extends BinaryObjectAdapter {
 		if (header != null) {
 			return new ElfHelper(header.getArchiveName(), header.getObjectDataOffset());
 		}
-		return new ElfHelper(getPath().toOSString());
+		return new ElfHelper(getPath().toPortableString());
 	}
 
 	protected void loadAll() throws IOException {
@@ -207,7 +207,7 @@ public class ElfBinaryObject extends BinaryObjectAdapter {
 	public Object getAdapter(Class adapter) {
 		if (adapter.equals(Elf.class)) {
 			try {
-				return new Elf(getPath().toOSString());
+				return new Elf(getPath().toPortableString());
 			} catch (IOException e) {
 			}
 		}

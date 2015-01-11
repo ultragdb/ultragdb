@@ -1080,7 +1080,7 @@ public class LanguageSettingsPersistenceProjectTests extends BaseTestCase {
 		}
 		{
 			// Move storage out of the way
-			String xmlStorageFileLocation = xmlStorageFilePrj.getLocation().toOSString();
+			String xmlStorageFileLocation = xmlStorageFilePrj.getLocation().toPortableString();
 			java.io.File xmlFile = new java.io.File(xmlStorageFileLocation);
 			xmlPrjOutOfTheWay = xmlStorageFileLocation+".out-of-the-way";
 			java.io.File xmlFileOut = new java.io.File(xmlPrjOutOfTheWay);
@@ -1134,7 +1134,7 @@ public class LanguageSettingsPersistenceProjectTests extends BaseTestCase {
 			assertEquals(0, providers.size());
 
 			// Move storage back
-			String xmlStorageFileLocation = xmlStorageFilePrj.getLocation().toOSString();
+			String xmlStorageFileLocation = xmlStorageFilePrj.getLocation().toPortableString();
 			java.io.File xmlFile = new java.io.File(xmlStorageFileLocation);
 			xmlFile.delete();
 			assertFalse("File "+xmlFile+ " still exist", xmlFile.exists());
@@ -1306,7 +1306,7 @@ public class LanguageSettingsPersistenceProjectTests extends BaseTestCase {
 		{
 			// Move storages out of the way
 			// project storage
-			String xmlStorageFilePrjLocation = xmlStorageFilePrj.getLocation().toOSString();
+			String xmlStorageFilePrjLocation = xmlStorageFilePrj.getLocation().toPortableString();
 			java.io.File xmlFile = new java.io.File(xmlStorageFilePrjLocation);
 			xmlPrjOutOfTheWay = xmlStorageFilePrjLocation+".out-of-the-way";
 			java.io.File xmlFileOut = new java.io.File(xmlPrjOutOfTheWay);
@@ -1365,7 +1365,7 @@ public class LanguageSettingsPersistenceProjectTests extends BaseTestCase {
 
 			// Move project storage back
 			project.open(null);
-			String xmlStorageFilePrjLocation = xmlStorageFilePrj.getLocation().toOSString();
+			String xmlStorageFilePrjLocation = xmlStorageFilePrj.getLocation().toPortableString();
 			java.io.File xmlFile = new java.io.File(xmlStorageFilePrjLocation);
 			xmlFile.delete();
 			assertFalse("File "+xmlFile+ " still exist", xmlFile.exists());

@@ -87,7 +87,7 @@ public class SavedCodeReaderFactory extends AbstractCodeReaderFactory {
     }
 
     public CodeReader createCodeReaderForTranslationUnit(ITranslationUnit tu) {
-		return new CodeReader(tu.getResource().getLocation().toOSString(), tu.getContents());
+		return new CodeReader(tu.getResource().getLocation().toPortableString(), tu.getContents());
     }
 
     /* (non-Javadoc)

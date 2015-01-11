@@ -113,9 +113,9 @@ public class ScannerProvider extends AbstractCExtension implements IScannerInfoP
 			String[] systemIncludes = new String[systemCount];
 			for (int i = 0, j = 0, k = 0; i < includeEntries.length; ++i) {
 				if (includeEntries[i].isSystemInclude()) {
-					systemIncludes[j++] = includeEntries[i].getFullIncludePath().toOSString();
+					systemIncludes[j++] = includeEntries[i].getFullIncludePath().toPortableString();
 				} else {
-					localIncludes[k++] = includeEntries[i].getFullIncludePath().toOSString();
+					localIncludes[k++] = includeEntries[i].getFullIncludePath().toPortableString();
 				}
 			}
 
@@ -123,7 +123,7 @@ public class ScannerProvider extends AbstractCExtension implements IScannerInfoP
 			IIncludeFileEntry[] includeFileEntries = CoreModel.getIncludeFileEntries(resPath);
 			String[] includeFiles = new String[includeFileEntries.length];
 			for (int i = 0; i < includeFiles.length; ++i) {
-				includeFiles[i] = includeFileEntries[i].getFullIncludeFilePath().toOSString();
+				includeFiles[i] = includeFileEntries[i].getFullIncludeFilePath().toPortableString();
 			}
 
 			// get the macros
@@ -137,7 +137,7 @@ public class ScannerProvider extends AbstractCExtension implements IScannerInfoP
 			IMacroFileEntry[] macroFileEntries = CoreModel.getMacroFileEntries(resPath);
 			String[] macroFiles = new String[macroFileEntries.length];
 			for (int i = 0; i < macroFiles.length; ++i) {
-				macroFiles[i] = macroFileEntries[i].getFullMacroFilePath().toOSString();
+				macroFiles[i] = macroFileEntries[i].getFullMacroFilePath().toPortableString();
 			}
 			return new ScannerInfo(systemIncludes, localIncludes, includeFiles, symbolMap, macroFiles);
 		} catch (CModelException e) {

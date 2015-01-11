@@ -53,7 +53,7 @@ public class MinGW {
 		if (envMinGWHomeValue != null && !envMinGWHomeValue.isEmpty()) {
 			IPath mingwBinDir = new Path(envMinGWHomeValue + "\\bin"); //$NON-NLS-1$
 			if (mingwBinDir.toFile().isDirectory()) {
-				rootValue = mingwBinDir.removeLastSegments(1).toOSString();
+				rootValue = mingwBinDir.removeLastSegments(1).toPortableString();
 			}
 		}
 
@@ -63,7 +63,7 @@ public class MinGW {
 			IPath installPath = new Path(Platform.getInstallLocation().getURL().getFile());
 			IPath mingwBinDir = installPath.append("mingw\\bin"); //$NON-NLS-1$
 			if (mingwBinDir.toFile().isDirectory()) {
-				rootValue = mingwBinDir.removeLastSegments(1).toOSString();
+				rootValue = mingwBinDir.removeLastSegments(1).toPortableString();
 			}
 		}
 
@@ -76,7 +76,7 @@ public class MinGW {
 		if (rootValue == null) {
 			IPath mingwBinDir = new Path("C:\\MinGW"); //$NON-NLS-1$
 			if (mingwBinDir.toFile().isDirectory()) {
-				rootValue = mingwBinDir.toOSString();
+				rootValue = mingwBinDir.toPortableString();
 			}
 		}
 
@@ -99,7 +99,7 @@ public class MinGW {
 			if (Platform.ARCH_X86_64.equals(Platform.getOSArch())) {
 				IPath gcc64Loc = PathUtil.findProgramLocation("x86_64-w64-mingw32-gcc.exe", envPath); //$NON-NLS-1$
 				if (gcc64Loc != null) {
-					mingwLocation  = gcc64Loc.removeLastSegments(2).toOSString();
+					mingwLocation  = gcc64Loc.removeLastSegments(2).toPortableString();
 				}
 			}
 
@@ -107,7 +107,7 @@ public class MinGW {
 			if (mingwLocation == null) {
 				IPath gccLoc = PathUtil.findProgramLocation("mingw32-gcc.exe", envPath); //$NON-NLS-1$
 				if (gccLoc != null) {
-					mingwLocation = gccLoc.removeLastSegments(2).toOSString();
+					mingwLocation = gccLoc.removeLastSegments(2).toPortableString();
 				}
 			}
 			mingwLocationCache.put(envPath, mingwLocation);
@@ -123,7 +123,7 @@ public class MinGW {
 		IPath installPath = new Path(Platform.getInstallLocation().getURL().getFile());
 		IPath installMsysBin = installPath.append("msys\\bin"); //$NON-NLS-1$
 		if (installMsysBin.toFile().isDirectory()) {
-			msysHome = installMsysBin.removeLastSegments(1).toOSString();
+			msysHome = installMsysBin.removeLastSegments(1).toPortableString();
 		}
 	
 		// Look under $MINGW_HOME
@@ -131,7 +131,7 @@ public class MinGW {
 			if (envMinGWHomeValue != null && !envMinGWHomeValue.isEmpty()) {
 				IPath minGwMsysBin = new Path(envMinGWHomeValue + "\\msys\\1.0\\bin"); //$NON-NLS-1$
 				if (minGwMsysBin.toFile().isDirectory()) {
-					msysHome = minGwMsysBin.removeLastSegments(1).toOSString();
+					msysHome = minGwMsysBin.removeLastSegments(1).toPortableString();
 				}
 			}
 		}
@@ -140,7 +140,7 @@ public class MinGW {
 		if (msysHome == null) {
 			IPath minGwMsysBin = new Path("C:\\MinGW\\msys\\1.0\\bin"); //$NON-NLS-1$
 			if (minGwMsysBin.toFile().isDirectory()) {
-				msysHome = minGwMsysBin.removeLastSegments(1).toOSString();
+				msysHome = minGwMsysBin.removeLastSegments(1).toPortableString();
 			}
 		}
 	
@@ -148,7 +148,7 @@ public class MinGW {
 		if (msysHome == null) {
 			IPath defaultMsysBin = new Path("C:\\msys\\1.0\\bin"); //$NON-NLS-1$
 			if (defaultMsysBin.toFile().isDirectory()) {
-				msysHome = defaultMsysBin.removeLastSegments(1).toOSString();
+				msysHome = defaultMsysBin.removeLastSegments(1).toPortableString();
 			}
 		}
 		return msysHome;

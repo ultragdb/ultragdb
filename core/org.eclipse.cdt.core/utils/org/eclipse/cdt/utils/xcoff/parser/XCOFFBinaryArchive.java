@@ -36,7 +36,7 @@ public class XCOFFBinaryArchive extends BinaryFile implements IBinaryArchive {
 	 */
 	public XCOFFBinaryArchive(IBinaryParser parser, IPath path) throws IOException {
 		super(parser, path, IBinaryFile.ARCHIVE);
-		new AR(path.toOSString()).dispose(); // check file type
+		new AR(path.toPortableString()).dispose(); // check file type
 		children = new ArrayList<IBinaryObject>(5);
 	}
 
@@ -50,7 +50,7 @@ public class XCOFFBinaryArchive extends BinaryFile implements IBinaryArchive {
 			children.clear();
 			AR ar = null;
 			try {
-				ar = new AR(getPath().toOSString());
+				ar = new AR(getPath().toPortableString());
 				AR.MemberHeader[] headers = ar.getHeaders();
 				for (int i = 0; i < headers.length; i++) {
 					IBinaryObject bin = new XCOFFBinaryObject(getBinaryParser(), getPath(), headers[i]);

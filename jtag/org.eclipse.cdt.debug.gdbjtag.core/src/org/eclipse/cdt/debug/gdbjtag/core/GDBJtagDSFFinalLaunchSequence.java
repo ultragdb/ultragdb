@@ -264,7 +264,7 @@ public class GDBJtagDSFFinalLaunchSequence extends FinalLaunchSequence {
 						CDebugUtils.getAttribute(getAttributes(), IGDBJtagConstants.ATTR_USE_PROJ_BINARY_FOR_SYMBOLS, IGDBJtagConstants.DEFAULT_USE_PROJ_BINARY_FOR_SYMBOLS)) {
 					IPath programFile = fGDBBackend.getProgramPath();
 					if (programFile != null) {
-						symbolsFileName = programFile.toOSString();
+						symbolsFileName = programFile.toPortableString();
 					}
 				}
 				else {
@@ -423,7 +423,7 @@ public class GDBJtagDSFFinalLaunchSequence extends FinalLaunchSequence {
 						CDebugUtils.getAttribute(getAttributes(), IGDBJtagConstants.ATTR_USE_PROJ_BINARY_FOR_IMAGE, IGDBJtagConstants.DEFAULT_USE_PROJ_BINARY_FOR_IMAGE)) {
 					IPath programFile = fGDBBackend.getProgramPath();
 					if (programFile != null) {
-						imageFileName = programFile.toOSString();
+						imageFileName = programFile.toPortableString();
 					}
 				}
 				else {

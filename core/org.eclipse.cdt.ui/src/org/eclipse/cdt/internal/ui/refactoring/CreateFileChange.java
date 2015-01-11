@@ -60,7 +60,7 @@ public class CreateFileChange extends ResourceChange {
 	@Override
 	public String getName() {
 		if (name == null) {
-			return NLS.bind(Messages.CreateFileChange_CreateFile, path.toOSString());
+			return NLS.bind(Messages.CreateFileChange_CreateFile, path.toPortableString());
 		}
 		return name;
 	}

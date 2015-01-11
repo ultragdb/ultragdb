@@ -1075,7 +1075,7 @@ public abstract class AbstractIndexerTask extends PDOMWriter {
 		Throwable th= null;
 		try {
 			if (fShowActivity) {
-				trace("Indexer: parsing " + path.toOSString()); //$NON-NLS-1$
+				trace("Indexer: parsing " + path.toPortableString()); //$NON-NLS-1$
 			}
 			pm.subTask(getMessage(MessageKind.parsingFileTask,
 					path.lastSegment(), path.removeLastSegments(1).toString()));

@@ -143,7 +143,7 @@ public class GlobalBuildConsoleManager extends BuildConsoleManager {
 	 */
 	public static String getDefaultConsoleLogLocation() {
 		IPath defaultLogLocation = CUIPlugin.getDefault().getStateLocation().append(GLOBAL_LOG_FILE);
-		return defaultLogLocation.toOSString();
+		return defaultLogLocation.toPortableString();
 	}
 
 	@Override

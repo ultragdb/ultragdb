@@ -67,7 +67,7 @@ public class LRSelectionParseTest extends AST2SelectionParseTest {
 
 		ILanguage language = lang.isCPP() ? getCPPLanguage() : getCLanguage();
     	
-		String fileName = file.getLocation().toOSString();
+		String fileName = file.getLocation().toPortableString();
 		ICodeReaderFactory fileCreator = SavedCodeReaderFactory.getInstance();
 		CodeReader reader = fileCreator.createCodeReaderForTranslationUnit(fileName);
 		

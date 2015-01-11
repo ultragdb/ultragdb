@@ -223,13 +223,13 @@ public class CBreakpointManager implements IBreakpointsListener, IBreakpointMana
 					if ( !isEmpty( file ) ) {
 						Object sourceElement = getSourceElement( file );
 						if ( sourceElement instanceof IFile ) {
-							sourceHandle = ((IFile)sourceElement).getLocation().toOSString();
+							sourceHandle = ((IFile)sourceElement).getLocation().toPortableString();
 						}
 						else if ( sourceElement instanceof IStorage ) {
-							sourceHandle = ((IStorage)sourceElement).getFullPath().toOSString();
+							sourceHandle = ((IStorage)sourceElement).getFullPath().toPortableString();
 						}
 						else if ( sourceElement instanceof ITranslationUnit ) {
-							sourceHandle = ((ITranslationUnit)sourceElement).getLocation().toOSString();
+							sourceHandle = ((ITranslationUnit)sourceElement).getLocation().toPortableString();
 						}
 						String bpSourceHandle = ((ICLineBreakpoint)breakpoint).getSourceHandle();
 						if ( sourceElement instanceof LocalFileStorage ) { // see bug #112008
@@ -1010,11 +1010,11 @@ public class CBreakpointManager implements IBreakpointsListener, IBreakpointMana
 			if (file != null && file.length() > 0) {
 				Object sourceElement = getSourceElement(file);
 				if ( sourceElement instanceof IFile ) {
-					sourceHandle = ((IFile)sourceElement).getLocation().toOSString();
+					sourceHandle = ((IFile)sourceElement).getLocation().toPortableString();
 					resource = (IResource)sourceElement;
 				}
 				else if ( sourceElement instanceof IStorage ) {
-					sourceHandle = ((IStorage)sourceElement).getFullPath().toOSString();
+					sourceHandle = ((IStorage)sourceElement).getFullPath().toPortableString();
 					resource = ResourcesPlugin.getWorkspace().getRoot();
 				}
 				else if ( sourceElement instanceof ITranslationUnit ) {
@@ -1471,7 +1471,7 @@ public class CBreakpointManager implements IBreakpointsListener, IBreakpointMana
 			if ( binary != null ) {
 				IPath path = binary.getPath();
 				if ( path != null ) {
-					return path.toOSString();
+					return path.toPortableString();
 				}
 			}
 		}

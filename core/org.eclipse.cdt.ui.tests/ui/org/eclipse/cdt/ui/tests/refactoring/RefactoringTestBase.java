@@ -92,7 +92,7 @@ public abstract class RefactoringTestBase extends BaseTestCase {
 		cproject = cpp ?
 				CProjectHelper.createCCProject(getName() + System.currentTimeMillis(), "bin", IPDOMManager.ID_NO_INDEXER) :
 				CProjectHelper.createCProject(getName() + System.currentTimeMillis(), "bin", IPDOMManager.ID_NO_INDEXER);
-		TestScannerProvider.sLocalIncludes = new String[] { cproject.getProject().getLocation().toOSString() };
+		TestScannerProvider.sLocalIncludes = new String[] { cproject.getProject().getLocation().toPortableString() };
 
 		Bundle bundle = CTestPlugin.getDefault().getBundle();
 		CharSequence[] testData = TestSourceReader.getContentsForTest(bundle, "ui", getClass(), getName(), 0);

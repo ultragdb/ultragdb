@@ -183,7 +183,7 @@ public class CommandBuilder implements IBuildModelBuilder {
 	protected String getCommandLine() {
 		StringBuffer buf = new StringBuffer();
 		if (fCmd != null) {
-			buf.append(fCmd.getCommand().toOSString());
+			buf.append(fCmd.getCommand().toPortableString());
 			String args[] = fCmd.getArgs();
 			for (int i = 0; i < args.length; i++) {
 				buf.append(' ');

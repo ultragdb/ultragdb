@@ -147,7 +147,7 @@ public class ProjectIndexerInputAdapter extends IndexerInputAdapter {
 	public String getASTPath(IIndexFileLocation ifl) {
 		IPath path= IndexLocationFactory.getAbsolutePath(ifl);
 		if (path != null) {
-			return path.toOSString();
+			return path.toPortableString();
 		}
 		return ifl.getURI().getPath();
 	}

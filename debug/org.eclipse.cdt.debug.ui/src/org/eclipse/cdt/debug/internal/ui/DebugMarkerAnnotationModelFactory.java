@@ -28,7 +28,7 @@ public class DebugMarkerAnnotationModelFactory extends ResourceMarkerAnnotationM
 		if ( file != null ) {
 			return super.createAnnotationModel( location );
 		}
-		File osFile = new File( location.toOSString() );
+		File osFile = new File( location.toPortableString() );
 		if ( osFile.exists() ) {
 			return new DebugMarkerAnnotationModel( osFile );
 		}

@@ -77,7 +77,7 @@ public class MingwEnvironmentVariableSupplier implements IConfigurationEnvironme
 					// If the variable is not defined still show it in the environment variables list as a hint to user
 					minGWHome = ""; //$NON-NLS-1$
 				}
-				return new BuildEnvVar(MinGW.ENV_MINGW_HOME, new Path(minGWHome).toOSString(), IBuildEnvironmentVariable.ENVVAR_REPLACE);
+				return new BuildEnvVar(MinGW.ENV_MINGW_HOME, new Path(minGWHome).toPortableString(), IBuildEnvironmentVariable.ENVVAR_REPLACE);
 			}
 			return null;
 
@@ -90,7 +90,7 @@ public class MingwEnvironmentVariableSupplier implements IConfigurationEnvironme
 					// If the variable is not defined still show it in the environment variables list as a hint to user
 					msysHome = ""; //$NON-NLS-1$
 				}
-				return new BuildEnvVar(MinGW.ENV_MSYS_HOME, new Path(msysHome).toOSString(), IBuildEnvironmentVariable.ENVVAR_REPLACE);
+				return new BuildEnvVar(MinGW.ENV_MSYS_HOME, new Path(msysHome).toPortableString(), IBuildEnvironmentVariable.ENVVAR_REPLACE);
 			}
 			return null;
 

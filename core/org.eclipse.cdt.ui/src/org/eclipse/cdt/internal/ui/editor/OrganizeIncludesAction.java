@@ -72,7 +72,7 @@ public class OrganizeIncludesAction extends TextEditorAction {
 			public IStatus runOnAST(ILanguage lang, IASTTranslationUnit ast) throws CoreException {
 				if (ast == null) {
 					return CUIPlugin.createErrorStatus(
-							NLS.bind(CEditorMessages.OrganizeIncludes_ast_not_available, tu.getPath().toOSString()));
+							NLS.bind(CEditorMessages.OrganizeIncludes_ast_not_available, tu.getPath().toPortableString()));
 				}
 
 				IIndex index= CCorePlugin.getIndexManager().getIndex(tu.getCProject(),

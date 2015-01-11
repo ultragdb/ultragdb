@@ -124,7 +124,7 @@ public class OpenIncludeAction extends Action {
 							// search in current directory
 							IPath location= include.getTranslationUnit().getLocation();
 							if (location != null) {
-								String currentDir= location.removeLastSegments(1).toOSString();
+								String currentDir= location.removeLastSegments(1).toPortableString();
 								findFile(new String[] { currentDir }, includeName, filesFound);
 							}
 							if (filesFound.isEmpty()) {
@@ -249,7 +249,7 @@ public class OpenIncludeAction extends Action {
 						IPath sPath = rPath.removeFirstSegments(numSegToRemove);
 						sPath = sPath.setDevice(name.getDevice());
 						if (Platform.getOS().equals(Platform.OS_WIN32) ?
-								sPath.toOSString().equalsIgnoreCase(name.toOSString()) :
+								sPath.toPortableString().equalsIgnoreCase(name.toPortableString()) :
 								sPath.equals(name)) {
 							list.add(rPath);
 						}

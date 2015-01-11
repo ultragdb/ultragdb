@@ -40,7 +40,7 @@ public class BasicElementLabels {
 	public static String getPathLabel(IPath path, boolean isOSPath) {
 		String label;
 		if (isOSPath) {
-			label= path.toOSString();
+			label= path.toPortableString();
 		} else {
 			label= path.makeRelative().toString();
 		}

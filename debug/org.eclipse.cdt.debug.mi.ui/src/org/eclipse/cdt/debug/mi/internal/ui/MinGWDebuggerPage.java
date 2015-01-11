@@ -54,7 +54,7 @@ public class MinGWDebuggerPage extends StandardGDBDebuggerPage {
 		        		IPath gdbPath = new Path(dirs[i]).append("gdb.exe"); //$NON-NLS-1$
 	        			File gdbFile = gdbPath.toFile();
 	        			if (gdbFile.exists())
-	        				return gdbPath.toOSString();
+	        				return gdbPath.toPortableString();
 		        	}	
 	        	}
 			}

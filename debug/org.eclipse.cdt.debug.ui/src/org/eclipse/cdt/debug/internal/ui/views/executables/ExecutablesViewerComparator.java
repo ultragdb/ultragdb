@@ -55,7 +55,7 @@ class ExecutablesViewerComparator extends ViewerComparator {
 			}
 
 			if (sortType == ExecutablesView.LOCATION) {
-				return getComparator().compare(getPath(e1).toOSString(), getPath(e2).toOSString()) * columnOrder;
+				return getComparator().compare(getPath(e1).toPortableString(), getPath(e2).toPortableString()) * columnOrder;
 			}
 
 			if (sortType == ExecutablesView.MODIFIED) {

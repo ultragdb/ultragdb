@@ -150,7 +150,7 @@ public class WinEnvironmentVariableSupplier
 		StringBuffer buff = new StringBuffer();
 		IPath includePaths[] = getIncludePath();
 		for (IPath path : includePaths) {
-			buff.append(path.toOSString()).append(';');
+			buff.append(path.toPortableString()).append(';');
 		}
 		addvar(new WindowsBuildEnvironmentVariable("INCLUDE", buff.toString(), IBuildEnvironmentVariable.ENVVAR_PREPEND));
 

@@ -43,7 +43,7 @@ public class XLCCommandDSC extends CCommandDSC {
 			 option.getKey().equals(SCDOptionsEnum.IQUOTE.toString())))
 		{
 			String value = option.getValue();
-			value = makeRelative(project, new Path(value)).toOSString();
+			value = makeRelative(project, new Path(value)).toPortableString();
 			option = new KVStringPair(option.getKey(), value);
 		}
 		compilerCommand.add(option);

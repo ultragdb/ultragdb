@@ -134,7 +134,7 @@ public class Executable extends PlatformObject {
 	public Executable(IPath path, IProject project, IResource resource, ISourceFileRemapping[] sourceFileRemappings) {
 		this.executablePath = path;
 		this.project = project;
-		this.name = new File(path.toOSString()).getName();
+		this.name = new File(path.toPortableString()).getName();
 		this.resource = resource;
 		this.remappers = sourceFileRemappings;		
 		remappedPaths = new HashMap<ITranslationUnit, String>();
@@ -315,7 +315,7 @@ public class Executable extends PlatformObject {
 	public synchronized String getOriginalLocation(ITranslationUnit tu) {
 		String orgLocation = remappedPaths.get(tu);
 		if (orgLocation == null)
-			orgLocation = tu.getLocation().toOSString();
+			orgLocation = tu.getLocation().toPortableString();
 		return orgLocation;
 	}
 

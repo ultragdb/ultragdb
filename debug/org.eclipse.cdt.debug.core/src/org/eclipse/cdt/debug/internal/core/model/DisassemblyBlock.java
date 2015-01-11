@@ -103,7 +103,7 @@ public class DisassemblyBlock implements IDisassemblyBlock, IAdaptable {
 		if ( d != null ) {
 			IExecFileInfo info = (IExecFileInfo)d.getAdapter( IExecFileInfo.class );
 			if ( info != null && info.getExecFile() != null ) {
-				return info.getExecFile().getPath().toOSString();
+				return info.getExecFile().getPath().toPortableString();
 			}
 		}
 		return ""; //$NON-NLS-1$

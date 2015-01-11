@@ -204,7 +204,7 @@ public class GDBBackend extends AbstractDsfService implements IGDBBackend, IMIBa
 		// The goal here is to keep options to an absolute minimum.
 		// All configuration should be done in the final launch sequence
 		// to allow for more flexibility.
-		return new String[] { getGDBPath().toOSString(), // This could contain spaces
+		return new String[] { getGDBPath().toPortableString(), // This could contain spaces
 							"--interpreter", //$NON-NLS-1$
 							// We currently work with MI version 2. Don't use just 'mi' because it
 							// points to the latest MI version, while we want mi2 specifically.

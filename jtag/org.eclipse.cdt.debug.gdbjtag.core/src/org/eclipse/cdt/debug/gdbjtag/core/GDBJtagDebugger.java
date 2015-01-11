@@ -140,7 +140,7 @@ public class GDBJtagDebugger extends AbstractGDBCDIDebugger {
 						config.getAttribute(IGDBJtagConstants.ATTR_USE_PROJ_BINARY_FOR_SYMBOLS, IGDBJtagConstants.DEFAULT_USE_PROJ_BINARY_FOR_SYMBOLS)) {
 					IPath programFile = CDebugUtils.verifyProgramPath(config);
 					if (programFile != null) {
-						symbolsFileName = programFile.toOSString();
+						symbolsFileName = programFile.toPortableString();
 					}
 				}
 				else {
@@ -234,7 +234,7 @@ public class GDBJtagDebugger extends AbstractGDBCDIDebugger {
 						config.getAttribute(IGDBJtagConstants.ATTR_USE_PROJ_BINARY_FOR_IMAGE, IGDBJtagConstants.DEFAULT_USE_PROJ_BINARY_FOR_IMAGE)) {
 					IPath programFile = CDebugUtils.verifyProgramPath(config);
 					if (programFile != null) {
-						imageFileName = programFile.toOSString();
+						imageFileName = programFile.toPortableString();
 					}
 				}
 				else {

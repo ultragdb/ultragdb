@@ -971,7 +971,7 @@ implements
 							out = cf.createFileDescription(p, out);
 					} catch (CoreException e) {
 						System.out.println(Messages.AbstractPage_10 +
-								p.toOSString() + "\n" + e.getLocalizedMessage()); //$NON-NLS-1$
+								p.toPortableString() + "\n" + e.getLocalizedMessage()); //$NON-NLS-1$
 					}
 				}
 			}

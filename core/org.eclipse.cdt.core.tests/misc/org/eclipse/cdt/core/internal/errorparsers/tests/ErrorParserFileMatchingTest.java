@@ -536,7 +536,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 	 */
 	public void testAbsolutePathSingle() throws Exception {
 		ResourceHelper.createFile(fProject, "testAbsolutePathSingle.c");
-		String fullName = fProject.getLocation().append("testAbsolutePathSingle.c").toOSString();
+		String fullName = fProject.getLocation().append("testAbsolutePathSingle.c").toPortableString();
 
 		parseOutput(fullName+":1:error");
 		assertEquals(1, errorList.size());
@@ -554,7 +554,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 	public void testAbsolutePathInOtherProject() throws Exception {
 		IProject anotherProject = ResourceHelper.createCDTProject("ProjectAbsolutePathInOtherProject");
 		ResourceHelper.createFile(anotherProject, "testAbsolutePathInOtherProject.c");
-		String fullName = anotherProject.getLocation().append("testAbsolutePathInOtherProject.c").toOSString();
+		String fullName = anotherProject.getLocation().append("testAbsolutePathInOtherProject.c").toPortableString();
 
 		parseOutput(fullName+":1:error");
 		assertEquals(1, errorList.size());
@@ -575,7 +575,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 		IPath outsideFile = ResourceHelper.createWorkspaceFile("OutsideFolder/testAbsolutePathOutsideWorkspace.c");
 
 		String fullName = ResourcesPlugin.getWorkspace().getRoot().getLocation()
-			.append("OutsideFolder/testAbsolutePathOutsideWorkspace.c").toOSString();
+			.append("OutsideFolder/testAbsolutePathOutsideWorkspace.c").toPortableString();
 
 		parseOutput(fullName+":1:error");
 		assertEquals(1, errorList.size());
@@ -904,7 +904,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 			return;
 		}
 		String fileName = "testCygwinCygdrive.c";
-		String windowsFileName = fProject.getLocation().append(fileName).toOSString();
+		String windowsFileName = fProject.getLocation().append(fileName).toPortableString();
 		String cygwinFileName;
 		cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
 		assertTrue("cygwinFileName=["+cygwinFileName+"]", cygwinFileName.startsWith("/cygdrive/"));
@@ -962,7 +962,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 		String fileName = "testCygwinAnotherProject.c";
 		IProject anotherProject = ResourceHelper.createCDTProject("AnotherProject");
 
-		String windowsFileName = anotherProject.getLocation().append(fileName).toOSString();
+		String windowsFileName = anotherProject.getLocation().append(fileName).toPortableString();
 		String cygwinFileName;
 		cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
 		assertTrue("cygwinFileName=["+cygwinFileName+"]", cygwinFileName.startsWith("/cygdrive/"));
@@ -1009,7 +1009,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 			return;
 		}
 		String fileName = "testCygwinAndMakeErrorParser.c";
-		String windowsFileName = fProject.getLocation().append(fileName).toOSString();
+		String windowsFileName = fProject.getLocation().append(fileName).toPortableString();
 		String cygwinFileName;
 		cygwinFileName = Cygwin.windowsToCygwinPath(windowsFileName);
 		assertTrue("cygwinFileName=["+cygwinFileName+"]", cygwinFileName.startsWith("/cygdrive/"));
@@ -1071,7 +1071,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 		ResourceHelper.createFolder(fProject, "BuildDir");
 		ResourceHelper.createFile(fProject, "BuildDir/testBuildDir.c");
 
-		String buildDir = fProject.getLocation().append("BuildDir").toOSString();
+		String buildDir = fProject.getLocation().append("BuildDir").toPortableString();
 		parseOutput(fProject, buildDir, "testBuildDir.c:1:error");
 		assertEquals(1, errorList.size());
 
@@ -1090,7 +1090,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 		ResourceHelper.createFolder(fProject, "BuildDir");
 		ResourceHelper.createFile(fProject, "BuildDir/testBuildDirVsProjectRoot.c");
 
-		String buildDir = fProject.getLocation().append("BuildDir").toOSString();
+		String buildDir = fProject.getLocation().append("BuildDir").toPortableString();
 		parseOutput(fProject, buildDir, "testBuildDirVsProjectRoot.c:1:error");
 		assertEquals(1, errorList.size());
 
@@ -1108,7 +1108,7 @@ public class ErrorParserFileMatchingTest extends TestCase {
 	public void testAbsoluteFileVsLink() throws Exception {
 		ResourceHelper.createFolder(fProject, "Folder");
 		IFile file = ResourceHelper.createFile(fProject, "Folder/testAbsoluteFileVsLink.c");
-		String fullName = file.getLocation().toOSString();
+		String fullName = file.getLocation().toPortableString();
 		ResourceHelper.createLinkedFile(fProject, "testAbsoluteFileVsLink.c", file.getLocation());
 
 		parseOutput(fullName+":1:error");

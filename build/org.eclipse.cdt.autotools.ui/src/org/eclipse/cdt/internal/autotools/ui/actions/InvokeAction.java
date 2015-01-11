@@ -255,7 +255,7 @@ public abstract class InvokeAction extends AbstractTargetAction {
 			try {
 				monitor.beginTask(
 						InvokeMessages.getFormattedString("InvokeAction.progress.message", // $NON-NLS-1$
-								new String[]{command.toOSString()}), IProgressMonitor.UNKNOWN);
+								new String[]{command.toPortableString()}), IProgressMonitor.UNKNOWN);
 				monitor.worked(1);
 				Process process = cmdL.execute(command, argumentList, envList,
 						execDir, new NullProgressMonitor());
@@ -312,13 +312,13 @@ public abstract class InvokeAction extends AbstractTargetAction {
 				showError(InvokeMessages
 					.getString("InvokeAction.execute.windowTitle.error"), InvokeMessages //$NON-NLS-1$
 					.getString("InvokeAction.execute.message") //$NON-NLS-1$
-					+ command.toOSString()); //$NON-NLS-1$
+					+ command.toPortableString()); //$NON-NLS-1$
 			return d.getOutputs();
 		} catch (InvocationTargetException e) {
 			showError(InvokeMessages
 					.getString("InvokeAction.execute.windowTitle.error"), InvokeMessages //$NON-NLS-1$
 					.getString("InvokeAction.execute.message") //$NON-NLS-1$
-					+ command.toOSString()); //$NON-NLS-1$
+					+ command.toPortableString()); //$NON-NLS-1$
 			AutotoolsUIPlugin.logException(e);
 			return null;
 		} catch (InterruptedException e) {

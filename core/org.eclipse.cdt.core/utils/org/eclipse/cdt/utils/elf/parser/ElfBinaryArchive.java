@@ -31,7 +31,7 @@ public class ElfBinaryArchive extends BinaryFile implements IBinaryArchive {
 
 	public ElfBinaryArchive(IBinaryParser parser, IPath p) throws IOException {
 		super(parser, p, IBinaryFile.ARCHIVE);
-		new AR(p.toOSString()).dispose(); // check file type
+		new AR(p.toPortableString()).dispose(); // check file type
 		children = new ArrayList<IBinaryObject>(5);
 	}
 
@@ -44,7 +44,7 @@ public class ElfBinaryArchive extends BinaryFile implements IBinaryArchive {
 			children.clear();
 			AR ar = null;
 			try {
-				ar = new AR(getPath().toOSString());
+				ar = new AR(getPath().toPortableString());
 				AR.ARHeader[] headers = ar.getHeaders();
 				IBinaryObject[] bobjs= createArchiveMembers(headers);
 				children.addAll(Arrays.asList(bobjs));

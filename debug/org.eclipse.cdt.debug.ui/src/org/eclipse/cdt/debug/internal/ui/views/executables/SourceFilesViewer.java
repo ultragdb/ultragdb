@@ -263,7 +263,7 @@ public class SourceFilesViewer extends BaseViewer {
 				// java.io.File would be wrong since that class makes arbitrary
 				// assumptions about where the file should be locally. See
 				// similar comment in Executable.getSourceFiles()
-				if (Util.isNativeAbsolutePath(info.location.toOSString()) ) {
+				if (Util.isNativeAbsolutePath(info.location.toPortableString()) ) {
 					File file = info.location.toFile();
 					info.exists = file.exists();
 					if (info.exists) {
@@ -282,7 +282,7 @@ public class SourceFilesViewer extends BaseViewer {
 				}
 				
 				info.originalLocation = new Path(executable.getOriginalLocation(tu));
-				info.originalExists = Util.isNativeAbsolutePath(info.originalLocation.toOSString()) && info.originalLocation.toFile().exists();
+				info.originalExists = Util.isNativeAbsolutePath(info.originalLocation.toPortableString()) && info.originalLocation.toFile().exists();
 			} else {
 				info.exists = false;
 				info.fileLength = 0;

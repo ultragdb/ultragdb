@@ -81,9 +81,9 @@ public class MappingSourceContainerDialog extends TitleAreaDialog {
             if (element instanceof MapEntrySourceContainer) {
                 MapEntrySourceContainer entry = (MapEntrySourceContainer)element;
                 if (CP_COMPILATION_PATH.equals(property))
-                    return entry.getBackendPath().toOSString();
+                    return entry.getBackendPath().toPortableString();
                 if (CP_FILE_SYSTEM_PATH.equals(property))
-                    return entry.getLocalPath().toOSString();
+                    return entry.getLocalPath().toPortableString();
             }
             return null;
         }
@@ -150,9 +150,9 @@ public class MappingSourceContainerDialog extends TitleAreaDialog {
             if (element instanceof MapEntrySourceContainer) {
                 MapEntrySourceContainer entry = (MapEntrySourceContainer)element;
                 if (columnIndex == 0)
-                    return entry.getBackendPath().toOSString();
+                    return entry.getBackendPath().toPortableString();
                 if (columnIndex == 1)
-                    return entry.getLocalPath().toOSString();
+                    return entry.getLocalPath().toPortableString();
             }
             return null;
         }

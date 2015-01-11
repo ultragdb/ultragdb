@@ -113,7 +113,7 @@ abstract public class AbstractGDBCDIDebugger implements ICDIDebugger2 {
 		String[] extraArgs = getExtraArguments( config );
 		boolean usePty = usePty( config );
 		try {
-			session = MIPlugin.getDefault().createSession( getSessionType( config ), gdbPath.toOSString(), factory, executable, extraArgs, usePty, monitor );
+			session = MIPlugin.getDefault().createSession( getSessionType( config ), gdbPath.toPortableString(), factory, executable, extraArgs, usePty, monitor );
 			ICDISessionConfiguration sessionConfig = getSessionConfiguration( session );
 			if ( sessionConfig != null ) {
 				session.setConfiguration( sessionConfig );
@@ -161,7 +161,7 @@ abstract public class AbstractGDBCDIDebugger implements ICDIDebugger2 {
 		String label = MIPlugin.getResourceString( "src.AbstractGDBCDIDebugger.2" ); //$NON-NLS-1$
 		try {
 			IPath path = getGDBPath( launch );
-			label = path.toOSString();
+			label = path.toPortableString();
 		}
 		catch( CoreException e ) {
 		}

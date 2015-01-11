@@ -107,7 +107,7 @@ public class CSourceNotFoundEditor extends CommonSourceNotFoundEditor {
 				tunit = (ITranslationUnit) artifact;
 				IPath tuPath = tunit.getLocation();
 				if (tuPath != null)
-					missingFile = tuPath.toOSString();
+					missingFile = tuPath.toPortableString();
 			} else {
 				missingFile = ""; //$NON-NLS-1$
 			}
@@ -311,7 +311,7 @@ public class CSourceNotFoundEditor extends CommonSourceNotFoundEditor {
 		if (tu != null){
 			IPath tuPath = tu.getLocation();
 			if (tuPath != null){
-				String filePath = tuPath.toOSString();
+				String filePath = tuPath.toPortableString();
 				try {
 					Object[] foundElements = CDebugCorePlugin.getDefault().getCommonSourceLookupDirector().findSourceElements(filePath);
 					if (foundElements.length == 1 && foundElements[0] instanceof IFile){
