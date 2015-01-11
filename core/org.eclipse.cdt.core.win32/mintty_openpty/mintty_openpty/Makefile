@@ -66,9 +66,9 @@ ifeq ($(shell VER=`$(CC) -dumpversion`; expr $${VER%.*} '>=' 4.5), 1)
 endif
 
 LDFLAGS := -L$(shell $(CC) -print-file-name=w32api) -static-libgcc
-#LDLIBS := -mwindows -lcomctl32 -limm32 -lwinspool -lole32 -luuid
+LDLIBS := -mwindows -lcomctl32 -limm32 -lwinspool -lole32 -luuid
 #LDLIBS := -mconsole -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lcomctl32 -limm32 -lwinspool -lole32 -luuid
-LDLIBS := -mwindows -lcomctl32 -limm32 -lwinspool -lole32 -luuid -Wl,--subsystem,console 
+#LDLIBS := -mwindows -lcomctl32 -limm32 -lwinspool -lole32 -luuid -Wl,--subsystem,console 
 
 ifdef DEBUG
   CFLAGS += -g
