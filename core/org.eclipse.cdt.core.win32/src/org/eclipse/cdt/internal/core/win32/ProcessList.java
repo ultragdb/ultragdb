@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.IProcessInfo;
 import org.eclipse.cdt.core.IProcessList;
 import org.eclipse.cdt.internal.core.natives.CNativePlugin;
@@ -58,7 +59,7 @@ public class ProcessList implements IProcessList {
 						try {
 							p = ProcessFactory.getFactory().exec(command);
 							in = p.getInputStream();
-							InputStreamReader reader = new InputStreamReader(in);
+							InputStreamReader reader = new InputStreamReader(in, Encoding.UTF_8());
 							procInfos = parseListTasks(reader);
 						} finally {
 							if (in != null)

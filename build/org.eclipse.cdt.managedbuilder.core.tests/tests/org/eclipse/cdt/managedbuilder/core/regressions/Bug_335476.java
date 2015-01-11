@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.cdtvariables.ICdtVariableManager;
 import org.eclipse.cdt.core.envvar.IEnvironmentVariableManager;
@@ -71,7 +72,7 @@ public class Bug_335476 extends AbstractBuilderTest {
 
 			// Check the makefile for the correct environment
 			IFile makefile = app.getFile("Debug/src/subdir.mk");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(makefile.getContents()));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(makefile.getContents(), Encoding.UTF_8()));
 			try {
 				Pattern p = Pattern.compile(".*?-I.*?\"(.*?)\".*");
 				boolean found = false;

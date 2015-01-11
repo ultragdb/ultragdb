@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.IMarkerGenerator;
 import org.eclipse.cdt.core.ProblemMarkerInfo;
 import org.eclipse.cdt.make.core.makefile.IBadDirective;
@@ -111,7 +112,7 @@ public class GNUMakefileValidator implements IMakefileValidator {
 		InputStream stream = null;
 		try {
 			stream = file.getContents();
-			Reader source = new InputStreamReader(stream);
+			Reader source = new InputStreamReader(stream, Encoding.UTF_8());
 			gnu.parse(file.getFullPath().toString(), source);
 			validateDirectives(file, gnu.getDirectives());
 		} catch (CoreException e) {

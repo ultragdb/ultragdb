@@ -35,6 +35,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Vector;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.settings.model.CSourceEntry;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
@@ -3568,7 +3569,7 @@ public class GnuMakefileGenerator implements IManagedBuilderMakefileGenerator2 {
 
 		// Get the contents of the dependency file
 		InputStream contentStream = makefile.getContents(false);
-		Reader in = new InputStreamReader(contentStream);
+		Reader in = new InputStreamReader(contentStream, Encoding.UTF_8());
 		StringBuffer inBuffer = null;
 		int chunkSize = contentStream.available();
 		inBuffer = new StringBuffer(chunkSize);

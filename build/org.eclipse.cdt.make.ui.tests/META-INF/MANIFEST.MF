@@ -8,7 +8,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.cdt.make.ui,
  org.junit;bundle-version="4.10.0",
- org.eclipse.cdt.core.tests
+ org.eclipse.cdt.core.tests,
+ org.eclipse.cdt.common
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: Eclipse.org

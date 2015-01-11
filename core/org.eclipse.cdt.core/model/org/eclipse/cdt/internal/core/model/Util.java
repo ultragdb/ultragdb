@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ICLogConstants;
 import org.eclipse.cdt.core.model.CModelException;
@@ -85,9 +86,7 @@ public class Util implements ICLogConstants {
 	 */
 	public static char[] getInputStreamAsCharArray(InputStream stream,
 			int length, String encoding) throws IOException {
-		final InputStreamReader reader = encoding == null
-				? new InputStreamReader(stream)
-				: new InputStreamReader(stream, encoding);
+		final InputStreamReader reader = new InputStreamReader(stream, Encoding.UTF_8());
 		try {
 			char[] contents;
 			if (length == -1) {

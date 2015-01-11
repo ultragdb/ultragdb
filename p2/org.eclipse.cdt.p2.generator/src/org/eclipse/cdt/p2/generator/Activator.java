@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URL;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Plugin;
@@ -96,7 +97,7 @@ public class Activator extends Plugin {
 		URL url = FileLocator.find(plugin.getBundle(), path, null);
 		InputStream in = (InputStream)url.getContent();
 		StringWriter writer = new StringWriter();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()));
 		for (String str = reader.readLine(); str != null; str = reader.readLine()) {
 			writer.write(str);
 			writer.write('\n');

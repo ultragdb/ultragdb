@@ -37,6 +37,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Preferences;
 
+import org.eclipse.cdt.common.Encoding;
+
 /**
  * Copied from org.eclipse.jdt.text.tests.performance.
  *
@@ -135,7 +137,7 @@ public class ResourceTestHelper {
 	}
 
 	public static StringBuffer read(String src) throws IOException, CoreException {
-		return FileTool.read(new InputStreamReader(getFile(src).getContents()));
+		return FileTool.read(new InputStreamReader(getFile(src).getContents(), Encoding.UTF_8()));
 	}
 
 	public static void write(String dest, final String content) throws IOException, CoreException {

@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -123,7 +124,7 @@ public class ProcessHelper {
 					Messages.getString("ProcessHelper.fileNotFound"), //$NON-NLS-1$
 					source.getFile()));
 		} else {
-			contentsReader = new InputStreamReader(source.openStream());
+			contentsReader = new InputStreamReader(source.openStream(), Encoding.UTF_8());
 			int c;
 			do {
 				c = contentsReader.read(chars);

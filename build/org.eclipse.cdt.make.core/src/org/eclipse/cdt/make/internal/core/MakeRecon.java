@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -85,7 +86,7 @@ public class MakeRecon extends OutputStream {
 		try {
 			p = ProcessFactory.getFactory().exec(array, environ, directory.toFile());
 			InputStream in = p.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()));
 			// Swallow the output
 			String line;
 			try {

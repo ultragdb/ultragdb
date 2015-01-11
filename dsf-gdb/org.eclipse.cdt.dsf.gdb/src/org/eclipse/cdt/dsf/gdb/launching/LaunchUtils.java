@@ -28,6 +28,7 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.IBinaryParser;
 import org.eclipse.cdt.core.IBinaryParser.IBinaryObject;
@@ -369,7 +370,7 @@ public class LaunchUtils {
 	private static String readStream(InputStream stream) throws IOException {
         StringBuilder cmdOutput = new StringBuilder(200);
         try {
-        	Reader r = new InputStreamReader(stream);
+        	Reader r = new InputStreamReader(stream, Encoding.UTF_8());
         	BufferedReader reader = new BufferedReader(r);
         	
         	String line;

@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StreamTokenizer;
 
+import org.eclipse.cdt.common.Encoding;
+
 /**
  * Default implementation of problem preference. It keeps preference metadata
  * together with preference value. Some implementations may separate them.
@@ -133,7 +135,7 @@ public abstract class AbstractProblemPreference implements IProblemPreference {
 	 */
 	protected StreamTokenizer getImportTokenizer(String str) {
 		ByteArrayInputStream st = new ByteArrayInputStream(str.getBytes());
-		StreamTokenizer tokenizer = new StreamTokenizer(new InputStreamReader(st));
+		StreamTokenizer tokenizer = new StreamTokenizer(new InputStreamReader(st, Encoding.UTF_8()));
 		tokenizer.resetSyntax();
 		tokenizer.quoteChar('"');
 		tokenizer.wordChars('_', '_');

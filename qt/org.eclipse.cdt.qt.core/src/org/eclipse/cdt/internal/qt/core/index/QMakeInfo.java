@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.qt.core.QtPlugin;
 import org.eclipse.cdt.qt.core.index.IQtVersion;
 import org.eclipse.cdt.qt.core.index.IQMakeInfo;
@@ -189,7 +190,7 @@ public final class QMakeInfo implements IQMakeInfo {
 			} else {
 				process = ProcessFactory.getFactory().exec(command);
 			}
-			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			reader = new BufferedReader(new InputStreamReader(process.getInputStream(), Encoding.UTF_8()));
 			return QMakeParser.parse(regex, reader);
 		} catch(IOException e) {
 			QtPlugin.log(e);

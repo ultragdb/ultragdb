@@ -34,6 +34,7 @@ import org.eclipse.cdt.autotools.ui.AutotoolsUIPlugin;
 import org.eclipse.cdt.autotools.ui.editors.AutoconfEditor;
 import org.eclipse.cdt.autotools.ui.editors.AutoconfMacro;
 import org.eclipse.cdt.autotools.ui.editors.IAutotoolEditorActionDefinitionIds;
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.internal.autotools.core.AutotoolsPropertyConstants;
 import org.eclipse.cdt.internal.autotools.ui.CWordFinder;
 import org.eclipse.cdt.internal.autotools.ui.HTMLPrinter;
@@ -575,7 +576,7 @@ public class AutoconfTextHover implements ITextHover, ITextHoverExtension {
 			if (styleSheetURL != null) {
 				try {
 					styleSheetURL= FileLocator.toFileURL(styleSheetURL);
-					BufferedReader reader= new BufferedReader(new InputStreamReader(styleSheetURL.openStream()));
+					BufferedReader reader= new BufferedReader(new InputStreamReader(styleSheetURL.openStream(), Encoding.UTF_8()));
 					try {
 						StringBuffer buffer= new StringBuffer(200);
 						String line= reader.readLine();

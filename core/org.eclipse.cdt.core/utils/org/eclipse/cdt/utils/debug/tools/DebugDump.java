@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.utils.debug.DebugBaseType;
 import org.eclipse.cdt.utils.debug.DebugParameterKind;
@@ -39,7 +40,7 @@ public class DebugDump implements IDebugEntryRequestor {
 	String currentCU;
 
 	public DebugDump(OutputStream stream){
-		bwriter = new BufferedWriter(new OutputStreamWriter(stream));
+		bwriter = new BufferedWriter(new OutputStreamWriter(stream, Encoding.UTF_8()));
 	}
 
 	void parse(String file) throws IOException {

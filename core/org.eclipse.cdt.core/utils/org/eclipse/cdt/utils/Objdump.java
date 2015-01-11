@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 
 /*
@@ -80,7 +81,7 @@ public class Objdump {
 		try {
 			StringBuffer buffer = new StringBuffer();
 			BufferedReader stdout = new BufferedReader(new InputStreamReader(
-					objdump.getInputStream()));
+					objdump.getInputStream(), Encoding.UTF_8()));
 			char[] buf = new char[4096];
 			int len;
 			while ((len = stdout.read(buf, 0, buf.length)) != -1) {

@@ -17,6 +17,7 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.core.ICDTLaunchConfigurationConstants;
 import org.eclipse.cdt.dsf.datamodel.IDMEvent;
 import org.eclipse.cdt.dsf.debug.service.IRunControl.ISuspendedDMEvent;
@@ -334,7 +335,7 @@ public class BaseTestCase {
  					if (GdbDebugOptions.DEBUG) GdbDebugOptions.trace("Starting gdbserver with command: " + commandLine + "\n");
 
  					gdbserverProc = ProcessFactory.getFactory().exec(commandLine);
-                    Reader r = new InputStreamReader(gdbserverProc.getErrorStream());
+                    Reader r = new InputStreamReader(gdbserverProc.getErrorStream(), Encoding.UTF_8());
                     BufferedReader reader = new BufferedReader(r);
                     String line;
                     while ((line = reader.readLine()) != null) {

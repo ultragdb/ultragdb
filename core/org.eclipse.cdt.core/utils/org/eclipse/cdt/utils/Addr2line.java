@@ -18,6 +18,7 @@ import java.io.OutputStreamWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.IAddress;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 
@@ -51,8 +52,8 @@ public class Addr2line {
 			System.arraycopy(params, 0, args, 1, params.length);
 		}
 		addr2line = ProcessFactory.getFactory().exec(args);
-		stdin = new BufferedWriter(new OutputStreamWriter(addr2line.getOutputStream()));
-		stdout = new BufferedReader(new InputStreamReader(addr2line.getInputStream()));			
+		stdin = new BufferedWriter(new OutputStreamWriter(addr2line.getOutputStream(), Encoding.UTF_8()));
+		stdout = new BufferedReader(new InputStreamReader(addr2line.getInputStream(), Encoding.UTF_8()));			
 	}
 	
 	protected void getOutput(String address) throws IOException {

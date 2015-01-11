@@ -19,13 +19,15 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.URL;
 
+import org.eclipse.cdt.common.Encoding;
+
 /**
  * TODO: add description
  */
 @SuppressWarnings("nls")
 public class TestUtils {
 	public static File saveFile(InputStream st, File testFile) throws FileNotFoundException, IOException {
-		BufferedReader r = new BufferedReader(new InputStreamReader(st));
+		BufferedReader r = new BufferedReader(new InputStreamReader(st, Encoding.UTF_8()));
 		String line;
 		PrintStream wr = new PrintStream(testFile);
 		try {
@@ -39,7 +41,7 @@ public class TestUtils {
 	}
 
 	public static String loadFile(InputStream st) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(st));
+		BufferedReader br = new BufferedReader(new InputStreamReader(st, Encoding.UTF_8()));
 		String buffer;
 		StringBuilder result = new StringBuilder();
 		while ((buffer = br.readLine()) != null) {

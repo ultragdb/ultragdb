@@ -21,6 +21,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.dsf.concurrent.DataRequestMonitor;
 import org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor;
 import org.eclipse.cdt.dsf.concurrent.DsfExecutor;
@@ -70,7 +71,7 @@ public class CommandControlTestsBase {
         // Note this must be called after the above LaunchPDA().
         fPDABackend = Launching.getBackendService();
         
-        fOutputReader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+        fOutputReader = new BufferedReader(new InputStreamReader(proc.getInputStream(), Encoding.UTF_8()));
         assertTrue(fOutputReader.readLine().contains("-debug"));
         
         fCommandControl = new PDACommandControl(fSession);

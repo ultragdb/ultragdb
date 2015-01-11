@@ -44,6 +44,7 @@ import org.eclipse.search.core.text.TextSearchScope;
 import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.PlatformUI;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.cdt.core.model.ITranslationUnit;
@@ -344,10 +345,8 @@ public class TextSearchWrapper {
         Reader reader;
         SimpleScanner scanner= new SimpleScanner();
         try {
-            reader = new BufferedReader(new InputStreamReader(file.getContents(), file.getCharset()));
+            reader = new BufferedReader(new InputStreamReader(file.getContents(), Encoding.UTF_8()/*file.getCharset()*/));
         } catch (CoreException e) {
-            return;
-        } catch (UnsupportedEncodingException e) {
             return;
         }
         try {

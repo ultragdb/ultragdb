@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.cdt.core,
  org.eclipse.cdt.errorparsers.xlc,
- org.junit
+ org.junit,
+ org.eclipse.cdt.common
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.cdt.errorparsers.xlc.tests
 Bundle-ClassPath: .

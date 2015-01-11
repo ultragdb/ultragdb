@@ -40,7 +40,7 @@ public class ProcessList implements IProcessList {
 
 		try {
 			ps = ProcessFactory.getFactory().exec(args);
-			psOutput = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+			psOutput = new BufferedReader(new InputStreamReader(ps.getInputStream(), "UTF-8"/*Encoding.UTF_8()*/));
 		} catch(Exception e) {
 			return new IProcessInfo[0];
 		}

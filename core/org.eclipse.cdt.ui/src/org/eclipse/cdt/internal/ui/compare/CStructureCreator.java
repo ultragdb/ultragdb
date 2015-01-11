@@ -36,6 +36,7 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentPartitioner;
 import org.eclipse.jface.text.Position;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.dom.ast.gnu.cpp.GPPLanguage;
 import org.eclipse.cdt.core.model.CoreModel;
@@ -191,7 +192,7 @@ public class CStructureCreator extends StructureCreator {
 			StringBuffer buffer= new StringBuffer();
 			char[] part= new char[2048];
 			int read= 0;
-			reader= new BufferedReader(new InputStreamReader(is, encoding));
+			reader= new BufferedReader(new InputStreamReader(is, Encoding.UTF_8()/*encoding*/));
 
 			while ((read= reader.read(part)) != -1)
 				buffer.append(part, 0, read);

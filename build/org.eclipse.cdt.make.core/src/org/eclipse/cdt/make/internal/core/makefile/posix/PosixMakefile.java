@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.make.core.MakeCorePlugin;
 import org.eclipse.cdt.make.core.makefile.IAutomaticVariable;
 import org.eclipse.cdt.make.core.makefile.IDirective;
@@ -90,7 +91,7 @@ public class PosixMakefile extends AbstractMakefile {
 		if (makefileReaderProvider == null) {
 			try {
 				reader = new MakefileReader(new InputStreamReader(
-						EFS.getStore(fileURI).openInputStream(EFS.NONE, null)));
+						EFS.getStore(fileURI).openInputStream(EFS.NONE, null), Encoding.UTF_8()));
 			} catch (CoreException e) {
 				MakeCorePlugin.log(e);
 				throw new IOException(e.getMessage());

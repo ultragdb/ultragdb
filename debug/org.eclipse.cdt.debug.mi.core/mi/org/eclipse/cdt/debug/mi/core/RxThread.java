@@ -22,6 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.mi.core.command.CLICommand;
 import org.eclipse.cdt.debug.mi.core.command.Command;
 import org.eclipse.cdt.debug.mi.core.command.MIExecContinue;
@@ -86,7 +87,7 @@ public class RxThread extends Thread {
 	 */
 	@Override
 	public void run() {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(session.getChannelInputStream()));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(session.getChannelInputStream(), Encoding.UTF_8()));
 		try {
 			String line;
 			while ((line = reader.readLine()) != null) {

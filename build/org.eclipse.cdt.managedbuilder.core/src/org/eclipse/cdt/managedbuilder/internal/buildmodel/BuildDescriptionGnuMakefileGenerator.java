@@ -13,9 +13,9 @@ package org.eclipse.cdt.managedbuilder.internal.buildmodel;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.settings.model.util.CDataUtil;
 import org.eclipse.cdt.managedbuilder.buildmodel.BuildDescriptionManager;
 import org.eclipse.cdt.managedbuilder.buildmodel.IBuildCommand;
@@ -112,13 +112,7 @@ public class BuildDescriptionGnuMakefileGenerator {
 	}
 
 	protected Writer createWriter(OutputStream stream){
-		try {
-			return new OutputStreamWriter(stream, ENCODING);
-		} catch (UnsupportedEncodingException e1) {
-			ManagedBuilderCorePlugin.log(e1);
-		}
-		return new OutputStreamWriter(stream);
-
+		return new OutputStreamWriter(stream, Encoding.UTF_8());
 	}
 
 	protected String createVarRef(String var){

@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.core.ICDTLaunchConfigurationConstants;
 import org.eclipse.cdt.internal.debug.application.DebugAttachedExecutable;
 import org.eclipse.cdt.internal.debug.application.DebugCoreFile;
@@ -110,7 +111,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 				try {
 					p = ProcessFactory.getFactory().exec(command);
 					in = p.getInputStream();
-					InputStreamReader reader = new InputStreamReader(in);
+					InputStreamReader reader = new InputStreamReader(in, Encoding.UTF_8());
 					BufferedReader br = new BufferedReader(reader);
 					String line = br.readLine();
 					if (line != null)

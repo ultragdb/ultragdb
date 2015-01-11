@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.tests.BaseTestFramework;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.ILogListener;
@@ -75,7 +76,7 @@ public abstract class RewriteBaseTest extends BaseTestFramework implements ILogL
 	}
 
 	protected StringBuilder getCodeFromFile(IFile file) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(file.getContents()));
+		BufferedReader br = new BufferedReader(new InputStreamReader(file.getContents(), Encoding.UTF_8()));
 		StringBuilder code = new StringBuilder();
 		String line;
 		while ((line = br.readLine()) != null) {

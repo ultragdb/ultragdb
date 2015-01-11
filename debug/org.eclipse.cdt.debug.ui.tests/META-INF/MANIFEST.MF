@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.cdt.core,
  org.eclipse.ui,
  org.eclipse.core.runtime.compatibility,
- org.eclipse.cdt.gdb;bundle-version="7.0.0"
+ org.eclipse.cdt.gdb;bundle-version="7.0.0",
+ org.eclipse.cdt.common
 Bundle-ActivationPolicy: lazy
 Plugin-Class: org.eclipse.cdt.debug.testplugin.CTestPlugin
 Bundle-Vendor: Eclipse CDT

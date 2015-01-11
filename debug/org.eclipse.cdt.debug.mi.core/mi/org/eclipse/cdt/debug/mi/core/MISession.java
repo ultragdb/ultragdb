@@ -20,6 +20,7 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.Observable;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.mi.core.command.Command;
 import org.eclipse.cdt.debug.mi.core.command.CommandFactory;
 import org.eclipse.cdt.debug.mi.core.command.MIExecInterrupt;
@@ -228,7 +229,7 @@ public class MISession extends Observable {
 		try {
 			gdbProcess.exitValue();
 			InputStream err = gdbProcess.getErrorStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(err));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(err, Encoding.UTF_8()));
 			String line = null;
 			try {
 				line = reader.readLine();
@@ -284,7 +285,7 @@ public class MISession extends Observable {
 		try {
 			gdbProcess.exitValue();
 			InputStream err = gdbProcess.getErrorStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(err));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(err, Encoding.UTF_8()));
 			String line = null;
 			try {
 				line = reader.readLine();

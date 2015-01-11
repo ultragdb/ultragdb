@@ -17,10 +17,13 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
+
 import com.ibm.icu.text.DateFormat;
 import com.ibm.icu.text.SimpleDateFormat;
+
 import java.util.Date;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 
@@ -72,7 +75,7 @@ public class LogWriter {
 	
 	protected void openLogFile() {
 		try {
-			log = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFile.getAbsolutePath(), true), "UTF-8"));//$NON-NLS-1$
+			log = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFile.getAbsolutePath(), true), Encoding.UTF_8()));
 			if (newSession) {
 				writeHeader();
 				newSession = false;

@@ -19,6 +19,7 @@ import java.io.UnsupportedEncodingException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.ui.CUIPlugin;
 
 /**
@@ -58,7 +59,7 @@ public class FileContentHelper {
 	private static InputStreamReader getReaderForFile(IFile file)
 			throws CoreException, UnsupportedEncodingException {
 		InputStream contents = file.getContents();
-		InputStreamReader r = new InputStreamReader(contents, file.getCharset());
+		InputStreamReader r = new InputStreamReader(contents, Encoding.UTF_8()/*file.getCharset()*/);
 		return r;
 	}
 

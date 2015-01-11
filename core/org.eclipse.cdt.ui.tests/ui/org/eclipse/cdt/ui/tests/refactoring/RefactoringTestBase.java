@@ -38,6 +38,7 @@ import org.eclipse.ltk.core.refactoring.history.RefactoringHistory;
 import org.eclipse.ltk.internal.core.refactoring.history.RefactoringHistoryService;
 import org.osgi.framework.Bundle;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.IPDOMManager;
 import org.eclipse.cdt.core.model.CoreModel;
@@ -389,7 +390,7 @@ public abstract class RefactoringTestBase extends BaseTestCase {
 	}
 
 	protected String getFileContents(IFile file) throws Exception {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(file.getContents(), "UTF-8"));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(file.getContents(), Encoding.UTF_8()));
 		StringBuilder buffer = new StringBuilder();
 		char[] part= new char[2048];
 		int read= 0;

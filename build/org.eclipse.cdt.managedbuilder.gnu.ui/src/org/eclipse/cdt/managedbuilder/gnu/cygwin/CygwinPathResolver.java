@@ -15,6 +15,7 @@ package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
 import java.io.File;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
 import org.eclipse.cdt.internal.core.Cygwin;
 import org.eclipse.cdt.managedbuilder.core.IBuildPathResolver;
@@ -229,7 +230,7 @@ public class CygwinPathResolver implements IBuildPathResolver {
 //			if (proc != null) {
 //				InputStream ein = proc.getInputStream();
 //				try {
-//					BufferedReader d1 = new BufferedReader(new InputStreamReader(ein));
+//					BufferedReader d1 = new BufferedReader(new InputStreamReader(ein, Encoding.UTF_8()));
 //					ArrayList<String> ls = new ArrayList<String>(10);
 //					String s;
 //					while ((s = d1.readLine()) != null ) {

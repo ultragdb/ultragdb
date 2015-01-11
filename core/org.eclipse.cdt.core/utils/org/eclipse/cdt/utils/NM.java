@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 
 /**
@@ -66,7 +67,7 @@ public class NM {
 	private void parseOutput(InputStream stream) throws IOException {
 
 		BufferedReader reader = new BufferedReader(
-				new InputStreamReader(stream));
+				new InputStreamReader(stream, Encoding.UTF_8()));
 		String line;
 
 		// See matcher.java for regular expression string data definitions.

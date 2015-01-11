@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.make.internal.ui.MakeUIPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.DialogPage;
@@ -310,7 +311,7 @@ public abstract class AbstractMakefileEditorPreferencePage extends PreferencePag
 		StringBuffer buffer= new StringBuffer(512);
 		BufferedReader reader= null;
 		try {
-			reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename)));
+			reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename), Encoding.UTF_8()));
 			while ((line= reader.readLine()) != null) {
 				buffer.append(line);
 				buffer.append(separator);

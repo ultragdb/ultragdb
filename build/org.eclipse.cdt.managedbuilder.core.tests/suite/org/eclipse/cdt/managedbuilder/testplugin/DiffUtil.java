@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 
 public class DiffUtil {
@@ -43,7 +44,7 @@ public class DiffUtil {
 			return null;
 		
 		BufferedReader br;
-		br = new BufferedReader(new InputStreamReader(in));
+		br = new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()));
 		String line;
 		StringBuffer buf = new StringBuffer();
 		try {

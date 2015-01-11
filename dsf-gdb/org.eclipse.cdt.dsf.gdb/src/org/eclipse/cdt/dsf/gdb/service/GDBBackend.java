@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -29,6 +28,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.model.ICProject;
 import org.eclipse.cdt.core.parser.util.StringUtil;
 import org.eclipse.cdt.debug.core.ICDTLaunchConfigurationConstants;
@@ -613,11 +613,7 @@ public class GDBBackend extends AbstractDsfService implements IGDBBackend, IMIBa
                     boolean success = false;
                     try {
                     	// Read initial GDB prompt
-                    	inputReader = null;
-                        try {
-							inputReader = new BufferedReader(new InputStreamReader(getMIInputStream(), "UTF-8")); //$NON-NLS-1$
-						} catch (UnsupportedEncodingException e) {
-						}
+                    	inputReader = new BufferedReader(new InputStreamReader(getMIInputStream(), Encoding.UTF_8()));
                         String line;
                         while ((line = inputReader.readLine()) != null) {
                             line = line.trim();
@@ -629,11 +625,7 @@ public class GDBBackend extends AbstractDsfService implements IGDBBackend, IMIBa
                         
                         // Failed to read initial prompt, check for error
                         if (!success) {
-                        	errorReader = null;
-                            try {
-                            	errorReader = new BufferedReader(new InputStreamReader(getMIErrorStream(), "UTF-8")); //$NON-NLS-1$
-    						} catch (UnsupportedEncodingException e) {
-    						}
+                        	errorReader = new BufferedReader(new InputStreamReader(getMIErrorStream(), Encoding.UTF_8()));
                         	String errorInfo = errorReader.readLine();
                         	if (errorInfo == null) {
                         		errorInfo = "GDB prompt not read"; //$NON-NLS-1$
