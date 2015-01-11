@@ -12,9 +12,11 @@
 package org.eclipse.cdt.managedbuilder.core.tests;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.managedbuilder.core.IBuildObject;
 import org.eclipse.cdt.managedbuilder.core.IConvertManagedBuildObject;
 
@@ -32,7 +34,7 @@ public class TestProjectConverter implements IConvertManagedBuildObject {
 
 		File outputFile = new File(tmpDir + "/testProjectConverterOutput.txt");	//$NON-NLS-1$
 		try {
-			FileWriter out = new FileWriter(outputFile);
+			OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(outputFile), Encoding.UTF_8());
 			out.write("The converter for the projectType testProject_1.0.0 is invoked");	//$NON-NLS-1$
 			out.close();
 		} catch (IOException e) {

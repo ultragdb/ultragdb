@@ -12,14 +12,17 @@ package org.eclipse.cdt.internal.p2.touchpoint.natives.actions;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.internal.p2.Activator;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -59,9 +62,9 @@ public class TranslateAction extends ProvisioningAction {
 		
 		
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(targetFile));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(targetFile), Encoding.UTF_8()));
 			File tmpFile = new File(targetFile.getParentFile(), "translate" + (n++));
-			FileWriter writer = new FileWriter(tmpFile);
+			OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(tmpFile), Encoding.UTF_8());
 			
 			Pattern pattern = Pattern.compile("!(.*)!");
 			for (String line = reader.readLine(); line != null; line = reader.readLine()) {

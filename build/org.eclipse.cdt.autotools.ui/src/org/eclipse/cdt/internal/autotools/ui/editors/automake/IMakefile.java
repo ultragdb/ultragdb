@@ -126,7 +126,7 @@ public interface IMakefile extends IParent {
 	 * Clear the all statements and (re)parse the Makefile
 	 * using the given makefile Reader provider
 	 * 
-	 * @param makefileReaderProvider provider, or <code>null</code> to use a FileReader
+	 * @param makefileReaderProvider provider, or <code>null</code> to use a InputStreamReader
 	 */
 	void parse(URI fileURI, IMakefileReaderProvider makefileReaderProvider) throws IOException;
 	

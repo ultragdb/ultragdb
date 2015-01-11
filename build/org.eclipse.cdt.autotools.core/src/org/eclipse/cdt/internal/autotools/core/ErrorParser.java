@@ -12,14 +12,16 @@
 package org.eclipse.cdt.internal.autotools.core;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.cdt.autotools.core.AutotoolsPlugin;
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.IErrorParser;
 import org.eclipse.cdt.core.ProblemMarkerInfo;
 import org.eclipse.core.resources.IProject;
@@ -153,7 +155,7 @@ public class ErrorParser extends MarkerGenerator implements IErrorParser {
 
 		LineNumberReader reader = null;
 		try {
-			reader = new LineNumberReader(new FileReader(file));
+			reader = new LineNumberReader(new InputStreamReader(new FileInputStream(file), Encoding.UTF_8()));
 
 			// look for something like:
 			// if test "${ac_cv_prog_WINDRES+set}" = set; then :
@@ -212,7 +214,7 @@ public class ErrorParser extends MarkerGenerator implements IErrorParser {
 			if (!file.exists())
 				return -1;
 
-			reader = new LineNumberReader(new FileReader(file));
+			reader = new LineNumberReader(new InputStreamReader(new FileInputStream(file), Encoding.UTF_8()));
 
 			Pattern errorPattern =
 					Pattern.compile("configure:(\\d+): checking for " + name); //$NON-NLS-1$

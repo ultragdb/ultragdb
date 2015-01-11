@@ -11,9 +11,11 @@
 package org.eclipse.cdt.managedbuilder.core.tests;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.managedbuilder.core.IBuildObject;
 import org.eclipse.cdt.managedbuilder.core.IConvertManagedBuildObject;
 
@@ -27,7 +29,7 @@ public class ProjectConverter implements IConvertManagedBuildObject {
 
 		File outputFile = new File(tmpDir + "/converterOutput.txt");
 		try {
-			FileWriter out = new FileWriter(outputFile);
+			OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(outputFile), Encoding.UTF_8());
 			out.write("---------- Start-------");
 			out.write("Converter for the build object : '" + buildObj.getName() + "' is invoked.");
 			out.write("From Id : " + fromId );

@@ -91,7 +91,7 @@ public class DefaultFortranDependencyCalculator implements IManagedDependencyGen
 		InputStream in = null;
 		try {
 			in = new BufferedInputStream(new FileInputStream(file));
-			Reader r = new BufferedReader(new InputStreamReader(in));
+			Reader r = new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()));
 			StreamTokenizer st = new StreamTokenizer(r);
 			st.commentChar('!');
 			st.eolIsSignificant(false);

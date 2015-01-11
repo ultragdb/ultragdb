@@ -15,8 +15,9 @@ package org.eclipse.cdt.managedbuilder.core.tests;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ICDescriptor;
 import org.eclipse.cdt.managedbuilder.core.BuildException;
@@ -398,7 +400,8 @@ public class MultiVersionSupportTests extends TestCase {
 
 			String expectedContent = "Converter for CDT 2.0 Project is invoked";	//$NON-NLS-1$
 
-			BufferedReader data = new BufferedReader(new FileReader(inputFile));
+			InputStreamReader reader = new InputStreamReader(new FileInputStream(inputFile), Encoding.UTF_8());
+			BufferedReader data = new BufferedReader(reader);
 			String actualContent;
 
 			if ((actualContent = data.readLine()) != null) {
@@ -423,7 +426,8 @@ public class MultiVersionSupportTests extends TestCase {
 
 			String expectedContent = "Converter for CDT 2.1 Project is invoked";	//$NON-NLS-1$
 
-			BufferedReader data = new BufferedReader(new FileReader(inputFile));
+			InputStreamReader reader = new InputStreamReader(new FileInputStream(inputFile), Encoding.UTF_8());
+			BufferedReader data = new BufferedReader(reader);
 			String actualContent;
 
 			if ((actualContent = data.readLine()) != null) {
@@ -448,7 +452,8 @@ public class MultiVersionSupportTests extends TestCase {
 
 			String expectedContent = "The converter for the projectType testProject_1.0.0 is invoked";	//$NON-NLS-1$
 
-			BufferedReader data = new BufferedReader(new FileReader(inputFile));
+			InputStreamReader reader = new InputStreamReader(new FileInputStream(inputFile), Encoding.UTF_8());
+			BufferedReader data = new BufferedReader(reader);
 			String actualContent;
 
 			if ((actualContent = data.readLine()) != null) {

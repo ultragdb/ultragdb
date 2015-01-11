@@ -11,10 +11,12 @@
 package org.eclipse.cdt.internal.index.tests;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 import junit.framework.TestSuite;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.ast.IASTPreprocessorIncludeStatement;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
@@ -97,7 +99,7 @@ public class Bug246129 extends IndexTestBase {
 			fExternalWrapperHeader = new File(
 					fExternalWrapperIncludeFolder, "external_type.h");
 			fExternalWrapperHeader.createNewFile();
-			FileWriter writer = new FileWriter(fExternalWrapperHeader);
+			OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fExternalWrapperHeader), Encoding.UTF_8());
 			writer.write("#ifndef EXTERNAL_WRAPPER_TYPE_H_\n");
 			writer.write("#define EXTERNAL_WRAPPER_TYPE_H_\n");
 			writer.write("#include <ext/../external_type.h>\n");
@@ -115,7 +117,7 @@ public class Bug246129 extends IndexTestBase {
 			fExternalHeader = new File(fExternalIncludeFolder,
 					"external_type.h");
 			fExternalHeader.createNewFile();
-			writer = new FileWriter(fExternalHeader);
+			writer = new OutputStreamWriter(new FileOutputStream(fExternalHeader), Encoding.UTF_8());
 			writer.write("#ifndef EXTERNAL_TYPE_H_\n");
 			writer.write("#define EXTERNAL_TYPE_H_\n");
 			writer.write("class ExternalType {\n");

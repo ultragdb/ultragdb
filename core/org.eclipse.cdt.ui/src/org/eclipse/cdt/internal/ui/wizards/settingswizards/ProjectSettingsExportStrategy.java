@@ -11,8 +11,9 @@
 package org.eclipse.cdt.internal.ui.wizards.settingswizards;
 
 
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.URI;
 import java.util.List;
@@ -32,6 +33,7 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.AttributesImpl;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.resources.ResourcesUtil;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.core.settings.model.ICFolderDescription;
@@ -88,7 +90,7 @@ public class ProjectSettingsExportStrategy implements IProjectSettingsWizardPage
 		if(!IProjectSettingsWizardPage.FILENAME_EXTENSION.equals(path.getFileExtension()))
 			path.addFileExtension(IProjectSettingsWizardPage.FILENAME_EXTENSION);
 		
-		return new FileWriter(path.toFile());
+		return new OutputStreamWriter(new FileOutputStream(path.toFile()), Encoding.UTF_8());
 	}
 	
 

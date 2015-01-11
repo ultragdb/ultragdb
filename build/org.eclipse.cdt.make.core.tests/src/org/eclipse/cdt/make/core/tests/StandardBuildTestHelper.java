@@ -11,11 +11,14 @@
 package org.eclipse.cdt.make.core.tests;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import junit.framework.Assert;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -156,9 +159,9 @@ public class StandardBuildTestHelper {
 		StringBuffer buff = new StringBuffer();
 		IPath fullPath = project.getLocation().append(path);
 		try {
-			FileReader input = null;
+			InputStreamReader input = null;
 			try {
-				input = new FileReader(fullPath.toFile());
+				input = new InputStreamReader(new FileInputStream(fullPath.toFile()), Encoding.UTF_8());
 			} catch (Exception e) {
 				Assert.fail("File " + fullPath.toString() + " could not be read.");
 			}
@@ -201,9 +204,9 @@ public class StandardBuildTestHelper {
 					for (int i=0; i<files.length; i++) {
 						IPath file = files[i];
 						IPath srcFile = srcDir.append(file);
-						FileReader srcReader = null;
+						InputStreamReader srcReader = null;
 						try {
-							srcReader = new FileReader(srcFile.toFile());
+							srcReader = new InputStreamReader(new FileInputStream(srcFile.toFile()), Encoding.UTF_8());
 						} catch (Exception e) {
 							Assert.fail("File " + file.toString() + " could not be read.");
 						}
@@ -217,9 +220,9 @@ public class StandardBuildTestHelper {
 							} while (file.segmentCount() > 1);
 						}
 						IPath destFile = tmpSrcDir.append(files[i]);
-						FileWriter writer = null;
+						OutputStreamWriter writer = null;
 						try {
-							writer = new FileWriter(destFile.toFile());
+							writer = new OutputStreamWriter(new FileOutputStream(destFile.toFile()), Encoding.UTF_8());
 						} catch (Exception e) {
 							Assert.fail("File " + files[i].toString() + " could not be written.");
 						}

@@ -11,7 +11,8 @@
 package org.eclipse.cdt.examples.pdavm;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -424,7 +425,9 @@ public class PDAVirtualMachine {
         fFilename = inputFile;
 
         // Load all the code into memory
-        FileReader fileReader = new FileReader(inputFile);
+        
+        File file = inputFile != null ? new File(inputFile) : null;
+        InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file), Encoding.UTF_8());
         StringWriter stringWriter = new StringWriter();
         List<String> code = new LinkedList<String>();
         int c = fileReader.read();

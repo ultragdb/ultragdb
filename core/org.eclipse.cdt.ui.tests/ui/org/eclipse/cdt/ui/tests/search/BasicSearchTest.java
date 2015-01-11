@@ -15,7 +15,8 @@ package org.eclipse.cdt.ui.tests.search;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
 
 import junit.framework.TestSuite;
@@ -37,6 +38,7 @@ import org.eclipse.search.ui.ISearchResultViewPart;
 import org.eclipse.search.ui.NewSearchUI;
 import org.osgi.framework.Bundle;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.IPDOMManager;
 import org.eclipse.cdt.core.index.IIndexManager;
@@ -96,7 +98,7 @@ public class BasicSearchTest extends BaseUITestCase {
 		File dir= CProjectHelper.freshDir();
 		File externalFile= new File(dir, "extHead.h");
 		externalFile.deleteOnExit();
-		FileWriter fw= new FileWriter(externalFile);
+		OutputStreamWriter fw= new OutputStreamWriter(new FileOutputStream(externalFile), Encoding.UTF_8());
 		fw.write("void foo() {}\n");
 		fw.close();
 		
@@ -191,7 +193,7 @@ public class BasicSearchTest extends BaseUITestCase {
 		for (int f = 0; f < INDEXER_IN_PROGRESS_FILE_COUNT; f++) {
 			File externalFile= new File(dir, "hugeHeader" + f + ".h");
 			externalFile.deleteOnExit();
-			FileWriter fw= new FileWriter(externalFile);
+			OutputStreamWriter fw= new OutputStreamWriter(new FileOutputStream(externalFile), Encoding.UTF_8());
 			for (int i = 0; i < INDEXER_IN_PROGRESS_STRUCT_COUNT; i++) {
 				fw.write("typedef struct confusingType_" + f + "_" + i + " {\n");
 				if (i == 0)

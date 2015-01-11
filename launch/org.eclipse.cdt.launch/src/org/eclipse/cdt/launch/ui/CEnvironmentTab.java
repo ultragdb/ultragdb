@@ -13,11 +13,13 @@ package org.eclipse.cdt.launch.ui;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Properties;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.core.ICDTLaunchConfigurationConstants;
 import org.eclipse.cdt.launch.internal.ui.LaunchImages;
 import org.eclipse.cdt.launch.internal.ui.LaunchMessages;
@@ -396,7 +398,9 @@ public class CEnvironmentTab extends CLaunchConfigurationTab {
 
 		//Iterate through each key/value property we discover
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));	
+			
+			InputStreamReader reader1 = new InputStreamReader(new FileInputStream(file), Encoding.UTF_8());
+			BufferedReader reader = new BufferedReader(reader1);
 
 			String line, key, value;
 			while((line = reader.readLine()) != null) {

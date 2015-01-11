@@ -12,8 +12,10 @@
 package org.eclipse.cdt.core.parser.tests.rewrite;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ import java.util.regex.Pattern;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.testplugin.CTestPlugin;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
@@ -50,11 +53,13 @@ public class RewriteTester extends TestSuite {
 		return createSuite(testCases, name);
 	}
 	
-	protected static BufferedReader createReader(String file) throws IOException {
+	protected static BufferedReader createReader(String file1) throws IOException {
 		Bundle bundle = CTestPlugin.getDefault().getBundle();
-		Path path = new Path(file);
+		Path path = new Path(file1);
 		String file2 = FileLocator.toFileURL(FileLocator.find(bundle, path, null)).getFile();
-		return new BufferedReader(new FileReader(file2));
+		File file = file2 != null ? new File(file2) : null;
+		InputStreamReader reader = new InputStreamReader(new FileInputStream(file), Encoding.UTF_8());
+		return new BufferedReader(reader);
 	}
 	
 	private static ArrayList<RewriteBaseTest> createTests(BufferedReader inputReader) throws Exception {
