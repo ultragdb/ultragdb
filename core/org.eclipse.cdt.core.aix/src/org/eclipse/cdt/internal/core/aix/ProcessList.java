@@ -11,10 +11,12 @@
 package org.eclipse.cdt.internal.core.aix;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
+import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.IProcessInfo;
 import org.eclipse.cdt.core.IProcessList;
 
@@ -60,9 +62,9 @@ public class ProcessList implements IProcessList {
 			for (int i = 0; i < pidFiles.length; i++) {
 				File cmdLine = new File(pidFiles[i], "cmdline"); //$NON-NLS-1$
 				StringBuffer line = new StringBuffer();
-				FileReader reader = null;
+				InputStreamReader reader = null;
 				try {
-					reader = new FileReader(cmdLine);
+					reader = new InputStreamReader(new FileInputStream(cmdLine), Encoding.UTF_8());
 					int c;
 					while ((c = reader.read()) > 0) {
 						line.append((char)c);
