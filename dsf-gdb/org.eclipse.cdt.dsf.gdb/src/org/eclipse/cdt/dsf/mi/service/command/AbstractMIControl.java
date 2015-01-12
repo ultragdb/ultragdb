@@ -540,7 +540,7 @@ public abstract class AbstractMIControl extends AbstractDsfService
 	 */
     private int fTokenIdCounter = 0 ;
     
-	private int getNewTokenId() {
+	private synchronized int getNewTokenId() {
 		int count = ++fTokenIdCounter;
 		// If we ever wrap around.
 		if (count <= 0) {
@@ -612,7 +612,7 @@ public abstract class AbstractMIControl extends AbstractDsfService
     	return false;
     }
 
-    private void dumpToTraces(String str) {
+    private synchronized void dumpToTraces(String str) {
         if (GdbDebugOptions.DEBUG) {
         	GdbDebugOptions.trace(String.format( "%s %s  %s", GdbPlugin.getDebugTime(), MI_TRACE_IDENTIFIER, str)); //$NON-NLS-1$
         }
