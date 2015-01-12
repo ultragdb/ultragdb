@@ -13,7 +13,7 @@
 package org.eclipse.cdt.make.core;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -199,14 +199,14 @@ public class MakeCorePlugin extends Plugin {
 			String[] includes = includeList.toArray(new String[includeList.size()]);
 			gnu.setIncludeDirectories(includes);
 			try {
-				gnu.parse(file.getAbsolutePath(), new InputStreamReader(new FileInputStream(file), Encoding.UTF_8()));
+				gnu.parse(file.getAbsolutePath(), new FileReader(file));
 			} catch (IOException e) {
 			}
 			makefile = gnu;
 		} else {
 			PosixMakefile posix = new PosixMakefile();
 			try {
-				posix.parse(file.getAbsolutePath(), new InputStreamReader(new FileInputStream(file), Encoding.UTF_8()));
+				posix.parse(file.getAbsolutePath(), new FileReader(file));
 			} catch (IOException e) {
 			}
 			makefile = posix;

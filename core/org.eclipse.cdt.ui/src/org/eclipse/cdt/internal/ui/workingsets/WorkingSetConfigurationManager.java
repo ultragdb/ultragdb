@@ -12,11 +12,9 @@
 package org.eclipse.cdt.internal.ui.workingsets;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +33,6 @@ import org.eclipse.ui.IWorkingSet;
 import org.eclipse.ui.IWorkingSetManager;
 import org.eclipse.ui.XMLMemento;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.ui.CUIPlugin;
 import org.eclipse.cdt.ui.newui.CDTPrefUtil;
 
@@ -217,9 +214,9 @@ public class WorkingSetConfigurationManager {
 			protected IStatus run(IProgressMonitor monitor) {
 
 				File file = getStorage();
-				OutputStreamWriter writer = null;
+				FileWriter writer = null;
 				try {
-					writer = new OutputStreamWriter(new FileOutputStream(file), Encoding.UTF_8());
+					writer = new FileWriter(file);
 					memento.save(writer);
 					writer.close();
 				} catch (IOException e) {
@@ -263,9 +260,9 @@ public class WorkingSetConfigurationManager {
 		File file = getStorage();
 
 		if (file.exists()) {
-			InputStreamReader reader = null;
+			FileReader reader = null;
 			try {
-				reader = new InputStreamReader(new FileInputStream(file), Encoding.UTF_8());
+				reader = new FileReader(file);
 				result = XMLMemento.createReadRoot(reader);
 				reader.close();
 			} catch (Exception e) {

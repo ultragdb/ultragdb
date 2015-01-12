@@ -12,13 +12,11 @@ package org.eclipse.cdt.internal.debug.application;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ErrorParserManager;
 import org.eclipse.cdt.core.IMarkerGenerator;
@@ -52,8 +50,7 @@ public class BuildOptionsParser implements IWorkspaceRunnable, IMarkerGenerator 
 		monitor.beginTask(Messages.GetBuildOptions, 10);
 		BufferedReader br = null;
 		try {
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(buildLog), Encoding.UTF_8());
-			br = new BufferedReader(reader);
+			br = new BufferedReader(new FileReader(buildLog));
 			// Calculate how many source files we have to process and use that as a basis
 			monitor.beginTask(Messages.GetBuildOptions, 10);
 			

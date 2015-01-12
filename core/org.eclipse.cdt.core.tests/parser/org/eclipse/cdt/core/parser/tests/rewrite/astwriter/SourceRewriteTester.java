@@ -12,10 +12,8 @@
 package org.eclipse.cdt.core.parser.tests.rewrite.astwriter;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,7 +21,6 @@ import java.util.regex.Pattern;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.parser.ParserLanguage;
 import org.eclipse.cdt.core.parser.tests.rewrite.RewriteBaseTest;
 import org.eclipse.cdt.core.testplugin.CTestPlugin;
@@ -43,8 +40,7 @@ public class SourceRewriteTester extends TestSuite {
 		Bundle bundle = CTestPlugin.getDefault().getBundle();
 		Path path = new Path(file);
 		file = FileLocator.toFileURL(FileLocator.find(bundle, path, null)).getFile();
-		File f = file != null ? new File(file) : null;
-		return new BufferedReader(new InputStreamReader(new FileInputStream(file), Encoding.UTF_8()));
+		return new BufferedReader(new FileReader(file));
 	}
 
 	public static Test suite(String name, String file)throws Exception {

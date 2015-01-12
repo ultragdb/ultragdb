@@ -13,9 +13,8 @@ package org.eclipse.cdt.internal.ui;
 
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -28,21 +27,18 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.eclipse.cdt.core.model.ITranslationUnit;
+import org.eclipse.cdt.internal.ui.text.CHelpBookDescriptor;
+import org.eclipse.cdt.internal.ui.text.CHelpSettings;
+import org.eclipse.cdt.ui.CUIPlugin;
+import org.eclipse.cdt.ui.ICHelpResourceDescriptor;
+import org.eclipse.cdt.ui.IFunctionSummary;
+import org.eclipse.cdt.ui.text.ICHelpInvocationContext;
 import org.eclipse.core.resources.IProject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
-import org.eclipse.cdt.common.Encoding;
-import org.eclipse.cdt.core.model.ITranslationUnit;
-import org.eclipse.cdt.ui.CUIPlugin;
-import org.eclipse.cdt.ui.ICHelpResourceDescriptor;
-import org.eclipse.cdt.ui.IFunctionSummary;
-import org.eclipse.cdt.ui.text.ICHelpInvocationContext;
-
-import org.eclipse.cdt.internal.ui.text.CHelpBookDescriptor;
-import org.eclipse.cdt.internal.ui.text.CHelpSettings;
 
 /**
  * This class is used to manage external plugins that contribute 
@@ -211,7 +207,7 @@ public class CHelpProviderManager {
 
 			settings.serialize(doc,rootElement);
 
-			OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), Encoding.UTF_8());
+			FileWriter writer = new FileWriter(file);
 
 			Transformer transformer=TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty(OutputKeys.METHOD, "xml"); //$NON-NLS-1$

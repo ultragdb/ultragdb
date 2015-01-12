@@ -12,11 +12,9 @@ package org.eclipse.cdt.dsf.gdb.internal.ui.console;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.dsf.gdb.internal.ui.GdbUIPlugin;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -74,7 +72,7 @@ public class ConsoleSaveAction extends Action{
 						ConsoleMessages.ConsoleMessages_save_confirm_overwrite_desc);
 			}
 			if(confirmed) {
-				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), Encoding.UTF_8()));
+				BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
 				out.write(fConsole.getDocument().get());
 				out.close();
 			}

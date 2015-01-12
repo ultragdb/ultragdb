@@ -13,11 +13,9 @@ package org.eclipse.cdt.debug.mi.ui.console.actions;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.mi.internal.ui.MIUIPlugin;
 import org.eclipse.debug.ui.console.IConsole;
 import org.eclipse.jface.action.Action;
@@ -71,7 +69,7 @@ public class MiConsoleSaveAction extends Action{
 				confirmed = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Confirm overwrite", MiConsoleMessages.confirmOverWrite);
 			}
 			if(confirmed) {
-				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), Encoding.UTF_8()));
+				BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
 				out.write(fConsole.getDocument().get());
 				out.close();
 			}

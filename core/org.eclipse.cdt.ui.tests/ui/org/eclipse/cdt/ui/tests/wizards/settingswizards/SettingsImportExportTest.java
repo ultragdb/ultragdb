@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.eclipse.cdt.ui.tests.wizards.settingswizards;
 
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
+import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.IMessageProvider;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.dom.IPDOMManager;
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.model.ICProject;
@@ -75,7 +73,7 @@ public class SettingsImportExportTest extends BaseUITestCase {
 	
 	private static void createFile(String contents, String filePath) throws Exception {
 		IPath path = new Path(filePath);
-		OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(path.toFile()), Encoding.UTF_8());
+		FileWriter writer = new FileWriter(path.toFile());
 		writer.write(contents);
 		writer.close();
 	}

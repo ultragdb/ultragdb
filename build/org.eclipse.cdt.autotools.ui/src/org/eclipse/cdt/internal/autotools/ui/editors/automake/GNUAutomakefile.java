@@ -12,7 +12,7 @@
 package org.eclipse.cdt.internal.autotools.ui.editors.automake;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -69,7 +69,7 @@ public class GNUAutomakefile extends AbstractMakefile implements IGNUMakefile {
 	}
 
 	public void parse(String name) throws IOException {
-		InputStreamReader stream = new InputStreamReader(new FileInputStream(name != null ? new File(name) : null), Encoding.UTF_8());
+		FileReader stream = new FileReader(name);
 		try {
 			parse(name, stream);
 		} finally {

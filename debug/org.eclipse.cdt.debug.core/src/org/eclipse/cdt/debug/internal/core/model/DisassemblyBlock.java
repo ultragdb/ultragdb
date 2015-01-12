@@ -12,13 +12,11 @@
 package org.eclipse.cdt.debug.internal.core.model;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.IAddress;
 import org.eclipse.cdt.core.IAddressFactory;
 import org.eclipse.cdt.core.model.ITranslationUnit;
@@ -185,13 +183,11 @@ public class DisassemblyBlock implements IDisassemblyBlock, IAdaptable {
 				file = ((IStorage)element).getFullPath().toFile();
 			}
 			if ( file != null ) {
-				InputStreamReader reader1 = null;
 				try {
-					reader1 = new InputStreamReader(new FileInputStream(file), Encoding.UTF_8());
-					reader = new LineNumberReader(reader1);
+					reader = new LineNumberReader( new FileReader( file ) );
 				}
 				catch( FileNotFoundException e ) {
-				}
+				}				
 			}
 		}
 		for ( int i = 0; i < result.length; ++i ) {

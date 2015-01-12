@@ -11,12 +11,10 @@
 package org.eclipse.cdt.core.templateengine.process.processes;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.net.URL;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.templateengine.TemplateCore;
 import org.eclipse.cdt.core.templateengine.TemplateEngineHelper;
 import org.eclipse.cdt.core.templateengine.process.ProcessArgument;
@@ -63,9 +61,9 @@ public class Copy extends ProcessRunner {
 				if (!targetFile.getParentFile().exists()) {
 					targetFile.getParentFile().mkdirs();
 				}
-				OutputStreamWriter writer = null;
+				FileWriter writer = null;
 				try {
-					writer = new OutputStreamWriter(new FileOutputStream(targetFile), Encoding.UTF_8());
+					writer = new FileWriter(targetFile);
 					writer.write(fileContents);
 				} catch (IOException e) {
 					throw new ProcessFailureException(Messages.getString("Copy.4"), e); //$NON-NLS-1$

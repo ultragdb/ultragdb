@@ -14,11 +14,11 @@ package org.eclipse.cdt.ui.testplugin;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
@@ -26,13 +26,12 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import org.eclipse.core.filebuffers.FileBuffers;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 
-import org.eclipse.cdt.common.Encoding;
+import org.eclipse.core.filebuffers.FileBuffers;
 
 /**
  * Copied from org.eclipse.core.filebuffers.tests.
@@ -198,7 +197,7 @@ public class FileTool {
 	}
 	
 	public static StringBuffer read(String fileName) throws IOException {
-		return read(new InputStreamReader(new FileInputStream(fileName != null ? new File(fileName) : null), Encoding.UTF_8()));
+		return read(new FileReader(fileName));
 	}
 
 	public static StringBuffer read(Reader reader) throws IOException {
@@ -220,7 +219,7 @@ public class FileTool {
 	}
 
 	public static void write(String fileName, StringBuffer content) throws IOException {
-		Writer writer= new OutputStreamWriter(new FileOutputStream(fileName), Encoding.UTF_8());
+		Writer writer= new FileWriter(fileName);
 		try {
 			writer.write(content.toString());
 		} finally {

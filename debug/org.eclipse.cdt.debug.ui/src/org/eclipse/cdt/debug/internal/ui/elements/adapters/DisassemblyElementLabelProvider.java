@@ -14,12 +14,11 @@ package org.eclipse.cdt.debug.internal.ui.elements.adapters;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.math.BigInteger;
+import com.ibm.icu.text.MessageFormat;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.core.CDebugUtils;
 import org.eclipse.cdt.debug.core.model.IDisassemblyInstruction;
 import org.eclipse.cdt.debug.core.model.IDisassemblySourceLine;
@@ -35,8 +34,6 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.debug.core.model.ISourceLocator;
 import org.eclipse.debug.core.sourcelookup.ISourceLookupDirector;
 import org.eclipse.debug.internal.ui.viewers.model.provisional.IPresentationContext;
-
-import com.ibm.icu.text.MessageFormat;
 
 /**
  * org.eclipse.cdt.debug.internal.ui.elements.adapters.DisassemblyElementLabelProvider: 
@@ -129,8 +126,8 @@ public class DisassemblyElementLabelProvider implements IDocumentElementLabelPro
     }
 
     private String readLine( File file, int lineNumber ) throws IOException {
-    	InputStreamReader reader = new InputStreamReader(new FileInputStream(file), Encoding.UTF_8());
-        BufferedReader br = new BufferedReader(reader);
+        FileReader fr = new FileReader( file );
+        BufferedReader br = new BufferedReader( fr );
         
         try {
             int count = 0;

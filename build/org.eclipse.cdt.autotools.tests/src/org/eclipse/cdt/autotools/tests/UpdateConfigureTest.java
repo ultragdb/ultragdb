@@ -12,9 +12,8 @@
 package org.eclipse.cdt.autotools.tests;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -26,7 +25,6 @@ import junit.framework.TestCase;
 import org.eclipse.cdt.autotools.core.AutotoolsOptionConstants;
 import org.eclipse.cdt.autotools.core.AutotoolsPlugin;
 import org.eclipse.cdt.autotools.core.IAutotoolsOption;
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
@@ -97,7 +95,7 @@ public class UpdateConfigureTest extends TestCase {
 		
 		File f = r.getLocation().toFile();
 		
-		InputStreamReader fr = new InputStreamReader(new FileInputStream(f), Encoding.UTF_8());
+		FileReader fr = new FileReader(f);
 		
 		char[] cbuf = new char[2000];
 		fr.read(cbuf);
@@ -124,7 +122,7 @@ public class UpdateConfigureTest extends TestCase {
 		
 		r = testProject.findMember(x);
 		f = r.getLocation().toFile();
-		fr = new InputStreamReader(new FileInputStream(f), Encoding.UTF_8());
+		fr = new FileReader(f);
 		fr.read(cbuf);
 		
 		s = new String(cbuf);
@@ -149,7 +147,7 @@ public class UpdateConfigureTest extends TestCase {
 		
 		r = testProject.findMember(x);
 		f = r.getLocation().toFile();
-		fr = new InputStreamReader(new FileInputStream(f), Encoding.UTF_8());
+		fr = new FileReader(f);
 		fr.read(cbuf);
 		
 		s = new String(cbuf);

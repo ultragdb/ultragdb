@@ -14,12 +14,10 @@ package org.eclipse.cdt.managedbuilder.testplugin;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +29,6 @@ import java.util.zip.ZipFile;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ICDescriptor;
 import org.eclipse.cdt.core.model.ICProject;
@@ -702,8 +699,7 @@ public class ManagedBuildTestHelper {
 	private static ArrayList<String> getContents(IPath fullPath) {
 		ArrayList<String> lines = new ArrayList<String>();
 		try {
-			InputStreamReader reader = new InputStreamReader(new FileInputStream(fullPath.toFile()), Encoding.UTF_8());
-			BufferedReader in = new BufferedReader(reader);
+			BufferedReader in = new BufferedReader(new FileReader(fullPath.toFile()));
 			String line;
 			do {
 				line = in.readLine();
@@ -854,9 +850,9 @@ public class ManagedBuildTestHelper {
 			fullPath = project.getLocation().append(path);
 		}
 		try {
-			InputStreamReader input = null;
+			FileReader input = null;
 			try {
-				input = new InputStreamReader(new FileInputStream(fullPath.toFile()), Encoding.UTF_8());
+				input = new FileReader(fullPath.toFile());
 			} catch (Exception e) {
 				Assert.fail("File " + fullPath.toString() + " could not be read: " + e.getLocalizedMessage());
 			}
@@ -901,9 +897,9 @@ public class ManagedBuildTestHelper {
 				for (int i=0; i<files.length; i++) {
 					IPath file = files[i];
 					IPath srcFile = srcDir.append(file);
-					InputStreamReader srcReader = null;
+					FileReader srcReader = null;
 					try {
-						srcReader = new InputStreamReader(new FileInputStream(srcFile.toFile()), Encoding.UTF_8());
+						srcReader = new FileReader(srcFile.toFile());
 					} catch (Exception e) {
 						Assert.fail("File " + file.toString() + " could not be read.");
 						return null;
@@ -921,9 +917,9 @@ public class ManagedBuildTestHelper {
 						} while (file.segmentCount() > 1);
 					}
 					IPath destFile = tmpSrcDir.append(files[i]);
-					OutputStreamWriter writer = null;
+					FileWriter writer = null;
 					try {
-						writer = new OutputStreamWriter(new FileOutputStream(destFile.toFile()), Encoding.UTF_8());
+						writer = new FileWriter(destFile.toFile());
 					} catch (Exception e) {
 						Assert.fail("File " + files[i].toString() + " could not be written.");
 						return null;

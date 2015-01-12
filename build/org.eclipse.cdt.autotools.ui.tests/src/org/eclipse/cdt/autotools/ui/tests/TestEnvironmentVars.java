@@ -14,12 +14,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
+import java.io.FileWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
@@ -134,7 +132,7 @@ public class TestEnvironmentVars extends AbstractTest {
 		// Create a fake configure script which prints out the values of
 		// envvars some_var1, some_var2, and some_var3
 		File f = new File(path.append("fake_configure").toPortableString());
-		BufferedWriter w = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), Encoding.UTF_8()));
+		BufferedWriter w = new BufferedWriter(new FileWriter(f));
 		w.append("echo VAR1 is ${some_var1}");
 		w.newLine();
 		w.append("echo VAR2 is ${some_var2}");

@@ -12,12 +12,9 @@
 package org.eclipse.cdt.debug.ui.memory.transport;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.math.BigInteger;
-
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.ui.memory.transport.model.IMemoryExporter;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -522,7 +519,7 @@ public class SRecordExporter implements IMemoryExporter
 					
 					BigInteger transferAddress = fStartAddress;
 					
-					OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(fOutputFile), Encoding.UTF_8());
+					FileWriter writer = new FileWriter(fOutputFile);
 					
 					BigInteger jobs = fEndAddress.subtract(transferAddress).divide(DATA_PER_RECORD);
 					BigInteger factor = BigInteger.ONE;

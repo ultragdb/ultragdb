@@ -12,7 +12,7 @@ package org.eclipse.cdt.internal.core.qnx;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -119,9 +119,8 @@ public class ProcessList implements IProcessList {
 			for (int i = 0; i < pidFiles.length; i++) {
 				File cmdLine = new File(pidFiles[i], "exename"); //$NON-NLS-1$
 				StringBuffer line = new StringBuffer();
-				InputStreamReader reader = null;
 				try {
-					reader = new InputStreamReader(new FileInputStream(cmdLine), Encoding.UTF_8());
+					FileReader reader = new FileReader(cmdLine);
 					int c;
 					while ((c = reader.read()) > 0) {
 						line.append((char)c);

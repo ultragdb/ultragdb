@@ -12,9 +12,8 @@ package org.eclipse.cdt.internal.autotools.core.configure;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,9 +28,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.cdt.autotools.core.AutotoolsNewProjectNature;
+import org.eclipse.cdt.autotools.core.AutotoolsOptionConstants;
 import org.eclipse.cdt.autotools.core.AutotoolsPlugin;
 import org.eclipse.cdt.autotools.core.IAutotoolsOption;
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
@@ -386,7 +385,7 @@ public class AutotoolsConfigurationManager implements IResourceChangeListener {
 			if (!f.exists())
 				f.createNewFile();
 			if (f.exists()) {
-				PrintWriter p = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), Encoding.UTF_8())));
+				PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter(f)));
 				Map<String, IAConfiguration> cfgs = configs.get(projectName);
 				p.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); //$NON-NLS-1$
 				p.println("<configurations>"); // $NON-NLS-1$
@@ -454,7 +453,7 @@ public class AutotoolsConfigurationManager implements IResourceChangeListener {
 			if (!f.exists())
 				f.createNewFile();
 			if (f.exists()) {
-				PrintWriter p = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), Encoding.UTF_8())));
+				PrintWriter p = new PrintWriter(new BufferedWriter(new FileWriter(f)));
 				try {
 					Map<String, IAConfiguration> cfgs = getSavedConfigs(project);
 					if (cfgs == null)

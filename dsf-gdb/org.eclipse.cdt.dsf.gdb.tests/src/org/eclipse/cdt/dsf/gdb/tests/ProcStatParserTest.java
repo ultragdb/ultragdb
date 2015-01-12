@@ -15,11 +15,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.dsf.gdb.internal.ProcStatCoreLoads;
 import org.eclipse.cdt.dsf.gdb.internal.ProcStatParser;
 import org.junit.AfterClass;
@@ -194,10 +192,10 @@ public class ProcStatParserTest {
 	// util functions
 	
 	private static void writeStr2File(String str, String fileName) {
-		OutputStreamWriter fileWriter = null;
+		FileWriter fileWriter = null;
 		File f = new File(fileName);
 		try {
-			fileWriter = new OutputStreamWriter(new FileOutputStream(f), Encoding.UTF_8());
+			fileWriter = new FileWriter(f);
 			fileWriter.write(str);
 			fileWriter.close();
 			

@@ -15,15 +15,14 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.FileReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.eclipse.cdt.common.Encoding;
+import org.eclipse.cdt.autotools.ui.tests.AbstractTest.NodeAvailableAndSelect;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -163,7 +162,7 @@ public class SetConfigurationParameter extends AbstractTest {
 		f = new File(path.append("config.status").toPortableString());
 		assertTrue(f.exists());
 
-		try (BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(f), Encoding.UTF_8()))) {
+		try (BufferedReader r = new BufferedReader(new FileReader(f))) {
 			int ch;
 			boolean optionFound = false;
 			// Read config.status and look for the string --enable-jeff
@@ -295,7 +294,7 @@ public class SetConfigurationParameter extends AbstractTest {
 		assertTrue(f.exists());
 		f = new File(path.append("build-debug/config.status").toPortableString());
 		assertTrue(f.exists());
-		try (BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(f), Encoding.UTF_8()))) {
+		try (BufferedReader r = new BufferedReader(new FileReader(f))) {
 			int ch;
 			boolean optionFound = false;
 			// Read config.status and look for the string --enable-jeff
