@@ -52,8 +52,6 @@ import org.eclipse.cdt.dsf.mi.service.IMIExecutionDMContext;
 import org.eclipse.cdt.dsf.mi.service.command.AbstractCLIProcess.ProcessMIInterpreterExecConsole;
 import org.eclipse.cdt.dsf.mi.service.command.commands.MICommand;
 import org.eclipse.cdt.dsf.mi.service.command.commands.MIGDBSetEnv;
-import org.eclipse.cdt.dsf.mi.service.command.commands.MIGDBSetHostCharset;
-import org.eclipse.cdt.dsf.mi.service.command.commands.MIGDBSetTargetCharset;
 import org.eclipse.cdt.dsf.mi.service.command.commands.MIInferiorTTYSet;
 import org.eclipse.cdt.dsf.mi.service.command.commands.RawCommand;
 import org.eclipse.cdt.dsf.mi.service.command.output.MIConsoleStreamOutput;
@@ -606,8 +604,8 @@ public abstract class AbstractMIControl extends AbstractDsfService
 
     public static boolean isHiddenCommand(MICommand<MIInfo> command) {
     	if (command instanceof MIInferiorTTYSet
-    			|| command instanceof MIGDBSetHostCharset
-    			|| command instanceof MIGDBSetTargetCharset
+//    			|| command instanceof MIGDBSetHostCharset
+//    			|| command instanceof MIGDBSetTargetCharset
     			|| command instanceof MIGDBSetEnv) {
     		return true;
     	}
