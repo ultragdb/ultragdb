@@ -20,8 +20,6 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
-
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.ui.CUIPlugin;
 import org.eclipse.cdt.ui.PreferenceConstants;
 import org.eclipse.cdt.ui.text.doctools.generic.GenericDocTag;
@@ -61,7 +59,7 @@ public class DoxygenHelper extends AbstractPreferenceInitializer {
 			try {
 				List<GenericDocTag> temp= new ArrayList<GenericDocTag>();
 				is= FileLocator.openStream(CUIPlugin.getDefault().getBundle(), TAGS_CSV, false);
-				BufferedReader br= new BufferedReader(new InputStreamReader(is, Encoding.UTF_8()));
+				BufferedReader br= new BufferedReader(new InputStreamReader(is));
 				StringBuilder content= new StringBuilder(2000);
 				for(String line= br.readLine(); line!=null; line= br.readLine()) {
 					content.append(line).append('\n');

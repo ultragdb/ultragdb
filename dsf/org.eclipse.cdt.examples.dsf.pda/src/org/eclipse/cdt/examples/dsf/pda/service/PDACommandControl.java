@@ -23,7 +23,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.dsf.concurrent.DataRequestMonitor;
 import org.eclipse.cdt.dsf.concurrent.DsfRunnable;
 import org.eclipse.cdt.dsf.concurrent.IDsfStatusConstants;
@@ -144,8 +143,8 @@ public class PDACommandControl extends AbstractDsfService implements ICommandCon
         // Get intput/output streams from the backend service.
         //
         fRequestWriter = new PrintWriter(fBackend.getRequestOutputStream());
-        fRequestReader = new BufferedReader(new InputStreamReader(fBackend.getRequestInputStream(), Encoding.UTF_8()));
-        fEventReader = new BufferedReader(new InputStreamReader(fBackend.getEventInputStream(), Encoding.UTF_8()));
+        fRequestReader = new BufferedReader(new InputStreamReader(fBackend.getRequestInputStream()));
+        fEventReader = new BufferedReader(new InputStreamReader(fBackend.getEventInputStream()));
 
         fEventDispatchJob = new EventDispatchJob();
         fEventDispatchJob.schedule();

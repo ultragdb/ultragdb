@@ -19,7 +19,6 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.StringTokenizer;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.ui.memory.transport.model.IMemoryImporter;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -290,7 +289,7 @@ public class PlainTextImporter implements IMemoryImporter {
 					
 					BigInteger scrollToAddress = null;
 					
-					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fInputFile), Encoding.UTF_8()));
+					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fInputFile)));
 					
 					BigInteger jobs = BigInteger.valueOf(fInputFile.length());
 					BigInteger factor = BigInteger.ONE;

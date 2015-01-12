@@ -61,7 +61,6 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.editors.text.EditorsUI;
 import org.eclipse.ui.texteditor.ChainedPreferenceStore;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.ui.CUIPlugin;
 import org.eclipse.cdt.ui.PreferenceConstants;
 import org.eclipse.cdt.ui.text.ICPartitions;
@@ -837,7 +836,7 @@ class CEditorColoringConfigurationBlock extends AbstractConfigurationBlock {
 		StringBuffer buffer= new StringBuffer(512);
 		BufferedReader reader= null;
 		try {
-			reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename), Encoding.UTF_8()));
+			reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename)));
 			while ((line= reader.readLine()) != null) {
 				buffer.append(line);
 				buffer.append(separator);

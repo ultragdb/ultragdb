@@ -25,8 +25,6 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 
-import org.eclipse.cdt.common.Encoding;
-
 /**
  * The counterpart to the CreateFileChange, a change to delete a file. 
  * 
@@ -83,9 +81,9 @@ public class DeleteFileChange extends Change {
 		try {
 			in= file.getContents();
 		    if (encoding != null)
-		        br= new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()/*encoding*/));	
+		        br= new BufferedReader(new InputStreamReader(in, encoding));	
 		    else
-		        br= new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()));	
+		        br= new BufferedReader(new InputStreamReader(in));	
 			int read= 0;
 			while ((read= br.read()) != -1) {
 				sb.append((char) read);

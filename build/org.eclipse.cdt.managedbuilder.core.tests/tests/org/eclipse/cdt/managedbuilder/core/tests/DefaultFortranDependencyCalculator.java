@@ -21,7 +21,6 @@ import java.io.Reader;
 import java.io.StreamTokenizer;
 import java.util.ArrayList;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.core.IManagedBuildInfo;
 import org.eclipse.cdt.managedbuilder.core.IManagedOutputNameProvider;
@@ -51,7 +50,7 @@ public class DefaultFortranDependencyCalculator implements IManagedDependencyGen
 		InputStream in = null;
 		try {
 			in = new BufferedInputStream(new FileInputStream(file));
-			Reader r = new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()));
+			Reader r = new BufferedReader(new InputStreamReader(in));
 			StreamTokenizer st = new StreamTokenizer(r);
 			st.commentChar('!');
 			st.eolIsSignificant(false);

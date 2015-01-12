@@ -19,7 +19,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.IProcessInfo;
 import org.eclipse.cdt.core.IProcessList;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
@@ -46,7 +45,7 @@ public class ProcessList implements IProcessList {
 
 		try {
 			pidin = ProcessFactory.getFactory().exec(args);
-			pidinOutput = new BufferedReader(new InputStreamReader(pidin.getInputStream(), Encoding.UTF_8()));
+			pidinOutput = new BufferedReader(new InputStreamReader(pidin.getInputStream()));
 		} catch(Exception e) {
 			return getProcessListPureJava();
 		}

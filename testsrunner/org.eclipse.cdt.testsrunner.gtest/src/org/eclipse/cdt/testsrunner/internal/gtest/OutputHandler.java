@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.testsrunner.model.ITestModelUpdater;
 import org.eclipse.cdt.testsrunner.model.ITestItem;
 import org.eclipse.cdt.testsrunner.model.ITestMessage;
@@ -573,7 +572,7 @@ public class OutputHandler {
 	 */
 	public void run(InputStream inputStream) throws IOException, TestingException {
 		// Initialize input stream reader
-		InputStreamReader streamReader = new InputStreamReader(inputStream, Encoding.UTF_8());
+		InputStreamReader streamReader = new InputStreamReader(inputStream);
 		BufferedReader reader = new BufferedReader(streamReader);
         String line;
         boolean finalizedProperly = false;

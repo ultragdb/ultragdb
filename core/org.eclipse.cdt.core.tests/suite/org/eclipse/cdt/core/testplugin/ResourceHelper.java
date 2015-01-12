@@ -26,8 +26,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+<<<<<<< HEAD
 import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.common.Encoding;
+=======
+>>>>>>> test01
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.IPDOMManager;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
@@ -655,7 +658,7 @@ public class ResourceHelper {
 		try {
 			// Avoid using java.nio.channels.FileChannel,
 			// see http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4715154
-			Reader reader = new BufferedReader(new InputStreamReader(stream, Encoding.UTF_8()/*Charset.defaultCharset()*/));
+			Reader reader = new BufferedReader(new InputStreamReader(stream, Charset.defaultCharset()));
 			StringBuilder builder = new StringBuilder();
 			char[] buffer = new char[8192];
 			int read;

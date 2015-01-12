@@ -27,8 +27,6 @@ import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.rules.IPartitionTokenScanner;
 import org.eclipse.jface.text.rules.IToken;
 
-import org.eclipse.cdt.common.Encoding;
-
 import org.eclipse.cdt.internal.ui.text.FastCPartitionScanner;
 
 /**
@@ -53,7 +51,7 @@ public class PartitionTokenScannerTest extends TestCase {
 	private IDocument getDocument(String name, String lineDelimiter) {
 		try {
 			InputStream stream= getClass().getResourceAsStream(name);
-			BufferedReader reader= new BufferedReader(new InputStreamReader(stream, Encoding.UTF_8()));
+			BufferedReader reader= new BufferedReader(new InputStreamReader(stream));
 
 			StringBuilder buffer= new StringBuilder();
 			String line= reader.readLine();

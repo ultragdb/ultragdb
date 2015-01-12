@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-import org.eclipse.cdt.common.Encoding;
-
 /**
  * Receiving, and printing to the console, stderr output
  * @since 7.0
@@ -37,7 +35,7 @@ public class ErrorThread extends Thread {
 	 */
 	@Override
 	public void run() {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(session.getChannelErrorStream(), Encoding.UTF_8()));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(session.getChannelErrorStream()));
 		try {
 			String line;
 			while ((line = reader.readLine()) != null) {

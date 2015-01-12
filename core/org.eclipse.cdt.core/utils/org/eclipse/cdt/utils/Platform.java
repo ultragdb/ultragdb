@@ -17,7 +17,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.osgi.framework.Bundle;
@@ -62,7 +61,7 @@ public final class Platform {
 				try {
 					unameProcess = ProcessFactory.getFactory().exec(cmd);
 	
-					InputStreamReader inputStreamReader = new InputStreamReader(unameProcess.getInputStream(), Encoding.UTF_8());
+					InputStreamReader inputStreamReader = new InputStreamReader(unameProcess.getInputStream());
 					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 					String unameOutput= bufferedReader.readLine();
 					if (unameOutput != null) {
@@ -91,7 +90,7 @@ public final class Platform {
 					unameProcess = ProcessFactory.getFactory().exec(cmd);
 					unameProcess.getOutputStream().close();
 					unameProcess.getErrorStream().close();
-					InputStreamReader inputStreamReader = new InputStreamReader(unameProcess.getInputStream(), Encoding.UTF_8());
+					InputStreamReader inputStreamReader = new InputStreamReader(unameProcess.getInputStream());
 					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 					String unameOutput = bufferedReader.readLine();
 					if (unameOutput != null && unameOutput.endsWith("64")) { //$NON-NLS-1$

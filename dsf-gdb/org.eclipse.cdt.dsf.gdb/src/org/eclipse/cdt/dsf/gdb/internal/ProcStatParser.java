@@ -21,8 +21,6 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.cdt.common.Encoding;
-
 /**
  * @author Marc Dumais
  * TODO: extend to more than the tick counters.
@@ -53,7 +51,7 @@ public class ProcStatParser  {
         BufferedReader reader = null;
         try {
             String coreId;           
-            Reader r = new InputStreamReader(new FileInputStream(statFile), Encoding.UTF_8());
+            Reader r = new InputStreamReader(new FileInputStream(statFile));
             reader = new BufferedReader(r);
             String line;
             // ex: "cpu0 2048635 3195 385292 66149962 895977 22 36130 0 0 0"

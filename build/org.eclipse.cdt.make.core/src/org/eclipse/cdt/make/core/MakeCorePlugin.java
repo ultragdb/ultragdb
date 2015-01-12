@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.make.core.makefile.IMakefile;
 import org.eclipse.cdt.make.core.makefile.IMakefileReaderProvider;
 import org.eclipse.cdt.make.core.scannerconfig.IDiscoveredPathManager;
@@ -83,7 +82,7 @@ public class MakeCorePlugin extends Plugin {
 				if (!info.exists() || info.isDirectory())
 					throw new IOException();
 
-				return new InputStreamReader(store.openInputStream(EFS.NONE, null), Encoding.UTF_8()/*fEncoding*/);
+				return new InputStreamReader(store.openInputStream(EFS.NONE, null), fEncoding);
 			} catch (CoreException e) {
 				MakeCorePlugin.log(e);
 				throw new IOException(e.getMessage());

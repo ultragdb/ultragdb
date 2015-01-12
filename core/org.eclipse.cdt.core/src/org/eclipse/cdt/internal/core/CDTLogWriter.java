@@ -19,13 +19,10 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-
 import com.ibm.icu.text.DateFormat;
 import com.ibm.icu.text.SimpleDateFormat;
-
 import java.util.Date;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -74,7 +71,7 @@ public class CDTLogWriter {
 	
 	protected void openLogFile() {
 		try {
-			log = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFile.getAbsolutePath(), true), Encoding.UTF_8()));
+			log = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFile.getAbsolutePath(), true), "UTF-8"));//$NON-NLS-1$
 			if (newSession) {
 				writeHeader();
 				newSession = false;
@@ -108,7 +105,11 @@ public class CDTLogWriter {
 		return Long.toString(System.currentTimeMillis());
 	}
 	protected Writer logForStream(OutputStream output) {
-		return new BufferedWriter(new OutputStreamWriter(output, Encoding.UTF_8()));
+		try {
+			return new BufferedWriter(new OutputStreamWriter(output, "UTF-8"));//$NON-NLS-1$
+		} catch (UnsupportedEncodingException e) {
+			return new BufferedWriter(new OutputStreamWriter(output));
+		}
 	}
 	/**
 	 * Writes the given string to the log, followed by the line terminator string.

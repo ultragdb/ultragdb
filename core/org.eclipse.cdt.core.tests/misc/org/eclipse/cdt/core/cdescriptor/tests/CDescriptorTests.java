@@ -21,7 +21,6 @@ import java.io.Reader;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.CDescriptorEvent;
 import org.eclipse.cdt.core.CProjectNature;
@@ -515,7 +514,7 @@ public class CDescriptorTests extends BaseTestCase {
 		IFile cProjectFile = project.getFile(".cproject");
 		InputStream in = cProjectFile.getContents();
 		try {
-			Reader reader = new InputStreamReader(in, Encoding.UTF_8());
+			Reader reader = new InputStreamReader(in, "UTF-8");
 			StringBuilder sb = new StringBuilder();
 			char[] b = new char[4096];
 			int n;

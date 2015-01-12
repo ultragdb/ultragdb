@@ -25,7 +25,6 @@ import java.util.List;
 
 import junit.framework.Assert;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.ILinkage;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
@@ -148,7 +147,7 @@ public class TestSourceReader {
 				continue;
 			}
 
-		    BufferedReader br = new BufferedReader(new InputStreamReader(in, Encoding.UTF_8()));
+		    BufferedReader br = new BufferedReader(new InputStreamReader(in));
 		    try {
 		    	// Read the java file collecting comments until we encounter the test method.
 			    List<StringBuilder> contents = new ArrayList<StringBuilder>();
@@ -197,7 +196,7 @@ public class TestSourceReader {
 	 */
 	public static int indexOfInFile(String lookfor, Path fullPath) throws Exception {
 		IFile file= ResourcesPlugin.getWorkspace().getRoot().getFile(fullPath);
-		Reader reader= new BufferedReader(new InputStreamReader(file.getContents(), Encoding.UTF_8()/*file.getCharset()*/));
+		Reader reader= new BufferedReader(new InputStreamReader(file.getContents(), file.getCharset()));
 		Assert.assertTrue(lookfor.indexOf('\n') == -1);
 		try {
 			int c= 0;
@@ -226,7 +225,7 @@ public class TestSourceReader {
 
 	public static int getLineNumber(int offset, Path fullPath) throws Exception {
 		IFile file= ResourcesPlugin.getWorkspace().getRoot().getFile(fullPath);
-		Reader reader= new BufferedReader(new InputStreamReader(file.getContents(), Encoding.UTF_8()/*file.getCharset()*/));
+		Reader reader= new BufferedReader(new InputStreamReader(file.getContents(), file.getCharset()));
 		try {
 			int line = 1;
 			for (int i = 0; i < offset; i++) {
@@ -250,7 +249,7 @@ public class TestSourceReader {
 	    IPath filePath= new Path(srcRoot + '/' + clazz.getName().replace('.', '/') + ".java");
 
 	    InputStream in= FileLocator.openStream(bundle, filePath, false);
-	    LineNumberReader reader= new LineNumberReader(new InputStreamReader(in, Encoding.UTF_8()));
+	    LineNumberReader reader= new LineNumberReader(new InputStreamReader(in));
 	    boolean found= false;
 	    final StringBuilder content= new StringBuilder();
 	    try {

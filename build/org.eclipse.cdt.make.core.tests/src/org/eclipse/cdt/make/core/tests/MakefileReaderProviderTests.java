@@ -26,7 +26,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.make.core.MakeCorePlugin;
 import org.eclipse.cdt.make.core.makefile.IMacroDefinition;
 import org.eclipse.cdt.make.core.makefile.IMakefile;
@@ -97,7 +96,7 @@ public class MakefileReaderProviderTests extends TestCase {
 							fileUrl = new URL("file", null, fileURI.getPath());
 						}
 						InputStream is = fileUrl.openStream();
-						return new InputStreamReader(is, Encoding.UTF_8());
+						return new InputStreamReader(is);
 					}
 
 				});

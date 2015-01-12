@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.make.core.MakeCorePlugin;
 import org.eclipse.cdt.make.core.makefile.IAutomaticVariable;
 import org.eclipse.cdt.make.core.makefile.IBuiltinFunction;
@@ -172,7 +171,7 @@ public class GNUMakefile extends AbstractMakefile implements IGNUMakefile {
 				}
 
 				reader = new MakefileReader(new InputStreamReader(
-						store.openInputStream(EFS.NONE, null), Encoding.UTF_8()));
+						store.openInputStream(EFS.NONE, null)));
 			} catch (CoreException e) {
 				MakeCorePlugin.log(e);
 				throw new IOException(e.getMessage());

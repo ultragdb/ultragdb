@@ -56,8 +56,6 @@ import org.eclipse.ui.XMLMemento;
 
 import com.ibm.icu.text.Collator;
 
-import org.eclipse.cdt.common.Encoding;
-
 import org.eclipse.cdt.internal.corext.codemanipulation.IncludeInfo;
 
 import org.eclipse.cdt.internal.ui.ICHelpContextIds;
@@ -434,7 +432,7 @@ public class HeaderSubstitutionMapEditDialog extends ResizableStatusDialog {
 		try {
 			IFileStore fileStore = EFS.getLocalFileSystem().getStore(Path.fromOSString(path));
 			InputStream stream = fileStore.openInputStream(EFS.NONE, null);
-			InputStreamReader reader = new InputStreamReader(new BufferedInputStream(stream), Encoding.UTF_8());
+			InputStreamReader reader = new InputStreamReader(new BufferedInputStream(stream), UTF_8);
 			try {
 				HeaderSubstitutionMap map = HeaderSubstitutionMap.fromSerializedMemento(reader);
 				updateFromMap(map);
@@ -444,6 +442,15 @@ public class HeaderSubstitutionMapEditDialog extends ResizableStatusDialog {
 				} catch (IOException e) {
 				}
 			}
+		} catch (IOException e) {
+			String title= PreferencesMessages.HeaderSubstitutionMapEditDialog_import_title;
+			String message= e.getLocalizedMessage();
+			if (message != null) {
+				message= NLS.bind(PreferencesMessages.HeaderSubstitutionMapEditDialog_error_parse_message, message);
+			} else {
+				message= NLS.bind(PreferencesMessages.HeaderSubstitutionMapEditDialog_error_read_message, path);
+			}
+			MessageDialog.openError(getShell(), title, message);
 		} catch (CoreException e) {
 			MessageDialog.openError(getShell(),
 					PreferencesMessages.HeaderSubstitutionMapEditDialog_import_title,
@@ -472,7 +479,7 @@ public class HeaderSubstitutionMapEditDialog extends ResizableStatusDialog {
 
 			XMLMemento memento = XMLMemento.createWriteRoot(TAG_HEADER_SUBSTITUTION_MAP);
 			map.saveToMemento(memento);
-			Writer writer = new OutputStreamWriter(new BufferedOutputStream(stream), Encoding.UTF_8());
+			Writer writer = new OutputStreamWriter(new BufferedOutputStream(stream), UTF_8);
 			try {
 				memento.save(writer);
 			} finally {

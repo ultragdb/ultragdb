@@ -26,7 +26,6 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 import org.eclipse.cdt.autotools.ui.AutotoolsUIPlugin;
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.make.core.MakeCorePlugin;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileInfo;
@@ -908,7 +907,7 @@ public class GNUAutomakefile extends AbstractMakefile implements IGNUMakefile {
 				URL url = FileLocator.find(MakeCorePlugin.getDefault().getBundle(), new Path(location), null);
 				url = FileLocator.resolve(url);
 				location = url.getFile();
-				gnu.parse(location, new InputStreamReader(stream, Encoding.UTF_8()));
+				gnu.parse(location, new InputStreamReader(stream));
 				builtins = gnu.getDirectives();
 				for (int i = 0; i < builtins.length; i++) {
 					if (builtins[i] instanceof MacroDefinition) {
@@ -956,7 +955,7 @@ public class GNUAutomakefile extends AbstractMakefile implements IGNUMakefile {
 				throw new IOException();
 
 			MakefileReader reader = new MakefileReader(new InputStreamReader(
-					store.openInputStream(EFS.NONE, null), Encoding.UTF_8()));
+					store.openInputStream(EFS.NONE, null)));
 			gnu.parse(fileURI, reader);
 		} catch (IOException e) {
 			AutotoolsUIPlugin.log(e);

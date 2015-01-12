@@ -30,8 +30,6 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.cdt.common.Encoding;
-
 /**
  * 
  */
@@ -490,7 +488,7 @@ public class PDAVirtualMachine {
 
         ServerSocket commandServerSocket = new ServerSocket(fCommandPort);
         fCommandSocket = commandServerSocket.accept();
-        fCommandReceiveStream = new BufferedReader(new InputStreamReader(fCommandSocket.getInputStream(), Encoding.UTF_8()));
+        fCommandReceiveStream = new BufferedReader(new InputStreamReader(fCommandSocket.getInputStream()));
         fCommandResponseStream = new PrintStream(fCommandSocket.getOutputStream());
         commandServerSocket.close();
 

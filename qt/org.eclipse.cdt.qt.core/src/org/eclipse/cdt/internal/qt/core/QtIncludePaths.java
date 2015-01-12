@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.language.settings.providers.LanguageSettingsSerializableProvider;
 import org.eclipse.cdt.core.settings.model.CIncludePathEntry;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
@@ -229,7 +228,7 @@ public class QtIncludePaths extends LanguageSettingsSerializableProvider {
 		Process process = null;
 		try {
 			process = ProcessFactory.getFactory().exec(new String[]{ qmakePath, "-query", "QT_INSTALL_HEADERS" });
-			reader = new BufferedReader(new InputStreamReader(process.getInputStream(), Encoding.UTF_8()));
+			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 			qtInstallHeadersPath = reader.readLine();
 		} catch(IOException e) {
 			QtPlugin.log(e);

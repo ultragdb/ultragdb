@@ -20,7 +20,6 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.CCorePreferenceConstants;
 import org.eclipse.cdt.core.IBinaryParser.IBinaryExecutable;
@@ -489,7 +488,7 @@ public class Binary extends Openable implements IBinary {
 			if (bin != null) {
 				StringBuffer sb = new StringBuffer();
 				try {
-					BufferedReader stream = new BufferedReader(new InputStreamReader(bin.getContents(), Encoding.UTF_8()));
+					BufferedReader stream = new BufferedReader(new InputStreamReader(bin.getContents()));
 					char[] buf = new char[512];
 					int len;
 					while ((len = stream.read(buf, 0, buf.length)) != -1) {

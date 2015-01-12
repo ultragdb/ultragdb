@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.eclipse.core.runtime.Platform;
 
@@ -42,7 +41,7 @@ public class PTY2 {
 			terminalEmulator = ProcessFactory.getFactory().exec(cmdArray);
 
 			in = terminalEmulator.getInputStream();
-			InputStreamReader reader = new InputStreamReader(in, Encoding.UTF_8());
+			InputStreamReader reader = new InputStreamReader(in);
 			BufferedReader br = new BufferedReader(reader);
 
 			String line = br.readLine();

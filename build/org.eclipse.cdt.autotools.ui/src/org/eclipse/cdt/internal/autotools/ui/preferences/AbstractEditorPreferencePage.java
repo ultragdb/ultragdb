@@ -22,7 +22,6 @@ import java.util.Set;
 
 import org.eclipse.cdt.autotools.core.AutotoolsPlugin;
 import org.eclipse.cdt.autotools.ui.AutotoolsUIPlugin;
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -313,7 +312,7 @@ public abstract class AbstractEditorPreferencePage extends PreferencePage implem
 		StringBuffer buffer= new StringBuffer(512);
 		BufferedReader reader= null;
 		try {
-			reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename), Encoding.UTF_8()));
+			reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename)));
 			while ((line= reader.readLine()) != null) {
 				buffer.append(line);
 				buffer.append(separator);

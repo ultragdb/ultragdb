@@ -20,7 +20,6 @@ import java.util.Iterator;
 import org.eclipse.cdt.codan.core.model.AbstractCheckerWithProblemPreferences;
 import org.eclipse.cdt.codan.core.model.IProblem;
 import org.eclipse.cdt.codan.core.model.IProblemWorkingCopy;
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -72,7 +71,7 @@ public class GrepChecker extends AbstractCheckerWithProblemPreferences {
 	private void externalRun(IFile file, Object[] values, IProblem problem) {
 		try {
 			InputStream is = file.getContents();
-			BufferedReader bis = new BufferedReader(new InputStreamReader(is, Encoding.UTF_8()));
+			BufferedReader bis = new BufferedReader(new InputStreamReader(is));
 			String line;
 			int iline = 0;
 			while ((line = bis.readLine()) != null) {

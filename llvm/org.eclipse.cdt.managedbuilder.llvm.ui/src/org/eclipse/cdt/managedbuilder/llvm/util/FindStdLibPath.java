@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ProcessBuilder;
 
-import org.eclipse.cdt.common.Encoding;
-
 /**
  * The purpose is to find a path where stdc++ library is located.
  * Currently the shell script is only for Linux.
@@ -52,7 +50,7 @@ public class FindStdLibPath {
 			Process p = pb.start();
 			String line;
 			BufferedReader input = new BufferedReader
-					(new InputStreamReader(p.getInputStream(), Encoding.UTF_8()));
+					(new InputStreamReader(p.getInputStream()));
 			line = input.readLine();
 			input.close();
 			if (line != null) {

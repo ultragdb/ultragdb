@@ -36,7 +36,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.ui.ICHelpBook;
 import org.eclipse.cdt.ui.ICHelpProvider;
 import org.eclipse.cdt.ui.ICHelpResourceDescriptor;
@@ -171,7 +170,7 @@ public class CHelpProvider implements ICHelpProvider {
 		Document doc = null;
 		try {
 			InputStream stream = new FileInputStream(fname);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(stream, Encoding.UTF_8()));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 			InputSource src = new InputSource(reader);
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			doc = builder.parse(src);

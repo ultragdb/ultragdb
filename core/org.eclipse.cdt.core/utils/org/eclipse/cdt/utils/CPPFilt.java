@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.utils.spawner.ProcessFactory;
 
 /**
@@ -51,8 +50,8 @@ public class CPPFilt {
 			System.arraycopy(params, 0, args, 1, params.length);
 		}
 		cppfilt = ProcessFactory.getFactory().exec(args);
-		stdin = new BufferedWriter(new OutputStreamWriter(cppfilt.getOutputStream(), Encoding.UTF_8()));
-		stdout = new BufferedReader(new InputStreamReader(cppfilt.getInputStream(), Encoding.UTF_8()));			
+		stdin = new BufferedWriter(new OutputStreamWriter(cppfilt.getOutputStream()));
+		stdout = new BufferedReader(new InputStreamReader(cppfilt.getInputStream()));			
 	}
 
 	public String getFunction(String symbol) throws IOException {

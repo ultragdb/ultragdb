@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -31,7 +32,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.dsf.concurrent.ConfinedToDsfExecutor;
 import org.eclipse.cdt.dsf.concurrent.DataRequestMonitor;
 import org.eclipse.cdt.dsf.concurrent.DsfRunnable;
@@ -752,7 +752,11 @@ public abstract class AbstractMIControl extends AbstractDsfService
         @SuppressWarnings("null")
 		@Override
         public void run() {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fInputStream, Encoding.UTF_8()));
+            BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(fInputStream, "UTF-8")); //$NON-NLS-1$
+			} catch (UnsupportedEncodingException e1) {
+			}
             try {
             	String line;
             	while (true) {
@@ -1131,7 +1135,11 @@ public abstract class AbstractMIControl extends AbstractDsfService
         @SuppressWarnings("null")
 		@Override
         public void run() {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fErrorStream, Encoding.UTF_8()));
+            BufferedReader reader = null;
+			try {
+				reader = new BufferedReader(new InputStreamReader(fErrorStream, "UTF-8")); //$NON-NLS-1$
+			} catch (UnsupportedEncodingException e1) {
+			}
             try {
                 String line;
                 while ((line = reader.readLine()) != null) {

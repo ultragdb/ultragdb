@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.debug.ui.memory.transport.model.IMemoryImporter;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -366,7 +365,7 @@ public class SRecordImporter implements IMemoryImporter {
 					if(!fProperties.getBoolean(TRANSFER_CUSTOM_START_ADDRESS))  
 						offset = BigInteger.ZERO;
 					
-					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fInputFile), Encoding.UTF_8()));
+					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fInputFile)));
 					
 					BigInteger jobs = BigInteger.valueOf(fInputFile.length());
 					BigInteger factor = BigInteger.ONE;

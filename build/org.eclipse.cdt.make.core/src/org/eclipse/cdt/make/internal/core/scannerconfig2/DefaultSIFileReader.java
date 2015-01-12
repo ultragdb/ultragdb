@@ -21,7 +21,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.resources.IConsole;
 import org.eclipse.cdt.internal.core.ConsoleOutputSniffer;
@@ -111,7 +110,7 @@ public class DefaultSIFileReader implements IExternalScannerInfoProvider {
         BufferedReader reader = null;
         try {
             fileSize = new File(inputFileName).length();
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFileName), Encoding.UTF_8()));
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFileName)));
         } catch (FileNotFoundException e) {
             MakeCorePlugin.log(e);
         }

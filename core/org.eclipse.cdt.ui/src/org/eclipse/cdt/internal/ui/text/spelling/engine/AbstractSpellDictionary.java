@@ -36,7 +36,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.osgi.util.NLS;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.ui.CUIPlugin;
 
 import org.eclipse.cdt.internal.ui.text.spelling.Messages;
@@ -491,7 +490,7 @@ public abstract class AbstractSpellDictionary implements ISpellDictionary {
 					CharsetDecoder decoder= Charset.forName(getEncoding()).newDecoder();
 					decoder.onMalformedInput(CodingErrorAction.REPORT);
 					decoder.onUnmappableCharacter(CodingErrorAction.REPORT);
-					final BufferedReader reader= new BufferedReader(new InputStreamReader(stream, Encoding.UTF_8()/*decoder*/));
+					final BufferedReader reader= new BufferedReader(new InputStreamReader(stream, decoder));
 					
 					boolean doRead= true;
 					while (doRead) {

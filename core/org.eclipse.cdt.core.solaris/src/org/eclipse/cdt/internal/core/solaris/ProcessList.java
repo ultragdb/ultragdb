@@ -41,7 +41,11 @@ public class ProcessList implements IProcessList {
 
 		try {
 			ps = ProcessFactory.getFactory().exec(args);
+<<<<<<< HEAD
 			psOutput = new BufferedReader(new InputStreamReader(ps.getInputStream(), Encoding.UTF_8()));
+=======
+			psOutput = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+>>>>>>> test01
 		} catch(Exception e) {
 			return new IProcessInfo[0];
 		}

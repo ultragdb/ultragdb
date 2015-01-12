@@ -18,7 +18,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Vector;
 
-import org.eclipse.cdt.common.Encoding;
 import org.eclipse.cdt.internal.core.ICoreInfo;
 
 /**
@@ -55,7 +54,7 @@ public class CoreList {
         	String processorId = null;
         	String physicalId = null;
         	
-            Reader r = new InputStreamReader(new FileInputStream(cpuInfo), Encoding.UTF_8());
+            Reader r = new InputStreamReader(new FileInputStream(cpuInfo));
             reader = new BufferedReader(r);
             String line;
             while ((line = reader.readLine()) != null) {
