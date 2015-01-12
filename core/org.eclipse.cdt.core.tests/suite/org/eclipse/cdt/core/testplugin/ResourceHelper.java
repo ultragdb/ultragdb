@@ -22,15 +22,12 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-<<<<<<< HEAD
 import org.eclipse.cdt.common.Cygwin;
-import org.eclipse.cdt.common.Encoding;
-=======
->>>>>>> test01
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.IPDOMManager;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;

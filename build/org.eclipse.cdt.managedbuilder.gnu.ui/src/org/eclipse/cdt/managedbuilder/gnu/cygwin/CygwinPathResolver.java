@@ -13,14 +13,7 @@
  *******************************************************************************/
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
-<<<<<<< HEAD
 import org.eclipse.cdt.common.Cygwin;
-=======
-import java.io.File;
-
-import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
-import org.eclipse.cdt.internal.core.Cygwin;
->>>>>>> test01
 import org.eclipse.cdt.managedbuilder.core.IBuildPathResolver;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.core.runtime.Platform;
