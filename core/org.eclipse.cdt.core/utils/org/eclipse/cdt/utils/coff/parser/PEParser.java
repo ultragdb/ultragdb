@@ -99,6 +99,16 @@ public class PEParser extends AbstractCExtension implements IBinaryParser {
 	 */
 	@Override
 	public boolean isBinary(byte[] array, IPath path) {
+		String baseName = path.lastSegment();
+		if (baseName.endsWith(".o") //$NON-NLS-1$
+				|| baseName.endsWith(".obj") //$NON-NLS-1$
+				|| baseName.endsWith(".a") //$NON-NLS-1$
+				|| baseName.endsWith(".lib") //$NON-NLS-1$
+				|| baseName.endsWith(".exe") //$NON-NLS-1$
+				|| baseName.endsWith(".dll") //$NON-NLS-1$
+				) {
+			return true;
+		}
 		boolean isBin = PE.isExeHeader(array) || AR.isARHeader(array);
 		// It maybe an object file try the known machine types.
 		if (!isBin && array.length > 1) {

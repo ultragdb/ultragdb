@@ -482,7 +482,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.bupc.platform.base"
 		              name="%targetPlatform.name"
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              osList="linux,hpux,aix,qnx,solaris"
 		              archList="all">
 	              </targetPlatform>

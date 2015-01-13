@@ -292,7 +292,7 @@
             isTest="true"
             name="Test Sub Sub"
             parent="test.sub"
-            binaryParser="org.eclipse.cdt.core.ELF"
+            binaryParser="org.eclipse.cdt.core.GNU_ELF"
             defaultExtension="tss"
             makeCommand="nmake"
             id="test.sub.sub">
@@ -1373,7 +1373,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu.platform.so.debug"
 		              name="so Debug Platform"
-		              binaryParser="org.eclipse.cdt.core.ELF"		            
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 		          </targetPlatform>
@@ -1455,7 +1455,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu.platform.so.release"
 		              name="so Release Platform"
-		              binaryParser="org.eclipse.cdt.core.ELF"		            
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 		          </targetPlatform>
@@ -1544,7 +1544,7 @@
 				  <targetPlatform
 					  id="cdt.managedbuild.target.testgnu.platform.lib.debug"
 				 	  name="Dbg P"
-					  binaryParser="org.eclipse.cdt.core.ELF"		            
+					  binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 					  osList="solaris,linux,hpux,aix,qnx"
 					  archList="all">
 				  </targetPlatform>
@@ -1610,7 +1610,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu.platform.lib.release"
 		              name="Rel P"
-		              binaryParser="org.eclipse.cdt.core.ELF"		            
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 		          </targetPlatform>
@@ -2594,7 +2594,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu30.platform.exe.debug"
 		              name="MBS30PlatformName.Dbg"
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 	              </targetPlatform>
@@ -2659,7 +2659,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu30.platform.exe.release"
 		              name="MBS30PlatformName.Rel"		             
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">		              
 		          </targetPlatform>
@@ -2732,7 +2732,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu30.platform.so.debug"
 		              name="MBS30PlatformName.Dbg"
-		              binaryParser="org.eclipse.cdt.core.ELF"		            
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 		          </targetPlatform>
@@ -2822,7 +2822,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu30.platform.so.release"
 		              name="MBS30PlatformName.Rel"
-		              binaryParser="org.eclipse.cdt.core.ELF"		            
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 		          </targetPlatform>
@@ -2919,7 +2919,7 @@
 				  <targetPlatform
 					  id="cdt.managedbuild.target.testgnu30.platform.lib.debug"
 				 	  name="MBS30PlatformName.Dbg"
-					  binaryParser="org.eclipse.cdt.core.ELF"		            
+					  binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 					  osList="solaris,linux,hpux,aix,qnx"
 					  archList="all">
 				  </targetPlatform>
@@ -2981,7 +2981,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.testgnu30.platform.lib.release"
 		              name="MBS30PlatformName.Rel"
-		              binaryParser="org.eclipse.cdt.core.ELF"		            
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"		            
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 		          </targetPlatform>
@@ -3084,7 +3084,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.Testprepost30.gnu.platform.exe.debug"
 		              name="PlatformDbg"
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 	              </targetPlatform>
@@ -3174,7 +3174,7 @@
 		          <targetPlatform
 		              id="test30_1.gnu.so.platform"
 		              name="Platform for test30_1"
-		              binaryParser="org.eclipse.cdt.core.ELF">
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF">
 	              </targetPlatform>
 				  <builder
 		              id="test30_1.gnu.so.builder"
@@ -4327,7 +4327,7 @@
 		          <targetPlatform
 		              id="test.target_1.0.0"
 		              name="Test Target"		             
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              archList="all">		              
 		          </targetPlatform>
 				  <builder
@@ -4370,7 +4370,7 @@
 		          <targetPlatform
 		              id="test.target_2.0.0"
 		              name="Test Target ver 2.0"		             
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              archList="all">		              
 		          </targetPlatform>
 				  <builder
@@ -4473,7 +4473,7 @@
 		          <targetPlatform
 		              id="testProject.target_1.0.0"
 		              name="Test Target"		             
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              archList="all">		              
 		          </targetPlatform>
 				  <builder
@@ -4514,7 +4514,7 @@
 		          <targetPlatform
 		              id="testProject.target_2.0.0"
 		              name="Test Target"		             
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              archList="all">		              
 		          </targetPlatform>
 				  <builder
@@ -6291,7 +6291,7 @@
 		          <targetPlatform
 		              id="cdt.managedbuild.target.bdm.platform.exe.debug"
 		              name="MBS30PlatformName.Dbg"
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              osList="solaris,linux,hpux,aix,qnx"
 		              archList="all">
 	              </targetPlatform>
@@ -8007,7 +8007,7 @@
 		          <targetPlatform
 		              id="test.four.dot.zero.cdt.managedbuild.target.gnu.platform.base"
 		              name="Test 4.0 PlatformName.Dbg"
-		              binaryParser="org.eclipse.cdt.core.ELF"
+		              binaryParser="org.eclipse.cdt.core.GNU_ELF"
 		              osList="linux,hpux,aix,qnx"
 		              archList="all">
 	              </targetPlatform>

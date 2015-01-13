@@ -104,6 +104,15 @@ public class ElfParser extends AbstractCExtension implements IBinaryParser {
 	 */
 	@Override
 	public boolean isBinary(byte[] array, IPath path) {
+		String baseName = path.lastSegment();
+		if (baseName.endsWith(".o") //$NON-NLS-1$
+				|| baseName.endsWith(".obj") //$NON-NLS-1$
+				|| baseName.endsWith(".a") //$NON-NLS-1$
+				|| baseName.endsWith(".lib") //$NON-NLS-1$
+				|| baseName.endsWith(".so") //$NON-NLS-1$
+				) {
+			return true;
+		}
 		return Elf.isElfHeader(array) || AR.isARHeader(array);
 	}
 

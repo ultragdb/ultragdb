@@ -40,6 +40,7 @@ import org.eclipse.ui.texteditor.AbstractTextEditor;
 
 import org.eclipse.cdt.core.IBinaryParser;
 import org.eclipse.cdt.core.model.CoreModel;
+import org.eclipse.cdt.core.model.IArchive;
 import org.eclipse.cdt.core.model.IBinary;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.cdt.core.resources.FileStorage;
@@ -160,6 +161,111 @@ public class DefaultBinaryFileEditor extends AbstractTextEditor implements IReso
 			return fStorage;
 		}
 	}
+	/**
+	 * A storage editor input for archive files.
+	 */
+	public static class ArchiveFileEditorInput extends PlatformObject implements IStorageEditorInput {
+		private final IArchive fArchive;
+		private IStorage fStorage;
+
+		/**
+		 * Create an editor input from the given binary.
+		 * 
+		 * @param archive
+		 */
+		public ArchiveFileEditorInput(IArchive archive) {
+			fArchive = archive;
+		}
+
+		/*
+		 * @see org.eclipse.ui.IEditorInput#exists()
+		 */
+		@Override
+		public boolean exists() {
+			return fArchive.exists();
+		}
+
+		/*
+		 * @see org.eclipse.ui.IEditorInput#getImageDescriptor()
+		 */
+		@Override
+		public ImageDescriptor getImageDescriptor() {
+			IFile file = (IFile) fArchive.getResource();
+			IContentType contentType = IDE.getContentType(file);
+			return PlatformUI.getWorkbench().getEditorRegistry()
+					.getImageDescriptor(file.getName(), contentType);
+		}
+
+		/*
+		 * @see org.eclipse.ui.IEditorInput#getName()
+		 */
+		@Override
+		public String getName() {
+			return fArchive.getElementName();
+		}
+
+		/*
+		 * @see org.eclipse.ui.IEditorInput#getPersistable()
+		 */
+		@Override
+		public IPersistableElement getPersistable() {
+			return null;
+		}
+
+		/*
+		 * @see org.eclipse.ui.IEditorInput#getToolTipText()
+		 */
+		@Override
+		public String getToolTipText() {
+			return fArchive.getResource().getFullPath().toString();
+		}
+
+		/*
+		 * @see org.eclipse.ui.IStorageEditorInput#getStorage()
+		 */
+		@Override
+		public IStorage getStorage() throws CoreException {
+			if (fStorage == null) {
+				IBinaryParser.IBinaryArchive object = (IBinaryParser.IBinaryArchive) fArchive
+						.getAdapter(IBinaryParser.IBinaryArchive.class);
+				if (object != null) {
+					IGnuToolFactory factory = (IGnuToolFactory) object.getBinaryParser().getAdapter(
+							IGnuToolFactory.class);
+					if (factory != null) {
+						Objdump objdump = factory.getObjdump(object.getPath());
+						if (objdump != null) {
+							try {
+								// limit editor to X MB, if more - users should use objdump in command
+								// this is UI blocking call, on 56M binary it takes more than 15 min
+								// and generates at least 2.5G of assembly
+								int limitBytes = 6 * 1024 * 1024; // this can run reasonably within seconds
+								byte[] output = objdump.getOutput(limitBytes);
+								if (output.length >= limitBytes) {
+									// add a message for user
+									String text = CEditorMessages.DefaultBinaryFileEditor_TruncateMessage;
+									String message = "\n\n--- " + text + " ---\n" + objdump.toString(); //$NON-NLS-1$ //$NON-NLS-2$
+									System.arraycopy(message.getBytes(), 0, output,
+											limitBytes - message.length(), message.length());
+								}
+								fStorage = new FileStorage(new ByteArrayInputStream(output), object.getPath());
+							} catch (IOException exc) {
+								CUIPlugin.log(exc);
+							}
+						}
+					}
+				}
+				if (fStorage == null) {
+//					// backwards compatibility
+//					fStorage = EditorUtility.getStorage(fArchive);
+					if (fStorage == null) {
+						// fall back to binary content
+						fStorage = (IFile) fArchive.getResource();
+					}
+				}
+			}
+			return fStorage;
+		}
+	}
 
 	/**
 	 * A storage document provider for binary files.
@@ -176,6 +282,8 @@ public class DefaultBinaryFileEditor extends AbstractTextEditor implements IReso
 				ICElement cElement = CoreModel.getDefault().create(file);
 				if (cElement instanceof IBinary) {
 					element = new BinaryFileEditorInput((IBinary) cElement);
+				} else if (cElement instanceof IArchive) {
+					element = new ArchiveFileEditorInput((IArchive) cElement);
 				}
 			}
 			return super.createDocument(element);

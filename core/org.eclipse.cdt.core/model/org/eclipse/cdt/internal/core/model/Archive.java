@@ -73,6 +73,23 @@ public class Archive extends Openable implements IArchive {
 		return computeChildren(info, underlyingResource);
 	}
 
+	/**
+	 * Gets the children of this element.
+	 * Returns null if the element does not support children
+	 * Implementations override this method to support children
+	 */		
+	@Override
+	public ICElement[] getChildren() throws CModelException {
+//		CElementInfo info = getElementInfo();
+//		if (info != null)
+//			return info.getChildren();
+		return NO_ELEMENTS;
+	}
+	@Override
+	public boolean hasChildren () {
+		return false;
+	}
+	
 	public boolean computeChildren(OpenableInfo info, IResource res) {
 		IBinaryArchive ar = getBinaryArchive();
 		if (ar != null) {

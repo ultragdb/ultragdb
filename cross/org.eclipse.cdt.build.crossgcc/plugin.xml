@@ -29,7 +29,7 @@
             targetTool="cdt.managedbuild.tool.gnu.cross.c.linker;cdt.managedbuild.tool.gnu.cross.cpp.linker;cdt.managedbuild.tool.gnu.archiver">
          <targetPlatform
                archList="all"
-               binaryParser="org.eclipse.cdt.core.ELF"
+               binaryParser="org.eclipse.cdt.core.GNU_ELF"
                id="cdt.managedbuild.targetPlatform.gnu.cross"
                isAbstract="false"
                osList="all">

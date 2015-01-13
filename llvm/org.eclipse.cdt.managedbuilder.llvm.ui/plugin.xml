@@ -1187,7 +1187,7 @@
             superClass="cdt.managedbuild.toolchain.llvm.clang.base">
          <targetPlatform
                archList="all"
-               binaryParser="org.eclipse.cdt.core.ELF"
+               binaryParser="org.eclipse.cdt.core.GNU_ELF"
                id="cdt.managedbuild.target.llvm.platform.base"
                isAbstract="true"
                name="%PlatformName.Dbg"
@@ -1312,7 +1312,7 @@
             superClass="cdt.managedbuild.toolchain.llvm.gnu.base">
          <targetPlatform
                archList="all"
-               binaryParser="org.eclipse.cdt.core.ELF"
+               binaryParser="org.eclipse.cdt.core.GNU_ELF"
                id="cdt.managedbuild.target.llvm.gnu.linux.platform.base"
                isAbstract="true"
                name="%PlatformName.Dbg"
@@ -1398,7 +1398,7 @@
             superClass="cdt.managedbuild.toolchain.llvm.with.static.compiler.base">
          <targetPlatform
                archList="all"
-               binaryParser="org.eclipse.cdt.core.ELF"
+               binaryParser="org.eclipse.cdt.core.GNU_ELF"
                id="cdt.managedbuild.target.llvm.static.compiler.linux.platform.base"
                isAbstract="true"
                name="%PlatformName.Dbg"
@@ -1464,7 +1464,7 @@
             superClass="cdt.managedbuild.toolchain.llvm.jit.base">
          <targetPlatform
                archList="all"
-               binaryParser="org.eclipse.cdt.core.ELF"
+               binaryParser="org.eclipse.cdt.core.GNU_ELF"
                id="cdt.managedbuild.target.llvm.jit.linux.platform.base"
                isAbstract="true"
                name="%PlatformName.Dbg"
