@@ -27,9 +27,11 @@ public class MingwIsToolChainSupported implements IManagedIsToolChainSupported {
 
 	@Override
 	public boolean isSupported(IToolChain toolChain, Version version, String instance) {
-		IEnvironmentVariable var = new EnvironmentVariableManagerToolChain(toolChain).getVariable(ENV_PATH, true);
-		String envPath = var != null ? var.getValue() : null;
-		return MinGW.isAvailable(envPath);
+		//Chiheng Xu : we don't support MinGW. We only support Cygwin2MinGW64 and Cygwin2MinGW32
+		return false;
+//		IEnvironmentVariable var = new EnvironmentVariableManagerToolChain(toolChain).getVariable(ENV_PATH, true);
+//		String envPath = var != null ? var.getValue() : null;
+//		return MinGW.isAvailable(envPath);
 	}
 
 }
