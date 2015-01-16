@@ -628,9 +628,17 @@
          <language-scope id="org.eclipse.cdt.core.g++"/>
       </provider>
       <provider
-            class="org.eclipse.cdt.managedbuilder.internal.language.settings.providers.GCCBuiltinSpecsDetectorCygwin2MinGW64"
-            id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorCygwin2MinGW64"
-            name="GCCBuiltinSpecsDetectorCygwin2MinGW64"
+            class="org.eclipse.cdt.managedbuilder.internal.language.settings.providers.GCCBuiltinSpecsDetectorMinGW32"
+            id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW32"
+            name="GCCBuiltinSpecsDetectorMinGW32"
+            parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;">
+         <language-scope id="org.eclipse.cdt.core.gcc"/>
+         <language-scope id="org.eclipse.cdt.core.g++"/>
+      </provider>
+      <provider
+            class="org.eclipse.cdt.managedbuilder.internal.language.settings.providers.GCCBuiltinSpecsDetectorMinGW64"
+            id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW64"
+            name="GCCBuiltinSpecsDetectorMinGW64"
             parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot;">
          <language-scope id="org.eclipse.cdt.core.gcc"/>
          <language-scope id="org.eclipse.cdt.core.g++"/>

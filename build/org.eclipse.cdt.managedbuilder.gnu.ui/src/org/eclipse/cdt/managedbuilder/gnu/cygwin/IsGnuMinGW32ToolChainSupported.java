@@ -8,7 +8,7 @@ import org.osgi.framework.Version;
  *
  * @noextend This class is not intended to be subclassed by clients.
  */
-public class IsGnuCygwin2MinGW64ToolChainSupported extends IsGnuCygwinToolChainSupported {
+public class IsGnuMinGW32ToolChainSupported extends IsGnuCygwinToolChainSupported {
 	@Override
 	public boolean isSupported(IToolChain toolChain, Version version, String instance) {
 		return super.isSupported(toolChain, version, instance);

@@ -1787,46 +1787,89 @@
           />
       </tool>
       <tool
-            command="x86_64-w64-mingw32-ar"
-            id="cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64"
+            command="i686-w64-mingw32-ar"
+            id="cdt.managedbuild.tool.gnu.archiver.mingw_x32"
             isAbstract="false"
-            name="Cygwin2MinGW64 Archiver"
+            name="MinGW x32 Archiver"
+            superClass="cdt.managedbuild.tool.gnu.archiver">
+      </tool>
+      <tool
+            command="i686-w64-mingw32-as"
+            id="cdt.managedbuild.tool.gnu.assembler.mingw_x32"
+            isAbstract="false"
+            name="MinGW x32 Assembler"
+            superClass="cdt.managedbuild.tool.gnu.assembler">
+      </tool>
+      <tool
+            command="i686-w64-mingw32-gcc"
+            id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32"
+            isAbstract="false"
+            name="MinGW x32 C Compiler"
+            superClass="cdt.managedbuild.tool.gnu.c.compiler">
+      </tool>
+      <tool
+            command="i686-w64-mingw32-g++"
+            id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32"
+            isAbstract="false"
+            name="MinGW x32 C++ Compiler"
+            superClass="cdt.managedbuild.tool.gnu.cpp.compiler">
+      </tool>
+      <tool
+            command="i686-w64-mingw32-gcc"
+            id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32"
+            isAbstract="false"
+            name="MinGW x32 C Linker"
+            superClass="cdt.managedbuild.tool.gnu.c.linker">
+      </tool>
+      <tool
+            command="i686-w64-mingw32-g++"
+            id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32"
+            isAbstract="false"
+            name="MinGW x32 C++ Linker"
+            superClass="cdt.managedbuild.tool.gnu.cpp.linker">
+      </tool>      
+
+      <tool
+            command="x86_64-w64-mingw32-ar"
+            id="cdt.managedbuild.tool.gnu.archiver.mingw_x64"
+            isAbstract="false"
+            name="MinGW x64 Archiver"
             superClass="cdt.managedbuild.tool.gnu.archiver">
       </tool>
       <tool
             command="x86_64-w64-mingw32-as"
-            id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64"
+            id="cdt.managedbuild.tool.gnu.assembler.mingw_x64"
             isAbstract="false"
-            name="Cygwin2MinGW64 Assembler"
+            name="MinGW x64 Assembler"
             superClass="cdt.managedbuild.tool.gnu.assembler">
       </tool>
       <tool
             command="x86_64-w64-mingw32-gcc"
-            id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64"
+            id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64"
             isAbstract="false"
-            name="Cygwin2MinGW64 C Compiler"
-            superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin">
+            name="MinGW x64 C Compiler"
+            superClass="cdt.managedbuild.tool.gnu.c.compiler">
       </tool>
       <tool
             command="x86_64-w64-mingw32-g++"
-            id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64"
+            id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64"
             isAbstract="false"
-            name="Cygwin2MinGW64 C++ Compiler"
-            superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin">
+            name="MinGW x64 C++ Compiler"
+            superClass="cdt.managedbuild.tool.gnu.cpp.compiler">
       </tool>
       <tool
             command="x86_64-w64-mingw32-gcc"
-            id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64"
+            id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64"
             isAbstract="false"
-            name="Cygwin2MinGW64 C Linker"
-            superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin">
+            name="MinGW x64 C Linker"
+            superClass="cdt.managedbuild.tool.gnu.c.linker">
       </tool>
       <tool
             command="x86_64-w64-mingw32-g++"
-            id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64"
+            id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64"
             isAbstract="false"
-            name="Cygwin2MinGW64 C++ Linker"
-            superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin">
+            name="MinGW x64 C++ Linker"
+            superClass="cdt.managedbuild.tool.gnu.cpp.linker">
       </tool>      
 
 	  <builder
@@ -1995,15 +2038,15 @@
  
               <toolChain
                     archList="all"
-                    configurationEnvironmentSupplier="org.eclipse.cdt.managedbuilder.gnu.cygwin.GnuCygwin2MinGW64ConfigurationEnvironmentSupplier"
-                    id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base"
-                    isToolChainSupported="org.eclipse.cdt.managedbuilder.gnu.cygwin.IsGnuCygwin2MinGW64ToolChainSupported"
-                    languageSettingsProviders="org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser;org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorCygwin2MinGW64"
-                    name="Cygwin2MinGW64 GCC"
+                    configurationEnvironmentSupplier="org.eclipse.cdt.managedbuilder.gnu.cygwin.GnuMinGW32ConfigurationEnvironmentSupplier"
+                    id="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
+                    isToolChainSupported="org.eclipse.cdt.managedbuilder.gnu.cygwin.IsGnuMinGW32ToolChainSupported"
+                    languageSettingsProviders="org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser;org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW32"
+                    name="MinGW x32 GCC"
                     osList="win32"
-                    targetTool="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.base;cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.base;cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64.base">
+                    targetTool="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.base;cdt.managedbuild.tool.gnu.c.linker.mingw_x32.base;cdt.managedbuild.tool.gnu.archiver.mingw_x32.base">
                   <targetPlatform
-					  id="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.base"
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x32.base"
 				 	  name="%PlatformName.Dbg"
                       binaryParser="org.eclipse.cdt.core.Cygwin_PE"            					  
 					  osList="win32"					  
@@ -2011,16 +2054,16 @@
 				  </targetPlatform>
 				    <builder
 					  superClass="cdt.managedbuild.target.gnu.builder"
-				      id="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.base">
+				      id="cdt.managedbuild.target.gnu.builder.mingw_x32.base">
 		     	  </builder>    
 				  
 				  <tool
-					  id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.base"
-					  superClass="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64">
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x32.base"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x32">
 				  </tool> 		               		         
 			      <tool
-		    		  id="cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64.base"
-			          superClass="cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64">
+		    		  id="cdt.managedbuild.tool.gnu.archiver.mingw_x32.base"
+			          superClass="cdt.managedbuild.tool.gnu.archiver.mingw_x32">
 			  <enablement 
               	type="ALL">
 			  	<checkBuildProperty 
@@ -2029,16 +2072,16 @@
 			  </enablement>
 				  </tool>                 
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.base"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64">
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.base"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32">
                   </tool>
                   <tool
-					  id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.base"
-                      superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64">
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.base"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32">
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.base"
-                      superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64">
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.base"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x32">
                <enablement 
               	type="ALL">
               	<not>
@@ -2049,8 +2092,78 @@
 			  </enablement>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.base"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64">
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.base"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32">
+               <enablement 
+              	type="ALL">
+              	<not>
+			  	<checkBuildProperty 
+			  		property="org.eclipse.cdt.build.core.buildArtefactType"
+			  		value="org.eclipse.cdt.build.core.buildArtefactType.staticLib"/>
+			  	</not>
+			  </enablement>
+                  </tool>                  
+
+               </toolChain>                                   
+ 
+              <toolChain
+                    archList="all"
+                    configurationEnvironmentSupplier="org.eclipse.cdt.managedbuilder.gnu.cygwin.GnuMinGW64ConfigurationEnvironmentSupplier"
+                    id="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
+                    isToolChainSupported="org.eclipse.cdt.managedbuilder.gnu.cygwin.IsGnuMinGW64ToolChainSupported"
+                    languageSettingsProviders="org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser;org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW64"
+                    name="MinGW x64 GCC"
+                    osList="win32"
+                    targetTool="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.base;cdt.managedbuild.tool.gnu.c.linker.mingw_x64.base;cdt.managedbuild.tool.gnu.archiver.mingw_x64.base">
+                  <targetPlatform
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x64.base"
+				 	  name="%PlatformName.Dbg"
+                      binaryParser="org.eclipse.cdt.core.Cygwin_PE"            					  
+					  osList="win32"					  
+					  archList="all">
+				  </targetPlatform>
+				    <builder
+					  superClass="cdt.managedbuild.target.gnu.builder"
+				      id="cdt.managedbuild.target.gnu.builder.mingw_x64.base">
+		     	  </builder>    
+				  
+				  <tool
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x64.base"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x64">
+				  </tool> 		               		         
+			      <tool
+		    		  id="cdt.managedbuild.tool.gnu.archiver.mingw_x64.base"
+			          superClass="cdt.managedbuild.tool.gnu.archiver.mingw_x64">
+			  <enablement 
+              	type="ALL">
+			  	<checkBuildProperty 
+			  		property="org.eclipse.cdt.build.core.buildArtefactType"
+			  		value="org.eclipse.cdt.build.core.buildArtefactType.staticLib"/>
+			  </enablement>
+				  </tool>                 
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.base"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64">
+                  </tool>
+                  <tool
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.base"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64">
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.base"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x64">
+               <enablement 
+              	type="ALL">
+              	<not>
+			  	<checkBuildProperty 
+			  		property="org.eclipse.cdt.build.core.buildArtefactType"
+			  		value="org.eclipse.cdt.build.core.buildArtefactType.staticLib"/>
+			  	</not>
+			  </enablement>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.base"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64">
                <enablement 
               	type="ALL">
               	<not>
@@ -3109,7 +3222,7 @@
       <configuration
             artifactExtension="exe"
             cleanCommand="rm -rf"
-            id="cdt.managedbuild.config.gnu.cygwin2mingw64.base"
+            id="cdt.managedbuild.config.gnu.mingw_x32.base"
             languageSettingsProviders="org.eclipse.cdt.ui.UserLanguageSettingsProvider;org.eclipse.cdt.core.ReferencedProjectsLanguageSettingsProvider;org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider;${Toolchain};-org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser">
          <enablement type="CONTAINER_ATTRIBUTE" 
                attribute="artifactExtension" 
@@ -3131,116 +3244,116 @@
 
       <projectType 
             buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe"
-            id="cdt.managedbuild.target.gnu.cygwin2mingw64.exe"
+            id="cdt.managedbuild.target.gnu.mingw_x32.exe"
             isTest="false"
             isAbstract="false">                                  
          <configuration
                name="%ConfigName.Dbg"
                cleanCommand="rm -rf"
-               id="cdt.managedbuild.config.gnu.cygwin2mingw64.exe.debug"
-               parent="cdt.managedbuild.config.gnu.cygwin2mingw64.base"
+               id="cdt.managedbuild.config.gnu.mingw_x32.exe.debug"
+               parent="cdt.managedbuild.config.gnu.mingw_x32.base"
                buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug">
                <toolChain
-               		 superClass="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base"
-                     id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.exe.debug">
+               		 superClass="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x32.exe.debug">
                   <targetPlatform
-					  id="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.exe.debug"
-					  superClass="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.base">
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x32.exe.debug"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x32.base">
 				  </targetPlatform>
 			  	  <builder
-					  superClass="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.base"
-					  id="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.exe.debug">		              
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x32.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x32.exe.debug">		              
 			      </builder>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.exe.debug"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.base">
                       <option
-                          id="gnu.cpp.compiler.cygwin2mingw64.exe.debug.option.optimization.level"
+                          id="gnu.cpp.compiler.mingw_x32.exe.debug.option.optimization.level"
                           superClass="gnu.cpp.compiler.option.optimization.level">
                       </option>
                       <option
-						  id="gnu.cpp.compiler.cygwin2mingw64.exe.debug.option.debugging.level"
+						  id="gnu.cpp.compiler.mingw_x32.exe.debug.option.debugging.level"
                           superClass="gnu.cpp.compiler.option.debugging.level">
                       </option>
                   </tool>
                   <tool
-					  id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.exe.debug"
-                      superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.base">
 					  <option
-						  id="gnu.c.compiler.cygwin2mingw64.exe.debug.option.optimization.level"
+						  id="gnu.c.compiler.mingw_x32.exe.debug.option.optimization.level"
 						  superClass="gnu.c.compiler.option.optimization.level">
 					  </option>
 					  <option
-						  id="gnu.c.compiler.cygwin2mingw64.exe.debug.option.debugging.level"
+						  id="gnu.c.compiler.mingw_x32.exe.debug.option.debugging.level"
 						  superClass="gnu.c.compiler.option.debugging.level">
 					  </option>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.exe.debug"
-                      superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.base">
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.exe.debug"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.base">
                   </tool>                  
 				  <tool
-					  id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.exe.debug"
-					  superClass="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x32.exe.debug"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x32.base">
 				  </tool>   
                </toolChain>                                   
          </configuration>
          <configuration
                name="%ConfigName.Rel"
                cleanCommand="rm -rf"
-               id="cdt.managedbuild.config.gnu.cygwin2mingw64.exe.release"
-               parent="cdt.managedbuild.config.gnu.cygwin2mingw64.base"
+               id="cdt.managedbuild.config.gnu.mingw_x32.exe.release"
+               parent="cdt.managedbuild.config.gnu.mingw_x32.base"
                buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release">
                <toolChain
-                     superClass="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base"
-                     id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.exe.release">
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x32.exe.release">
                   <targetPlatform
-					  id="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.exe.release"
-					  superClass="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.base">
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x32.exe.release"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x32.base">
 				  </targetPlatform>
 			  	  <builder
-					  superClass="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.base"
-					  id="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.exe.release">		              
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x32.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x32.exe.release">		              
 			      </builder>               		                       
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.exe.release"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.base">
                       <option
-                          id="gnu.cpp.compiler.cygwin2mingw64.exe.release.option.optimization.level"
+                          id="gnu.cpp.compiler.mingw_x32.exe.release.option.optimization.level"
                           superClass="gnu.cpp.compiler.option.optimization.level">
                       </option>
                       <option
-                          id="gnu.cpp.compiler.cygwin2mingw64.exe.release.option.debugging.level"
+                          id="gnu.cpp.compiler.mingw_x32.exe.release.option.debugging.level"
                           superClass="gnu.cpp.compiler.option.debugging.level">
                       </option>
                   </tool>                      
                   <tool
-					  id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.exe.release"
-                      superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.base">
                       <option
-                          id="gnu.c.compiler.cygwin2mingw64.exe.release.option.optimization.level"
+                          id="gnu.c.compiler.mingw_x32.exe.release.option.optimization.level"
                           superClass="gnu.c.compiler.option.optimization.level">
                       </option>
                       <option
-                          id="gnu.c.compiler.cygwin2mingw64.exe.release.option.debugging.level"
+                          id="gnu.c.compiler.mingw_x32.exe.release.option.debugging.level"
                           superClass="gnu.c.compiler.option.debugging.level">
                       </option>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.exe.release"
-                      superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.base">
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.exe.release"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.base">
                   </tool>
 				  <tool
-					  id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.exe.release"
-					  superClass="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x32.exe.release"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x32.base">
 				  </tool>   
                </toolChain>                                                     
          </configuration>
@@ -3248,148 +3361,148 @@
          
       <projectType                  
             buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib"
-            id="cdt.managedbuild.target.gnu.cygwin2mingw64.so"
+            id="cdt.managedbuild.target.gnu.mingw_x32.so"
             isAbstract="false"
             isTest="false">            
          <configuration
                name="%ConfigName.Dbg"
                cleanCommand="rm -rf"
-               parent="cdt.managedbuild.config.gnu.cygwin2mingw64.base"
+               parent="cdt.managedbuild.config.gnu.mingw_x32.base"
                buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
-               id="cdt.managedbuild.config.gnu.cygwin2mingw64.so.debug">
+               id="cdt.managedbuild.config.gnu.mingw_x32.so.debug">
                <toolChain
-                     superClass="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base"
-                     id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.so.debug">
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x32.so.debug">
                   <targetPlatform
-					  id="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.so.debug"
-					  superClass="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.base">
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x32.so.debug"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x32.base">
 				  </targetPlatform>
 			  	  <builder
-					  superClass="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.base"
-					  id="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.so.debug">		              
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x32.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x32.so.debug">		              
 			      </builder>               		         
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.so.debug"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.base">
                       <option
-                          id="gnu.cpp.compiler.cygwin2mingw64.so.debug.option.optimization.level"
+                          id="gnu.cpp.compiler.mingw_x32.so.debug.option.optimization.level"
                           superClass="gnu.cpp.compiler.option.optimization.level">
                       </option>
                       <option
-                          id="gnu.cpp.compiler.cygwin2mingw64.so.debug.option.debugging.level"
+                          id="gnu.cpp.compiler.mingw_x32.so.debug.option.debugging.level"
                           superClass="gnu.cpp.compiler.option.debugging.level">
                       </option>
                   </tool>
                   <tool
-					  id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.so.debug"
-                      superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.base">
 					  <option
-						  id="gnu.c.compiler.cygwin2mingw64.so.debug.option.optimization.level"
+						  id="gnu.c.compiler.mingw_x32.so.debug.option.optimization.level"
 						  superClass="gnu.c.compiler.option.optimization.level">
 					  </option>
 					  <option
-						  id="gnu.c.compiler.cygwin2mingw64.so.debug.option.debugging.level"
+						  id="gnu.c.compiler.mingw_x32.so.debug.option.debugging.level"
 						  superClass="gnu.c.compiler.option.debugging.level">
 					  </option>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.so.debug"
-                      superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.base">
                       <option
-                          id="gnu.c.link.cygwin2mingw64.so.debug.option.shared"
+                          id="gnu.c.link.mingw_x32.so.debug.option.shared"
                           superClass="gnu.c.link.option.shared">
                       </option>
 			          <outputType
 			              superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.output.so"
-			              id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.so.debug.output">
+			              id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.so.debug.output">
 			          </outputType>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.so.debug"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.base">
                       <option
-                          id="gnu.cpp.link.cygwin2mingw64.so.debug.option.shared"
+                          id="gnu.cpp.link.mingw_x32.so.debug.option.shared"
                           superClass="gnu.cpp.link.option.shared">
                       </option>
 			          <outputType
 			              superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.output.so"
-			              id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.so.debug.output">
+			              id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.so.debug.output">
 			          </outputType>
                   </tool>                  
 				  <tool
-					  id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.so.debug"
-					  superClass="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x32.so.debug"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x32.base">
 				  </tool>   
                </toolChain>                                                     
          </configuration>
          <configuration
                name="%ConfigName.Rel"
                cleanCommand="rm -rf"
-               parent="cdt.managedbuild.config.gnu.cygwin2mingw64.base"
+               parent="cdt.managedbuild.config.gnu.mingw_x32.base"
                buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
-               id="cdt.managedbuild.config.gnu.cygwin2mingw64.so.release">               
+               id="cdt.managedbuild.config.gnu.mingw_x32.so.release">               
                <toolChain
-                     superClass="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base"
-                     id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.so.release">
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x32.so.release">
                   <targetPlatform
-					  id="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.so.release"
-					  superClass="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.base">
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x32.so.release"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x32.base">
 				  </targetPlatform>
 			  	  <builder
-					  superClass="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.base"
-					  id="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.so.release">		              
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x32.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x32.so.release">		              
 			      </builder>               		                                       
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.so.release"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.base">
                       <option
-                          id="gnu.cpp.compiler.cygwin2mingw64.so.release.option.optimization.level"
+                          id="gnu.cpp.compiler.mingw_x32.so.release.option.optimization.level"
                           superClass="gnu.cpp.compiler.option.optimization.level">
                       </option>
                       <option
-                          id="gnu.cpp.compiler.cygwin2mingw64.so.release.option.debugging.level"
+                          id="gnu.cpp.compiler.mingw_x32.so.release.option.debugging.level"
                           superClass="gnu.cpp.compiler.option.debugging.level">
                       </option>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.so.release"
-                      superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.base">
                       <option 
-                          id="gnu.c.compiler.cygwin2mingw64.so.release.option.optimization.level"
+                          id="gnu.c.compiler.mingw_x32.so.release.option.optimization.level"
                           superClass="gnu.c.compiler.option.optimization.level">
                       </option>
                       <option
-                          id="gnu.c.compiler.cygwin2mingw64.so.release.option.debugging.level"
+                          id="gnu.c.compiler.mingw_x32.so.release.option.debugging.level"
                           superClass="gnu.c.compiler.option.debugging.level">
                       </option>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.so.release"
-                      superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.base">
                       <option
-                          id="gnu.c.link.cygwin2mingw64.so.release.option.shared"
+                          id="gnu.c.link.mingw_x32.so.release.option.shared"
                           superClass="gnu.c.link.option.shared">
                       </option>
 			          <outputType
 			              superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.output.so"
-			              id="cdt.managedbuild.tool.gnu.c.linker.cygwin2mingw64.so.release.output">
+			              id="cdt.managedbuild.tool.gnu.c.linker.mingw_x32.so.release.output">
 			          </outputType>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.so.release"
-                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.base">
                       <option
-                          id="gnu.cpp.link.cygwin2mingw64.so.release.option.shared"
+                          id="gnu.cpp.link.mingw_x32.so.release.option.shared"
                           superClass="gnu.cpp.link.option.shared">
                       </option>
 			          <outputType
 			              superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.output.so"
-			              id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin2mingw64.so.release.output">
+			              id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.so.release.output">
 			          </outputType>
                   </tool>
 				  <tool
-					  id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.so.release"
-					  superClass="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x32.so.release"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x32.base">
 				  </tool>   
                </toolChain>                                                                                
          </configuration>
@@ -3397,108 +3510,483 @@
                        
       <projectType 
             buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib"
-            id="cdt.managedbuild.target.gnu.cygwin2mingw64.lib"
+            id="cdt.managedbuild.target.gnu.mingw_x32.lib"
             isTest="false"
             isAbstract="false">            
          <configuration
                name="%ConfigName.Dbg"
-               parent="cdt.managedbuild.config.gnu.cygwin2mingw64.base"
+               parent="cdt.managedbuild.config.gnu.mingw_x32.base"
                buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
                cleanCommand="rm -rf"
-               id="cdt.managedbuild.config.gnu.cygwin2mingw64.lib.debug">
+               id="cdt.managedbuild.config.gnu.mingw_x32.lib.debug">
                <toolChain
-                     superClass="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base"
-                     id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.lib.debug">
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x32.lib.debug">
                   <targetPlatform
-					  id="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.lib.debug"
-				 	  superClass="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.base">
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x32.lib.debug"
+				 	  superClass="cdt.managedbuild.target.gnu.platform.mingw_x32.base">
 				  </targetPlatform>
 			  	  <builder
-					  superClass="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.base"
-					  id="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.lib.debug">		              
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x32.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x32.lib.debug">		              
 			      </builder>               		                                                              
 			      <tool
-			          id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.lib.debug"
-					  superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.base">
+			          id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.lib.debug"
+					  superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.base">
 					  <option
-					      id="gnu.cpp.compiler.cygwin2mingw64.lib.debug.option.optimization.level"
+					      id="gnu.cpp.compiler.mingw_x32.lib.debug.option.optimization.level"
 					      superClass="gnu.cpp.compiler.option.optimization.level">
 					  </option>
 					  <option
-					        id="gnu.cpp.compiler.cygwin2mingw64.lib.debug.option.debugging.level"
+					        id="gnu.cpp.compiler.mingw_x32.lib.debug.option.debugging.level"
 							superClass="gnu.cpp.compiler.option.debugging.level">
 					  </option>
 				  </tool>  
                   <tool
-                      id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.lib.debug"
-                      superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.lib.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.base">
                       <option
-                          id="gnu.c.compiler.cygwin2mingw64.lib.debug.option.optimization.level"
+                          id="gnu.c.compiler.mingw_x32.lib.debug.option.optimization.level"
                           superClass="gnu.c.compiler.option.optimization.level">
                       </option>
                       <option
-                          id="gnu.c.compiler.cygwin2mingw64.lib.debug.option.debugging.level"
+                          id="gnu.c.compiler.mingw_x32.lib.debug.option.debugging.level"
                           superClass="gnu.c.compiler.option.debugging.level">
                       </option>
                   </tool>
                   <tool
-                      id="cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64.lib.debug"
-                      superClass="cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64.base">
+                      id="cdt.managedbuild.tool.gnu.archiver.mingw_x32.lib.debug"
+                      superClass="cdt.managedbuild.tool.gnu.archiver.mingw_x32.base">
                   </tool>
 				  <tool
-					  id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.lib.debug"
-					  superClass="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x32.lib.debug"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x32.base">
 				  </tool>   
                </toolChain>                                                                                				               				  
          </configuration>
          <configuration
                name="%ConfigName.Rel"
-               parent="cdt.managedbuild.config.gnu.cygwin2mingw64.base"
+               parent="cdt.managedbuild.config.gnu.mingw_x32.base"
                buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
                cleanCommand="rm -rf"
-               id="cdt.managedbuild.config.gnu.cygwin2mingw64.lib.release">
+               id="cdt.managedbuild.config.gnu.mingw_x32.lib.release">
                <toolChain
-                     superClass="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base"
-                     id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.lib.release">
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x32.lib.release">
                   <targetPlatform
-					  id="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.lib.release"
-					  superClass="cdt.managedbuild.target.gnu.platform.cygwin2mingw64.base">
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x32.lib.release"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x32.base">
 				  </targetPlatform>
 			  	  <builder
-					  superClass="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.base"
-					  id="cdt.managedbuild.target.gnu.builder.cygwin2mingw64.lib.release">		              
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x32.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x32.lib.release">		              
 			      </builder>               		                                                                                              
                   <tool
-                     id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.lib.release"
-                     superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin2mingw64.base">
+                     id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.lib.release"
+                     superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x32.base">
                      <option       
-                         id="gnu.cpp.compiler.cygwin2mingw64.lib.release.option.optimization.level"         
+                         id="gnu.cpp.compiler.mingw_x32.lib.release.option.optimization.level"         
                          superClass="gnu.cpp.compiler.option.optimization.level">
                      </option>
                      <option
-                         id="gnu.cpp.compiler.cygwin2mingw64.lib.release.option.debugging.level"
+                         id="gnu.cpp.compiler.mingw_x32.lib.release.option.debugging.level"
                          superClass="gnu.cpp.compiler.option.debugging.level">
                      </option>
                  </tool>
                   <tool
-                     id="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.lib.release"
-                     superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin2mingw64.base">
+                     id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.lib.release"
+                     superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x32.base">
                      <option
-                         id="gnu.c.compiler.cygwin2mingw64.lib.release.option.optimization.level"
+                         id="gnu.c.compiler.mingw_x32.lib.release.option.optimization.level"
                          superClass="gnu.c.compiler.option.optimization.level">
                      </option>
                      <option
-                         id="gnu.c.compiler.cygwin2mingw64.lib.release.option.debugging.level"                        
+                         id="gnu.c.compiler.mingw_x32.lib.release.option.debugging.level"                        
                          superClass="gnu.c.compiler.option.debugging.level">                         
                      </option>
                   </tool>
                  <tool
-                     id="cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64.lib.release"
-                     superClass="cdt.managedbuild.tool.gnu.archiver.cygwin2mingw64.base">
+                     id="cdt.managedbuild.tool.gnu.archiver.mingw_x32.lib.release"
+                     superClass="cdt.managedbuild.tool.gnu.archiver.mingw_x32.base">
                  </tool>
 				 <tool
-					  id="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.lib.release"
-					  superClass="cdt.managedbuild.tool.gnu.assembler.cygwin2mingw64.base">
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x32.lib.release"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x32.base">
+				 </tool>   
+              </toolChain>                                                                                				                    
+         </configuration>         
+      </projectType>
+
+      <projectType 
+            buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe"
+            id="cdt.managedbuild.target.gnu.mingw_x64.exe"
+            isTest="false"
+            isAbstract="false">                                  
+         <configuration
+               name="%ConfigName.Dbg"
+               cleanCommand="rm -rf"
+               id="cdt.managedbuild.config.gnu.mingw_x64.exe.debug"
+               parent="cdt.managedbuild.config.gnu.mingw_x64.base"
+               buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug">
+               <toolChain
+               		 superClass="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x64.exe.debug">
+                  <targetPlatform
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x64.exe.debug"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x64.base">
+				  </targetPlatform>
+			  	  <builder
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x64.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x64.exe.debug">		              
+			      </builder>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.base">
+                      <option
+                          id="gnu.cpp.compiler.mingw_x64.exe.debug.option.optimization.level"
+                          superClass="gnu.cpp.compiler.option.optimization.level">
+                      </option>
+                      <option
+						  id="gnu.cpp.compiler.mingw_x64.exe.debug.option.debugging.level"
+                          superClass="gnu.cpp.compiler.option.debugging.level">
+                      </option>
+                  </tool>
+                  <tool
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.base">
+					  <option
+						  id="gnu.c.compiler.mingw_x64.exe.debug.option.optimization.level"
+						  superClass="gnu.c.compiler.option.optimization.level">
+					  </option>
+					  <option
+						  id="gnu.c.compiler.mingw_x64.exe.debug.option.debugging.level"
+						  superClass="gnu.c.compiler.option.debugging.level">
+					  </option>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.base">
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.exe.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.base">
+                  </tool>                  
+				  <tool
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x64.exe.debug"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x64.base">
+				  </tool>   
+               </toolChain>                                   
+         </configuration>
+         <configuration
+               name="%ConfigName.Rel"
+               cleanCommand="rm -rf"
+               id="cdt.managedbuild.config.gnu.mingw_x64.exe.release"
+               parent="cdt.managedbuild.config.gnu.mingw_x64.base"
+               buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release">
+               <toolChain
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x64.exe.release">
+                  <targetPlatform
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x64.exe.release"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x64.base">
+				  </targetPlatform>
+			  	  <builder
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x64.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x64.exe.release">		              
+			      </builder>               		                       
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.base">
+                      <option
+                          id="gnu.cpp.compiler.mingw_x64.exe.release.option.optimization.level"
+                          superClass="gnu.cpp.compiler.option.optimization.level">
+                      </option>
+                      <option
+                          id="gnu.cpp.compiler.mingw_x64.exe.release.option.debugging.level"
+                          superClass="gnu.cpp.compiler.option.debugging.level">
+                      </option>
+                  </tool>                      
+                  <tool
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.base">
+                      <option
+                          id="gnu.c.compiler.mingw_x64.exe.release.option.optimization.level"
+                          superClass="gnu.c.compiler.option.optimization.level">
+                      </option>
+                      <option
+                          id="gnu.c.compiler.mingw_x64.exe.release.option.debugging.level"
+                          superClass="gnu.c.compiler.option.debugging.level">
+                      </option>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.base">
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.exe.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.base">
+                  </tool>
+				  <tool
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x64.exe.release"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x64.base">
+				  </tool>   
+               </toolChain>                                                     
+         </configuration>
+      </projectType>              
+         
+      <projectType                  
+            buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib"
+            id="cdt.managedbuild.target.gnu.mingw_x64.so"
+            isAbstract="false"
+            isTest="false">            
+         <configuration
+               name="%ConfigName.Dbg"
+               cleanCommand="rm -rf"
+               parent="cdt.managedbuild.config.gnu.mingw_x64.base"
+               buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
+               id="cdt.managedbuild.config.gnu.mingw_x64.so.debug">
+               <toolChain
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x64.so.debug">
+                  <targetPlatform
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x64.so.debug"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x64.base">
+				  </targetPlatform>
+			  	  <builder
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x64.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x64.so.debug">		              
+			      </builder>               		         
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.base">
+                      <option
+                          id="gnu.cpp.compiler.mingw_x64.so.debug.option.optimization.level"
+                          superClass="gnu.cpp.compiler.option.optimization.level">
+                      </option>
+                      <option
+                          id="gnu.cpp.compiler.mingw_x64.so.debug.option.debugging.level"
+                          superClass="gnu.cpp.compiler.option.debugging.level">
+                      </option>
+                  </tool>
+                  <tool
+					  id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.base">
+					  <option
+						  id="gnu.c.compiler.mingw_x64.so.debug.option.optimization.level"
+						  superClass="gnu.c.compiler.option.optimization.level">
+					  </option>
+					  <option
+						  id="gnu.c.compiler.mingw_x64.so.debug.option.debugging.level"
+						  superClass="gnu.c.compiler.option.debugging.level">
+					  </option>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.base">
+                      <option
+                          id="gnu.c.link.mingw_x64.so.debug.option.shared"
+                          superClass="gnu.c.link.option.shared">
+                      </option>
+			          <outputType
+			              superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.output.so"
+			              id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.so.debug.output">
+			          </outputType>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.so.debug"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.base">
+                      <option
+                          id="gnu.cpp.link.mingw_x64.so.debug.option.shared"
+                          superClass="gnu.cpp.link.option.shared">
+                      </option>
+			          <outputType
+			              superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.output.so"
+			              id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.so.debug.output">
+			          </outputType>
+                  </tool>                  
+				  <tool
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x64.so.debug"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x64.base">
+				  </tool>   
+               </toolChain>                                                     
+         </configuration>
+         <configuration
+               name="%ConfigName.Rel"
+               cleanCommand="rm -rf"
+               parent="cdt.managedbuild.config.gnu.mingw_x64.base"
+               buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
+               id="cdt.managedbuild.config.gnu.mingw_x64.so.release">               
+               <toolChain
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x64.so.release">
+                  <targetPlatform
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x64.so.release"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x64.base">
+				  </targetPlatform>
+			  	  <builder
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x64.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x64.so.release">		              
+			      </builder>               		                                       
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.base">
+                      <option
+                          id="gnu.cpp.compiler.mingw_x64.so.release.option.optimization.level"
+                          superClass="gnu.cpp.compiler.option.optimization.level">
+                      </option>
+                      <option
+                          id="gnu.cpp.compiler.mingw_x64.so.release.option.debugging.level"
+                          superClass="gnu.cpp.compiler.option.debugging.level">
+                      </option>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.base">
+                      <option 
+                          id="gnu.c.compiler.mingw_x64.so.release.option.optimization.level"
+                          superClass="gnu.c.compiler.option.optimization.level">
+                      </option>
+                      <option
+                          id="gnu.c.compiler.mingw_x64.so.release.option.debugging.level"
+                          superClass="gnu.c.compiler.option.debugging.level">
+                      </option>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.base">
+                      <option
+                          id="gnu.c.link.mingw_x64.so.release.option.shared"
+                          superClass="gnu.c.link.option.shared">
+                      </option>
+			          <outputType
+			              superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.output.so"
+			              id="cdt.managedbuild.tool.gnu.c.linker.mingw_x64.so.release.output">
+			          </outputType>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.so.release"
+                      superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.base">
+                      <option
+                          id="gnu.cpp.link.mingw_x64.so.release.option.shared"
+                          superClass="gnu.cpp.link.option.shared">
+                      </option>
+			          <outputType
+			              superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.output.so"
+			              id="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.so.release.output">
+			          </outputType>
+                  </tool>
+				  <tool
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x64.so.release"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x64.base">
+				  </tool>   
+               </toolChain>                                                                                
+         </configuration>
+      </projectType>
+                       
+      <projectType 
+            buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib"
+            id="cdt.managedbuild.target.gnu.mingw_x64.lib"
+            isTest="false"
+            isAbstract="false">            
+         <configuration
+               name="%ConfigName.Dbg"
+               parent="cdt.managedbuild.config.gnu.mingw_x64.base"
+               buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug"
+               cleanCommand="rm -rf"
+               id="cdt.managedbuild.config.gnu.mingw_x64.lib.debug">
+               <toolChain
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x64.lib.debug">
+                  <targetPlatform
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x64.lib.debug"
+				 	  superClass="cdt.managedbuild.target.gnu.platform.mingw_x64.base">
+				  </targetPlatform>
+			  	  <builder
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x64.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x64.lib.debug">		              
+			      </builder>               		                                                              
+			      <tool
+			          id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.lib.debug"
+					  superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.base">
+					  <option
+					      id="gnu.cpp.compiler.mingw_x64.lib.debug.option.optimization.level"
+					      superClass="gnu.cpp.compiler.option.optimization.level">
+					  </option>
+					  <option
+					        id="gnu.cpp.compiler.mingw_x64.lib.debug.option.debugging.level"
+							superClass="gnu.cpp.compiler.option.debugging.level">
+					  </option>
+				  </tool>  
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.lib.debug"
+                      superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.base">
+                      <option
+                          id="gnu.c.compiler.mingw_x64.lib.debug.option.optimization.level"
+                          superClass="gnu.c.compiler.option.optimization.level">
+                      </option>
+                      <option
+                          id="gnu.c.compiler.mingw_x64.lib.debug.option.debugging.level"
+                          superClass="gnu.c.compiler.option.debugging.level">
+                      </option>
+                  </tool>
+                  <tool
+                      id="cdt.managedbuild.tool.gnu.archiver.mingw_x64.lib.debug"
+                      superClass="cdt.managedbuild.tool.gnu.archiver.mingw_x64.base">
+                  </tool>
+				  <tool
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x64.lib.debug"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x64.base">
+				  </tool>   
+               </toolChain>                                                                                				               				  
+         </configuration>
+         <configuration
+               name="%ConfigName.Rel"
+               parent="cdt.managedbuild.config.gnu.mingw_x64.base"
+               buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release"
+               cleanCommand="rm -rf"
+               id="cdt.managedbuild.config.gnu.mingw_x64.lib.release">
+               <toolChain
+                     superClass="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
+                     id="cdt.managedbuild.toolchain.gnu.mingw_x64.lib.release">
+                  <targetPlatform
+					  id="cdt.managedbuild.target.gnu.platform.mingw_x64.lib.release"
+					  superClass="cdt.managedbuild.target.gnu.platform.mingw_x64.base">
+				  </targetPlatform>
+			  	  <builder
+					  superClass="cdt.managedbuild.target.gnu.builder.mingw_x64.base"
+					  id="cdt.managedbuild.target.gnu.builder.mingw_x64.lib.release">		              
+			      </builder>               		                                                                                              
+                  <tool
+                     id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.lib.release"
+                     superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw_x64.base">
+                     <option       
+                         id="gnu.cpp.compiler.mingw_x64.lib.release.option.optimization.level"         
+                         superClass="gnu.cpp.compiler.option.optimization.level">
+                     </option>
+                     <option
+                         id="gnu.cpp.compiler.mingw_x64.lib.release.option.debugging.level"
+                         superClass="gnu.cpp.compiler.option.debugging.level">
+                     </option>
+                 </tool>
+                  <tool
+                     id="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.lib.release"
+                     superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw_x64.base">
+                     <option
+                         id="gnu.c.compiler.mingw_x64.lib.release.option.optimization.level"
+                         superClass="gnu.c.compiler.option.optimization.level">
+                     </option>
+                     <option
+                         id="gnu.c.compiler.mingw_x64.lib.release.option.debugging.level"                        
+                         superClass="gnu.c.compiler.option.debugging.level">                         
+                     </option>
+                  </tool>
+                 <tool
+                     id="cdt.managedbuild.tool.gnu.archiver.mingw_x64.lib.release"
+                     superClass="cdt.managedbuild.tool.gnu.archiver.mingw_x64.base">
+                 </tool>
+				 <tool
+					  id="cdt.managedbuild.tool.gnu.assembler.mingw_x64.lib.release"
+					  superClass="cdt.managedbuild.tool.gnu.assembler.mingw_x64.base">
 				 </tool>   
               </toolChain>                                                                                				                    
          </configuration>         
@@ -4497,7 +4985,10 @@
             <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.cygwin.base"/>
             <toolChain
-                  id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base">
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x32.base">
+            </toolChain>
+            <toolChain
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x64.base">
             </toolChain>
             <toolChain id="cdt.managedbuild.toolchain.gnu.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.macosx.base"/>
@@ -4507,7 +4998,10 @@
             <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.cygwin.base"/>
             <toolChain
-                  id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base">
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x32.base">
+            </toolChain>
+            <toolChain
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x64.base">
             </toolChain>
             <toolChain id="cdt.managedbuild.toolchain.gnu.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.macosx.base"/>
@@ -4517,7 +5011,10 @@
             <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.cygwin.base"/>
             <toolChain
-                  id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base">
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x32.base">
+            </toolChain>
+            <toolChain
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x64.base">
             </toolChain>
             <toolChain id="cdt.managedbuild.toolchain.gnu.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.macosx.base"/>
@@ -4528,7 +5025,10 @@
             <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.cygwin.base"/>
             <toolChain
-                  id="cdt.managedbuild.toolchain.gnu.cygwin2mingw64.base">
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x32.base">
+            </toolChain>
+            <toolChain
+                  id="cdt.managedbuild.toolchain.gnu.mingw_x64.base">
             </toolChain>
             <toolChain id="cdt.managedbuild.toolchain.gnu.base"/>
             <toolChain id="cdt.managedbuild.toolchain.gnu.macosx.base"/>

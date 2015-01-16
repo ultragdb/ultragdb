@@ -4,7 +4,7 @@ import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.envvar.IBuildEnvironmentVariable;
 import org.eclipse.cdt.managedbuilder.envvar.IEnvironmentVariableProvider;
 
-public class GnuCygwin2MinGW64ConfigurationEnvironmentSupplier extends
+public class GnuMinGW32ConfigurationEnvironmentSupplier extends
 		GnuCygwinConfigurationEnvironmentSupplier {
 
 	@Override
