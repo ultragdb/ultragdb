@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.eclipse.cdt.common.Cygwin;
 import org.eclipse.cdt.internal.core.natives.Messages;
 import org.eclipse.cdt.utils.pty.PTY;
 import org.eclipse.core.runtime.Path;
@@ -92,38 +91,9 @@ public class ProcessFactory {
 	}
 
 	public Process exec(String cmdarray[], String[] envp, File dir) throws IOException {
-		String bashPath;
-		String[] newCmdArray = new String[5];
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
 			cmdarray[0] = Path.fromOSString(cmdarray[0]).toPortableString();
-
-			bashPath = Cygwin.cygwinToWindowsPath("/bin/bash.exe"); //$NON-NLS-1$
-		} else {
-			// expect bash in PATH
-			bashPath = "bash"; //$NON-NLS-1$
 		}
-
-		newCmdArray[0] = bashPath;
-		newCmdArray[1] = "--login"; //$NON-NLS-1$
-		//The Cygwin bash will change current directory to HOME When --login option is given, but --posix option is not given.
-		newCmdArray[2] = "--posix"; //$NON-NLS-1$
-		newCmdArray[3] = "-c"; //$NON-NLS-1$
-
-		StringBuilder builder = new StringBuilder();
-
-		for (int i = 0; i < cmdarray.length; i++) {
-			String arg = cmdarray[i];
-			if (i != 0) {
-				builder.append(' ');
-			}
-			builder.append('\'');
-			builder.append(arg);
-			builder.append('\'');
-		}
-		builder.append(';');
-		newCmdArray[4] = builder.toString();
-
-		cmdarray = newCmdArray;
 
 		List<String> cmdList = Arrays.asList(cmdarray);
 		ProcessBuilder pb = new ProcessBuilder(cmdList);
