@@ -1,5 +1,7 @@
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
+import org.eclipse.cdt.common.WindowsGCC;
+import org.eclipse.cdt.managedbuilder.core.IManagedIsToolChainSupported;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.osgi.framework.Version;
 
@@ -8,9 +10,9 @@ import org.osgi.framework.Version;
  *
  * @noextend This class is not intended to be subclassed by clients.
  */
-public class IsGnuMinGW32ToolChainSupported extends IsGnuCygwinToolChainSupported {
+public class IsGnuMinGW32ToolChainSupported implements IManagedIsToolChainSupported {
 	@Override
 	public boolean isSupported(IToolChain toolChain, Version version, String instance) {
-		return super.isSupported(toolChain, version, instance);
+		return WindowsGCC.isCygwin32();
 	}
 }

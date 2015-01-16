@@ -11,6 +11,7 @@
  *******************************************************************************/
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
+import org.eclipse.cdt.common.WindowsGCC;
 import org.eclipse.cdt.managedbuilder.core.IManagedIsToolChainSupported;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.eclipse.core.runtime.Platform;
@@ -28,6 +29,6 @@ public class IsGnuCygwinToolChainSupported implements IManagedIsToolChainSupport
 	public boolean isSupported(IToolChain toolChain, Version version, String instance) {
 //		IEnvironmentVariable var = new EnvironmentVariableManagerToolChain(toolChain).getVariable(ENV_PATH, true);
 //		String envPath = var != null ? var.getValue() : null;
-		return Platform.getOS().equals(Platform.OS_WIN32);
+		return WindowsGCC.isCygwin32() || WindowsGCC.isCygwin64();
 	}
 }

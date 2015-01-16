@@ -12,11 +12,9 @@
 
 package org.eclipse.cdt.managedbuilder.gnu.mingw;
 
-import org.eclipse.cdt.core.envvar.IEnvironmentVariable;
-import org.eclipse.cdt.internal.core.MinGW;
+import org.eclipse.cdt.common.WindowsGCC;
 import org.eclipse.cdt.managedbuilder.core.IManagedIsToolChainSupported;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
-import org.eclipse.cdt.managedbuilder.internal.envvar.EnvironmentVariableManagerToolChain;
 import org.osgi.framework.Version;
 
 /**
@@ -27,11 +25,7 @@ public class MingwIsToolChainSupported implements IManagedIsToolChainSupported {
 
 	@Override
 	public boolean isSupported(IToolChain toolChain, Version version, String instance) {
-		//Chiheng Xu : we don't support MinGW. We only support Cygwin2MinGW64 and Cygwin2MinGW32
-		return false;
-//		IEnvironmentVariable var = new EnvironmentVariableManagerToolChain(toolChain).getVariable(ENV_PATH, true);
-//		String envPath = var != null ? var.getValue() : null;
-//		return MinGW.isAvailable(envPath);
+		return WindowsGCC.isMinGW32() || WindowsGCC.isMinGW64();
 	}
 
 }

@@ -1,6 +1,12 @@
 package org.eclipse.cdt.common;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -10,6 +16,8 @@ import org.eclipse.core.runtime.Platform;
  * A collection of Cygwin-related utilities.
  */
 public class Cygwin {
+	// gcc
+
 	private static final String ENV_CYGWIN_DIR = "CYGWIN_DIR"; //$NON-NLS-1$
 
 	private static String _cygwinDir = null;
@@ -65,7 +73,7 @@ public class Cygwin {
 				if (segments[0].equals("usr") && (segments[1].equals("bin") || segments[1].equals("lib"))) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 					/*
 					 * /usr/lib --> /lib ; /usr/bin --> /bin ; /usr/include
-					 * unchanged ¡£
+					 * unchanged
 					 */
 					newSegments = new String[segments.length - 1];
 					System.arraycopy(segments, 1, newSegments, 0,

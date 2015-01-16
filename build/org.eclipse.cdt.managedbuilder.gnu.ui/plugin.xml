@@ -3616,6 +3616,29 @@
               </toolChain>                                                                                				                    
          </configuration>         
       </projectType>
+      
+      <configuration
+            artifactExtension="exe"
+            cleanCommand="rm -rf"
+            id="cdt.managedbuild.config.gnu.mingw_x64.base"
+            languageSettingsProviders="org.eclipse.cdt.ui.UserLanguageSettingsProvider;org.eclipse.cdt.core.ReferencedProjectsLanguageSettingsProvider;org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider;${Toolchain};-org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser">
+         <enablement type="CONTAINER_ATTRIBUTE" 
+               attribute="artifactExtension" 
+               value="dll"
+               extensionAdjustment="false">
+            <checkBuildProperty 
+                  property="org.eclipse.cdt.build.core.buildArtefactType"
+                  value="org.eclipse.cdt.build.core.buildArtefactType.sharedLib"/>
+         </enablement>
+         <enablement type="CONTAINER_ATTRIBUTE" 
+               attribute="artifactExtension" 
+               value="a"
+               extensionAdjustment="false">
+            <checkBuildProperty 
+                  property="org.eclipse.cdt.build.core.buildArtefactType"
+                  value="org.eclipse.cdt.build.core.buildArtefactType.staticLib"/>
+         </enablement>
+      </configuration>
 
       <projectType 
             buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe"
