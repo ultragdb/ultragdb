@@ -2193,10 +2193,9 @@
 					  archList="all">
 				  </targetPlatform>
                   <builder
+                        command="mingw32-make"
                         id="cdt.managedbuild.tool.gnu.builder.mingw.base"
-                        isAbstract="false"
-                        isVariableCaseSensitive="false"
-                        superClass="org.eclipse.cdt.build.core.internal.builder">
+                        superClass="cdt.managedbuild.target.gnu.builder">
                   </builder>
 				  <tool
 					  id="cdt.managedbuild.tool.gnu.assembler.mingw.base"

@@ -26,13 +26,13 @@ public class PTY2Util {
 			throw new IOException("can not find terminal emulator executable of currrent platform"); //$NON-NLS-1$
 		}
 
-		String os = "$os$/"; //$NON-NLS-1$
+		String os = "$os$"; //$NON-NLS-1$
 		if (Platform.getOS().equals(Platform.OS_WIN32)
 				&& Platform.getOSArch().equals(Platform.ARCH_X86_64) && WindowsGCC.isCygwin32()) {
-			os = "os/win32/x86/"; //$NON-NLS-1$
+			os = "os/win32/x86"; //$NON-NLS-1$
 		}
 
-		URL url = FileLocator.find(bundle, new Path(os + terminalEmulatorExeName), null);
+		URL url = FileLocator.find(bundle, new Path(os + '/' + terminalEmulatorExeName), null);
 		if (url != null) {
 			url = FileLocator.resolve(url);
 			String path = url.getFile();

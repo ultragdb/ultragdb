@@ -21,6 +21,7 @@ import org.eclipse.cdt.managedbuilder.envvar.IBuildEnvironmentVariable;
 import org.eclipse.cdt.managedbuilder.envvar.IConfigurationEnvironmentVariableSupplier;
 import org.eclipse.cdt.managedbuilder.envvar.IEnvironmentVariableProvider;
 import org.eclipse.cdt.managedbuilder.internal.envvar.BuildEnvVar;
+import org.eclipse.cdt.utils.CygwinCoreUtils;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 
@@ -98,6 +99,10 @@ public class MingwEnvironmentVariableSupplier implements IConfigurationEnvironme
 			@SuppressWarnings("nls")
 			String path = "${" + MinGW.ENV_MINGW_HOME + "}" + BACKSLASH + "bin" + PATH_DELIMITER
 					+ "${" + MinGW.ENV_MSYS_HOME + "}" + BACKSLASH + "bin";
+			String gnuWinPath = CygwinCoreUtils.getPath();
+			if (gnuWinPath !=  null) {
+				path = path + PATH_DELIMITER + gnuWinPath;
+			}
 			return new BuildEnvVar(ENV_PATH, path, IBuildEnvironmentVariable.ENVVAR_PREPEND);
 		}
 
