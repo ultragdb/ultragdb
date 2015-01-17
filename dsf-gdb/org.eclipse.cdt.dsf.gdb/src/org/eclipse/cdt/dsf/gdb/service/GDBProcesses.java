@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
+import org.eclipse.cdt.common.WindowsGCC;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.IProcessInfo;
 import org.eclipse.cdt.core.IProcessList;
@@ -512,31 +513,42 @@ public class GDBProcesses extends MIProcesses implements IGDBProcesses {
     	} else {
     		// These types always use a PTY
     		try {
-    			//fPty = new PTY();
-				//fPty.validateSlaveName();
-    			ILaunch launch = (ILaunch)getSession().getModelAdapter(ILaunch.class);
+    			if (Platform.getOS().equals(Platform.OS_WIN32) && (WindowsGCC.isMinGW32() || WindowsGCC.isMinGW64() )) {
+    				fGdb.queueCommand(
+        					fCommandFactory.createMIInferiorNewConsoleSet((IMIContainerDMContext)containerDmc, true), 
+        					new ImmediateDataRequestMonitor<MIInfo>(rm) {
+        						@Override
+        						protected void handleFailure() {
+        			        		rm.done();
+        						}
+        					});
+    			} else {
+        			//fPty = new PTY();
+    				//fPty.validateSlaveName();
+        			ILaunch launch = (ILaunch)getSession().getModelAdapter(ILaunch.class);
 
-    			fPty2 = new PTY2();
-    			Process process = fPty2.getTerminalEmulator();
+        			fPty2 = new PTY2();
+        			Process process = fPty2.getTerminalEmulator();
 
-    			Map<String, String> attributes = new HashMap<String, String>();
-    		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
-    		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
+        			Map<String, String> attributes = new HashMap<String, String>();
+        		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
+        		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
 
-    			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes); //$NON-NLS-1$
+        			DebugPlugin.newProcess(launch, process, "Terminal Emulator", attributes); //$NON-NLS-1$
 
-    			// Tell GDB to use this PTY
-    			fGdb.queueCommand(
-    					fCommandFactory.createMIInferiorTTYSet((IMIContainerDMContext)containerDmc, fPty2.getSlaveName()), 
-    					new ImmediateDataRequestMonitor<MIInfo>(rm) {
-    						@Override
-    						protected void handleFailure() {
-    							// We were not able to tell GDB to use the PTY
-    							// so we won't use it at all.
-    			    			fPty = null;
-    			        		rm.done();
-    						}
-    					});
+        			// Tell GDB to use this PTY
+        			fGdb.queueCommand(
+        					fCommandFactory.createMIInferiorTTYSet((IMIContainerDMContext)containerDmc, fPty2.getSlaveName()), 
+        					new ImmediateDataRequestMonitor<MIInfo>(rm) {
+        						@Override
+        						protected void handleFailure() {
+        							// We were not able to tell GDB to use the PTY
+        							// so we won't use it at all.
+        			    			fPty = null;
+        			        		rm.done();
+        						}
+        					});
+    			}
     		} catch (IOException e) {
     			fPty = null;
         		rm.done();
