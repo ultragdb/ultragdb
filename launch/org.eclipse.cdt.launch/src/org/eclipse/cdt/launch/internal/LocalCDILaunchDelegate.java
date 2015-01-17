@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.cdt.common.WindowsGCC;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.IBinaryParser.IBinaryObject;
 import org.eclipse.cdt.core.IProcessInfo;
@@ -93,17 +94,27 @@ public class LocalCDILaunchDelegate extends AbstractCLaunchDelegate {
 				wd = new File(System.getProperty("user.home", ".")); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 			String arguments[] = getProgramArgumentsArray(config);
-			ArrayList command = new ArrayList(1 + arguments.length);
+			ArrayList<String> command = new ArrayList<String>(1 + arguments.length);
 			command.add(exePath.toPortableString());
 			command.addAll(Arrays.asList(arguments));
-			String[] commandArray = (String[])command.toArray(new String[command.size()]);
+			String[] commandArray = command.toArray(new String[command.size()]);
 			boolean usePty = config.getAttribute(ICDTLaunchConfigurationConstants.ATTR_USE_TERMINAL, ICDTLaunchConfigurationConstants.USE_TERMINAL_DEFAULT);
 			monitor.worked(2);
-			if (Platform.getOS().equals(Platform.OS_WIN32)) {
-				commandArray[0] = Path.fromOSString(commandArray[0]).toPortableString();
+
+			Process process;
+			if (Platform.getOS().equals(Platform.OS_WIN32) && (WindowsGCC.isMinGW32() || WindowsGCC.isMinGW64() )) {
+				//cmd.exe /c start cmd.exe /k ipconfig
+				String[] terminalEmulatorCommand = new String[] { "cmd.exe", "/c", "start", "cmd.exe", "/k" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$ //$NON-NLS-4$  //$NON-NLS-5$
+				String[] result = new String[terminalEmulatorCommand.length + commandArray.length];
+				System.arraycopy(terminalEmulatorCommand, 0, result, 0, terminalEmulatorCommand.length);
+				System.arraycopy(commandArray, 0, result, terminalEmulatorCommand.length,
+						commandArray.length);
+				process = exec(result, getEnvironment(config), wd, usePty);
+			} else {
+				String[] terminalEmulatorCommandArray = PTY2Util.getTerminalEmulatorCommandArray(commandArray);
+				process = exec(terminalEmulatorCommandArray, getEnvironment(config), wd, usePty);
 			}
-			String[] terminalEmulatorCommandArray = PTY2Util.getTerminalEmulatorCommandArray(commandArray);
-			Process process = exec(terminalEmulatorCommandArray, getEnvironment(config), wd, usePty);
+			
 			monitor.worked(6);
 			
 			Map<String, String> attributes = new HashMap<String, String>();

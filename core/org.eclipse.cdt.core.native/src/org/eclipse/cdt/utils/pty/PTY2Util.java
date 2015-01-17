@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+import org.eclipse.cdt.common.WindowsGCC;
 import org.eclipse.cdt.internal.core.natives.CNativePlugin;
-import org.eclipse.cdt.utils.spawner.ProcessFactory;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
@@ -26,7 +26,13 @@ public class PTY2Util {
 			throw new IOException("can not find terminal emulator executable of currrent platform"); //$NON-NLS-1$
 		}
 
-		URL url = FileLocator.find(bundle, new Path("$os$/" + terminalEmulatorExeName), null); //$NON-NLS-1$
+		String os = "$os$/"; //$NON-NLS-1$
+		if (Platform.getOS().equals(Platform.OS_WIN32)
+				&& Platform.getOSArch().equals(Platform.ARCH_X86_64) && WindowsGCC.isCygwin32()) {
+			os = "os/win32/x86/"; //$NON-NLS-1$
+		}
+
+		URL url = FileLocator.find(bundle, new Path(os + terminalEmulatorExeName), null);
 		if (url != null) {
 			url = FileLocator.resolve(url);
 			String path = url.getFile();
@@ -52,15 +58,13 @@ public class PTY2Util {
 		String[] terminalEmulatorCommand;
 
 		if (Platform.getOS().equals(Platform.OS_WIN32)) {
-			terminalEmulatorCommand = new String[]{ command, "--hold=always", "--exec" }; //$NON-NLS-1$  //$NON-NLS-2$ 
+			terminalEmulatorCommand = new String[] { command, "--hold=always", "--exec" }; //$NON-NLS-1$  //$NON-NLS-2$ 
 		} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
-			terminalEmulatorCommand = new String[]{ command, "--nofork", "--hold", "-e" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
+			terminalEmulatorCommand = new String[] { command, "--nofork", "--hold", "-e" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
 		} else {
-			terminalEmulatorCommand = new String[]{ command, "--nofork", "--hold", "-e" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
+			terminalEmulatorCommand = new String[] { command, "--nofork", "--hold", "-e" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
 		}
 
-		
-		
 		String[] result = new String[terminalEmulatorCommand.length + commandArray.length];
 		System.arraycopy(terminalEmulatorCommand, 0, result, 0, terminalEmulatorCommand.length);
 		System.arraycopy(commandArray, 0, result, terminalEmulatorCommand.length,
