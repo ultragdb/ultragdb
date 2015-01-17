@@ -7,6 +7,7 @@ import java.net.URL;
 import org.eclipse.cdt.common.WindowsGCC;
 import org.eclipse.cdt.internal.core.natives.CNativePlugin;
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
@@ -26,18 +27,18 @@ public class PTY2Util {
 			throw new IOException("can not find terminal emulator executable of currrent platform"); //$NON-NLS-1$
 		}
 
-		if (Platform.getOS().equals(Platform.OS_WIN32)
-				&& Platform.getOSArch().equals(Platform.ARCH_X86_64) && WindowsGCC.isCygwin32()) {
-			terminalEmulatorExeName = "mintty32.exe"; //$NON-NLS-1$
-		}
-
-		URL url = FileLocator.find(bundle, new Path("$os$/" + terminalEmulatorExeName), null);
+		URL url = FileLocator.find(bundle, new Path("$os$/" + terminalEmulatorExeName), null); //$NON-NLS-1$
 		if (url != null) {
 			url = FileLocator.resolve(url);
 			String path = url.getFile();
 			File file = new File(path);
 			if (file.exists()) {
-				command = file.getCanonicalPath();
+				IPath p = Path.fromOSString(file.getCanonicalPath());
+				command = p.toPortableString();
+				if (Platform.getOS().equals(Platform.OS_WIN32)
+						&& Platform.getOSArch().equals(Platform.ARCH_X86_64) && WindowsGCC.isCygwin32()) {
+					command =  command.replaceAll("x86_64", "x86"); //$NON-NLS-1$ //$NON-NLS-2$
+				}
 			}
 		}
 
