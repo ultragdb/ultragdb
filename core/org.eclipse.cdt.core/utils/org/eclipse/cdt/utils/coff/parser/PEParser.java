@@ -18,14 +18,19 @@ import org.eclipse.cdt.core.AbstractCExtension;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.IBinaryParser;
 import org.eclipse.cdt.utils.AR;
+import org.eclipse.cdt.utils.DefaultGnuToolFactory;
+import org.eclipse.cdt.utils.IGnuToolFactory;
 import org.eclipse.cdt.utils.coff.PE;
-import org.eclipse.cdt.utils.coff.PEConstants;
 import org.eclipse.cdt.utils.coff.PE.Attribute;
+import org.eclipse.cdt.utils.coff.PEConstants;
 import org.eclipse.core.runtime.IPath;
 
 /**
  */
 public class PEParser extends AbstractCExtension implements IBinaryParser {
+
+	
+	private DefaultGnuToolFactory toolFactory;
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.cdt.core.IBinaryParser#getBinary(org.eclipse.core.runtime.IPath)
@@ -167,4 +172,22 @@ public class PEParser extends AbstractCExtension implements IBinaryParser {
 		return new PEBinaryArchive(this, path);
 	}
 
+	protected DefaultGnuToolFactory createToolFactory() {
+		return new DefaultGnuToolFactory(this);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.core.runtime.PlatformObject#getAdapter(java.lang.Class)
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public Object getAdapter(Class adapter) {
+		if (adapter.isAssignableFrom(IGnuToolFactory.class)) {
+			if (toolFactory == null) {
+				toolFactory = createToolFactory(); 
+			}
+			return toolFactory;
+		}
+		return super.getAdapter(adapter);
+	}
 }
