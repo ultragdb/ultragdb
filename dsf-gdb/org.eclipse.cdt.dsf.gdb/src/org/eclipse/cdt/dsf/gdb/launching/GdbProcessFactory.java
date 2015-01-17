@@ -42,6 +42,9 @@ public class GdbProcessFactory implements IProcessFactory {
 			if (ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE.equals(attributes.get(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR))) {
 				return new TerminalEmulatorRuntimeProcess(launch, process, label, attributes);
 			}
+			if (ILaunchConstants.MINGW_FAKE_TERMINAL_EMULATOR_PROCESS_CREATION_VALUE.equals(attributes.get(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR))) {
+				return new MingwFakeTerminalEmulatorRuntimeProcess(launch, process, label, attributes);
+			}
 		}	
 		
 		return new RuntimeProcess(launch, process, label, attributes);

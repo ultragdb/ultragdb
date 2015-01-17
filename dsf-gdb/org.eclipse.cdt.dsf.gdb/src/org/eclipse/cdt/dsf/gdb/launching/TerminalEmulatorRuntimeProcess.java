@@ -2,9 +2,6 @@ package org.eclipse.cdt.dsf.gdb.launching;
 
 import java.util.Map;
 
-import org.eclipse.cdt.common.WindowsGCC;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IStreamsProxy;
 import org.eclipse.debug.core.model.RuntimeProcess;
@@ -16,31 +13,6 @@ import org.eclipse.debug.core.model.RuntimeProcess;
  * emulator.
  */
 public class TerminalEmulatorRuntimeProcess extends RuntimeProcess {
-	@Override
-	public synchronized boolean isTerminated() {
-		if (fTerminated) {
-			return true;
-		}
-		return super.isTerminated();
-	}
-
-	private boolean fTerminated = false;
-
-	@Override
-	public void terminate() throws DebugException {
-		if (Platform.getOS().equals(Platform.OS_WIN32) && (WindowsGCC.isMinGW32() || WindowsGCC.isMinGW64() )) {
-			try {
-				super.terminate();
-			} catch (DebugException e) {
-				// ignore all errors
-			}
-			terminated();
-			//always success
-			fTerminated = true;
-			return;
-		}
-		super.terminate();
-	}
 
 	public TerminalEmulatorRuntimeProcess(ILaunch launch, Process process, String name,
 			Map<String, String> attributes) {

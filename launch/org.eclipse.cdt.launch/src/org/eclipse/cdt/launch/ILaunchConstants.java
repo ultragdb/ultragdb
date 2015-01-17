@@ -25,5 +25,14 @@ public interface ILaunchConstants {
 	 */
 	public static final String TERMINAL_EMULATOR_PROCESS_CREATION_VALUE = PREFIX
 			+ "terminalEmulatorProcess"; //$NON-NLS-1$
+	/**
+	 * Attribute value of PROCESS_TYPE_CREATION_ATTR to be passed to
+	 * DebugPlugin.newProcess to require the creation of an MingwFakeTerminalEmulatorRuntimeProcess
+	 * instead of a RuntimeProcess (which is used by default).
+	 * 
+	 * @since 4.1
+	 */
+	public static final String MINGW_FAKE_TERMINAL_EMULATOR_PROCESS_CREATION_VALUE = PREFIX
+			+ "mingwFakeTerminalEmulatorProcess"; //$NON-NLS-1$
 
 }

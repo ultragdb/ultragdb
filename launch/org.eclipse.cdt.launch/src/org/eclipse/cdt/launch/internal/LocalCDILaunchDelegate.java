@@ -101,7 +101,6 @@ public class LocalCDILaunchDelegate extends AbstractCLaunchDelegate {
 			boolean usePty = config.getAttribute(ICDTLaunchConfigurationConstants.ATTR_USE_TERMINAL, ICDTLaunchConfigurationConstants.USE_TERMINAL_DEFAULT);
 			monitor.worked(2);
 
-			Process process;
 			if (Platform.getOS().equals(Platform.OS_WIN32) && (WindowsGCC.isMinGW32() || WindowsGCC.isMinGW64() )) {
 				//cmd.exe /c start cmd.exe /k ipconfig
 				String[] terminalEmulatorCommand = new String[] { "cmd.exe", "/c", "start", "cmd.exe", "/k" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$ //$NON-NLS-4$  //$NON-NLS-5$
@@ -109,19 +108,27 @@ public class LocalCDILaunchDelegate extends AbstractCLaunchDelegate {
 				System.arraycopy(terminalEmulatorCommand, 0, result, 0, terminalEmulatorCommand.length);
 				System.arraycopy(commandArray, 0, result, terminalEmulatorCommand.length,
 						commandArray.length);
-				process = exec(result, getEnvironment(config), wd, usePty);
+				Process process = exec(result, getEnvironment(config), wd, usePty);
+
+				monitor.worked(6);
+
+				Map<String, String> attributes = new HashMap<String, String>();
+				attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
+						ILaunchConstants.MINGW_FAKE_TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
+
+				DebugPlugin.newProcess(launch, process, "Launcher", attributes); //$NON-NLS-1$
 			} else {
 				String[] terminalEmulatorCommandArray = PTY2Util.getTerminalEmulatorCommandArray(commandArray);
-				process = exec(terminalEmulatorCommandArray, getEnvironment(config), wd, usePty);
-			}
-			
-			monitor.worked(6);
-			
-			Map<String, String> attributes = new HashMap<String, String>();
-		    attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
-		    		ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
+				Process process = exec(terminalEmulatorCommandArray, getEnvironment(config), wd, usePty);
 
-			DebugPlugin.newProcess(launch, process, renderProcessLabel(commandArray[0]), attributes);
+				monitor.worked(6);
+
+				Map<String, String> attributes = new HashMap<String, String>();
+				attributes.put(ILaunchConstants.PROCESS_TYPE_CREATION_ATTR, 
+						ILaunchConstants.TERMINAL_EMULATOR_PROCESS_CREATION_VALUE);
+
+				DebugPlugin.newProcess(launch, process, renderProcessLabel(commandArray[0]), attributes);
+			}
 		} finally {
 			monitor.done();
 		}		
