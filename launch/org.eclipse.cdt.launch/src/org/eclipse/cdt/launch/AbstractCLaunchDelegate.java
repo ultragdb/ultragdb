@@ -92,15 +92,6 @@ abstract public class AbstractCLaunchDelegate extends LaunchConfigurationDelegat
 	 * @since 6.0
 	 */
     public class CLaunch extends Launch {
-        @Override
-    	public void setAttribute(String key, String value) {
-    		if (key.equals(DebugPlugin.ATTR_CAPTURE_OUTPUT)) {
-    			value = "true"; //$NON-NLS-1$
-    		} else if (key.equals(DebugPlugin.ATTR_CONSOLE_ENCODING)) {
-    			value = "UTF-8"; //$NON-NLS-1$
-    		}
-    		super.setAttribute(key, value);
-    	}
 
         private final AtomicBoolean fRefreshDone;
         

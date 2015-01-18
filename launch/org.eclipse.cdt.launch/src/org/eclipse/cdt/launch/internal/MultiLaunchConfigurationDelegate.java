@@ -119,16 +119,6 @@ public class MultiLaunchConfigurationDelegate extends LaunchConfigurationDelegat
 	 *  
 	 */
 	private class MultiLaunch extends Launch implements ILaunchesListener2{
-	    @Override
-		public void setAttribute(String key, String value) {
-			if (key.equals(DebugPlugin.ATTR_CAPTURE_OUTPUT)) {
-				value = "true"; //$NON-NLS-1$
-			} else if (key.equals(DebugPlugin.ATTR_CONSOLE_ENCODING)) {
-				value = "UTF-8"; //$NON-NLS-1$
-			}
-			super.setAttribute(key, value);
-		}
-
 		/**
 		 * Whether this process has been terminated
 		 */

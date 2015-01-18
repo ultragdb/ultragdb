@@ -10,7 +10,6 @@ import java.util.List;
 import org.eclipse.core.runtime.Platform;
 
 public class WindowsGCC {
-	private static boolean isAvailable;
 	private static boolean isCygwin32;
 	private static boolean isCygwin64;
 	private static boolean isMinGW32;
@@ -60,13 +59,7 @@ public class WindowsGCC {
 			// unsupported gcc
 			return;
 		}
-		isAvailable = true;
 		return;
-	}
-
-
-	public static boolean isAvailable() {
-		return isAvailable;
 	}
 
 	public static boolean isCygwin32() {

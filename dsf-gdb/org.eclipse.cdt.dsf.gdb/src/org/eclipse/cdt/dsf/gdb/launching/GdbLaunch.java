@@ -69,16 +69,6 @@ import org.eclipse.debug.core.model.ITerminate;
 public class GdbLaunch extends DsfLaunch
     implements ITerminate, IDisconnect, ITracedLaunch
 {
-    @Override
-	public void setAttribute(String key, String value) {
-		if (key.equals(DebugPlugin.ATTR_CAPTURE_OUTPUT)) {
-			value = "true"; //$NON-NLS-1$
-		} else if (key.equals(DebugPlugin.ATTR_CONSOLE_ENCODING)) {
-			value = "UTF-8"; //$NON-NLS-1$
-		}
-		super.setAttribute(key, value);
-	}
-
 	private DefaultDsfExecutor fExecutor;
     private DsfSession fSession;
     private DsfServicesTracker fTracker;
