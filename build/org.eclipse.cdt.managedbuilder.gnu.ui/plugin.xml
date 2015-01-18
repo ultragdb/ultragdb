@@ -2042,7 +2042,7 @@
                     id="cdt.managedbuild.toolchain.gnu.mingw_x32.base"
                     isToolChainSupported="org.eclipse.cdt.managedbuilder.gnu.cygwin.IsGnuMinGW32ToolChainSupported"
                     languageSettingsProviders="org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser;org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW32"
-                    name="MinGW x32 GCC"
+                    name="MinGW x32 Cross GCC"
                     osList="win32"
                     targetTool="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x32.base;cdt.managedbuild.tool.gnu.c.linker.mingw_x32.base;cdt.managedbuild.tool.gnu.archiver.mingw_x32.base">
                   <targetPlatform
@@ -2112,7 +2112,7 @@
                     id="cdt.managedbuild.toolchain.gnu.mingw_x64.base"
                     isToolChainSupported="org.eclipse.cdt.managedbuilder.gnu.cygwin.IsGnuMinGW64ToolChainSupported"
                     languageSettingsProviders="org.eclipse.cdt.managedbuilder.core.GCCBuildCommandParser;org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW64"
-                    name="MinGW x64 GCC"
+                    name="MinGW x64 Cross GCC"
                     osList="win32"
                     targetTool="cdt.managedbuild.tool.gnu.cpp.linker.mingw_x64.base;cdt.managedbuild.tool.gnu.c.linker.mingw_x64.base;cdt.managedbuild.tool.gnu.archiver.mingw_x64.base">
                   <targetPlatform

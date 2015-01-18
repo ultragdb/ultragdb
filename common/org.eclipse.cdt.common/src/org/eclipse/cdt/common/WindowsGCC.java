@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 
 public class WindowsGCC {
@@ -15,8 +16,12 @@ public class WindowsGCC {
 	private static boolean isMinGW32;
 	private static boolean isMinGW64;
 
+	private static String mingw32CrossGccSysroot;
+	private static String mingw64CrossGccSysroot;
+
 	static {
 		initialize();
+		initializeMingwCrossGccSysroot();
 	}
 
 	private static String[] execAndGetLines(String[] cmdarray) {
@@ -62,6 +67,32 @@ public class WindowsGCC {
 		return;
 	}
 
+	private static void initializeMingwCrossGccSysroot() {
+		if (isCygwin32) {
+			String[] lines = execAndGetLines(new String[] {
+					"i686-w64-mingw32-gcc", "-print-sysroot" });
+			if (lines == null || lines.length != 1) {
+				return;
+			}
+			String line = lines[0];
+			if (line.length() > 0) {
+				mingw32CrossGccSysroot = Cygwin.cygwinToWindowsPath(Path
+						.fromOSString(line).toPortableString());
+			}
+		} else if (isCygwin64) {
+			String[] lines = execAndGetLines(new String[] {
+					"x86_64-w64-mingw32-gcc", "-print-sysroot" });
+			if (lines == null || lines.length != 1) {
+				return;
+			}
+			String line = lines[0];
+			if (line.length() > 0) {
+				mingw64CrossGccSysroot = Cygwin.cygwinToWindowsPath(Path
+						.fromOSString(line).toPortableString());
+			}
+		}
+	}
+
 	public static boolean isCygwin32() {
 		return isCygwin32;
 	}
@@ -76,5 +107,13 @@ public class WindowsGCC {
 
 	public static boolean isMinGW64() {
 		return isMinGW64;
+	}
+
+	public static String getMingw32CrossGccSysroot() {
+		return mingw32CrossGccSysroot;
+	}
+
+	public static String getMingw64CrossGccSysroot() {
+		return mingw64CrossGccSysroot;
 	}
 }
