@@ -10,7 +10,7 @@ import org.eclipse.core.runtime.Platform;
  * A collection of Cygwin-related utilities.
  */
 public class Cygwin {
-	private static String _cygwinDir = null;
+	private static String cygwinDir = null;
 
 	static {
 		initializeCygwinDir();
@@ -41,11 +41,11 @@ public class Cygwin {
 		String[] segments = path.segments();
 		String[] newSegments;
 
-		String cygwinDir = getCygwinDir();
 		if (cygwinPath.startsWith("/")) { //$NON-NLS-1$
 			// absolute path
 			if (segments.length < 0) {
-				throw new UnsupportedOperationException("invalid Cygwin Path"); //$NON-NLS-1$
+				// error
+				return cygwinPath;
 			} else if (segments.length >= 2) {
 				if (segments[0].equals("cygdrive")) { //$NON-NLS-1$
 					String device = segments[1].toUpperCase();
@@ -115,7 +115,6 @@ public class Cygwin {
 		if (!Platform.getOS().equals(Platform.OS_WIN32)) {
 			return windowsPath;
 		}
-		String cygwinDir = getCygwinDir();
 
 		IPath cygwinDirPath = Path.fromOSString(cygwinDir);
 		IPath path = Path.fromOSString(windowsPath);
@@ -235,24 +234,16 @@ public class Cygwin {
 					&& cygwin1DllPath.segments()[cygwin1DllPath.segmentCount() - 2]
 							.equals("bin")) { //$NON-NLS-1$
 				IPath cygwinDirPath = cygwin1DllPath.removeLastSegments(2);
-				_cygwinDir = cygwinDirPath.toPortableString();
+				cygwinDir = cygwinDirPath.toPortableString();
 				return;
 			}
 			// Cygwin not found, set cygwinDir to default
 			if (Platform.getOSArch().equals(Platform.ARCH_X86_64)) {
-				_cygwinDir = "C:/cygwin64"; //$NON-NLS-1$
+				cygwinDir = "C:/cygwin64"; //$NON-NLS-1$
 			} else {
-				_cygwinDir = "C:/cygwin"; //$NON-NLS-1$
+				cygwinDir = "C:/cygwin"; //$NON-NLS-1$
 			}
 		}
-	}
-
-	/**
-	 * @return Location of Cygwin root folder "/" on file system in Windows
-	 *         format.
-	 */
-	private static String getCygwinDir() {
-		return _cygwinDir;
 	}
 
 }
