@@ -12,6 +12,10 @@ import org.eclipse.core.runtime.Platform;
 public class Cygwin {
 	private static String _cygwinDir = null;
 
+	static {
+		initializeCygwinDir();
+	}
+
 	/**
 	 * Conversion from Cygwin path to Windows path.
 	 *
@@ -248,11 +252,7 @@ public class Cygwin {
 	 *         format.
 	 */
 	private static String getCygwinDir() {
-		if (_cygwinDir == null) {
-			initializeCygwinDir();
-		}
 		return _cygwinDir;
-
 	}
 
 }
