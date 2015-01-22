@@ -29,16 +29,17 @@ public class PTY2 {
 			 */
 			String[] cmdArray;
 			if (Platform.getOS().equals(Platform.OS_WIN32)) {
-				cmdArray = new String[] { command, "--openpty", "--hold=always", //$NON-NLS-1$ //$NON-NLS-2$ 
+				cmdArray = new String[] { command, "--hold=always", //$NON-NLS-1$
 						"--title", "Terminal Emulator" }; //$NON-NLS-1$ //$NON-NLS-2$
 			} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
-				cmdArray = new String[] { command, "--openpty", "--nofork", "--hold", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				cmdArray = new String[] { command, "--nofork", "--hold", //$NON-NLS-1$ //$NON-NLS-2$
 						"--title", "Terminal Emulator" }; //$NON-NLS-1$ //$NON-NLS-2$
 			} else {
-				cmdArray = new String[] { command, "--openpty", "--nofork", "--hold", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				cmdArray = new String[] { command, "--nofork", "--hold", //$NON-NLS-1$ //$NON-NLS-2$
 						"--title", "Terminal Emulator" }; //$NON-NLS-1$ //$NON-NLS-2$
 			}
-			terminalEmulator = ProcessFactory.getFactory().exec(cmdArray);
+			terminalEmulator = ProcessFactory.getFactory().exec(cmdArray,
+					new String[] { "OPENPTY=" }); //$NON-NLS-1$
 
 			in = terminalEmulator.getInputStream();
 			InputStreamReader reader = new InputStreamReader(in);

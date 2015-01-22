@@ -53,20 +53,10 @@ bool is_use_openpty = false;
 // ***
 extern "C" int KDE_EXPORT kdemain(int argc, char** argv)
 {
-    int newArgc = 0;
-    char ** newArgv = (char **)(malloc(sizeof(char *) * argc));
-
-    for (int i = 0; i < argc; i++) {
-        char * arg = argv[i];
-        if (strcmp(arg, "--openpty") == 0) {
-            is_use_openpty =  true;
-        } else {
-            newArgv[newArgc++] = arg;
-        }
+    if (getenv("OPENPTY") != NULL) {
+      is_use_openpty = true;
+      unsetenv("OPENPTY");
     }
-    argc =  newArgc;
-    argv = newArgv;
-    
 
     KAboutData about("konsole", 0,
                      ki18n("Konsole"),

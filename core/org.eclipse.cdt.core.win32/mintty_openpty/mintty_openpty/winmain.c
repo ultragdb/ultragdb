@@ -689,7 +689,6 @@ static const char help[] =
   "      --class CLASS     Set window class name (default: " APPNAME ")\n"
   "  -H, --help            Display help and exit\n"
   "  -V, --version         Print version information and exit\n"
-  //"  -O, --openpty         Use openpty() to open a pty, print the pty's slave name, and use pty's master as a inferior\n"
 ;
 
 static const char short_opts[] = "+:c:eh:i:l:o:p:s:t:uw:HV";
@@ -702,7 +701,6 @@ opts[] = {
   {"icon",     required_argument, 0, 'i'},
   {"log",      required_argument, 0, 'l'},
   {"utmp",     no_argument,       0, 'u'},
-  {"openpty",  no_argument, 	  0, 'O'},
   {"option",   required_argument, 0, 'o'},
   {"position", required_argument, 0, 'p'},
   {"size",     required_argument, 0, 's'},
@@ -750,6 +748,11 @@ warn(char *format, ...)
 int
 main(int argc, char *argv[])
 {
+  if (getenv("OPENPTY") != NULL) {
+    is_use_openpty = true;
+    unsetenv("OPENPTY");
+  }
+
   main_argv = argv;
   load_dwm_funcs();
   init_config();
@@ -807,8 +810,6 @@ main(int argc, char *argv[])
       when 'V':
         show_msg(stdout, VERSION_TEXT);
         return 0;
-      when 'O':
-        is_use_openpty = true;
       when '?':
         error("unknown option '%s'", optopt ? shortopt : longopt);
       when ':':

@@ -23,7 +23,7 @@ yum -v -y install desktop-file-utils kdelibs-devel kde-baseapps-devel
 
 
 
-
+OPENPTY=  ./konsole_openpty_build/src/konsole
 
 
 

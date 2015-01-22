@@ -13,7 +13,7 @@ svn checkout http://mintty.googlecode.com/svn/trunk/ mintty-read-only
 
 
 #in one console
-./mintty_openpty/mintty.exe --openpty
+OPENPTY=  ./mintty_openpty/mintty.exe
 /dev/pty4
 
 
