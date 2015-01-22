@@ -27,14 +27,20 @@ public class CygwinCoreUtils {
 		}
 		Bundle bundle = Platform.getBundle(CNativePlugin.PLUGIN_ID);
 		try {
-			URL url = FileLocator.find(bundle, new Path(
-					"$os$/cygwin/bin"), null); //$NON-NLS-1$
+			String cygwinDir;
+			if (Platform.getOSArch().equals(Platform.ARCH_X86_64)) {
+				cygwinDir = "cygwin64"; //$NON-NLS-1$
+			} else {
+				cygwinDir = "cygwin"; //$NON-NLS-1$
+			}
+			URL url = FileLocator.find(bundle, new Path("$os$/" + cygwinDir + "/bin"), null); //$NON-NLS-1$ //$NON-NLS-2$
 			if (url != null) {
 				url = FileLocator.resolve(url);
 				String path = url.getFile();
 				File file = new File(path);
 				if (file.exists()) {
-					CygwinCoreUtils.path = Path.fromOSString(file.getCanonicalPath()).toPortableString();
+					CygwinCoreUtils.path = Path.fromOSString(file.getCanonicalPath())
+							.toPortableString();
 				}
 			}
 		} catch (IOException e) {
