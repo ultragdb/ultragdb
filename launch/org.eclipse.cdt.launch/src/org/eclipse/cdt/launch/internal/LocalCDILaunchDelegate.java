@@ -102,8 +102,8 @@ public class LocalCDILaunchDelegate extends AbstractCLaunchDelegate {
 			monitor.worked(2);
 
 			if (Platform.getOS().equals(Platform.OS_WIN32) && (WindowsGCC.isMinGW32() || WindowsGCC.isMinGW64() )) {
-				//cmd.exe /c start cmd.exe /k ipconfig
-				String[] terminalEmulatorCommand = new String[] { "cmd.exe", "/c", "start", "cmd.exe", "/k" }; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$ //$NON-NLS-4$  //$NON-NLS-5$
+				//cmd.exe /c start ipconfig all
+				String[] terminalEmulatorCommand = new String[] { "cmd.exe", "/c", "start"}; //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
 				String[] result = new String[terminalEmulatorCommand.length + commandArray.length];
 				System.arraycopy(terminalEmulatorCommand, 0, result, 0, terminalEmulatorCommand.length);
 				System.arraycopy(commandArray, 0, result, terminalEmulatorCommand.length,
