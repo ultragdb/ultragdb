@@ -10,10 +10,6 @@ import org.eclipse.core.runtime.Platform;
  * A collection of Cygwin-related utilities.
  */
 public class Cygwin {
-	// gcc
-
-	private static final String ENV_CYGWIN_DIR = "CYGWIN_DIR"; //$NON-NLS-1$
-
 	private static String _cygwinDir = null;
 
 	/**
@@ -237,19 +233,6 @@ public class Cygwin {
 				IPath cygwinDirPath = cygwin1DllPath.removeLastSegments(2);
 				_cygwinDir = cygwinDirPath.toPortableString();
 				return;
-			} else {
-				String cygwinDirEnvVarValue = System.getenv(ENV_CYGWIN_DIR);
-				if (cygwinDirEnvVarValue != null) {
-					cygwinDirEnvVarValue = Path.fromOSString(
-							cygwinDirEnvVarValue).toPortableString();
-					IPath dirLocation = new Path(cygwinDirEnvVarValue);
-					File file = null;
-					file = dirLocation.append("/bin/cygwin1.dll").toFile(); //$NON-NLS-1$
-					if (file != null && file.isFile() && file.canRead()) {
-						_cygwinDir = cygwinDirEnvVarValue;
-						return;
-					}
-				}
 			}
 			// Cygwin not found, set cygwinDir to default
 			if (Platform.getOSArch().equals(Platform.ARCH_X86_64)) {
