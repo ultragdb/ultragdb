@@ -46,6 +46,8 @@ final public class TranslationUnitCollector implements ICElementVisitor {
 			return false;
 		case ICElement.C_CCONTAINER:
 		case ICElement.C_PROJECT:
+		//For imported C/C++ executable
+		case ICElement.C_BINARY:
 			return true;
 		}
 		return false;
