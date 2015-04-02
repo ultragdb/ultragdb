@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -59,7 +60,8 @@ public class DwarfReader extends Dwarf implements ISymbolReader, ICompileOptions
 		DWARF_DEBUG_STR, 
 		DWARF_DEBUG_MACRO };
 
-	private final Collection<String>	m_fileCollection = new HashSet<String>();
+	// use TreeSet instead of HashSet to make the collection sorted by file names 
+	private final Collection<String>	m_fileCollection = new TreeSet<String>();
 	private final Map<Long, String>  m_stmtFileMap = new HashMap<Long, String>();
 	private final Map<String, ArrayList<String>> m_compileOptionsMap = new HashMap<String, ArrayList<String>>();
 	private String[] 	m_fileNames = null;
