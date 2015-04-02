@@ -40,6 +40,7 @@ import org.eclipse.cdt.core.parser.ast.ASTAccessVisibility;
 import org.eclipse.cdt.ui.CUIPlugin;
 
 import org.eclipse.cdt.internal.core.model.CoreModelMessages;
+import org.eclipse.cdt.internal.core.model.ExternalTranslationUnit;
 
 // Most parts of this file were previously located in CElementLabels.
 // FlexibleBuffer and sub-types are taken from JDTs JavaElementLabelComposer.
@@ -830,6 +831,10 @@ public class CElementLabelComposer {
 				fBuffer.append(CElementLabels.CONCAT_STRING);
 				fBuffer.append(path.removeLastSegments(1).toString());
 			} else {
+				if (tu instanceof ExternalTranslationUnit) {
+					fBuffer.append(path.toString());
+					return;
+				}
 				fBuffer.append(path.lastSegment());
 			}
 		}
