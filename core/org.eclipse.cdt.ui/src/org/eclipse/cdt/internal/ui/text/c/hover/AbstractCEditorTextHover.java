@@ -55,15 +55,16 @@ public abstract class AbstractCEditorTextHover implements ICEditorTextHover, ITe
 	@Override
 	public IRegion getHoverRegion(ITextViewer textViewer, int offset) {
 		if (textViewer != null) {
-			/*
-			 * If the hover offset falls within the selection range return the
-			 * region for the whole selection.
-			 */
-			Point selectedRange = textViewer.getSelectedRange();
-			if (selectedRange.x >= 0 && selectedRange.y > 0
-					&& offset >= selectedRange.x
-					&& offset <= selectedRange.x + selectedRange.y)
-				return new Region(selectedRange.x, selectedRange.y);
+			//do not use the following technique.
+//			/*
+//			 * If the hover offset falls within the selection range return the
+//			 * region for the whole selection.
+//			 */
+//			Point selectedRange = textViewer.getSelectedRange();
+//			if (selectedRange.x >= 0 && selectedRange.y > 0
+//					&& offset >= selectedRange.x
+//					&& offset <= selectedRange.x + selectedRange.y)
+//				return new Region(selectedRange.x, selectedRange.y);
 			
 			return CWordFinder.findWord(textViewer.getDocument(), offset);
 		}
