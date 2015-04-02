@@ -324,6 +324,12 @@ public class Binary extends Openable implements IBinary {
 			try {
 				for (String filename : sourceFiles) {
 
+					//filter out non-existent files
+					IPath path = Path.fromOSString(filename);
+					if (!path.toFile().exists()) {
+						continue;
+					}
+
 					// Find the file locally
 					if (srcFinder != null) {
 						String localPath = srcFinder.toLocalPath(filename);
