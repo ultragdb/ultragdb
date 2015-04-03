@@ -12,6 +12,7 @@ package org.eclipse.cdt.debug.ui.importexecutable;
 
 import java.io.File;
 
+import org.eclipse.cdt.common.WindowsGCC;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.model.ICProject;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
@@ -30,6 +31,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -249,7 +251,18 @@ public abstract class AbstractImportExecutableWizard extends Wizard implements I
 	public String[] getDefaultBinaryParserIDs() {
 		String defaultBinaryParserId = CCorePlugin.getDefault().getPluginPreferences().getDefaultString(CCorePlugin.PREF_BINARY_PARSER);
 		if (defaultBinaryParserId == null || defaultBinaryParserId.length() == 0) {
-			defaultBinaryParserId = CCorePlugin.DEFAULT_BINARY_PARSER_UNIQ_ID;
+			if (Platform.getOS().equals(Platform.OS_WIN32)) {
+				if (WindowsGCC.isCygwin32() || WindowsGCC.isCygwin64()) {
+					defaultBinaryParserId = "org.eclipse.cdt.core.Cygwin_PE"; //$NON-NLS-1$
+				} else {
+					//if (WindowsGCC.isMinGW32() || WindowsGCC.isMinGW64()) 
+					defaultBinaryParserId = "org.eclipse.cdt.core.PE"; //$NON-NLS-1$
+				}
+			} else if (Platform.getOS().equals(Platform.OS_LINUX)) {
+				defaultBinaryParserId = "org.eclipse.cdt.core.GNU_ELF"; //$NON-NLS-1$
+			} else {
+				defaultBinaryParserId = CCorePlugin.DEFAULT_BINARY_PARSER_UNIQ_ID;
+			}
 		}
 		return new String[] { defaultBinaryParserId };
 	}
