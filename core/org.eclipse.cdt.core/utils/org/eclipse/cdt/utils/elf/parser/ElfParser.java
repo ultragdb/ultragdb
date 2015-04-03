@@ -18,6 +18,8 @@ import org.eclipse.cdt.core.AbstractCExtension;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.IBinaryParser;
 import org.eclipse.cdt.utils.AR;
+import org.eclipse.cdt.utils.DefaultGnuToolFactory;
+import org.eclipse.cdt.utils.IGnuToolFactory;
 import org.eclipse.cdt.utils.elf.Elf;
 import org.eclipse.cdt.utils.elf.Elf.Attribute;
 import org.eclipse.core.runtime.IPath;
@@ -25,6 +27,7 @@ import org.eclipse.core.runtime.IPath;
 /**
  */
 public class ElfParser extends AbstractCExtension implements IBinaryParser {
+	private IGnuToolFactory toolFactory; 
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.cdt.core.IBinaryParser#getBinary(org.eclipse.core.runtime.IPath)
@@ -142,5 +145,22 @@ public class ElfParser extends AbstractCExtension implements IBinaryParser {
 
 	protected IBinaryObject createBinaryCore(IPath path) throws IOException {
 		return new ElfBinaryObject(this, path, IBinaryFile.CORE);
+	}
+
+	protected IGnuToolFactory createGNUToolFactory() {
+		return new DefaultGnuToolFactory(this);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object getAdapter(Class adapter) {
+		if (adapter.equals(IGnuToolFactory.class)) {
+			if (toolFactory == null) {
+				toolFactory = createGNUToolFactory();
+			}
+			return toolFactory;
+		}
+		// TODO Auto-generated method stub
+		return super.getAdapter(adapter);
 	}
 }

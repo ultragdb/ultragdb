@@ -12,15 +12,12 @@ package org.eclipse.cdt.utils.elf.parser;
 
 import java.io.IOException;
 
-import org.eclipse.cdt.utils.DefaultGnuToolFactory;
-import org.eclipse.cdt.utils.IGnuToolFactory;
 import org.eclipse.core.runtime.IPath;
 
 /**
  * GNUElfParser
  */
 public class GNUElfParser extends ElfParser {
-	private IGnuToolFactory toolFactory; 
 	
 	/**
 	 * @see org.eclipse.cdt.core.IBinaryParser#getFormat()
@@ -71,9 +68,6 @@ public class GNUElfParser extends ElfParser {
 		return new GNUElfBinaryArchive(this, path);
 	}
 	
-	protected IGnuToolFactory createGNUToolFactory() {
-		return new DefaultGnuToolFactory(this);
-	}
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.runtime.PlatformObject#getAdapter(java.lang.Class)
@@ -81,12 +75,6 @@ public class GNUElfParser extends ElfParser {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(Class adapter) {
-		if (adapter.equals(IGnuToolFactory.class)) {
-			if (toolFactory == null) {
-				toolFactory = createGNUToolFactory();
-			}
-			return toolFactory;
-		}
 		// TODO Auto-generated method stub
 		return super.getAdapter(adapter);
 	}
