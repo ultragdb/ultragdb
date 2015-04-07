@@ -105,12 +105,15 @@ public abstract class AbstractImportExecutableWizard extends Wizard implements I
 					IFolder exeFolder = null;
 					int segmentCount = locationRelative.segmentCount();
 					if (segmentCount >= 2) {
-						exeFolder = project.getFolder(locationRelative.segment(0));
+						String segment = locationRelative.segment(0);
+						//Eclipse hate directory name like ".libs" on Windows. So replace "." with "_"
+						segment = segment.replace('.', '_');
+						exeFolder = project.getFolder(segment);
 						if (!exeFolder.exists()) {
 							exeFolder.create(IResource.VIRTUAL, false, null);
 						}
 						for (int j = 1; j < segmentCount - 1; j++) {
-							String segment = locationRelative.segment(j);
+							segment = locationRelative.segment(j);
 							//Eclipse hate directory name like ".libs" on Windows. So replace "." with "_"
 							segment = segment.replace('.', '_');
 							exeFolder = exeFolder.getFolder(segment);
