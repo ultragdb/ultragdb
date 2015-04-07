@@ -269,7 +269,7 @@ public class ImportExecutablePageOne extends WizardPage {
 		executablesViewer.setLabelProvider(new LabelProvider() {
 			@Override
 			public String getText(Object element) {
-				return ((File) element).getName();
+				return ((File) element).getAbsolutePath();
 			}
 		});
 
