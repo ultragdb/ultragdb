@@ -527,6 +527,14 @@ public class ImportExecutablePageOne extends WizardPage {
 
 	}
 
+	public boolean isSelectSingleFile() {
+		return selectSingleFile;
+	}
+
+	public String getPreviouslySearchedDirectory() {
+		return previouslySearchedDirectory;
+	}
+
 	public String[] getSelectedExecutables() {
 		String[] selectedExecutablePaths = new String[0];
 		if (selectSingleFile) {

@@ -19,6 +19,7 @@ import org.eclipse.cdt.core.settings.model.ICProjectDescription;
 import org.eclipse.cdt.debug.core.ICDTLaunchConfigurationConstants;
 import org.eclipse.cdt.ui.CUIPlugin;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
@@ -79,18 +80,52 @@ public abstract class AbstractImportExecutableWizard extends Wizard implements I
 	 *            project receiving the executables
 	 * @throws CoreException
 	 */
-	private void addExecutables(ICProject project) {
-
+	private void addExecutables(ICProject cproject) {
+		IProject project = cproject.getProject();
 		String[] executables = pageOne.getSelectedExecutables();
 
-		for (int i = 0; i < executables.length; i++) {
-			IPath location = Path.fromOSString(executables[i]);
-			String executableName = location.toFile().getName();
-			IFile exeFile = project.getProject().getFile(executableName);
+		if (pageOne.isSelectSingleFile()) {
+			String executable = executables[0];
+			IPath locationAbsolute = Path.fromOSString(executable);
+			IPath directory = locationAbsolute.removeLastSegments(1);
 			try {
-				exeFile.createLink(location, IResource.REPLACE, null);
+				IFile exeFile = project.getFile(locationAbsolute.lastSegment());
+				exeFile.createLink(locationAbsolute, IResource.REPLACE, null);
 			} catch (Exception e) {
-				this.getImportExecutablePage2().setErrorMessage("Error importing: " + executables[i]);
+				this.getImportExecutablePage2().setErrorMessage("Error importing: " + executable); //$NON-NLS-1$
+			}
+		} else {
+			IPath directory = Path.fromOSString(pageOne.getPreviouslySearchedDirectory());
+
+			for (int i = 0; i < executables.length; i++) {
+				try {
+					IPath locationAbsolute = Path.fromOSString(executables[i]);
+					IPath locationRelative = locationAbsolute.makeRelativeTo(directory);
+					IFile exeFile = null;
+					IFolder exeFolder = null;
+					int segmentCount = locationRelative.segmentCount();
+					if (segmentCount >= 2) {
+						exeFolder = project.getFolder(locationRelative.segment(0));
+						if (!exeFolder.exists()) {
+							exeFolder.create(IResource.VIRTUAL, false, null);
+						}
+						for (int j = 1; j < segmentCount - 1; j++) {
+							exeFolder = exeFolder.getFolder(locationRelative.segment(j));
+							if (!exeFolder.exists()) {
+								exeFolder.create(IResource.VIRTUAL, false, null);
+							}
+						}
+
+						exeFile = exeFolder.getFile(locationRelative.lastSegment());
+						exeFile.createLink(locationAbsolute, IResource.REPLACE, null);
+					} else if (locationRelative.segmentCount() == 1) {
+						exeFile = project.getFile(locationRelative);
+						exeFile.createLink(locationAbsolute, IResource.REPLACE, null);
+					}
+
+				} catch (Exception e) {
+					this.getImportExecutablePage2().setErrorMessage("Error importing: " + executables[i]); //$NON-NLS-1$
+				}
 			}
 		}
 	}
@@ -271,9 +306,16 @@ public abstract class AbstractImportExecutableWizard extends Wizard implements I
 		String defaultName = ""; //$NON-NLS-1$
 		String[] executables = getImportExecutablePage()
 				.getSelectedExecutables();
-		if (executables.length > 0) {
-			String fileName = new File(executables[0]).getName();
-			defaultName = Messages.ImportExecutablePageTwo_DefaultProjectPrefix + fileName;
+		boolean isSelectSingleFile = getImportExecutablePage().isSelectSingleFile();
+		if (isSelectSingleFile) {
+			if (executables.length > 0) {
+				String fileName = new File(executables[0]).getName();
+				defaultName = Messages.ImportExecutablePageTwo_DefaultProjectPrefix + fileName;
+			}
+		} else {
+			String searchedDirectory = getImportExecutablePage().getPreviouslySearchedDirectory();
+			String searchedDirectoryName = Path.fromOSString(searchedDirectory).lastSegment();
+			defaultName = "Debug_executables_in_" + searchedDirectoryName; //$NON-NLS-1$
 		}
 		return defaultName;
 	}

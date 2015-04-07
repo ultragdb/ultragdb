@@ -66,7 +66,7 @@ public class ImportExecutablePageTwo extends WizardPage {
 
 	private String filterPlatform;
 
-	private boolean isCreateLaunchConfigurationSelected = true;
+	private boolean isCreateLaunchConfigurationSelected = false;
 
 	private boolean isCreateNewProjectSelected = true;
 
@@ -117,16 +117,7 @@ public class ImportExecutablePageTwo extends WizardPage {
 		if (isCreateNewProjectSelected) {
 			String defaultName = wizard.getDefaultProjectName();
 			if (defaultName.length() > 0) {
-				ICProject cProject = CoreModel.getDefault().getCModel()
-						.getCProject(defaultName);
-				if (cProject.exists()) {
-					isCreateNewProjectSelected = false;
-					existingProjectName.setText(defaultName);
-					existingProjectButton.setSelection(true);
-					newProjectButton.setSelection(false);
-				} else {
-					newProjectName.setText(defaultName);
-				}
+				newProjectName.setText(defaultName);
 				setLaunchConfigurationName(defaultName);
 			}
 		}
@@ -217,6 +208,7 @@ public class ImportExecutablePageTwo extends WizardPage {
 				updateControls();
 			}
 		});
+		existingProjectButton.setEnabled(false);
 
 		existingProjectName = new Text(composite, SWT.BORDER);
 		final GridData gridData_3 = new GridData(GridData.FILL_HORIZONTAL);
@@ -264,7 +256,7 @@ public class ImportExecutablePageTwo extends WizardPage {
 
 		createLaunch = new Button(composite_1, SWT.CHECK);
 		createLaunch.setText(Messages.ImportExecutablePageTwo_CreateLaunch);
-		createLaunch.setSelection(true);
+		createLaunch.setSelection(false);
 		createLaunch.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -274,6 +266,7 @@ public class ImportExecutablePageTwo extends WizardPage {
 				updateControls();
 			}
 		});
+		createLaunch.setEnabled(false);
 
 		configTypes = new Combo(composite_1, SWT.READ_ONLY);
 		final GridData gridData_6 = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
@@ -385,9 +378,9 @@ public class ImportExecutablePageTwo extends WizardPage {
 	}
 
 	private void setLaunchConfigurationName(String defaultName) {
-		configurationName.setText(DebugPlugin.getDefault().getLaunchManager()
-				.generateUniqueLaunchConfigurationNameFrom(defaultName));
-		updateControls();
+//		configurationName.setText(DebugPlugin.getDefault().getLaunchManager()
+//				.generateUniqueLaunchConfigurationNameFrom(defaultName));
+//		updateControls();
 	}
 
 	protected void updateControls() {
