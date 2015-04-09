@@ -23,9 +23,7 @@ import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.model.IBinary;
 import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.cdt.core.model.ICProject;
-import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;
-import org.eclipse.cdt.debug.core.CDebugCorePlugin;
 import org.eclipse.cdt.debug.core.CDebugUtils;
 import org.eclipse.cdt.debug.core.ICDTLaunchConfigurationConstants;
 import org.eclipse.cdt.debug.core.ICDebugConfiguration;
@@ -33,6 +31,7 @@ import org.eclipse.cdt.debug.core.executables.Executable;
 import org.eclipse.cdt.debug.ui.CDebugUIPlugin;
 import org.eclipse.cdt.debug.ui.ICDebuggerPage;
 import org.eclipse.cdt.ui.CElementLabelProvider;
+import org.eclipse.cdt.ui.CUIPlugin;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -40,13 +39,16 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.internal.ui.DebugUIPlugin;
+import org.eclipse.debug.internal.ui.launchConfigurations.LaunchGroupExtension;
 import org.eclipse.debug.ui.DebugUITools;
 import org.eclipse.debug.ui.IDebugModelPresentation;
 import org.eclipse.debug.ui.ILaunchShortcut2;
@@ -58,6 +60,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
@@ -67,6 +70,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.dialogs.TwoPaneElementSelector;
+import org.eclipse.ui.progress.UIJob;
 
 public class CApplicationLaunchShortcut implements ILaunchShortcut2 {
 	@Override
@@ -121,53 +125,98 @@ public class CApplicationLaunchShortcut implements ILaunchShortcut2 {
 		// user to choose one.
 		int candidateCount = candidateConfigs.size();
 		if (candidateCount < 1) {
-			// Set the default debugger based on the active toolchain on the project (if possible)
-			ICDebugConfiguration debugConfig = null;
-			IProject project = bin.getResource().getProject();
-           	ICProjectDescription projDesc = CoreModel.getDefault().getProjectDescription(project);
-           	ICConfigurationDescription configDesc = projDesc.getActiveConfiguration();
-           	String configId = configDesc.getId();
-       		ICDebugConfiguration[] debugConfigs = CDebugCorePlugin.getDefault().getActiveDebugConfigurations();
-       		int matchLength = 0;
-       		for (int i = 0; i < debugConfigs.length; ++i) {
-       			ICDebugConfiguration dc = debugConfigs[i];
-       			String[] patterns = dc.getSupportedBuildConfigPatterns();
-       			if (patterns != null) {
-       				for (int j = 0; j < patterns.length; ++j) {
-       					if (patterns[j].length() > matchLength && configId.matches(patterns[j])) {
-       						debugConfig = dc;
-       						matchLength = patterns[j].length();
-       					}
-       				}
-       			}
-			}
 
-			if (debugConfig == null) {
-				// Prompt the user if more then 1 debugger.
-				String programCPU = bin.getCPU();
-				String os = Platform.getOS();
-				debugConfigs = CDebugCorePlugin.getDefault().getActiveDebugConfigurations();
-				List<ICDebugConfiguration> debugList = new ArrayList<ICDebugConfiguration>(debugConfigs.length);
-				for (int i = 0; i < debugConfigs.length; i++) {
-					String platform = debugConfigs[i].getPlatform();
-					if (debugConfigs[i].supportsMode(ICDTLaunchConfigurationConstants.DEBUGGER_MODE_RUN)) {
-						if (platform.equals("*") || platform.equals(os)) { //$NON-NLS-1$
-							if (debugConfigs[i].supportsCPU(programCPU)) 
-								debugList.add(debugConfigs[i]);
-						}
-					}
+			try {
+				String binName = bin.getResource().getProjectRelativePath().toString();
+				String prjName = bin.getCProject().getProject().getName();
+				String newConfigurationName = binName.replace('/', '_') + "_of_" + prjName; //$NON-NLS-1$
+				newConfigurationName = DebugPlugin.getDefault().getLaunchManager().generateLaunchConfigurationName(newConfigurationName);
+
+				ILaunchConfigurationWorkingCopy wc = configType.newInstance(null, newConfigurationName);
+
+				wc.setMappedResources(new IResource[] {bin.getCProject().getProject()});
+				wc.setAttribute(ICDTLaunchConfigurationConstants.ATTR_PROJECT_NAME, prjName);
+				wc.setAttribute(ICDTLaunchConfigurationConstants.ATTR_PROGRAM_NAME, binName);
+				
+				String workingDirectory = bin.getResource().getLocation().removeLastSegments(1).toString();
+				
+				wc.setAttribute(ICDTLaunchConfigurationConstants.ATTR_WORKING_DIRECTORY, workingDirectory);
+				wc.setAttribute(ICDTLaunchConfigurationConstants.ATTR_DEBUGGER_START_MODE, ICDTLaunchConfigurationConstants.DEBUGGER_MODE_RUN);
+
+				ICProjectDescription projDes = CCorePlugin.getDefault().getProjectDescription(bin.getCProject().getProject());
+				if (projDes != null) {
+					String buildConfigID = projDes.getActiveConfiguration().getId();
+					wc.setAttribute(ICDTLaunchConfigurationConstants.ATTR_PROJECT_BUILD_CONFIG_ID, buildConfigID);				
 				}
-				debugConfigs = debugList.toArray(new ICDebugConfiguration[0]);
-				if (debugConfigs.length == 1) {
-					debugConfig = debugConfigs[0];
-				} else if (debugConfigs.length > 1) {
-					debugConfig = chooseDebugConfig(debugConfigs, mode);
-				}
+
+				configuration = wc.doSave();
+				final IStructuredSelection selection = new StructuredSelection(configuration);
+				
+				LaunchGroupExtension ext = DebugUIPlugin.getDefault().getLaunchConfigurationManager().getDefaultLaunchGroup(mode);
+				final String identifier = ext.getIdentifier();
+
+				UIJob openLaunchConfigJob = new UIJob("CreateLaunchConfiguration") { //$NON-NLS-1$
+
+					@Override
+					public IStatus runInUIThread(IProgressMonitor monitor) {
+						DebugUITools.openLaunchConfigurationDialogOnGroup(CUIPlugin.getActiveWorkbenchShell(), selection, identifier);
+						return Status.OK_STATUS;
+					}};
+				openLaunchConfigJob.schedule();
+
+			} catch (CoreException e) {
+				//e.printStackTrace();
 			}
-			
-			if (debugConfig != null) {
-				configuration = createConfiguration(bin, debugConfig, mode);
-			}
+			//let CApplicationLaunchShortcut.launch(IBinary, String) not launch again.
+			return null;
+
+//			// Set the default debugger based on the active toolchain on the project (if possible)
+//			ICDebugConfiguration debugConfig = null;
+//			IProject project = bin.getResource().getProject();
+//           	ICProjectDescription projDesc = CoreModel.getDefault().getProjectDescription(project);
+//           	ICConfigurationDescription configDesc = projDesc.getActiveConfiguration();
+//           	String configId = configDesc.getId();
+//       		ICDebugConfiguration[] debugConfigs = CDebugCorePlugin.getDefault().getActiveDebugConfigurations();
+//       		int matchLength = 0;
+//       		for (int i = 0; i < debugConfigs.length; ++i) {
+//       			ICDebugConfiguration dc = debugConfigs[i];
+//       			String[] patterns = dc.getSupportedBuildConfigPatterns();
+//       			if (patterns != null) {
+//       				for (int j = 0; j < patterns.length; ++j) {
+//       					if (patterns[j].length() > matchLength && configId.matches(patterns[j])) {
+//       						debugConfig = dc;
+//       						matchLength = patterns[j].length();
+//       					}
+//       				}
+//       			}
+//			}
+//
+//			if (debugConfig == null) {
+//				// Prompt the user if more then 1 debugger.
+//				String programCPU = bin.getCPU();
+//				String os = Platform.getOS();
+//				debugConfigs = CDebugCorePlugin.getDefault().getActiveDebugConfigurations();
+//				List<ICDebugConfiguration> debugList = new ArrayList<ICDebugConfiguration>(debugConfigs.length);
+//				for (int i = 0; i < debugConfigs.length; i++) {
+//					String platform = debugConfigs[i].getPlatform();
+//					if (debugConfigs[i].supportsMode(ICDTLaunchConfigurationConstants.DEBUGGER_MODE_RUN)) {
+//						if (platform.equals("*") || platform.equals(os)) { //$NON-NLS-1$
+//							if (debugConfigs[i].supportsCPU(programCPU)) 
+//								debugList.add(debugConfigs[i]);
+//						}
+//					}
+//				}
+//				debugConfigs = debugList.toArray(new ICDebugConfiguration[0]);
+//				if (debugConfigs.length == 1) {
+//					debugConfig = debugConfigs[0];
+//				} else if (debugConfigs.length > 1) {
+//					debugConfig = chooseDebugConfig(debugConfigs, mode);
+//				}
+//			}
+//			
+//			if (debugConfig != null) {
+//				configuration = createConfiguration(bin, debugConfig, mode);
+//			}
 		} else if (candidateCount == 1) {
 			configuration = candidateConfigs.get(0);
 		} else {
