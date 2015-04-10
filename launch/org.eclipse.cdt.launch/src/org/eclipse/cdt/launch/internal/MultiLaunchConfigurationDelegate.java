@@ -119,6 +119,23 @@ public class MultiLaunchConfigurationDelegate extends LaunchConfigurationDelegat
 	 *  
 	 */
 	private class MultiLaunch extends Launch implements ILaunchesListener2{
+        @Override
+		public void setAttribute(String key, String value) {
+        	/*
+        	 * Chiheng Xu : we always capture output.
+        	 * If this attribute is set to false, GDB CLI Process will not be shown as Eclipse console.
+        	 * @see LaunchConfiguration#launch(String, IProgressMonitor, boolean, boolean)
+        	 * @see RuntimeProcess#RuntimeProcess(ILaunch, Process, String, Map<String, String>)
+        	 * @see RuntimeProcess#getStreamsProxy()
+        	 * @see RuntimeProcess#createStreamsProxy()
+        	 * @see GDBBackendCLIProcess#GDBBackendCLIProcess(ICommandControlService, IMIBackend)
+        	 */
+        	if (key.equals(DebugPlugin.ATTR_CAPTURE_OUTPUT)) {
+				value = null;//default value, means true
+			}
+			super.setAttribute(key, value);
+		}
+
 		/**
 		 * Whether this process has been terminated
 		 */
