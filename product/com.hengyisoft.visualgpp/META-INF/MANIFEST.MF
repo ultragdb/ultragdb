@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Visual G++
+Bundle-SymbolicName: com.hengyisoft.visualgpp;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Heng Yi Software
