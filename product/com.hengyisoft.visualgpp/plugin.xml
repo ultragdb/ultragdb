@@ -10,7 +10,8 @@
             name="Visual G++">
          <property
                name="aboutText"
-               value="Copyright 2015 Heng Yi Software. All rights reserved.">
+               value="Visual G++ 1.0
+Copyright 2015 Heng Yi Software. All rights reserved.">
          </property>
          <property
                name="startupForegroundColor"

@@ -5,7 +5,8 @@
 
    <aboutInfo>
       <text>
-         Copyright 2015 Heng Yi Software. All rights reserved.
+         Visual G++ 1.0
+Copyright 2015 Heng Yi Software. All rights reserved.
       </text>
    </aboutInfo>
 
@@ -37,6 +38,7 @@ com.hengyisoft.visualgpp.product
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
