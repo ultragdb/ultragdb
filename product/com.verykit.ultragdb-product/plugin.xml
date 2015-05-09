@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="44win64"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="UltraGDB">
+         <property
+               name="appName"
+               value="UltraGDB">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="44linux64"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="UltraGDB">
+         <property
+               name="appName"
+               value="UltraGDB">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
