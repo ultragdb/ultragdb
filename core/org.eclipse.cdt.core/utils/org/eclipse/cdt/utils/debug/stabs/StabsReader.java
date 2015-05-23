@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.core.ISymbolReader;
 import org.eclipse.core.runtime.IProgressMonitor;
 

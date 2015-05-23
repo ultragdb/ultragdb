@@ -11,7 +11,7 @@
  *******************************************************************************/
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.cdt.managedbuilder.envvar.IBuildEnvironmentVariable;
 import org.eclipse.cdt.managedbuilder.envvar.IConfigurationEnvironmentVariableSupplier;

@@ -1,4 +1,4 @@
-package org.eclipse.cdt.common;
+package com.verykit.common;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

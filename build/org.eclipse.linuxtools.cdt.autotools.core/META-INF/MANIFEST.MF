@@ -7,7 +7,7 @@ Bundle-Activator: org.eclipse.linuxtools.cdt.autotools.core.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.7.100",
  org.eclipse.cdt.autotools.core;bundle-version="1.0.2",
- org.eclipse.cdt.common
+ com.verykit.common
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

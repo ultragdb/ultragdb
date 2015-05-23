@@ -28,7 +28,7 @@ import java.util.TreeSet;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.ICompileOptionsFinder;
 import org.eclipse.cdt.core.ISymbolReader;

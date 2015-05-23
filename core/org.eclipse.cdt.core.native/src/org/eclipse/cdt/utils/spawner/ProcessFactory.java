@@ -77,7 +77,7 @@ public class ProcessFactory {
 	}
 
 	public Process exec(String cmdarray[], String[] envp, File dir) throws IOException {
-		return org.eclipse.cdt.common.ProcessFactory.exec(cmdarray, envp, dir);
+		return com.verykit.common.ProcessFactory.exec(cmdarray, envp, dir);
 	}
 
 	@Deprecated

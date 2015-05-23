@@ -27,7 +27,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.IPDOMManager;
 import org.eclipse.cdt.core.settings.model.ICConfigurationDescription;

@@ -13,7 +13,7 @@ package org.eclipse.cdt.managedbuilder.internal.language.settings.providers;
 
 import java.net.URI;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.core.EFSExtensionProvider;
 import org.eclipse.cdt.managedbuilder.language.settings.providers.GCCBuiltinSpecsDetector;
 

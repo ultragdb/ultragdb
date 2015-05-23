@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.cdt.debug.mi.core.command.factories.win32;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.debug.mi.core.command.MIEnvironmentDirectory;
 
 /**

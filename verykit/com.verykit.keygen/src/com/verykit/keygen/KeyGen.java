@@ -18,7 +18,7 @@ import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.TimeZone;
 
-import org.eclipse.cdt.common.RSA;
+import com.verykit.common.RSA;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;

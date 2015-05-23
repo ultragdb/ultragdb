@@ -14,7 +14,7 @@ package org.eclipse.cdt.dsf.mi.service;
 import java.math.BigInteger;
 import java.util.Hashtable;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.core.IAddress;
 import org.eclipse.cdt.dsf.concurrent.DataRequestMonitor;
 import org.eclipse.cdt.dsf.concurrent.ImmediateRequestMonitor;

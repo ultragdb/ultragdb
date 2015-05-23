@@ -1,6 +1,6 @@
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
-import org.eclipse.cdt.common.WindowsGCC;
+import com.verykit.common.WindowsGCC;
 import org.eclipse.cdt.managedbuilder.core.IManagedIsToolChainSupported;
 import org.eclipse.cdt.managedbuilder.core.IToolChain;
 import org.osgi.framework.Version;

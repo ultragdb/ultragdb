@@ -12,7 +12,7 @@ package org.eclipse.cdt.debug.ui.importexecutable;
 
 import java.io.File;
 
-import org.eclipse.cdt.common.WindowsGCC;
+import com.verykit.common.WindowsGCC;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.model.ICProject;
 import org.eclipse.cdt.core.settings.model.ICProjectDescription;

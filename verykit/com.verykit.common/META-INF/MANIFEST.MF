@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Common
-Bundle-SymbolicName: org.eclipse.cdt.common
+Bundle-SymbolicName: com.verykit.common
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.eclipse.cdt.common.Activator
+Bundle-Activator: com.verykit.common.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.cdt.common;uses:="org.eclipse.ui.plugin,org.osgi.framework"
+Export-Package: com.verykit.common;uses:="org.eclipse.ui.plugin,org.osgi.framework"
 Bundle-Vendor: Eclipse CDT

@@ -13,7 +13,7 @@
  *******************************************************************************/
 package org.eclipse.cdt.managedbuilder.gnu.cygwin;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.managedbuilder.core.IBuildPathResolver;
 import org.eclipse.cdt.managedbuilder.core.IConfiguration;
 import org.eclipse.core.runtime.Platform;

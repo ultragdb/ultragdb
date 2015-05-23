@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.cdt.internal.core.Messages;
 import org.eclipse.cdt.internal.core.ProcessClosure;
 import org.eclipse.cdt.utils.PathUtil;

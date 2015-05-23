@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.cdt.managedbuilder.core,
  org.eclipse.cdt.make.xlc.core,
  org.eclipse.cdt.make.core,
  org.eclipse.ui,
- org.eclipse.cdt.common
+ com.verykit.common
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.cdt.managedbuilder.xlc.core.XLCCorePlugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

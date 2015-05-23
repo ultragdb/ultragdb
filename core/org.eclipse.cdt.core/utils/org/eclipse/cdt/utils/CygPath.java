@@ -13,7 +13,7 @@ package org.eclipse.cdt.utils;
 
 import java.io.IOException;
 
-import org.eclipse.cdt.common.Cygwin;
+import com.verykit.common.Cygwin;
 import org.eclipse.core.runtime.Platform;
 
 /**

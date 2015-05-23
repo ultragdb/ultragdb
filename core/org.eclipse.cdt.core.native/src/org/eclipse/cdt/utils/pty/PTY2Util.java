@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-import org.eclipse.cdt.common.WindowsGCC;
+import com.verykit.common.WindowsGCC;
 import org.eclipse.cdt.internal.core.natives.CNativePlugin;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
