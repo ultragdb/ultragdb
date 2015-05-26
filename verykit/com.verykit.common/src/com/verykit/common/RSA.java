@@ -4,8 +4,8 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 public class RSA {
-	private Encryptor encryptor;
-	private Decryptor decryptor;
+	private PublicKey publicKey;
+	private PrivateKey privateKey;
 
 	// generate an N-bit (roughly) public and private key
 	RSA(int N/* number of bits */) {
@@ -30,19 +30,19 @@ public class RSA {
 		}
 		d = e.modInverse(phi);
 
-		encryptor = new Encryptor(N, n, e);
-		decryptor = new Decryptor(N, n, d);
+		publicKey = new PublicKey(N, n, e);
+		privateKey = new PrivateKey(N, n, d);
 	}
 
-	public Encryptor getEncryptor() {
-		return encryptor;
+	public PublicKey getEncryptor() {
+		return publicKey;
 	}
 
-	public Decryptor getDecryptor() {
-		return decryptor;
+	public PrivateKey getDecryptor() {
+		return privateKey;
 	}
 
-	public static class Encryptor {
+	public static class PublicKey {
 		// number of bits
 		private int N;
 		// modulus
@@ -50,7 +50,7 @@ public class RSA {
 		// public key
 		private BigInteger e;
 
-		public Encryptor(int N, BigInteger n, BigInteger e) {
+		public PublicKey(int N, BigInteger n, BigInteger e) {
 			this.N = N;
 			this.n = n;
 			this.e = e;
@@ -64,12 +64,12 @@ public class RSA {
 			return sb.toString();
 		}
 
-		public BigInteger encrypt(BigInteger message) {
-			return message.modPow(e, n);
+		public BigInteger modPow(BigInteger data) {
+			return data.modPow(e, n);
 		}
 	}
 
-	public static class Decryptor {
+	public static class PrivateKey {
 		// number of bits
 		private int N;
 		// modulus
@@ -77,7 +77,7 @@ public class RSA {
 		// private key
 		private BigInteger d;
 
-		public Decryptor(int N, BigInteger n, BigInteger d) {
+		public PrivateKey(int N, BigInteger n, BigInteger d) {
 			this.N = N;
 			this.n = n;
 			this.d = d;
@@ -91,8 +91,8 @@ public class RSA {
 			return sb.toString();
 		}
 
-		public BigInteger decrypt(BigInteger encrypted) {
-			return encrypted.modPow(d, n);
+		public BigInteger modPow(BigInteger data) {
+			return data.modPow(d, n);
 		}
 	}
 
@@ -126,9 +126,9 @@ public class RSA {
 		// ensure that plaintext is always positive
 		BigInteger plaintext = new BigInteger(1, text1.getBytes());
 
-		BigInteger ciphertext = rsa.getEncryptor().encrypt(plaintext);
+		BigInteger ciphertext = rsa.getEncryptor().modPow(plaintext);
 		System.out.println("Ciphertext: " + ciphertext);
-		plaintext = rsa.getDecryptor().decrypt(ciphertext);
+		plaintext = rsa.getDecryptor().modPow(ciphertext);
 
 		String text2 = new String(plaintext.toByteArray());
 		System.out.println("Plaintext: " + text2);

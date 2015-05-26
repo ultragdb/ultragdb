@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: License
+Bundle-SymbolicName: com.verykit.license;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: VERYKIT
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.verykit.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .,
+ swing2swt.jar

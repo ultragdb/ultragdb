@@ -27,6 +27,8 @@
 
    <plugins>
       <plugin id="com.ibm.icu"/>
+      <plugin id="com.verykit.common"/>
+      <plugin id="com.verykit.license"/>
       <plugin id="com.verykit.ultragdb-product"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
@@ -43,7 +45,6 @@
       <plugin id="org.eclipse.cdt.codan.ui"/>
       <plugin id="org.eclipse.cdt.codan.ui.cfgview"/>
       <plugin id="org.eclipse.cdt.codan.ui.cxx"/>
-      <plugin id="com.verykit.common"/>
       <plugin id="org.eclipse.cdt.core"/>
       <plugin id="org.eclipse.cdt.core.linux" fragment="true"/>
       <plugin id="org.eclipse.cdt.core.linux.x86" fragment="true"/>
