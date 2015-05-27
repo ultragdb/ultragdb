@@ -12,6 +12,18 @@
                name="appName"
                value="UltraGDB">
          </property>
+         <property
+               name="aboutImage"
+               value="images/ultragdb-logo-64.png">
+         </property>
+         <property
+               name="windowImages"
+               value="images/ultragdb-logo-15.png,images/ultragdb-logo-33.png,images/ultragdb-logo-64.png,images/ultragdb-logo-64.png,images/ultragdb-logo-128.png,images/ultragdb-logo-256.png">
+         </property>
+         <property
+               name="aboutText"
+               value="UltraGDB 1.0 for Windows 64-bit&#x0A;Copyright 2015 Wuhan Heng Yi Software.">
+         </property>
       </product>
    </extension>
    <extension
@@ -23,6 +35,18 @@
          <property
                name="appName"
                value="UltraGDB">
+         </property>
+         <property
+               name="aboutImage"
+               value="images/ultragdb-logo-64.png">
+         </property>
+         <property
+               name="aboutText"
+               value="UltraGDB 1.0 for Linux 64-bit&#x0A;Copyright 2015 Wuhan Heng Yi Software.">
+         </property>
+         <property
+               name="windowImages"
+               value="images/ultragdb-logo-15.png,images/ultragdb-logo-33.png,images/ultragdb-logo-64.png,images/ultragdb-logo-64.png,images/ultragdb-logo-128.png,images/ultragdb-logo-256.png">
          </property>
       </product>
    </extension>

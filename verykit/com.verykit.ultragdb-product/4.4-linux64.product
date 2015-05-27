@@ -3,13 +3,25 @@
 
 <product name="UltraGDB" id="com.verykit.ultragdb-product.44linux64" application="org.eclipse.ui.ide.workbench" useFeatures="false" includeLaunchers="true">
 
+   <aboutInfo>
+      <image path="/com.verykit.ultragdb-product/images/ultragdb-logo-64.png"/>
+      <text>
+         UltraGDB 1.0 for Linux 64-bit
+Copyright 2015 Wuhan Heng Yi Software.
+      </text>
+   </aboutInfo>
+
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
+      <vmArgs>-Dfile.encoding=UTF-8
+      </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
+
+   <windowImages i16="/com.verykit.ultragdb-product/images/ultragdb-logo-15.png" i32="/com.verykit.ultragdb-product/images/ultragdb-logo-33.png" i48="/com.verykit.ultragdb-product/images/ultragdb-logo-64.png" i64="/com.verykit.ultragdb-product/images/ultragdb-logo-64.png" i128="/com.verykit.ultragdb-product/images/ultragdb-logo-128.png" i256="/com.verykit.ultragdb-product/images/ultragdb-logo-256.png"/>
 
    <launcher name="UltraGDB">
       <solaris/>
@@ -17,6 +29,7 @@
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
