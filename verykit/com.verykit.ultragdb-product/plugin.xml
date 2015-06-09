@@ -22,7 +22,7 @@
          </property>
          <property
                name="aboutText"
-               value="UltraGDB 1.0 for Windows 64-bit&#x0A;Copyright 2015 Wuhan Heng Yi Software.">
+               value="UltraGDB 1.0 for Windows 64-bit&#x0D;&#x0A;Copyright 2015 Wuhan Heng Yi Hua Guang Technology, LLC.&#x0D;&#x0A;&#x0D;&#x0A;http://www.ultragdb.com/">
          </property>
       </product>
    </extension>
@@ -42,7 +42,7 @@
          </property>
          <property
                name="aboutText"
-               value="UltraGDB 1.0 for Linux 64-bit&#x0A;Copyright 2015 Wuhan Heng Yi Software.">
+               value="UltraGDB 1.0 for Linux 64-bit&#x0A;Copyright 2015 Wuhan Heng Yi Hua Guang Technology, LLC.&#x0A;&#x0A;http://www.ultragdb.com/">
          </property>
          <property
                name="windowImages"

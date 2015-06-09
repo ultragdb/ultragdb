@@ -3,4 +3,4 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Ultragdb-product
 Bundle-SymbolicName: com.verykit.ultragdb-product;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: Wuhan Heng Yi Software
+Bundle-Vendor: Wuhan Heng Yi Hua Guang Technology, LLC

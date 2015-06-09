@@ -26,7 +26,8 @@ public class LicenseManager {
 
 	public static File getUGDir() {
 		String homeDir = System.getProperty("user.home");
-		File ugDir = new File(homeDir, ".ultragdb");
+		File configDir = new File(homeDir, ".config");
+		File ugDir = new File(configDir, ".ultragdb");
 		if (!ugDir.exists()) {
 			ugDir.mkdirs();
 		}

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: KeyGen
 Bundle-SymbolicName: com.verykit.keygen
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: Wuhan Heng Yi Software
+Bundle-Vendor: Wuhan Heng Yi Hua Guang Technology, LLC
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.swt,
  com.verykit.common

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: License
 Bundle-SymbolicName: com.verykit.license;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: Wuhan Heng Yi Software
+Bundle-Vendor: Wuhan Heng Yi Hua Guang Technology, LLC
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  com.verykit.common
