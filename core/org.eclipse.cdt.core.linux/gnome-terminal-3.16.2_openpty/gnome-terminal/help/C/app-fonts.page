@@ -1,0 +1,116 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="task"
+      id="app-fonts">
+
+  <info>
+    <revision version="0.1" date="2013-02-22" status="candidate"/>
+    <link type="guide" xref="index#appearance"/>
+    <link type="guide" xref="profile"/>
+
+    <credit type="author copyright">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+      <years>2013</years>
+    </credit>
+    <credit type="copyright editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+      <years>2013</years>
+    </credit>
+    <credit type="copyright editor">
+      <name>Michael Hill</name>
+      <email>mdhillca@gmail.com</email>
+      <years>2013</years>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Use system fonts or choose a custom font for your terminal.</desc>
+
+  </info>
+
+  <title>Change font and style</title>
+
+  <p>When you work with a lot of <app>Terminal</app> text, you may want to
+  change the default font to your preference. You have the following
+  options:</p>
+
+  <section id="system-font">
+  <title>System fixed width font</title>
+
+  <p>To use system default fonts:</p>
+
+  <steps>
+    <item>
+      <p>Select <guiseq><gui style="menu">Edit</gui> <gui style="menuitem">
+      Profile Preferences</gui> <gui style="tab">General</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Select <gui style="checkbox">Use the system fixed width font</gui>.</p>
+    </item>
+  </steps>
+
+  </section>
+
+  <section id="custom-font">
+  <title>Set a custom font</title>
+
+  <p>To set a custom font and size:</p>
+
+  <steps>
+    <item>
+      <p>Select <guiseq><gui style="menu">Edit</gui>
+      <gui style="menuitem">Profile Preferences</gui>
+      <gui style="tab">General</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Ensure that <gui>Use the system fixed width font</gui> option is
+      unchecked.</p>
+    </item>
+    <item>
+      <p>Click on the button next to <gui>Font</gui>.</p>
+    </item>
+    <item>
+      <p>Type the name of your desired font into the search field or browse the
+      list of fonts.</p>
+    </item>
+    <item>
+      <p>Drag the slider that is below the font list to set the font size.
+      Alternatively, you can type in the font size into the field next to the
+      slider, or click on <gui style="button">+</gui> to increase font size or
+      <gui style="button">-</gui> to decrease selected font size.</p>
+    </item>
+    <item>
+      <p>Click <gui style="button">Select</gui> to apply your changes. To
+      discard changes and go back to previous dialog, click
+      <gui style="button">Cancel</gui>.</p>
+    </item>
+  </steps>
+
+  </section>
+
+  <section id="bold-fonts">
+  <title>Bold text</title>
+
+  <p><app>Terminal</app> allows your shell to process text such as the prompt,
+  directory names or man page headings to appear in bold style.</p>
+
+  <steps>
+    <item>
+      <p>Go to <guiseq><gui style="menu">Edit</gui> <gui style="menuitem">
+      Profile Preferences</gui> <gui style="tab">General</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Select <gui style="checkbox">Allow bold text</gui>.</p>
+    </item>
+  </steps>
+
+  <note style="important">
+    <p><gui style="checkbox">Allow bold text</gui> is a shell specific feature.
+    If you are using a shell other than Bash, then the described behavior may
+    not be similar.</p>
+  </note>
+
+  </section>
+
+</page>

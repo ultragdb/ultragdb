@@ -1,0 +1,68 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="task"
+      id="app-cursor">
+
+  <info>
+    <revision version="0.1" date="2013-02-17" status="candidate"/>
+    <link type="guide" xref="index#appearance"/>
+    <link type="guide" xref="profile"/>
+
+    <credit type="author copyright">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+      <years>2013</years>
+    </credit>
+    <credit type="author copyright editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+      <years>2013</years>
+    </credit>
+    <credit type="copyright editor">
+      <name>Michael Hill</name>
+      <email>mdhillca@gmail.com</email>
+      <years>2013</years>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Select different cursor style</desc>
+
+  </info>
+
+  <title>Change cursor</title>
+
+  <p><app>Terminal</app> has three cursors from which to choose. To select your
+  preferred cursor:</p>
+
+  <steps>
+    <item>
+      <p>Select <guiseq><gui style="menu">Edit</gui>
+      <gui style="menuitem">Profile Preferences</gui>
+      <gui style="tab">General</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Choose your desired cursor shape from the drop down list next to
+      <gui>Cursor shape</gui>. You can choose from the following options:</p>
+      <terms>
+        <item>
+          <title>|</title>
+          <p><gui>I-Beam</gui></p>
+        </item>
+        <item>
+          <title>⎕</title>
+          <p><gui>Block</gui></p>
+        </item>
+        <item>
+          <title>_</title>
+          <p><gui>Underline</gui></p>
+        </item>
+      </terms>
+      <p>Upon selection of the cursor, your choice is saved automatically.</p>
+    </item>
+    <item>
+      <p>To return to <app>Terminal</app>, click <gui
+      style="button">Close</gui>.</p>
+    </item>
+    </steps>
+
+</page>

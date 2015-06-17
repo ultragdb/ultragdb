@@ -1,0 +1,2029 @@
+# Persian translation of gnome-terminal.
+# Copyright (C) 2010, 2011 Iranian Free Software Users Group (IFSUG.org)translation team.
+# Copyright (C) 2003, 2005 Sharif FarsiWeb, Inc.
+# This file is distributed under the same license as the gnome-terminal package.
+# Roozbeh Pournader <roozbeh@farsiweb.info>, 2003, 2005.
+# Meelad Zakaria <meelad@farsiweb.info>, 2005.
+# Elnaz Sarbar <elnaz@farsiweb.info>, 2005.
+# Mahyar Moghimi <mahyar.moqimi@gmail.com>, 2010.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2011, 2012, 2013.
+# Danial Behzadi <dani.behzi@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-terminal gnome-2-12\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"terminal&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-31 15:53+0000\n"
+"PO-Revision-Date: 2013-04-01 17:49+0330\n"
+"Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
+"Language-Team: Persian <>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../gnome-terminal.desktop.in.in.h:1 ../src/server.c:102
+#: ../src/terminal-accels.c:260 ../src/terminal.c:250
+#: ../src/terminal-window.c:1840
+msgid "Terminal"
+msgstr "پایانه"
+
+#: ../gnome-terminal.desktop.in.in.h:2
+msgid "Use the command line"
+msgstr "استفاده از خط فرمان"
+
+#: ../gnome-terminal.desktop.in.in.h:3
+msgid "shell;prompt;command;commandline;"
+msgstr "پوسته;prompt;فرمان;خط‌فرمان;"
+
+#: ../src/client.c:88
+msgid "COMMAND"
+msgstr "COMMAND"
+
+#: ../src/client.c:93
+#, c-format
+msgid ""
+"Commands:\n"
+"  help    Shows this information\n"
+"  run     Create a new terminal running the specified command\n"
+"  shell   Create a new terminal running the user shell\n"
+"\n"
+"Use \"%s COMMAND --help\" to get help on each command.\n"
+msgstr ""
+"فرمان‌ها:\n"
+"  help    این اطلاعات را نشان می‌دهد\n"
+"  run     ایجاد یک پایانه جدید درحال اجرای یک فرمان مشخص\n"
+"  shell    یک پایانه‌ی جدید با پوسته کاربر ایجاد می‌کند\n"
+"\n"
+"برای گرفتن راهنما برای هر دستوری از «%s COMMAND --help» استفاده کنید.\n"
+
+#: ../src/client.c:200 ../src/terminal-options.c:681
+#, c-format
+msgid "\"%s\" is not a valid zoom factor"
+msgstr "‏«%s» عامل بزرگ‌نمایی معتبری نیست"
+
+#: ../src/client.c:331
+msgid "Be quiet"
+msgstr "ساکت باش"
+
+#: ../src/client.c:342 ../src/terminal-options.c:1095
+msgid "Maximize the window"
+msgstr "بیشینه کردن پنجره"
+
+#: ../src/client.c:344 ../src/terminal-options.c:1104
+msgid "Full-screen the window"
+msgstr "تمام‌صفحه کردن پنجره"
+
+#: ../src/client.c:346 ../src/terminal-options.c:1113
+msgid ""
+"Set the window size; for example: 80x24, or 80x24+200+200 (COLSxROWS+X+Y)"
+msgstr ""
+"تنظیم اندازه‌ی پنجره؛ مثلا: ۸۰x۲۴, یا ۸۰x۲۴+۲۰۰+۲۰۰ (ردیف‌هاxستون‌ها+ایکس+ایگرگ)"
+
+#: ../src/client.c:347 ../src/terminal-options.c:1114
+msgid "GEOMETRY"
+msgstr "GEOMETRY"
+
+#: ../src/client.c:349 ../src/terminal-options.c:1122
+msgid "Set the window role"
+msgstr "مشخص کردن نقش پایانه"
+
+#: ../src/client.c:349 ../src/terminal-options.c:1123
+msgid "ROLE"
+msgstr "ROLE"
+
+#: ../src/client.c:355 ../src/terminal-options.c:1153
+msgid "Use the given profile instead of the default profile"
+msgstr "از مجموعه تنظیمات داده شده به‌جای مجموعه تنظیمات پیش‌فرض استفاده شود"
+
+#: ../src/client.c:356
+msgid "UUID"
+msgstr "UUID"
+
+#: ../src/client.c:358 ../src/terminal-options.c:1162
+msgid "Set the terminal title"
+msgstr "عنوان پایانه را تنظیم کنید"
+
+#: ../src/client.c:358 ../src/terminal-options.c:1163
+msgid "TITLE"
+msgstr "TITLE"
+
+#: ../src/client.c:360 ../src/terminal-options.c:1171
+msgid "Set the working directory"
+msgstr "شاخه‌ی کاری پایانه را تنظیم کنید"
+
+#: ../src/client.c:360 ../src/terminal-options.c:1172
+msgid "DIRNAME"
+msgstr "DIRNAME"
+
+#: ../src/client.c:362 ../src/terminal-options.c:1180
+msgid "Set the terminal's zoom factor (1.0 = normal size)"
+msgstr "تنظیم عامل زوم پایانه (۱٫۰ = اندازه‌ی عادی)‏"
+
+#: ../src/client.c:363 ../src/terminal-options.c:1181
+msgid "ZOOM"
+msgstr "ZOOM"
+
+#: ../src/client.c:369
+msgid "Forward stdin"
+msgstr "ارسال ورودی استاندارد"
+
+#: ../src/client.c:371
+msgid "Forward stdout"
+msgstr "ارسال خروجی استاندارد"
+
+#: ../src/client.c:373
+msgid "Forward stderr"
+msgstr "ارسال خطای استاندارد"
+
+#: ../src/client.c:375
+msgid "Forward file descriptor"
+msgstr "ارسال شرح‌دهنده ی پرونده"
+
+#: ../src/client.c:375
+msgid "FD"
+msgstr "FD"
+
+#: ../src/client.c:381
+msgid "Wait until the child exits"
+msgstr "تا وقتی فرزند وجود دارد صبرکن"
+
+#: ../src/client.c:391
+msgid "GNOME Terminal Client"
+msgstr "کارگیر پایانه‌ی گنوم"
+
+#: ../src/client.c:395
+msgid "Global options:"
+msgstr "گزینه‌های سراسری:"
+
+#: ../src/client.c:396
+msgid "Show global options"
+msgstr "نمایش گزینه‌های سراسری"
+
+#: ../src/client.c:404
+msgid "Server options:"
+msgstr "گزینه‌های کارگزار:"
+
+#: ../src/client.c:405
+msgid "Show server options"
+msgstr "نمایش گزینه‌های کارگزار"
+
+#: ../src/client.c:413
+msgid "Window options:"
+msgstr "گزینه‌های پنجره:"
+
+#: ../src/client.c:414
+msgid "Show window options"
+msgstr "نمایش گزینه‌های پنجره"
+
+#: ../src/client.c:422
+msgid "Terminal options:"
+msgstr "گزینه‌های پایانه:"
+
+#: ../src/client.c:423 ../src/terminal-options.c:1460
+msgid "Show terminal options"
+msgstr "نمایش گزینه‌های پایانه"
+
+#: ../src/client.c:431
+msgid "Exec options:"
+msgstr "گزینه‌های اجرا:"
+
+#: ../src/client.c:432
+msgid "Show exec options"
+msgstr "نمایش گزینه‌های اجرا"
+
+#: ../src/client.c:440
+msgid "Processing options:"
+msgstr "گزینه‌های پردازش:"
+
+#: ../src/client.c:441
+msgid "Show processing options"
+msgstr "نمایش گزینه‌های پردازش"
+
+#: ../src/find-dialog.ui.h:1
+msgid "Find"
+msgstr "پیدا کردن"
+
+#: ../src/find-dialog.ui.h:2
+msgid "_Search for:"
+msgstr "_جست و جو به دنبال:"
+
+#: ../src/find-dialog.ui.h:3
+msgid "_Match case"
+msgstr "_تطابق کوچک و بزرگی حروف"
+
+#: ../src/find-dialog.ui.h:4
+msgid "Match _entire word only"
+msgstr "فقط تطبیق با کلمات _کامل"
+
+#: ../src/find-dialog.ui.h:5
+msgid "Match as _regular expression"
+msgstr "همچون عبارت _منظم تطبیق داده شود"
+
+#: ../src/find-dialog.ui.h:6
+msgid "Search _backwards"
+msgstr "جستجو رو به _عقب"
+
+#: ../src/find-dialog.ui.h:7
+msgid "_Wrap around"
+msgstr "دور _کامل"
+
+#: ../src/migration.c:384 ../src/terminal-prefs.c:98
+msgid "Unnamed"
+msgstr "بدون نام"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:1
+msgid "Human-readable name of the profile"
+msgstr "نام خوانا برای مجموعه‌تنظیمات"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:2
+msgid "Human-readable name of the profile."
+msgstr "نام خوانا برای مجموعه‌تنظیمات."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:3
+msgid "Default color of text in the terminal"
+msgstr "رنگ پیش‌فرض متن در پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:4
+msgid ""
+"Default color of text in the terminal, as a color specification (can be HTML-"
+"style hex digits, or a color name such as \"red\")."
+msgstr ""
+"رنگ پیش‌فرض متن در پایانه، به شکل مشخصات رنگی (می‌تواند ارقام شانزده‌شانزدهی به "
+"سبک HTML یا نام یک رنگ مثل «قرمز» باشد)."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:5
+msgid "Default color of terminal background"
+msgstr "رنگ پیش‌فرض پس‌زمینه‌ی پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:6
+msgid ""
+"Default color of terminal background, as a color specification (can be HTML-"
+"style hex digits, or a color name such as \"red\")."
+msgstr ""
+"رنگ پیش‌فرض پس‌زمینه‌ی پایانه، به شکل مشخصات رنگی (می‌تواند ارقام شانزده‌شانزدهی "
+"به سبک HTML یا نام یک رنگ مثل «قرمز» باشد).‏"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:7
+msgid "Default color of bold text in the terminal"
+msgstr "رنگ پیش‌فرض متن توپر در پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:8
+msgid ""
+"Default color of bold text in the terminal, as a color specification (can be "
+"HTML-style hex digits, or a color name such as \"red\"). This is ignored if "
+"bold_color_same_as_fg is true."
+msgstr ""
+"رنگ پیش‌فرض متن توپر در پایانه، به شکل مشخصات رنگی (می‌تواند ارقام "
+"شانزده‌شانزدهی به سبک HTML یا نام یک رنگ مثل «قرمز» باشد). در صورتی که "
+"bold_color_same_as_fg درست باشد، چشم‌پوشی می‌شود."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:9
+msgid "Whether bold text should use the same color as normal text"
+msgstr "این‌که متن توپر باید از رنگ مشابه متن معمولی استفاده کند"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:10
+msgid ""
+"If true, boldface text will be rendered using the same color as normal text."
+msgstr "اگر درست باشد، متن توپر با رنگ مشابه متن معمولی رسم می‌شود"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:11
+msgid "What to do with dynamic title"
+msgstr "با عنوان پویا چه‌کار باید کرد"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:12
+msgid ""
+"If the application in the terminal sets the title (most typically people "
+"have their shell set up to do this), the dynamically-set title can erase the "
+"configured title, go before it, go after it, or replace it. The possible "
+"values are \"replace\", \"before\", \"after\", and \"ignore\"."
+msgstr ""
+"اگر برنامه‌ی داخل پایانه عنوان را تنظیم کند (اکثر آدم‌ها پوسته‌شان را برای "
+"انجام این کار تنظیم می‌کنند)، عنوان پویا می‌تواند عنوان پیکربندی شده را پاک "
+"کند، قبل از آن بیاید، بعد از آن بیاید یا به جای آن بنشیند. مقادیر ممکن "
+"عبارتند از «replace»، «before»، «after» و «ignore»."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:13
+msgid "Title for terminal"
+msgstr "عنوان پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:14
+msgid ""
+"Title to display for the terminal window or tab. This title may be replaced "
+"by or combined with the title set by the application inside the terminal, "
+"depending on the title_mode setting."
+msgstr ""
+"عنوانی که برای پنجره یا زبانه‌ی پایانه نمایش داده می‌شود. بسته به تنظیم "
+"title_mode، ممکن است عنوان تنظیم شده توسط برنامه‌های داخل این پایانه، به جای "
+"این عنوان بنشینند یا با آن ترکیب شوند."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:15
+msgid "Whether to allow bold text"
+msgstr "این که متن سیاه مجاز باشد یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:16
+msgid "If true, allow applications in the terminal to make text boldface."
+msgstr ""
+"اگر درست باشد، به برنامه‌های داخل پایانه اجازه داده شود که متن را سیاه کنند."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:17
+msgid "Whether to ring the terminal bell"
+msgstr "زنگ پایانه ساکت شود یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:18
+msgid "Characters that are considered \"part of a word\""
+msgstr "نویسه‌هایی که «جزئی از کلمه» قلمداد می‌شوند"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:19
+msgid ""
+"When selecting text by word, sequences of these characters are considered "
+"single words. Ranges can be given as \"A-Z\". Literal hyphen (not expressing "
+"a range) should be the first character given."
+msgstr ""
+"هنگام انتخاب متن بر اساس کلمه، دنباله‌هایی از این نویسه‌ها یک تک‌کلمه فرض "
+"می‌شوند. محدوده را می‌توان به صورت «ا-ی» وارد کرد. خط تیره (به جز در مشخص کردن "
+"محدوده) باید اولین نویسه‌ی داده شده باشد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:20
+msgid "Whether to show menubar in new windows/tabs"
+msgstr "این که نوار فهرست در پنجره/زبانه‌های جدید نشان داده بشوند یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:21
+msgid "True if the menubar should be shown in new window"
+msgstr "اگر درست باشد، نوار منو باید در پنجره‌ی جدید نشان داده شود."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:22
+msgid "Whether to use custom terminal size for new windows"
+msgstr "این که برای پنجره‌های جدید از اندازه‌ی پایانه‌ی سفارشی استفاده شود"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:23
+msgid ""
+"If true, newly created terminal windows will have custom size specified by "
+"default_size_columns and default_size_rows."
+msgstr ""
+"اگر درست باشد، پنجره‌های پایانه‌ی تازه ایجاد شده، اندازه‌ی سفارشی خواهند داشت "
+"که با default_size_columns و default_size_rows مشخص شده است."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:24
+msgid "Default number of columns"
+msgstr "تعداد پیش‌فرض ستون‌ها"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:25
+msgid ""
+"Number of columns in newly created terminal windows. Has no effect if "
+"use_custom_default_size is not enabled."
+msgstr ""
+"تعداد ستون‌ها در پنجره‌های پایانه‌ی تازه ایجاد شده. اگر use_custom_default_size "
+"به کار نیافتاده باشد، تاثیری ندارد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:26
+msgid "Default number of rows"
+msgstr "تعداد پیش‌فرض سطرها"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:27
+msgid ""
+"Number of rows in newly created terminal windows. Has no effect if "
+"use_custom_default_size is not enabled."
+msgstr ""
+"تعداد سطرها در پنجره‌های پایانه‌ی تازه ایجاد شده. اگر use_custom_default_size "
+"به کار نیافتاده باشد، تاثیری ندارد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:28
+msgid "When to show the scrollbar"
+msgstr "زمان نمایش نوارلغزش"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:29
+msgid "Number of lines to keep in scrollback"
+msgstr "تعداد سطرهایی که در حافظه‌ی لغزش نگهداری شود"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:30
+msgid ""
+"Number of scrollback lines to keep around. You can scroll back in the "
+"terminal by this number of lines; lines that don't fit in the scrollback are "
+"discarded. If scrollback_unlimited is true, this value is ignored."
+msgstr ""
+"تعداد سطرهای حافظه‌ی لغزش که نگه داشته می‌شوند. در پایانه می‌توان تا این تعداد "
+"سطر به عقب رفت: سطرهایی که در محدوده‌ی حافظه‌ی لغزش نیستند دور انداخته می‌شوند. "
+"اگر scrollback_unlimited درست باشد، این مقدار چشم‌پوشی می‌شود."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:31
+msgid "Whether an unlimited number of lines should be kept in scrollback"
+msgstr "این‌که تعداد سطرهایی که در حافظه‌ی لغزش نگهداری شود، بدون مرز باشد"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:32
+msgid ""
+"If true, scrollback lines will never be discarded. The scrollback history is "
+"stored on disk temporarily, so this may cause the system to run out of disk "
+"space if there is a lot of output to the terminal."
+msgstr ""
+"اگر درست باشد، خط‌های حافظه‌ی لغزش هیچ‌وقت دورانداخته نمی‌شوند. حافظه‌ی لغزش به "
+"طور موقت روی دیسک ذخیره می‌شود، بنابراین اگر خروجی زیادی در پایانه وجود داشته "
+"باشد، ممکن است فضای خالی دیسک سیستم تمام شود."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:33
+msgid "Whether to scroll to the bottom when a key is pressed"
+msgstr "این که هنگام فشرده شدن یک کلید تا ته صفحه پایین بلغزد یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:34
+msgid "If true, pressing a key jumps the scrollbar to the bottom."
+msgstr "اگر درست باشد، فشار دادن یک کلید نوار لغزش را به ته صفحه می‌برد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:35
+msgid "Whether to scroll to the bottom when there's new output"
+msgstr "این که هنگام وجود خروجی جدید تا ته صفحه پایین بلغزد یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:36
+msgid ""
+"If true, whenever there's new output the terminal will scroll to the bottom."
+msgstr "اگر درست باشد، با هر خروجی جدید پایانه به انتهای آن خواهد لغزید."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:37
+msgid "What to do with the terminal when the child command exits"
+msgstr "وقتی فرمان فرزند وجود دارد با پایانه چه‌کار باید کرد"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:38
+msgid ""
+"Possible values are \"close\" to close the terminal, and \"restart\" to "
+"restart the command."
+msgstr ""
+"مقادیر ممکن عبارتند از «close» برای بستن پایانه، و «restart» برای آغاز مجدد "
+"فرمان."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:39
+msgid "Whether to launch the command in the terminal as a login shell"
+msgstr "این که فرمان در پایانه مثل پوسته‌ی ورود به سیستم راه‌اندازی شوند یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:40
+msgid ""
+"If true, the command inside the terminal will be launched as a login shell. "
+"(argv[0] will have a hyphen in front of it.)"
+msgstr ""
+"اگر درست باشد، فرمان داخل پایانه مثل پوسته‌ی ورود به سیستم اجرا شود. (اول "
+"argv[0] یک تیره خواهد داشت.)‏"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:41
+msgid "Whether to update login records when launching terminal command"
+msgstr ""
+"این که سوابق ورود به سیستم موقع راه‌اندازی فرمان پایانه به‌هنگام شود یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:42
+msgid ""
+"If true, the system login records utmp and wtmp will be updated when the "
+"command inside the terminal is launched."
+msgstr ""
+"اگر درست باشد، سوابق ورود به سیستم utmp و wtmp هنگام اجرای فرمان داخل پایانه "
+"به‌هنگام خواهند شد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:43
+msgid "Whether to run a custom command instead of the shell"
+msgstr "این که به جای پوسته یک فرمان سفارشی اجرا شود یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:44
+msgid ""
+"If true, the value of the custom_command setting will be used in place of "
+"running a shell."
+msgstr ""
+"اگر درست باشد، مقدار تنظیمات custom_command به جای اجرای پوسته استفاده خواهد "
+"شد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:45
+msgid "Whether to blink the cursor"
+msgstr "این که مکان‌نما چشمک بزند یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:46
+msgid ""
+"The possible values are \"system\" to use the global cursor blinking "
+"settings, or \"on\" or \"off\" to set the mode explicitly."
+msgstr ""
+"مقادیر ممکن عبارتند از «system» برای استفاده از تنظیمات سراسری چشمک‌زدن "
+"مکان‌نما، یا «on» یا «off» برای تنظیم مستقیم حالت."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:47
+msgid "The cursor appearance"
+msgstr "ظاهر مکان نما"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:48
+msgid "Custom command to use instead of the shell"
+msgstr "فرمان سفارشی‌ای که به جای پوسته استفاده می‌شود"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:49
+msgid "Run this command in place of the shell, if use_custom_command is true."
+msgstr "اجرای این فرمان به جای پوسته، اگر use_custom_command درست باشد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:50
+msgid "Palette for terminal applications"
+msgstr "تخته‌رنگ برنامه‌های پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:51
+msgid "A Pango font name and size"
+msgstr "نام و اندازه‌ی قلم Pango"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:52
+msgid "The code sequence the Backspace key generates"
+msgstr "کد معادلی که کلید پس‌بر تولید می‌کند"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:53
+msgid "The code sequence the Delete key generates"
+msgstr "کد معادلی که کلید حذف تولید می‌کند"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:54
+msgid "Whether to use the colors from the theme for the terminal widget"
+msgstr "این که رنگ‌های تم برای ویجت پایانه استفاده شود یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:55
+msgid "Whether to use the system monospace font"
+msgstr "این که از قلم monospace سیستم استفاده شود یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:56
+msgid "Which encoding to use"
+msgstr "از کدام رمزگذاری استفاده شود"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:57
+msgid "Keyboard shortcut to open a new tab"
+msgstr "میان‌بر صفحه‌کلید برای باز کردن زبانه جدید"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:58
+msgid "Keyboard shortcut to open a new window"
+msgstr "میان‌بر صفحه‌کلید برای ساخت یک پنجره جدید"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:59
+msgid "Keyboard shortcut to create a new profile"
+msgstr "میان‌بر صفحه‌کلید برای ساخت یک مجموعه‌تنظیمات جدید"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:60
+msgid "Keyboard shortcut to save the current tab contents to file"
+msgstr "میان‌بر صفحه‌کلید برای ذخیره محتویات زبانه فعلی در پرونده"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:61
+msgid "Keyboard shortcut to close a tab"
+msgstr "میان‌بر صفحه‌کلید برای بستن یک زبانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:62
+msgid "Keyboard shortcut to close a window"
+msgstr "میان‌بر صفحه‌کلید برای بستن پنجره"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:63
+msgid "Keyboard shortcut to copy text"
+msgstr "میان‌بر صفحه‌کلید برای رونوشت از متن"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:64
+msgid "Keyboard shortcut to paste text"
+msgstr "میان‌بر صفحه‌کلید برای چسباندن متن"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:65
+msgid "Keyboard shortcut to toggle full screen mode"
+msgstr "میان‌بر صفحه‌کلید برای برای تغییر وضعیت حالت تمام‌صفحه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:66
+msgid "Keyboard shortcut to toggle the visibility of the menubar"
+msgstr "میان‌بر صفحه‌کلید برای تغییر وضعیت نمایش نوارمنو"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:67
+msgid "Keyboard shortcut to set the terminal title"
+msgstr "میان‌بر صفحه‌کلید برای تنظیم عنوان پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:68
+msgid "Keyboard shortcut to reset the terminal"
+msgstr "میان‌بر صفحه‌کلید برای تنظیم مجدد پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:69
+msgid "Keyboard shortcut to reset and clear the terminal"
+msgstr "میان‌بر صفحه‌کلید برای تنظیم مجدد و پاک کردن پایانه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:70
+msgid "Keyboard shortcut to switch to the previous tab"
+msgstr "میان‌بر صفحه‌کلید برای رفتن به زبانه قبل"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:71
+msgid "Keyboard shortcut to switch to the next tab"
+msgstr "میان‌بر صفحه‌کلید برای رفتن به زبانه بعد"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:72
+msgid "Keyboard shortcut to move the current tab to the left"
+msgstr "میان‌بر صفحه‌کلید برای جابه‌جایی زبانه‌ی جاری به چپ"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:73
+msgid "Keyboard shortcut to move the current tab to the right"
+msgstr "میان‌بر صفحه‌کلید برای جابه‌جایی زبانه‌ی جاری به راست"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:74
+msgid "Keyboard shortcut to detach current tab"
+msgstr "میان‌بر صفحه‌کلید برای جدا کردن زبانه فعلی"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:75
+msgid "Keyboard shortcut to switch to tab 1"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۱"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:76
+msgid "Keyboard shortcut to switch to tab 2"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۲"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:77
+msgid "Keyboard shortcut to switch to tab 3"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۳"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:78
+msgid "Keyboard shortcut to switch to tab 4"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۴"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:79
+msgid "Keyboard shortcut to switch to tab 5"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۵"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:80
+msgid "Keyboard shortcut to switch to tab 6"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۶"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:81
+msgid "Keyboard shortcut to switch to tab 7"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۷"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:82
+msgid "Keyboard shortcut to switch to tab 8"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۸"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:83
+msgid "Keyboard shortcut to switch to tab 9"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۹"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:84
+msgid "Keyboard shortcut to switch to tab 10"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۱۰"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:85
+msgid "Keyboard shortcut to switch to tab 11"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۱۱"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:86
+msgid "Keyboard shortcut to switch to tab 12"
+msgstr "میان‌بر صفحه‌کلید برای جابجایی به زبانه ۱۲"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:87
+msgid "Keyboard shortcut to launch help"
+msgstr "میان‌بر صفحه‌کلید برای اجرا راهنما"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:88
+msgid "Keyboard shortcut to make font larger"
+msgstr "میان‌بر صفحه‌کلید برای تغییر قلم به اندازه بزرگتر"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:89
+msgid "Keyboard shortcut to make font smaller"
+msgstr "میان‌بر صفحه‌کلید برای کوچک‌تر کردن قلم"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:90
+msgid "Keyboard shortcut to make font normal-size"
+msgstr "میان‌بر صفحه‌کلید برای تغییر قلم به اندازه عادی"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:91
+msgid "Whether the menubar has access keys"
+msgstr "این که نوار منو کلید دسترسی داشته باشد یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:92
+msgid ""
+"Whether to have Alt+letter access keys for the menubar. They may interfere "
+"with some applications run inside the terminal so it's possible to turn them "
+"off."
+msgstr ""
+"این که کلید‌های دسترسی دگرساز+حرف برای نوار منو باشند یا نه. این کلیدها ممکن "
+"است با بعضی برنامه‌ها که داخل پایانهاجرا می‌شوند تداخل داشته باشند بنابراین "
+"می‌توان خاموششان کرد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:93
+msgid "Whether the standard GTK shortcut for menubar access is enabled"
+msgstr "این که میانبر استاندارد GTK برای دسترسی به نوار منو فعال باشد یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:94
+msgid ""
+"Normally you can access the menubar with F10. This can also be customized "
+"via gtkrc (gtk-menu-bar-accel = \"whatever\"). This option allows the "
+"standard menubar accelerator to be disabled."
+msgstr ""
+"به طور طبیعی می‌توان با کلید F10 به نوار منو دسترسی یافت. این کار را می‌توان "
+"با سفارشی کردن از طریق gtkrc (gtk-menu-bar-accel = «whatever»)‎ نیز انجام "
+"داد. این گزینه همچنین از کار انداختن شتاب‌ده استاندارد نوار منو را ممکن "
+"می‌سازد."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:95
+msgid "List of available encodings"
+msgstr "فهرست کدگذاری‌های موجود"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:96
+msgid ""
+"A subset of possible encodings are presented in the Encoding submenu. This "
+"is a list of encodings to appear there. The special encoding name \"current"
+"\" means to display the encoding of the current locale."
+msgstr ""
+"زیرمجموعه‌ای از کدگذاری‌های ممکن در زیرمنوی کدگذاری‌ها نمایش داده شده‌اند. این "
+"فهرست کدگذاری‌هایی است که آنجا ظاهر می‌شود. نام کدگذاری ویژه‌ی «فعلی» به معنی "
+"نمایش کدگذاری شرایط محلی فعلی است."
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:97
+msgid "Whether to ask for confirmation before closing a terminal"
+msgstr "این که موقع بستن یک پایانه تصدیق گرفته شود یا نه"
+
+#: ../src/org.gnome.Terminal.gschema.xml.in.h:98
+msgid "Whether to show the menubar in new windows"
+msgstr "این که نوار منو در پنجره‌های جدید نشان داده شوند یا خیر"
+
+#: ../src/preferences.ui.h:1
+msgid "Preferences"
+msgstr "ترجیحات"
+
+#: ../src/preferences.ui.h:2
+msgid "Show _menubar by default in new terminals"
+msgstr "نمایش _نوارمنو به‌صورت پیش‌فرض در پایانه‌های جدید"
+
+#: ../src/preferences.ui.h:3
+msgid "_Enable mnemonics (such as Alt+F to open the File menu)"
+msgstr "_فعال‌سازی کلیدهای دسترسی منو (مثلاً دگرساز+F برای باز کردن منوی پرونده)‏"
+
+#: ../src/preferences.ui.h:4
+msgid "Enable the _menu accelerator key (F10 by default)"
+msgstr "به کار انداختن کلید میان‌بر _منو ‎(‏F10 به طور پیش‌فرض)‏"
+
+#: ../src/preferences.ui.h:5 ../src/profile-preferences.ui.h:61
+msgid "General"
+msgstr "عمومی"
+
+#: ../src/preferences.ui.h:6
+msgid "Shortcuts"
+msgstr "میان‌برها"
+
+#: ../src/preferences.ui.h:7
+msgid "_Clone"
+msgstr "_رونوشت"
+
+#: ../src/preferences.ui.h:8
+msgid "_Profile used when launching a new terminal:"
+msgstr "_مجموعه تنظیمات استفاده شده موقع راه‌اندازی یک پایانه‌ی جدید:"
+
+#: ../src/preferences.ui.h:9
+msgid "Profiles"
+msgstr "مجموعه‌های‌ تنظیمات"
+
+#: ../src/preferences.ui.h:10
+msgid "E_ncodings shown in menu:"
+msgstr "کدگذاری‌های نشان داده شونده در منو:"
+
+#: ../src/preferences.ui.h:11
+msgid "Encodings"
+msgstr "کدگذاری‌ها"
+
+#: ../src/profile-editor.c:47
+msgid "Black on light yellow"
+msgstr "سیاه روی زرد روشن"
+
+#: ../src/profile-editor.c:51
+msgid "Black on white"
+msgstr "سیاه روی سفید"
+
+#: ../src/profile-editor.c:55
+msgid "Gray on black"
+msgstr "خاکستری روی سیاه"
+
+#: ../src/profile-editor.c:59
+msgid "Green on black"
+msgstr "سبز روی سیاه"
+
+#: ../src/profile-editor.c:63
+msgid "White on black"
+msgstr "سفید روی سیاه"
+
+#: ../src/profile-editor.c:411
+#, c-format
+msgid "Error parsing command: %s"
+msgstr "خطا در تجزیه‌ی فرمان: %s"
+
+#. This is the name of a colour scheme
+#: ../src/profile-editor.c:445 ../src/profile-preferences.ui.h:30
+msgid "Custom"
+msgstr "سفارشی"
+
+#: ../src/profile-editor.c:560
+#, c-format
+msgid "Editing Profile “%s”"
+msgstr "در حال ویرایش مجموعه تنظیمات «%s»"
+
+#: ../src/profile-editor.c:743
+#, c-format
+msgid "Choose Palette Color %d"
+msgstr "انتخاب رنگ پالت %Id"
+
+#: ../src/profile-editor.c:747
+#, c-format
+msgid "Palette entry %d"
+msgstr "ورودی %Id پالت"
+
+#. Cursor shape
+#: ../src/profile-preferences.ui.h:2
+msgid "Block"
+msgstr "بلوک"
+
+#. Cursor shape
+#: ../src/profile-preferences.ui.h:4
+msgid "I-Beam"
+msgstr "باریکه"
+
+#. Cursor shape
+#: ../src/profile-preferences.ui.h:6
+msgid "Underline"
+msgstr "زیرخط"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:8
+msgid "Replace initial title"
+msgstr "جایگزینی عنوان ابتدایی"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:10
+msgid "Append initial title"
+msgstr "افزودن به عنوان ابتدایی"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:12
+msgid "Prepend initial title"
+msgstr "افزودن به ابتدای عنوان ابتدایی"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:14
+msgid "Keep initial title"
+msgstr "عنوان آغازین نگه داشته شود"
+
+#. When command exits
+#: ../src/profile-preferences.ui.h:16
+msgid "Exit the terminal"
+msgstr "خروج از پایانه"
+
+#. When command exits
+#: ../src/profile-preferences.ui.h:18
+msgid "Restart the command"
+msgstr "راه‌اندازی مجدد فرمان"
+
+#. When command exits
+#: ../src/profile-preferences.ui.h:20
+msgid "Hold the terminal open"
+msgstr "باز نگه داشتن پایانه"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:22
+msgid "Tango"
+msgstr "تانگو"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:24
+msgid "Linux console"
+msgstr "پیشانه‌ی لینوکس"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:26
+msgid "XTerm"
+msgstr "XTerm"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:28
+msgid "Rxvt"
+msgstr "Rxvt"
+
+#. Scrollbar is
+#: ../src/profile-preferences.ui.h:32
+msgid "Always visible"
+msgstr "همواره آشکار"
+
+#. Scrollbar is
+#: ../src/profile-preferences.ui.h:34
+msgid "Visible only when necessary"
+msgstr "آشکار فقط وقتی لازم است"
+
+#. Scrollbar is
+#: ../src/profile-preferences.ui.h:36
+msgid "Hidden"
+msgstr "پنهان"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:38
+msgid "Automatic"
+msgstr "خوکار"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:40
+msgid "Control-H"
+msgstr "مهار+ا"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:42
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:44
+msgid "Escape sequence"
+msgstr "دنباله‌ی گریز"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:46
+msgid "TTY Erase"
+msgstr "پاک کردن TTY"
+
+#: ../src/profile-preferences.ui.h:47
+msgid "Profile Editor"
+msgstr "ویرایشگر مجموعه تنظیمات"
+
+#: ../src/profile-preferences.ui.h:48
+msgid "_Profile name:"
+msgstr "_نام مجموعه تنظیمات:"
+
+#: ../src/profile-preferences.ui.h:49
+msgid "Profile ID:"
+msgstr "شناسه مجموعه تنظیمات:"
+
+#: ../src/profile-preferences.ui.h:50
+msgid "_Use the system fixed width font"
+msgstr "_استفاده از قلم پهنا ثابت سیستم"
+
+#: ../src/profile-preferences.ui.h:51
+msgid "_Font:"
+msgstr "_قلم:"
+
+#: ../src/profile-preferences.ui.h:52
+msgid "Choose A Terminal Font"
+msgstr "انتخاب یک قلم برای پایانه"
+
+#: ../src/profile-preferences.ui.h:53
+msgid "_Allow bold text"
+msgstr "_مجاز بودن متن سیاه"
+
+#: ../src/profile-preferences.ui.h:54
+msgid "Terminal _bell"
+msgstr "_زنگ پایانه"
+
+#: ../src/profile-preferences.ui.h:55
+msgid "Cursor _shape:"
+msgstr "_شکل مکان‌نما:"
+
+#: ../src/profile-preferences.ui.h:56
+msgid "Select-by-_word characters:"
+msgstr "نویسه‌های «انتخاب با _کلمه»:‏"
+
+#: ../src/profile-preferences.ui.h:57
+msgid "Use custom default terminal si_ze"
+msgstr "استفاده از اندازه‌ی _سفارشی پایانه‌ی پیش‌فرض"
+
+#: ../src/profile-preferences.ui.h:58
+msgid "Default size:"
+msgstr "اندازه‌ی پیش‌فرض:"
+
+#: ../src/profile-preferences.ui.h:59
+msgid "columns"
+msgstr "ستون‌ها"
+
+#: ../src/profile-preferences.ui.h:60
+msgid "rows"
+msgstr "سطرها"
+
+#: ../src/profile-preferences.ui.h:62
+msgid "Title"
+msgstr "عنوان"
+
+#: ../src/profile-preferences.ui.h:63
+msgid "Initial _title:"
+msgstr "_عنوان اولیه:"
+
+#: ../src/profile-preferences.ui.h:64
+msgid "When terminal commands set their o_wn titles:"
+msgstr "وقتی که فرمان‌های پایانه عنوان‌های _خودشان را تنظیم می‌کنند:"
+
+#: ../src/profile-preferences.ui.h:65
+msgid "Command"
+msgstr "فرمان"
+
+#: ../src/profile-preferences.ui.h:66
+msgid "_Run command as a login shell"
+msgstr "ا_جرای فرمان مثل یک پوسته‌ی ورود به سیستم"
+
+#: ../src/profile-preferences.ui.h:67
+msgid "_Update login records when command is launched"
+msgstr "_به‌هنگام‌سازی سوابق ورود به سیستم هر وقت فرمانی راه‌اندازی می‌شود"
+
+#: ../src/profile-preferences.ui.h:68
+msgid "Ru_n a custom command instead of my shell"
+msgstr "ا_جرای یک فرمان سفارشی به جای پوسته"
+
+#: ../src/profile-preferences.ui.h:69
+msgid "Custom co_mmand:"
+msgstr "ف_رمان سفارشی:"
+
+#: ../src/profile-preferences.ui.h:70
+msgid "When command _exits:"
+msgstr "وقتی فرمان _وجود دارد:"
+
+#: ../src/profile-preferences.ui.h:71
+msgid "Title and Command"
+msgstr "عنوان و فرمان"
+
+#: ../src/profile-preferences.ui.h:72
+msgid "Text and Background Color"
+msgstr "رنگ متن و پس‌زمینه"
+
+#: ../src/profile-preferences.ui.h:73
+msgid "_Use colors from system theme"
+msgstr "استفاده از رنگ‌های تم _سیستم"
+
+#: ../src/profile-preferences.ui.h:74
+msgid "Built-in sche_mes:"
+msgstr "شِماهای _توکار:"
+
+#: ../src/profile-preferences.ui.h:75
+msgid "_Text color:"
+msgstr "رنگ _متن:"
+
+#: ../src/profile-preferences.ui.h:76
+msgid "_Background color:"
+msgstr "رنگ _پس‌زمینه:"
+
+#: ../src/profile-preferences.ui.h:77
+msgid "Choose Terminal Background Color"
+msgstr "انتخاب رنگ پس‌زمینه‌ی پایانه"
+
+#: ../src/profile-preferences.ui.h:78
+msgid "Choose Terminal Text Color"
+msgstr "انتخاب رنگ متن پایانه"
+
+#: ../src/profile-preferences.ui.h:79
+msgid "_Underline color:"
+msgstr "رنگ _زیرخط"
+
+#: ../src/profile-preferences.ui.h:80
+msgid "_Same as text color"
+msgstr "_مانند رنگ متن:"
+
+#: ../src/profile-preferences.ui.h:81
+msgid "Bol_d color:"
+msgstr "رنگ _توپر:"
+
+#: ../src/profile-preferences.ui.h:82
+msgid "Palette"
+msgstr "تخته‌رنگ"
+
+#: ../src/profile-preferences.ui.h:83
+msgid "Built-in _schemes:"
+msgstr "_شِماهای توکار:"
+
+#: ../src/profile-preferences.ui.h:84
+msgid "<b>Note:</b> Terminal applications have these colors available to them."
+msgstr "<b>توجه:</b> برنامه‌های پایانه به این رنگ‌ها دسترسی دارند."
+
+#: ../src/profile-preferences.ui.h:85
+msgid "Color p_alette:"
+msgstr "ت_خته رنگ:"
+
+#: ../src/profile-preferences.ui.h:86
+msgid "Colors"
+msgstr "رنگ‌ها"
+
+#: ../src/profile-preferences.ui.h:87
+msgid "_Scrollbar is:"
+msgstr "_مکان نوار لغزش"
+
+#: ../src/profile-preferences.ui.h:88
+msgid "Scroll_back:"
+msgstr "لغ_زش به قبل:"
+
+#: ../src/profile-preferences.ui.h:89
+msgid "Scroll on _keystroke"
+msgstr "لغزش هنگام زدن _کلید"
+
+#: ../src/profile-preferences.ui.h:90
+msgid "Scroll on _output"
+msgstr "ل_غزش خروجی"
+
+#: ../src/profile-preferences.ui.h:91
+msgid "_Unlimited"
+msgstr "_نامحدود"
+
+#: ../src/profile-preferences.ui.h:92
+msgid "lines"
+msgstr "خط‌ها"
+
+#: ../src/profile-preferences.ui.h:93
+msgid "Scrolling"
+msgstr "لغزش"
+
+#: ../src/profile-preferences.ui.h:94
+msgid ""
+"<b>Note:</b> These options may cause some applications to behave "
+"incorrectly.  They are only here to allow you to work around certain "
+"applications and operating systems that expect different terminal behavior."
+msgstr ""
+"<b>توجه:</b> این گزینه‌ها ممکن است سبب شوند برخی برنامه‌ها رفتار نادرستی از "
+"خود نشان دهند. گزینه‌ها فقط به این دلیل اینجا قرار داده شده‌اند که شما بتوانید "
+"با برنامه‌ها یا سیستم‌عامل‌هایی که رفتار دیگری از پایانه انتظار دارند، بتوانند "
+"کار کنند."
+
+#: ../src/profile-preferences.ui.h:95
+msgid "_Delete key generates:"
+msgstr "تولیدی کلید _حذف:"
+
+#: ../src/profile-preferences.ui.h:96
+msgid "_Backspace key generates:"
+msgstr "تولیدی کلید _پس‌بر:"
+
+#: ../src/profile-preferences.ui.h:97
+msgid "_Reset Compatibility Options to Defaults"
+msgstr "_برگرداندن گزینه‌های سازگاری به مقادیر پیش‌فرض"
+
+#: ../src/profile-preferences.ui.h:98
+msgid "Compatibility"
+msgstr "سازگاری"
+
+#: ../src/terminal-accels.c:139
+msgid "New Tab"
+msgstr "زبانه‌ی جدید"
+
+#: ../src/terminal-accels.c:141
+msgid "New Window"
+msgstr "پنجره‌ی جدید"
+
+#: ../src/terminal-accels.c:143
+msgid "New Profile"
+msgstr "مجموعه تنظیمات جدید"
+
+#: ../src/terminal-accels.c:146
+msgid "Save Contents"
+msgstr "ذخیره‌ی محتویات"
+
+#: ../src/terminal-accels.c:149
+msgid "Close Tab"
+msgstr "بستن زبانه"
+
+#: ../src/terminal-accels.c:151
+msgid "Close Window"
+msgstr "بستن پنجره"
+
+#: ../src/terminal-accels.c:157
+msgid "Copy"
+msgstr "نسخه‌برداری"
+
+#: ../src/terminal-accels.c:159
+msgid "Paste"
+msgstr "چسباندن"
+
+#: ../src/terminal-accels.c:165
+msgid "Hide and Show menubar"
+msgstr "مخفی کردن و نمایش نوار منو"
+
+#: ../src/terminal-accels.c:167
+msgid "Full Screen"
+msgstr "تمام‌صفحه"
+
+#: ../src/terminal-accels.c:169
+msgid "Zoom In"
+msgstr "زوم به داخل"
+
+#: ../src/terminal-accels.c:171
+msgid "Zoom Out"
+msgstr "زوم به خارج"
+
+#: ../src/terminal-accels.c:173
+msgid "Normal Size"
+msgstr "اندازه‌ی عادی"
+
+#: ../src/terminal-accels.c:179 ../src/terminal-window.c:3439
+msgid "Set Title"
+msgstr "تنظیم عنوان"
+
+#: ../src/terminal-accels.c:181
+msgid "Reset"
+msgstr "راه‌اندازی مجدد"
+
+#: ../src/terminal-accels.c:183
+msgid "Reset and Clear"
+msgstr "برگرداندن تنظیمات اولیه و پاک کردن"
+
+#: ../src/terminal-accels.c:189
+msgid "Switch to Previous Tab"
+msgstr "تعویض به زبانه‌ی قبلی"
+
+#: ../src/terminal-accels.c:191
+msgid "Switch to Next Tab"
+msgstr "تعویض به زبانه‌ی بعدی"
+
+#: ../src/terminal-accels.c:193
+msgid "Move Tab to the Left"
+msgstr "جابه‌جایی زبانه به چپ"
+
+#: ../src/terminal-accels.c:195
+msgid "Move Tab to the Right"
+msgstr "جابه‌جایی زبانه به راست"
+
+#: ../src/terminal-accels.c:197
+msgid "Detach Tab"
+msgstr "جدا کردن زبانه"
+
+#: ../src/terminal-accels.c:211
+msgid "Switch to Tab 1"
+msgstr "تعویض به زبانه‌ی ۱"
+
+#: ../src/terminal-accels.c:212
+msgid "Switch to Tab 2"
+msgstr "تعویض به زبانه‌ی ۲"
+
+#: ../src/terminal-accels.c:213
+msgid "Switch to Tab 3"
+msgstr "تعویض به زبانه‌ی ۳"
+
+#: ../src/terminal-accels.c:214
+msgid "Switch to Tab 4"
+msgstr "تعویض به زبانه‌ی ۴"
+
+#: ../src/terminal-accels.c:215
+msgid "Switch to Tab 5"
+msgstr "تعویض به زبانه‌ی ۵"
+
+#: ../src/terminal-accels.c:216
+msgid "Switch to Tab 6"
+msgstr "تعویض به زبانه‌ی ۶"
+
+#: ../src/terminal-accels.c:217
+msgid "Switch to Tab 7"
+msgstr "تعویض به زبانه‌ی ۷"
+
+#: ../src/terminal-accels.c:218
+msgid "Switch to Tab 8"
+msgstr "تعویض به زبانه‌ی ۸"
+
+#: ../src/terminal-accels.c:219
+msgid "Switch to Tab 9"
+msgstr "تعویض به زبانه‌ی ۹"
+
+#: ../src/terminal-accels.c:220
+msgid "Switch to Tab 10"
+msgstr "تعویض به زبانه‌ی ۱۰"
+
+#: ../src/terminal-accels.c:221
+msgid "Switch to Tab 11"
+msgstr "تعویض به زبانه‌ی ۱۱"
+
+#: ../src/terminal-accels.c:222
+msgid "Switch to Tab 12"
+msgstr "تعویض به زبانه‌ی ۱۲"
+
+#: ../src/terminal-accels.c:252
+msgid "Contents"
+msgstr "محتویات"
+
+#: ../src/terminal-accels.c:257
+msgid "File"
+msgstr "پرونده"
+
+#: ../src/terminal-accels.c:258
+msgid "Edit"
+msgstr "ویرایش"
+
+#: ../src/terminal-accels.c:259
+msgid "View"
+msgstr "نمایش"
+
+#: ../src/terminal-accels.c:261
+msgid "Tabs"
+msgstr "زبانه‌ها"
+
+#: ../src/terminal-accels.c:262
+msgid "Help"
+msgstr "راهنما"
+
+#: ../src/terminal-accels.c:633
+#, c-format
+msgid "The shortcut key “%s” is already bound to the “%s” action"
+msgstr "کلید میان‌بر «%s» از قبل برای کنش «%s» ثبت شده است"
+
+#: ../src/terminal-accels.c:746
+msgid "_Action"
+msgstr "_کنش"
+
+#: ../src/terminal-accels.c:764
+msgid "Shortcut _Key"
+msgstr "_کلید میانبر"
+
+#: ../src/terminal-app.c:572
+msgid "User Defined"
+msgstr "تعریف شده توسط کاربر"
+
+#: ../src/terminal-appmenu.ui.h:1
+msgid "_Preferences"
+msgstr "_ترجیحات"
+
+#: ../src/terminal-appmenu.ui.h:2 ../src/terminal-window.c:1642
+msgid "_Help"
+msgstr "_راهنما"
+
+#: ../src/terminal-appmenu.ui.h:3 ../src/terminal-window.c:1758
+msgid "_About"
+msgstr "_درباره"
+
+#: ../src/terminal.c:243
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "تجزیه‌ی آرگومان‌ها ممکن نبود: %s\n"
+
+#: ../src/terminal-encoding.c:51 ../src/terminal-encoding.c:64
+#: ../src/terminal-encoding.c:78 ../src/terminal-encoding.c:100
+#: ../src/terminal-encoding.c:111
+msgid "Western"
+msgstr "غربی"
+
+#: ../src/terminal-encoding.c:52 ../src/terminal-encoding.c:79
+#: ../src/terminal-encoding.c:90 ../src/terminal-encoding.c:109
+msgid "Central European"
+msgstr "اروپای مرکزی"
+
+#: ../src/terminal-encoding.c:53
+msgid "South European"
+msgstr "اروپای جنوبی"
+
+#: ../src/terminal-encoding.c:54 ../src/terminal-encoding.c:62
+#: ../src/terminal-encoding.c:116
+msgid "Baltic"
+msgstr "بالتیک"
+
+#: ../src/terminal-encoding.c:55 ../src/terminal-encoding.c:80
+#: ../src/terminal-encoding.c:86 ../src/terminal-encoding.c:87
+#: ../src/terminal-encoding.c:92 ../src/terminal-encoding.c:110
+msgid "Cyrillic"
+msgstr "سیریلی"
+
+#: ../src/terminal-encoding.c:56 ../src/terminal-encoding.c:83
+#: ../src/terminal-encoding.c:89 ../src/terminal-encoding.c:115
+msgid "Arabic"
+msgstr "عربی"
+
+#: ../src/terminal-encoding.c:57 ../src/terminal-encoding.c:95
+#: ../src/terminal-encoding.c:112
+msgid "Greek"
+msgstr "یونانی"
+
+#: ../src/terminal-encoding.c:58
+msgid "Hebrew Visual"
+msgstr "عبری دیداری"
+
+#: ../src/terminal-encoding.c:59 ../src/terminal-encoding.c:82
+#: ../src/terminal-encoding.c:98 ../src/terminal-encoding.c:114
+msgid "Hebrew"
+msgstr "عبری"
+
+#: ../src/terminal-encoding.c:60 ../src/terminal-encoding.c:81
+#: ../src/terminal-encoding.c:102 ../src/terminal-encoding.c:113
+msgid "Turkish"
+msgstr "ترکی"
+
+#: ../src/terminal-encoding.c:61
+msgid "Nordic"
+msgstr "اسکاندیناویایی"
+
+#: ../src/terminal-encoding.c:63
+msgid "Celtic"
+msgstr "سلتی"
+
+#: ../src/terminal-encoding.c:65 ../src/terminal-encoding.c:101
+msgid "Romanian"
+msgstr "رومانیایی"
+
+#. These encodings do NOT pass-through ASCII, so are always rejected.
+#. * FIXME: why are they in this table; or rather why do we need
+#. * the ASCII pass-through requirement?
+#.
+#: ../src/terminal-encoding.c:66 ../src/terminal-encoding.c:123
+#: ../src/terminal-encoding.c:124 ../src/terminal-encoding.c:125
+#: ../src/terminal-encoding.c:126
+msgid "Unicode"
+msgstr "یونی‌کد"
+
+#: ../src/terminal-encoding.c:67
+msgid "Armenian"
+msgstr "ارمنی"
+
+#: ../src/terminal-encoding.c:68 ../src/terminal-encoding.c:69
+#: ../src/terminal-encoding.c:73
+msgid "Chinese Traditional"
+msgstr "چینی سنتی"
+
+#: ../src/terminal-encoding.c:70
+msgid "Cyrillic/Russian"
+msgstr "سیریلی/روسی"
+
+#: ../src/terminal-encoding.c:71 ../src/terminal-encoding.c:84
+#: ../src/terminal-encoding.c:104
+msgid "Japanese"
+msgstr "ژاپنی"
+
+#: ../src/terminal-encoding.c:72 ../src/terminal-encoding.c:85
+#: ../src/terminal-encoding.c:107 ../src/terminal-encoding.c:127
+msgid "Korean"
+msgstr "کره‌ای"
+
+#: ../src/terminal-encoding.c:74 ../src/terminal-encoding.c:75
+#: ../src/terminal-encoding.c:76
+msgid "Chinese Simplified"
+msgstr "چینی ساده‌شده"
+
+#: ../src/terminal-encoding.c:77
+msgid "Georgian"
+msgstr "گرجی"
+
+#: ../src/terminal-encoding.c:88 ../src/terminal-encoding.c:103
+msgid "Cyrillic/Ukrainian"
+msgstr "سیریلی/اوکراینی"
+
+#: ../src/terminal-encoding.c:91
+msgid "Croatian"
+msgstr "کرواتی"
+
+#: ../src/terminal-encoding.c:93
+msgid "Hindi"
+msgstr "هندی"
+
+#: ../src/terminal-encoding.c:94
+msgid "Persian"
+msgstr "فارسی"
+
+#: ../src/terminal-encoding.c:96
+msgid "Gujarati"
+msgstr "گجراتی"
+
+#: ../src/terminal-encoding.c:97
+msgid "Gurmukhi"
+msgstr "گورموکی"
+
+#: ../src/terminal-encoding.c:99
+msgid "Icelandic"
+msgstr "ایسلندی"
+
+#: ../src/terminal-encoding.c:105 ../src/terminal-encoding.c:108
+#: ../src/terminal-encoding.c:117
+msgid "Vietnamese"
+msgstr "ویتنامی"
+
+#: ../src/terminal-encoding.c:106
+msgid "Thai"
+msgstr "تایلندی"
+
+#: ../src/terminal-encoding.c:272
+msgid "Current Locale"
+msgstr "شرایط محلی فعلی"
+
+#: ../src/terminal-nautilus.c:463
+msgid "Open in _Remote Terminal"
+msgstr "باز کردن در پایانه‌ی _دوردست"
+
+#: ../src/terminal-nautilus.c:465
+msgid "Open in _Local Terminal"
+msgstr "باز کردن در پایانه‌ی _محلّی"
+
+#: ../src/terminal-nautilus.c:469 ../src/terminal-nautilus.c:480
+msgid "Open the currently selected folder in a terminal"
+msgstr "باز کردن پوشه‌ی انتخاب شده‌ی جاری در یک پایانه"
+
+#: ../src/terminal-nautilus.c:471 ../src/terminal-nautilus.c:482
+#: ../src/terminal-nautilus.c:492
+msgid "Open the currently open folder in a terminal"
+msgstr "باز کردن پوشه‌ی باز جاری در یک پایانه"
+
+#: ../src/terminal-nautilus.c:477 ../src/terminal-nautilus.c:491
+msgid "Open in T_erminal"
+msgstr "باز کردن در _پایانه"
+
+#: ../src/terminal-nautilus.c:488
+msgid "Open T_erminal"
+msgstr "باز کردن _پایانه"
+
+#: ../src/terminal-nautilus.c:489
+msgid "Open a terminal"
+msgstr "باز کردن یک پایانه"
+
+#: ../src/terminal-nautilus.c:507 ../src/terminal-nautilus.c:520
+msgid "Open in _Midnight Commander"
+msgstr "باز کردن _در Midnight Commander"
+
+#: ../src/terminal-nautilus.c:509
+msgid ""
+"Open the currently selected folder in the terminal file manager Midnight "
+"Commander"
+msgstr ""
+"باز کردن پوشه‌ی انتخاب شده‌ی جاری در مدیر پرونده‌ی پایانه‌ای Midnight Commander"
+
+#: ../src/terminal-nautilus.c:511 ../src/terminal-nautilus.c:521
+msgid ""
+"Open the currently open folder in the terminal file manager Midnight "
+"Commander"
+msgstr "باز کردن پوشه‌ی باز جاری در مدیر پرونده‌ی پایانه‌ای Midnight Commander"
+
+#: ../src/terminal-nautilus.c:517
+msgid "Open _Midnight Commander"
+msgstr "باز _کردن Midnight Commander"
+
+#: ../src/terminal-nautilus.c:518
+msgid "Open the terminal file manager Midnight Commander"
+msgstr "باز کردن مدیر پرونده‌ی پایانه‌ای Midnight Commander"
+
+#: ../src/terminal-options.c:224
+#, c-format
+msgid "Option \"%s\" is no longer supported in this version of gnome-terminal."
+msgstr "گزینه‌ی «%s» دیگر در این نسخه از پایانه‌ی گنوم پشتیبانی نمی‌شود."
+
+#: ../src/terminal-options.c:235 ../src/terminal-util.c:234
+msgid "GNOME Terminal"
+msgstr "پایانه‌ی گنوم"
+
+#: ../src/terminal-options.c:275
+#, c-format
+msgid "Argument to \"%s\" is not a valid command: %s"
+msgstr "آرگومان «%s» فرمان معتبری نیست: %s"
+
+#: ../src/terminal-options.c:424
+msgid "Two roles given for one window"
+msgstr "دو نقش به یک پنجره داده شده است"
+
+#: ../src/terminal-options.c:445 ../src/terminal-options.c:478
+#, c-format
+msgid "\"%s\" option given twice for the same window\n"
+msgstr "گزینه‌ی «%s» دوبار برای یک پنجره داده شده\n"
+
+#: ../src/terminal-options.c:688
+#, c-format
+msgid "Zoom factor \"%g\" is too small, using %g\n"
+msgstr "عامل زوم %g خیلی کوچک است، از %g استفاده می‌شود\n"
+
+#: ../src/terminal-options.c:696
+#, c-format
+msgid "Zoom factor \"%g\" is too large, using %g\n"
+msgstr "عامل زوم %g خیلی بزرگ است، از %g استفاده می‌شود\n"
+
+#: ../src/terminal-options.c:734
+#, c-format
+msgid ""
+"Option \"%s\" requires specifying the command to run on the rest of the "
+"command line"
+msgstr ""
+"گزینه‌ی «%s» نیاز به مشخص کردن فرمانی دارد که روی بقیه‌ی خط فرمان اجرا می‌شود"
+
+#: ../src/terminal-options.c:870
+msgid "Not a valid terminal config file."
+msgstr "پرونده‌ی تنظیمات پایانه‌ی نامعتبر."
+
+#: ../src/terminal-options.c:883
+msgid "Incompatible terminal config file version."
+msgstr "نسخه‌ی ناسازگار پرونده‌ی تنظیمات پایانه‌"
+
+#: ../src/terminal-options.c:1024
+msgid ""
+"Do not register with the activation nameserver, do not re-use an active "
+"terminal"
+msgstr ""
+"ثبت نام در nameserver فعال‌سازی انجام نشود، از یک پایانه‌ی فعال دوباره استفاده "
+"نشود."
+
+#: ../src/terminal-options.c:1033
+msgid "Load a terminal configuration file"
+msgstr "بارکردن یک پرونده‌ی تنظیمات پایانه"
+
+#: ../src/terminal-options.c:1034
+msgid "FILE"
+msgstr "FILE"
+
+#: ../src/terminal-options.c:1055
+msgid "Open a new window containing a tab with the default profile"
+msgstr "باز کردن یک پنجره‌ی جدید حاوی یک زبانه با مجموعه تنظیمات پیش‌فرض."
+
+#: ../src/terminal-options.c:1064
+msgid "Open a new tab in the last-opened window with the default profile"
+msgstr ""
+"باز کردن یک زبانه‌ی جدید در آخرین پنجره‌ی باز شده با مجموعه تنظیمات پیش‌فرض."
+
+#: ../src/terminal-options.c:1077
+msgid "Turn on the menubar"
+msgstr "به کار انداختن نوار منو"
+
+#: ../src/terminal-options.c:1086
+msgid "Turn off the menubar"
+msgstr "خاموش کردن نوار منو"
+
+#: ../src/terminal-options.c:1131
+msgid "Set the last specified tab as the active one in its window"
+msgstr "تنظیم آخرین زبانه‌ی مشخص شده به عنوان زبانه‌ی فعال پنجره‌اش"
+
+#: ../src/terminal-options.c:1144
+msgid "Execute the argument to this option inside the terminal"
+msgstr "اجرای آرگومان این گزینه داخل پایانه."
+
+#: ../src/terminal-options.c:1154
+msgid "PROFILE-NAME"
+msgstr "نام مجموعه تنظیمات"
+
+#: ../src/terminal-options.c:1442 ../src/terminal-options.c:1448
+msgid "GNOME Terminal Emulator"
+msgstr "شبیه‌ساز پایانه‌ی گنوم"
+
+#: ../src/terminal-options.c:1449
+msgid "Show GNOME Terminal options"
+msgstr "گزینه‌های پایانه‌ی گنوم نمایش داده شوند"
+
+#: ../src/terminal-options.c:1459
+msgid ""
+"Options to open new windows or terminal tabs; more than one of these may be "
+"specified:"
+msgstr ""
+"گزینه‌هایی برای باز کردن پنجره‌ها زبانه‌های جدید پایانه؛ بیش از یکی از این‌ها را "
+"می‌توان مشخص کرد:"
+
+#: ../src/terminal-options.c:1468
+msgid ""
+"Window options; if used before the first --window or --tab argument, sets "
+"the default for all windows:"
+msgstr ""
+"گزینه‌های پنجره؛ اگر پیش از اولین اولین آرگومان --window یا --tab استفاده شده "
+"باشد، پیش‌فرض همه‌ی پنجره‌ها را مشخص می‌کند."
+
+#: ../src/terminal-options.c:1469
+msgid "Show per-window options"
+msgstr "نشان دادن گزینه‌های به ازای هر پنجره"
+
+#: ../src/terminal-options.c:1477
+msgid ""
+"Terminal options; if used before the first --window or --tab argument, sets "
+"the default for all terminals:"
+msgstr ""
+"گزینه‌های پایانه؛ اگر پیش از اولین اولین آرگومان --window یا --tab استفاده "
+"شده باشد، پیش‌فرض همه‌ی پایانه‌ها را مشخص می‌کند."
+
+#: ../src/terminal-options.c:1478
+msgid "Show per-terminal options"
+msgstr "گزینه‌های (به ازای هر) پایانه‌ نمایش داده شوند"
+
+#: ../src/terminal-prefs.c:225
+msgid "Click button to choose profile"
+msgstr "برای انتخاب مجموعه‌تنظیمات روی دکمه کلیک کنید"
+
+#: ../src/terminal-prefs.c:339
+msgid "Profile list"
+msgstr "فهرست مجموعه‌تنظیمات"
+
+#: ../src/terminal-prefs.c:394
+#, c-format
+msgid "Delete profile “%s”?"
+msgstr "مجموعه‌تنظیمات‌ی «%s» حذف شود؟"
+
+#: ../src/terminal-prefs.c:410
+msgid "Delete Profile"
+msgstr "مجموعه‌تنظیمات حذف شود"
+
+#: ../src/terminal-prefs.c:709
+msgid "Show"
+msgstr "نمایش"
+
+#: ../src/terminal-prefs.c:720
+msgid "_Encoding"
+msgstr "_کدگذاری"
+
+#: ../src/terminal-screen.c:1166
+msgid "No command supplied nor shell requested"
+msgstr "هیچ فرمانی فراهم و هیچ پوسته‌ای درخواست نشده است"
+
+#: ../src/terminal-screen.c:1420 ../src/terminal-window.c:1682
+msgid "_Profile Preferences"
+msgstr "ترجیحات _مجموعه‌تنظیمات"
+
+#: ../src/terminal-screen.c:1421 ../src/terminal-screen.c:1782
+msgid "_Relaunch"
+msgstr "راه‌اندازی _مجدد"
+
+#: ../src/terminal-screen.c:1424
+msgid "There was an error creating the child process for this terminal"
+msgstr "در ایجاد فراروند فرزند برای این پایانه خطایی رخ داد"
+
+#: ../src/terminal-screen.c:1786
+#, c-format
+msgid "The child process exited normally with status %d."
+msgstr "فراروند فرزند با وضعیت %Id معمولی خارج شد."
+
+#: ../src/terminal-screen.c:1789
+#, c-format
+msgid "The child process was aborted by signal %d."
+msgstr "فراروند فرزند توسط سیگنال %Id پایان یافت."
+
+#: ../src/terminal-screen.c:1792
+msgid "The child process was aborted."
+msgstr "فراروند فرزند پایان داده شد."
+
+#: ../src/terminal-tab-label.c:194
+msgid "Close tab"
+msgstr "بستن زبانه"
+
+#: ../src/terminal-tabs-menu.c:195
+msgid "Switch to this tab"
+msgstr "تعویض به این زبانه‌"
+
+#: ../src/terminal-util.c:162
+msgid "There was an error displaying help"
+msgstr "در نمایش راهنما خطایی رخ داد"
+
+#: ../src/terminal-util.c:217
+msgid "Contributors:"
+msgstr "کمک کننده‌ها:"
+
+#: ../src/terminal-util.c:236
+msgid "A terminal emulator for the GNOME desktop"
+msgstr "یک مقلد پایانه برای میزکار گنوم"
+
+#: ../src/terminal-util.c:243
+msgid "translator-credits"
+msgstr ""
+"دانیال بهزادی <dani.behzi@gmail.com>\n"
+"مهیار مقیمی <mahyar.moqimi@gmail.com>\n"
+"آرش موسوی <mousavi.arash@gmail.com>\n"
+"روزبه پورنادر <roozbeh@farsiweb.info>\n"
+"میلاد زکریا <meelad@farsiweb.info>‏\n"
+"الناز سربر <elnaz@farsiweb.info>"
+
+#: ../src/terminal-util.c:316
+#, c-format
+msgid "Could not open the address “%s”"
+msgstr "نشانی «%s» باز نمی‌شود"
+
+#: ../src/terminal-util.c:391
+msgid ""
+"GNOME Terminal is free software: you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation, either version 3 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"پایانه‌ی گنوم یک نرم‌افزار آزاد است؛ شما می‌توانید آن را تحت شرایط اجازه‌نامه‌ی "
+"همگانی عمومی گنو، که بنیاد نرم‌افزارهای آزاد منتشر کرده است،‌ تغییر دهید، یا "
+"دوباره توزیع کنید. یا نسخه‌ی ۳ اجازه‌نامه یا (به اختیار خودتان) هر نسخه‌ی "
+"بالاتر دیگری."
+
+#: ../src/terminal-util.c:395
+msgid ""
+"GNOME Terminal is distributed in the hope that it will be useful, but "
+"WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY "
+"or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details."
+msgstr ""
+"پایانه‌ی گنوم با این امید که مفید باشد توزیع شده است، اما بدون هر گونه "
+"ضمانتی؛ حتی بدون ضمانت ضمنی قابل فروش بودن یا مناسب بودن برای یک هدف مشخص.  "
+"برای جزئیات بیشتر به اجازه‌نامه‌ی همگانی عمومی گنو را ببینید."
+
+#: ../src/terminal-util.c:399
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"GNOME Terminal.  If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+"شما باید همراه با پایانه‌ی گنوم یک نسخه از اجازه‌نامه‌ی همگانی عمومی گنو را "
+"دریافت کرده باشید.  در غیر این صورت <http://www.gnu.org/licenses/> را ببینید."
+
+#. Translators: This is the label of a menu item to choose a profile.
+#. * _%d is used as the accelerator (with d between 1 and 9), and
+#. * the %s is the name of the terminal profile.
+#.
+#: ../src/terminal-window.c:430
+#, c-format
+msgid "_%d. %s"
+msgstr "_%Id. %s"
+
+#. Translators: This is the label of a menu item to choose a profile.
+#. * _%c is used as the accelerator (it will be a character between A and Z),
+#. * and the %s is the name of the terminal profile.
+#.
+#: ../src/terminal-window.c:436
+#, c-format
+msgid "_%c. %s"
+msgstr "_%c. %s"
+
+#. Toplevel
+#: ../src/terminal-window.c:1634
+msgid "_File"
+msgstr "_پرونده"
+
+#. File menu
+#: ../src/terminal-window.c:1635 ../src/terminal-window.c:1647
+#: ../src/terminal-window.c:1791
+msgid "Open _Terminal"
+msgstr "_باز کردن پایانه"
+
+#: ../src/terminal-window.c:1636 ../src/terminal-window.c:1650
+#: ../src/terminal-window.c:1794
+msgid "Open Ta_b"
+msgstr "باز کردن زبان_ه"
+
+#: ../src/terminal-window.c:1637
+msgid "_Edit"
+msgstr "_ویرایش"
+
+#: ../src/terminal-window.c:1638
+msgid "_View"
+msgstr "_نما"
+
+#: ../src/terminal-window.c:1639
+msgid "_Search"
+msgstr "_جست‌وجو"
+
+#: ../src/terminal-window.c:1640
+msgid "_Terminal"
+msgstr "پا_یانه"
+
+#: ../src/terminal-window.c:1641
+msgid "Ta_bs"
+msgstr "_زبانه‌ها"
+
+#: ../src/terminal-window.c:1653
+msgid "New _Profile"
+msgstr "_مجموعه تنظیمات جدید"
+
+#: ../src/terminal-window.c:1656
+msgid "_Save Contents"
+msgstr "ذخیره‌ی _محتویات"
+
+#: ../src/terminal-window.c:1659
+msgid "C_lose Tab"
+msgstr "ب_ستن زبانه"
+
+#: ../src/terminal-window.c:1662
+msgid "_Close Window"
+msgstr "بس_تن پنجره"
+
+#: ../src/terminal-window.c:1673 ../src/terminal-window.c:1788
+msgid "Paste _Filenames"
+msgstr "چسباندن _نام پرونده‌ها"
+
+#: ../src/terminal-window.c:1679
+msgid "Pre_ferences"
+msgstr "_ترجیحات"
+
+#. Search menu
+#: ../src/terminal-window.c:1698
+msgid "_Find…"
+msgstr "_پیدا کردن..."
+
+#: ../src/terminal-window.c:1701
+msgid "Find Ne_xt"
+msgstr "پیدا کردن _بعدی"
+
+#: ../src/terminal-window.c:1704
+msgid "Find Pre_vious"
+msgstr "پیدا کردن _قبلی"
+
+#: ../src/terminal-window.c:1707
+msgid "_Clear Highlight"
+msgstr "_پاک کردن شبرنگ"
+
+#: ../src/terminal-window.c:1711
+msgid "Go to _Line..."
+msgstr "برو به _خط..."
+
+#: ../src/terminal-window.c:1714
+msgid "_Incremental Search..."
+msgstr "جست‌وجوی _نموی..."
+
+#. Terminal menu
+#: ../src/terminal-window.c:1720
+msgid "Change _Profile"
+msgstr "تغییر _مجموعه تنظیمات"
+
+#: ../src/terminal-window.c:1721
+msgid "_Set Title…"
+msgstr "_تنظیم عنوان..."
+
+#: ../src/terminal-window.c:1724
+msgid "Set _Character Encoding"
+msgstr "تنظیم کدگذاری _نویسه‌ها"
+
+#: ../src/terminal-window.c:1725
+msgid "_Reset"
+msgstr "برگرداندن به مقادیر _اولیه"
+
+#: ../src/terminal-window.c:1728
+msgid "Reset and C_lear"
+msgstr "برگرداندن به مقادیر اولیه و پا_ک کردن"
+
+#. Terminal/Encodings menu
+#: ../src/terminal-window.c:1733
+msgid "_Add or Remove…"
+msgstr "ا_ضافه یا حذف..."
+
+#. Tabs menu
+#: ../src/terminal-window.c:1738
+msgid "_Previous Tab"
+msgstr "زبانه‌ی _قبلی"
+
+#: ../src/terminal-window.c:1741
+msgid "_Next Tab"
+msgstr "زبانه‌ی _بعدی"
+
+#: ../src/terminal-window.c:1744
+msgid "Move Tab _Left"
+msgstr "جابه‌جایی زبانه به _چپ"
+
+#: ../src/terminal-window.c:1747
+msgid "Move Tab _Right"
+msgstr "جابه‌جایی زبانه به _راست"
+
+#: ../src/terminal-window.c:1750
+msgid "_Detach tab"
+msgstr "جدا کردن _زبانه"
+
+#. Help menu
+#: ../src/terminal-window.c:1755
+msgid "_Contents"
+msgstr "_محتویات"
+
+#. Popup menu
+#: ../src/terminal-window.c:1763
+msgid "_Send Mail To…"
+msgstr "فرستادن _نامه به ..."
+
+#: ../src/terminal-window.c:1766
+msgid "_Copy E-mail Address"
+msgstr "_نسخه‌برداری از نشانی رایانامه"
+
+#: ../src/terminal-window.c:1769
+msgid "C_all To…"
+msgstr "_تماس با..."
+
+#: ../src/terminal-window.c:1772
+msgid "_Copy Call Address"
+msgstr "_نسخه‌برداری از نشانی تماس"
+
+#: ../src/terminal-window.c:1775
+msgid "_Open Link"
+msgstr "_باز کردن پیوند"
+
+#: ../src/terminal-window.c:1778
+msgid "_Copy Link Address"
+msgstr "_نسخه‌برداری از نشانی پیوند"
+
+#: ../src/terminal-window.c:1781
+msgid "P_rofiles"
+msgstr "مجموعه‌های‌ تنظیمات"
+
+#: ../src/terminal-window.c:1797
+msgid "L_eave Full Screen"
+msgstr "خروج از _تمام‌صفحه"
+
+#: ../src/terminal-window.c:1800
+msgid "_Input Methods"
+msgstr "روش‌های _ورودی"
+
+#. View Menu
+#: ../src/terminal-window.c:1806
+msgid "Show _Menubar"
+msgstr "نشان دادن نوار _منو"
+
+#: ../src/terminal-window.c:1810
+msgid "_Full Screen"
+msgstr "_تمام‌صفحه"
+
+#: ../src/terminal-window.c:2899
+msgid "Close this window?"
+msgstr "این پنجره بسته شود؟"
+
+#: ../src/terminal-window.c:2899
+msgid "Close this terminal?"
+msgstr "این پایانه بسته شود؟"
+
+#: ../src/terminal-window.c:2903
+msgid ""
+"There are still processes running in some terminals in this window. Closing "
+"the window will kill all of them."
+msgstr ""
+"همچنان فرآیند‌هایی وجود دارند که در بعضی پایانه‌های داخل این پنجره در حال اجرا "
+"هستند. بستن پنجره همه‌ی آن‌ها را خواهد کشت."
+
+#: ../src/terminal-window.c:2907
+msgid ""
+"There is still a process running in this terminal. Closing the terminal will "
+"kill it."
+msgstr ""
+"همچنان فرآیندی وجود دارد که در داخل این پایانه در حال اجرا است. بستن پنجره "
+"آن را خواهد کشت."
+
+#: ../src/terminal-window.c:2912
+msgid "C_lose Window"
+msgstr "_بستن پنجره"
+
+#: ../src/terminal-window.c:2912
+msgid "C_lose Terminal"
+msgstr "_بستن پایانه"
+
+#: ../src/terminal-window.c:2985
+msgid "Could not save contents"
+msgstr "محتویات ذخیره نشد"
+
+#: ../src/terminal-window.c:3009
+msgid "Save as…"
+msgstr "ذخیره به نام..."
+
+#: ../src/terminal-window.c:3456
+msgid "_Title:"
+msgstr "_عنوان:"

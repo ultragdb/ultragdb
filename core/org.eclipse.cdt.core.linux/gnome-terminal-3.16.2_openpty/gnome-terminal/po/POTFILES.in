@@ -1,0 +1,29 @@
+[encoding: UTF-8]
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+gnome-terminal.appdata.xml.in
+gnome-terminal.desktop.in.in
+[type: gettext/glade]src/find-dialog.ui
+src/gterminal.vala
+src/migration.c
+src/org.gnome.Terminal.gschema.xml
+[type: gettext/glade]src/preferences.ui
+src/profile-editor.c
+[type: gettext/glade]src/profile-preferences.ui
+src/server.c
+src/terminal-accels.c
+src/terminal-app.c
+[type: gettext/glade]src/terminal-appmenu.ui
+src/terminal.c
+src/terminal-encoding.c
+src/terminal-mdi-container.c
+src/terminal-nautilus.c
+src/terminal-notebook.c
+src/terminal-options.c
+src/terminal-prefs.c
+src/terminal-screen.c
+src/terminal-search-dialog.c
+src/terminal-tab-label.c
+src/terminal-tabs-menu.c
+src/terminal-util.c
+src/terminal-window.c

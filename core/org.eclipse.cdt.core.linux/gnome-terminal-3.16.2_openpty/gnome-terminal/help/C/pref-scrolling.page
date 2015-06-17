@@ -1,0 +1,120 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="guide"
+      id="pref-scrolling">
+
+  <info>
+    <revision pkgversion="3.8" date="2013-02-25" status="draft"/>
+    <revision pkgversion="3.12" date="2014-09-08" status="review"/>
+    <link type="guide" xref="index#preferences"/>
+    <link type="guide" xref="profile"/>
+
+    <credit type="author copyright">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+      <years>2013</years>
+    </credit>
+    <credit type="copyright editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+      <years>2013–2014</years>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Change the scroll output and scrollbar behavior.</desc>
+  </info>
+
+  <title>Scrollbar preferences</title>
+
+  <p>When a lot of output is printed to your terminal screen, it can be helpful
+  to have your terminal behave in a specific manner so that it is easier to
+  work with.</p>
+
+  <section id="visibility">
+    <title>Scrollbar visibility</title>
+
+    <p>You can disable the scrollbar:</p>
+
+    <steps>
+      <item>
+        <p>Select
+        <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Profile
+        Preferences</gui><gui style="tab">Scrolling</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Uncheck <gui>Show scrollbar</gui>.</p>
+      </item>
+    </steps>
+
+    <p>Your preference is saved immediately.</p>
+
+  </section>
+
+  <section id="on-output">
+    <title>Scroll on output</title>
+
+    <p>You can lock scrolling so that it always shows the newest output while a
+    command executes.</p>
+
+    <steps>
+      <item>
+        <p>Select
+        <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Profile
+        Preferences</gui><gui style="tab">Scrolling</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Check <gui style="checkbox">Scroll on output</gui>.</p>
+      </item>
+    </steps>
+
+  </section>
+
+  <section id="on-keystroke">
+    <title>Scroll on input</title>
+
+    <p>You can set the terminal to automatically scroll to the bottom of the
+    window when you input text into the prompt.</p>
+
+    <steps>
+      <item>
+        <p>Select
+        <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Profile
+        Preferences</gui><gui style="tab">Scrolling</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Check <gui style="checkbox">Scroll on keystroke</gui>.</p>
+      </item>
+    </steps>
+  </section>
+
+  <section id="lines">
+    <title>Scrollback lines</title>
+
+    <p>You can limit the number of lines of terminal output which are stored in
+    memory. You may want to do this if you rarely restart your terminal so that
+    there is a limit to how much memory the scrollback can use.</p>
+
+    <steps>
+      <item>
+        <p>Select
+        <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Profile
+        Preferences</gui><gui style="tab">Scrolling</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Check <gui>Limit scrollback to</gui> and enter a number of lines
+        which is greater than 0 to limit scrollback.</p>
+      </item>
+      <item>
+        <p>Optionally, you can click on <gui style="button">+</gui> to
+        increase and <gui style="button">-</gui> to decrease lines.</p>
+      </item>
+    </steps>
+
+    <note style="warning">
+      <p>Using unlimited scrollback can make your <app>Terminal</app> sluggish
+      during scrolling!</p>
+    </note>
+
+  </section>
+
+</page>

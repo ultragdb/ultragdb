@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkListStore" id="new-terminal-mode-liststore">
+    <columns>
+      <!-- column-name gchararray -->
+      <column type="gchararray"/>
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes" comments="Open new terminal in new window">Window</col>
+        <col id="1" translatable="no">window</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes" comments="Open new terminal in new tab">Tab</col>
+        <col id="1" translatable="no">tab</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkDialog" id="preferences-dialog">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Preferences</property>
+    <property name="role">gnome-terminal-accels</property>
+    <property name="type_hint">normal</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action-area">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="close_button1">
+                <property name="label">gtk-close</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="label">gtk-help</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkNotebook" id="notebook1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="border_width">5</property>
+            <child>
+              <object class="GtkBox" id="general">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="border_width">12</property>
+                <property name="spacing">6</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkCheckButton" id="default-show-menubar-checkbutton">
+                    <property name="label" translatable="yes">Show _menubar by default in new terminals</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="disable-mnemonics-checkbutton">
+                    <property name="label" translatable="yes">_Enable mnemonics (such as Alt+F to open the File menu)</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="disable-menu-accel-checkbutton">
+                    <property name="label" translatable="yes">Enable the _menu accelerator key (F10 by default)</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="hbox140">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">12</property>
+                    <property name="orientation">horizontal</property>
+                    <child>
+                      <object class="GtkLabel" id="label480">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Open _new terminals in:</property>
+                        <property name="use_underline">True</property>
+                        <property name="mnemonic_widget">new-terminal-mode-combobox</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="new-terminal-mode-combobox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="model">new-terminal-mode-liststore</property>
+                        <property name="id-column">1</property>
+                        <child>
+                          <object class="GtkCellRendererText" id="renderer1"/>
+                          <attributes>
+                            <attribute name="text">0</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">General</property>
+              </object>
+              <packing>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkTable" id="keybindings">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="border_width">12</property>
+                <property name="column_spacing">12</property>
+                <property name="row_spacing">6</property>
+                <property name="n_rows">2</property>
+                <property name="n_columns">1</property>
+                <property name="homogeneous">False</property>
+                <child>
+                  <object class="GtkCheckButton" id="disable-shortcuts-checkbutton">
+                    <property name="label" translatable="yes">_Enable shortcuts</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="xalign">0</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="right_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="bottom_attach">1</property>
+                    <property name="y_options">fill</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow" id="scrolledwindow1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">never</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <object class="GtkTreeView" id="accelerators-treeview">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="rules_hint">True</property>
+                        <child internal-child="selection">
+                          <object class="GtkTreeSelection" id="treeview-selection"/>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="right_attach">1</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="y_options">expand|fill</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Shortcuts</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="profiles">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="border_width">12</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkHBox" id="hbox25">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkScrolledWindow" id="profiles-treeview-container">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hscrollbar_policy">never</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkVButtonBox" id="vbuttonbox1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="spacing">6</property>
+                        <property name="layout_style">start</property>
+                        <child>
+                          <object class="GtkButton" id="new-profile-button">
+                            <property name="label">gtk-new</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="can_default">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="clone-profile-button">
+                            <property name="label" translatable="yes">_Clone</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="can_default">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="edit-profile-button">
+                            <property name="label">gtk-edit</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="can_default">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="delete-profile-button">
+                            <property name="label">gtk-delete</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="can_default">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_stock">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkHBox" id="default-profile-hbox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">12</property>
+                    <child>
+                      <object class="GtkLabel" id="default-profile-label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">_Profile used when launching a new terminal:</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Profiles</property>
+              </object>
+              <packing>
+                <property name="position">2</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="encodings">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="border_width">12</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkLabel" id="encodings-label">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">E_ncodings shown in menu:</property>
+                    <property name="use_underline">True</property>
+                    <property name="mnemonic_widget">encodings-treeview</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow" id="scrolledwindow2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hscrollbar_policy">never</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <object class="GtkTreeView" id="encodings-treeview">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hscroll_policy">natural</property>
+                        <property name="vscroll_policy">natural</property>
+                        <property name="headers_visible">False</property>
+                        <property name="headers_clickable">False</property>
+                        <property name="rules_hint">True</property>
+                        <property name="enable_search">False</property>
+                        <accessibility>
+                          <relation type="labelled-by" target="encodings-label"/>
+                        </accessibility>
+                        <child internal-child="selection">
+                          <object class="GtkTreeSelection" id="treeview-selection1"/>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Encodings</property>
+              </object>
+              <packing>
+                <property name="position">3</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="-7">close_button1</action-widget>
+      <action-widget response="-11">button1</action-widget>
+    </action-widgets>
+  </object>
+</interface>

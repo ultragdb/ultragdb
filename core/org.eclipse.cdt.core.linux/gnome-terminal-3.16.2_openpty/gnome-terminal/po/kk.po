@@ -1,0 +1,2032 @@
+# Kazakh translation of gnome-terminal.
+# Copyright (C) 2010 HZ
+# This file is distributed under the same license as the brasero package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"terminal&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-02-28 08:59+0000\n"
+"PO-Revision-Date: 2015-02-28 22:37+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.7.3\n"
+
+#: ../gnome-terminal.appdata.xml.in.h:1 ../gnome-terminal.desktop.in.in.h:1
+#: ../src/server.c:157 ../src/terminal-accels.c:222 ../src/terminal.c:243
+#: ../src/terminal-tab-label.c:81 ../src/terminal-tabs-menu.c:180
+#: ../src/terminal-window.c:2582 ../src/terminal-window.c:2937
+msgid "Terminal"
+msgstr "Терминал"
+
+#: ../gnome-terminal.appdata.xml.in.h:2 ../gnome-terminal.desktop.in.in.h:2
+msgid "Use the command line"
+msgstr "Командалық жолды қолдану"
+
+#: ../gnome-terminal.appdata.xml.in.h:3
+msgid ""
+"GNOME Terminal is a terminal emulator application for accessing a UNIX shell "
+"environment which can be used to run programs available on your system."
+msgstr ""
+"GNOME терминалы - бұл UNIX қоршамы ортасына қатынауға арналған терминал "
+"эмуляторы қолданбасы, оның көмегімен жүйеңізде қолжетерлік бағдарламаларды "
+"жөнелтуге болады."
+
+#: ../gnome-terminal.appdata.xml.in.h:4
+msgid ""
+"It supports several profiles, multiple tabs and implements several keyboard "
+"shortcuts."
+msgstr "Ол бірнеше профильді, бетті және пернетақта жарлықтарын қолдайды."
+
+#: ../gnome-terminal.desktop.in.in.h:3
+msgid "shell;prompt;command;commandline;"
+msgstr "қоршам;сұрау;команда;командалық жол;"
+
+#: ../src/find-dialog.ui.h:1 ../src/terminal-accels.c:164
+#: ../src/terminal-accels.c:221
+msgid "Find"
+msgstr "Табу"
+
+#: ../src/find-dialog.ui.h:2
+msgid "_Search for:"
+msgstr "_Нені іздеу керек:"
+
+#: ../src/find-dialog.ui.h:3
+msgid "_Match case"
+msgstr "_Регистрді ескеру"
+
+#: ../src/find-dialog.ui.h:4
+msgid "Match _entire word only"
+msgstr "Сөзді то_лығымен сәйкестеу"
+
+#: ../src/find-dialog.ui.h:5
+msgid "Match as _regular expression"
+msgstr "Тұ_рақты өрнек ретінде сәйкестеу"
+
+#: ../src/find-dialog.ui.h:6
+msgid "Search _backwards"
+msgstr "К_ері іздеу"
+
+#: ../src/find-dialog.ui.h:7
+msgid "_Wrap around"
+msgstr "_Соңына жеткенде басына өту"
+
+#: ../src/gterminal.vala:29
+msgid "Suppress output"
+msgstr "Шығысты басу"
+
+#: ../src/gterminal.vala:31
+msgid "Verbose output"
+msgstr "Кеңейтілген шығыс"
+
+#: ../src/gterminal.vala:43
+msgid "Output options:"
+msgstr "Шығыс опциялары:"
+
+#: ../src/gterminal.vala:44
+msgid "Show output options"
+msgstr "Шығыс опцияларын көрсету"
+
+#: ../src/gterminal.vala:85
+#, c-format
+msgid "\"%s\" is not a valid application ID"
+msgstr "\"%s\" дұрыс қолданба идентификаторы емес"
+
+#: ../src/gterminal.vala:102
+msgid "Server application ID"
+msgstr "Сервер қолданбасының ID-і"
+
+#: ../src/gterminal.vala:102
+msgid "ID"
+msgstr "ID"
+
+#: ../src/gterminal.vala:104
+msgid "Show completions"
+msgstr "Толықтыруларды көрсету"
+
+#: ../src/gterminal.vala:111
+msgid "Global options:"
+msgstr "Глобалды опциялар:"
+
+#: ../src/gterminal.vala:112
+msgid "Show global options"
+msgstr "Глобалды опцияларды көрсету"
+
+#: ../src/gterminal.vala:135 ../src/gterminal.vala:156
+msgid "FD passing of stdin is not supported"
+msgstr ""
+
+#: ../src/gterminal.vala:136 ../src/gterminal.vala:157
+msgid "FD passing of stdout is not supported"
+msgstr ""
+
+#: ../src/gterminal.vala:137 ../src/gterminal.vala:158
+msgid "FD passing of stderr is not supported"
+msgstr ""
+
+#: ../src/gterminal.vala:149
+#, c-format
+msgid "Invalid argument \"%s\" to --fd option"
+msgstr ""
+
+#: ../src/gterminal.vala:162
+#, c-format
+msgid "Cannot pass FD %d twice"
+msgstr ""
+
+#: ../src/gterminal.vala:185
+msgid "Forward stdin"
+msgstr ""
+
+#: ../src/gterminal.vala:187
+msgid "Forward stdout"
+msgstr ""
+
+#: ../src/gterminal.vala:189
+msgid "Forward stderr"
+msgstr ""
+
+#: ../src/gterminal.vala:191
+msgid "Forward file descriptor"
+msgstr ""
+
+#: ../src/gterminal.vala:191
+msgid "FD"
+msgstr "FD"
+
+#: ../src/gterminal.vala:198
+msgid "Exec options:"
+msgstr "Орындалу опциялары:"
+
+#: ../src/gterminal.vala:199
+msgid "Show exec options"
+msgstr "Орындалу опцияларын көрсету:"
+
+#: ../src/gterminal.vala:218
+msgid "Maximise the window"
+msgstr "Терезені максималды қылу"
+
+#: ../src/gterminal.vala:220 ../src/terminal-options.c:1075
+msgid "Full-screen the window"
+msgstr "Терезені толық экранды қылу"
+
+#: ../src/gterminal.vala:222 ../src/terminal-options.c:1084
+msgid ""
+"Set the window size; for example: 80x24, or 80x24+200+200 (COLSxROWS+X+Y)"
+msgstr ""
+"Терезе өлшемін орнату; мысалы: 80x24, не 80x24+200+200 (БАҒАНДАРxЖОЛДАР+X+Y)"
+
+#: ../src/gterminal.vala:223 ../src/terminal-options.c:1085
+msgid "GEOMETRY"
+msgstr "GEOMETRY"
+
+#: ../src/gterminal.vala:225 ../src/terminal-options.c:1093
+msgid "Set the window role"
+msgstr "Терезе ролін орнату"
+
+#: ../src/gterminal.vala:225 ../src/terminal-options.c:1094
+msgid "ROLE"
+msgstr "ROLE"
+
+#: ../src/gterminal.vala:232
+msgid "Window options:"
+msgstr "Терезе опциялары:"
+
+#: ../src/gterminal.vala:233
+msgid "Show window options"
+msgstr "Терезе опцияларын көрсету"
+
+#: ../src/gterminal.vala:251
+#, c-format
+msgid "May only use option %s once"
+msgstr "%s опциясын тек бір рет қолдануға болады"
+
+#: ../src/gterminal.vala:264 ../src/terminal-options.c:657
+#, c-format
+msgid "\"%s\" is not a valid zoom factor"
+msgstr "\"%s\" дұрыс масштаб емес"
+
+#: ../src/gterminal.vala:268
+#, c-format
+msgid "Zoom value \"%s\" is outside allowed range"
+msgstr "\"%s\" масштабы рұқсат етілген аумақтан тыс жатыр"
+
+#: ../src/gterminal.vala:277 ../src/terminal-options.c:1124
+msgid "Use the given profile instead of the default profile"
+msgstr "Үнсіз келісім профилі орнына көрсетілген профильді қолдану"
+
+#: ../src/gterminal.vala:278
+msgid "UUID"
+msgstr "UUID"
+
+#: ../src/gterminal.vala:280 ../src/terminal-options.c:1141
+msgid "Set the working directory"
+msgstr "Жұмыс бумасын орнату"
+
+#: ../src/gterminal.vala:280 ../src/terminal-options.c:1142
+msgid "DIRNAME"
+msgstr "БУМА_АТАУЫ"
+
+#: ../src/gterminal.vala:282 ../src/terminal-options.c:1150
+msgid "Set the terminal's zoom factor (1.0 = normal size)"
+msgstr "Терминал масштабын орнату (1.0 = қалыпты өлшемі)"
+
+#: ../src/gterminal.vala:283 ../src/terminal-options.c:1151
+msgid "ZOOM"
+msgstr "ZOOM"
+
+#: ../src/gterminal.vala:290
+msgid "Terminal options:"
+msgstr "Терминал опциялары:"
+
+#: ../src/gterminal.vala:291 ../src/terminal-options.c:1257
+msgid "Show terminal options"
+msgstr "Терминал опцияларын көрсету"
+
+#: ../src/gterminal.vala:304
+msgid "Wait until the child exits"
+msgstr "Ұрпақ өз жұмысын аяқталғанша дейін күту"
+
+#: ../src/gterminal.vala:311
+msgid "Processing options:"
+msgstr "Өңдеу опциялары:"
+
+#: ../src/gterminal.vala:312
+msgid "Show processing options"
+msgstr "Өңдеу опцияларын көрсету"
+
+#: ../src/gterminal.vala:474 ../src/gterminal.vala:568
+#: ../src/gterminal.vala:591 ../src/gterminal.vala:650
+#: ../src/gterminal.vala:677 ../src/gterminal.vala:699
+msgid "Missing argument"
+msgstr "Аргумент жоқ болып тұр"
+
+#: ../src/gterminal.vala:492
+#, c-format
+msgid "Unknown command \"%s\""
+msgstr "Белгісіз команда \"%s\""
+
+#: ../src/gterminal.vala:519
+#, c-format
+msgid "'%s' needs the command to run as arguments after '--'"
+msgstr ""
+
+#: ../src/gterminal.vala:736
+msgid "GTerminal"
+msgstr "GTerminal"
+
+#: ../src/gterminal.vala:752
+#, c-format
+msgid "Error processing arguments: %s\n"
+msgstr "Аргументтерді талдау қатесі: %s\n"
+
+#: ../src/migration.c:385
+msgid "Default"
+msgstr "Бастапқы"
+
+#: ../src/migration.c:385 ../src/terminal-prefs.c:99
+msgid "Unnamed"
+msgstr "Атаусыз"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:1
+msgctxt "visible-name"
+msgid "'Unnamed'"
+msgstr "\"Атаусыз\""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:2
+msgid "Human-readable name of the profile"
+msgstr "Профильдің адам оқи алатын атауы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:3
+msgid "Human-readable name of the profile."
+msgstr "Профильдің адам оқи алатын атауы."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:4
+msgid "Default color of text in the terminal"
+msgstr "Терминалдағы мәтіннің негізгі түсі"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:5
+msgid ""
+"Default color of text in the terminal, as a color specification (can be HTML-"
+"style hex digits, or a color name such as \"red\")."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:6
+msgid "Default color of terminal background"
+msgstr "Терминалдың фон түсі"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:7
+msgid ""
+"Default color of terminal background, as a color specification (can be HTML-"
+"style hex digits, or a color name such as \"red\")."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:8
+msgid "Default color of bold text in the terminal"
+msgstr "Терминалдағы жуан мәтіннің негізгі түсі"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:9
+msgid ""
+"Default color of bold text in the terminal, as a color specification (can be "
+"HTML-style hex digits, or a color name such as \"red\"). This is ignored if "
+"bold_color_same_as_fg is true."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:10
+msgid "Whether bold text should use the same color as normal text"
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:11
+msgid ""
+"If true, boldface text will be rendered using the same color as normal text."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:12
+msgid "Whether to allow bold text"
+msgstr "Жуан мәтінді рұқсат ету керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:13
+msgid "If true, allow applications in the terminal to make text boldface."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:14
+msgid "Whether to ring the terminal bell"
+msgstr "Терминалда дыбыс беру керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:15
+msgid ""
+"List of ASCII punctuation characters that are not to be treated as part of a "
+"word when doing word-wise selection"
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:16
+msgid "Whether to show menubar in new windows/tabs"
+msgstr "Жаңа терезелер/беттерде мәзір жолағын көрсету керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:17
+msgid "True if the menubar should be shown in new window"
+msgstr "Ақиқат, егер мәзір жолағы жаңа терезеде көрсетілуі тиіс болса"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:18
+msgid "Default number of columns"
+msgstr "Үнсіз келісім бойынша бағандар саны"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:19
+msgid ""
+"Number of columns in newly created terminal windows. Has no effect if "
+"use_custom_default_size is not enabled."
+msgstr ""
+"Жаңадан жасалған терминал терезелеріндегі бағандар саны. "
+"use_custom_default_size іске қосылмаған болса, әрекеті жоқ болады."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:20
+msgid "Default number of rows"
+msgstr "Үнсіз келісім бойынша жолдар саны"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:21
+msgid ""
+"Number of rows in newly created terminal windows. Has no effect if "
+"use_custom_default_size is not enabled."
+msgstr ""
+"Жаңадан жасалған терминал терезелеріндегі жолдар саны. "
+"use_custom_default_size іске қосылмаған болса, әрекеті жоқ болады."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:22
+msgid "When to show the scrollbar"
+msgstr "Айналдыру жолағын қашан көрсету керек"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:23
+msgid "Number of lines to keep in scrollback"
+msgstr "Айналдыру тарихында сақтау үшін жолдар саны"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:24
+msgid ""
+"Number of scrollback lines to keep around. You can scroll back in the "
+"terminal by this number of lines; lines that don't fit in the scrollback are "
+"discarded. If scrollback_unlimited is true, this value is ignored."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:25
+msgid "Whether an unlimited number of lines should be kept in scrollback"
+msgstr "Кері айналдыру тарихында жолдар саны шектелмеген болуы керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:26
+msgid ""
+"If true, scrollback lines will never be discarded. The scrollback history is "
+"stored on disk temporarily, so this may cause the system to run out of disk "
+"space if there is a lot of output to the terminal."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:27
+msgid "Whether to scroll to the bottom when a key is pressed"
+msgstr "Перне басылған кезде ең төменге дейін айналдыру керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:28
+msgid "If true, pressing a key jumps the scrollbar to the bottom."
+msgstr "Ақиқат болса, перне басылған кезде айналдыру жолағы төменге өтеді."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:29
+msgid "Whether to scroll to the bottom when there's new output"
+msgstr "Жаңа шығыс бар кезде, ең төменге айналдыру керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:30
+msgid ""
+"If true, whenever there's new output the terminal will scroll to the bottom."
+msgstr ""
+"Ақиқат болса, терминалда жаңа шығыс пайда болған кезде, терминал оған "
+"айналдырылады."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:31
+msgid "What to do with the terminal when the child command exits"
+msgstr "Ұрпақ командасы аяқталған кезде, терминалмен не жасау керек"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:32
+msgid ""
+"Possible values are \"close\" to close the terminal, and \"restart\" to "
+"restart the command."
+msgstr ""
+"Мүмкін мәндері: терминалды жабу үшін \"close\", ал, команданы қайта қосу "
+"үшін \"restart\"."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:33
+msgid "Whether to launch the command in the terminal as a login shell"
+msgstr "Команданы терминалда жүйеге кіру қоршамы ретінде орындау керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:34
+msgid ""
+"If true, the command inside the terminal will be launched as a login shell "
+"(argv[0] will have a hyphen in front of it)."
+msgstr ""
+"Ақиқат болса, команда терминалдың ішінде жүйеге кіру қоршамы ретінде "
+"жөнелтілетін болады (argv[0] алдында дефис болады)."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:35
+msgid "Whether to update login records when launching terminal command"
+msgstr ""
+"Терминал командасын орындау кезде, жүйеге кіру журналын жаңарту керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:36
+msgid ""
+"If true, the system login records utmp and wtmp will be updated when the "
+"command inside the terminal is launched."
+msgstr ""
+"Ақиқат болса, терминалда команда орындалған кезде, жүйелік кірулер utmp және "
+"wtmp журналдары жаңартылатын болады."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:37
+msgid "Whether to run a custom command instead of the shell"
+msgstr "Қоршам орнына таңдауыңызша команданы орындау керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:38
+msgid ""
+"If true, the value of the custom_command setting will be used in place of "
+"running a shell."
+msgstr ""
+"Ақиқат болса, қоршамды орындау орнына custom_command баптаудың мәні "
+"қолданылатын болады."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:39
+msgid "Whether to blink the cursor"
+msgstr "Курсордың жыпылықтауы керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:40
+msgid ""
+"The possible values are \"system\" to use the global cursor blinking "
+"settings, or \"on\" or \"off\" to set the mode explicitly."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:41
+msgid "The cursor appearance"
+msgstr "Курсордың сыртқы түрі"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:42
+msgid "Custom command to use instead of the shell"
+msgstr "Қоршам орнына қолданылатын таңдауыңызша команда"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:43
+msgid "Run this command in place of the shell, if use_custom_command is true."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:44
+msgid "Palette for terminal applications"
+msgstr "Терминал қолданбалары үшін палитра"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:45
+msgid "A Pango font name and size"
+msgstr "Pango қарібінің аты және өлшемі"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:46
+msgid "The code sequence the Backspace key generates"
+msgstr "Backspace пернесі жасайтын пернелер комбинациясы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:47
+msgid "The code sequence the Delete key generates"
+msgstr "Delete пернесі жасайтын пернелер комбинациясы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:48
+msgid "Whether to use the colors from the theme for the terminal widget"
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:49
+msgid "Whether to use the system monospace font"
+msgstr "Жүйелік тең енді қаріп қолданыла ма"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:50
+msgid "Whether to rewrap the terminal contents on window resize"
+msgstr ""
+"Терезе өлшемі өзгертілгенде терминал құрамасын қайта тасымалдау керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:51
+msgid "Which encoding to use"
+msgstr "Қолданылатын кодталуы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:52
+msgid ""
+"Whether ambiguous-width characters are narrow or wide when using UTF-8 "
+"encoding"
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:53
+msgid "Keyboard shortcut to open a new tab"
+msgstr "Жаңа бетті ашу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:54
+msgid "Keyboard shortcut to open a new window"
+msgstr "Жаңа терезені ашу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:55
+msgid "Keyboard shortcut to create a new profile"
+msgstr "Жаңа профильді жасау үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:56
+msgid "Keyboard shortcut to save the current tab contents to file"
+msgstr "Ағымдағы бет құрамасын файлға сақтау үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:57
+msgid "Keyboard shortcut to close a tab"
+msgstr "Бетті жабу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:58
+msgid "Keyboard shortcut to close a window"
+msgstr "Терезені жабу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:59
+msgid "Keyboard shortcut to copy text"
+msgstr "Мәтінді көшіріп алу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:60
+msgid "Keyboard shortcut to paste text"
+msgstr "Мәтінді кірістіру үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:61
+msgid "Keyboard shortcut to toggle full screen mode"
+msgstr "Толық экран режимін ауыстыру үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:62
+msgid "Keyboard shortcut to toggle the visibility of the menubar"
+msgstr "Мәзір жолағының көрінуін ауыстыру үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:63
+msgid "Keyboard shortcut to reset the terminal"
+msgstr "Терминалды тастау үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:64
+msgid "Keyboard shortcut to reset and clear the terminal"
+msgstr "Терминалды тастау және тазарту үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:65
+msgid "Keyboard shortcut to open the search dialog"
+msgstr "Іздеу сұхбатын ашу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:66
+msgid "Keyboard shortcut to find the next occurrence of the search term"
+msgstr "Ізделетін мәтіннің келесі кездесуін табу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:67
+msgid "Keyboard shortcut to find the previous occurrence of the search term"
+msgstr "Ізделетін мәтіннің алдыңғы кездесуін табу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:68
+msgid "Keyboard shortcut to clear the find highlighting"
+msgstr "Іздеудің түспен ерекшелеуін алып тастау үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:69
+msgid "Keyboard shortcut to switch to the previous tab"
+msgstr "Алдыңғы бетке ауысу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:70
+msgid "Keyboard shortcut to switch to the next tab"
+msgstr "Келесі бетке ауысу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:71
+msgid "Keyboard shortcut to move the current tab to the left"
+msgstr "Ағымдағы бетті солға жылжыту үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:72
+msgid "Keyboard shortcut to move the current tab to the right"
+msgstr "Ағымдағы бетті оңғы жылжыту үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:73
+msgid "Keyboard shortcut to detach current tab"
+msgstr "Ағымдағы бетті бөліп жіберу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:74
+msgid "Keyboard shortcut to switch to the numbered tab"
+msgstr "Нөмірленген бетке ауысу үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:75
+msgid "Keyboard shortcut to launch help"
+msgstr "Көмекті жөнелту үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:76
+msgid "Keyboard shortcut to make font larger"
+msgstr "Қаріпті үлкенірек жасау үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:77
+msgid "Keyboard shortcut to make font smaller"
+msgstr "Қаріпті кішірек жасау үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:78
+msgid "Keyboard shortcut to make font normal-size"
+msgstr "Қаріпті қалыпты өлшемді жасау үшін пернетақта жарлығы"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:79
+msgid "Whether the menubar has access keys"
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:80
+msgid ""
+"Whether to have Alt+letter access keys for the menubar. They may interfere "
+"with some applications run inside the terminal so it's possible to turn them "
+"off."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:81
+msgid "Whether shortcuts are enabled"
+msgstr "Жарлықтар іске қосылған ба"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:82
+msgid ""
+"Whether shortcuts are enabled. They may interfere with some applications run "
+"inside the terminal so it's possible to turn them off."
+msgstr ""
+"Жарлықтар іске қосылған ба. Олар терминалда орындалатын кейбір "
+"қолданбалармен ерегісуі мүмкін, сондықтан, оларды сөндіруге болады."
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:83
+msgid "Whether the standard GTK shortcut for menubar access is enabled"
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:84
+msgid ""
+"Normally you can access the menubar with F10. This can also be customized "
+"via gtkrc (gtk-menu-bar-accel = \"whatever\"). This option allows the "
+"standard menubar accelerator to be disabled."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:85
+msgid "Whether the shell integration is enabled"
+msgstr "Shell интеграциясы іске қосылған болу керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:86
+msgid "List of available encodings"
+msgstr "Қолжетерлік кодтаулар тізімі"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:87
+msgid ""
+"A subset of possible encodings are presented in the Encoding submenu. This "
+"is a list of encodings to appear there."
+msgstr ""
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:88
+msgid "Whether to ask for confirmation before closing a terminal"
+msgstr "Терминалды жабу алдында растауды сұрау керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:89
+msgid "Whether to show the menubar in new windows"
+msgstr "Жаңа терезелерде мәзір жолағын көрсету керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:90
+msgid "Whether to open new terminals as windows or tabs"
+msgstr "Жаңа терминалдарды терезеде немесе бетте ашу керек пе"
+
+#: ../src/org.gnome.Terminal.gschema.xml.h:91
+msgid "The position of the tab bar"
+msgstr "Беттер жолағының орны"
+
+#. Open new terminal in new window
+#: ../src/preferences.ui.h:2
+msgid "Window"
+msgstr "Терезе"
+
+#. Open new terminal in new tab
+#: ../src/preferences.ui.h:4
+msgid "Tab"
+msgstr "Бет"
+
+#: ../src/preferences.ui.h:5
+msgid "Preferences"
+msgstr "Баптаулар"
+
+#: ../src/preferences.ui.h:6
+msgid "Show _menubar by default in new terminals"
+msgstr "Жаңа терминалдарда _мәзір жолағын көрсету"
+
+#: ../src/preferences.ui.h:7
+msgid "_Enable mnemonics (such as Alt+F to open the File menu)"
+msgstr ""
+"_Пернетақта жарлықтарын іске қосу (мысалы, Файл мәзірін ашу үшін Alt+Ф)"
+
+#: ../src/preferences.ui.h:8
+msgid "Enable the _menu accelerator key (F10 by default)"
+msgstr "_Мәзірдің үдеткіш батырмасын іске қосу (F10 бастапқыда)"
+
+#: ../src/preferences.ui.h:9
+msgid "Open _new terminals in:"
+msgstr "Жаңа терминалды қайда а_шу:"
+
+#: ../src/preferences.ui.h:10 ../src/profile-preferences.ui.h:61
+msgid "General"
+msgstr "Жалпы"
+
+#: ../src/preferences.ui.h:11
+msgid "_Enable shortcuts"
+msgstr "Жарлықтарды іск_е қосу"
+
+#: ../src/preferences.ui.h:12
+msgid "Shortcuts"
+msgstr "Жарлықтар"
+
+#: ../src/preferences.ui.h:13
+msgid "_Clone"
+msgstr "_Клондау"
+
+#: ../src/preferences.ui.h:14
+msgid "_Profile used when launching a new terminal:"
+msgstr "Жаңа терминалда қолданылатын _профиль:"
+
+#: ../src/preferences.ui.h:15
+msgid "Profiles"
+msgstr "Профильдер"
+
+#: ../src/preferences.ui.h:16
+msgid "E_ncodings shown in menu:"
+msgstr "Мәзірде көрсетілетін _кодтаулар:"
+
+#: ../src/preferences.ui.h:17
+msgid "Encodings"
+msgstr "Кодтаулар"
+
+#: ../src/profile-editor.c:48
+msgid "Black on light yellow"
+msgstr "Қара, ашық сарының үстінде"
+
+#: ../src/profile-editor.c:52
+msgid "Black on white"
+msgstr "Ақ үстіндегі қара"
+
+#: ../src/profile-editor.c:56
+msgid "Gray on black"
+msgstr "Сұр, қараның үстінде"
+
+#: ../src/profile-editor.c:60
+msgid "Green on black"
+msgstr "Жасыл, қараның үстінде"
+
+#: ../src/profile-editor.c:64
+msgid "White on black"
+msgstr "Қара үстіндегі ақ"
+
+#. Translators: "Solarized" is the name of a colour scheme, "light" can be translated
+#: ../src/profile-editor.c:69
+msgid "Solarized light"
+msgstr "Ақшыл жарық"
+
+#. Translators: "Solarized" is the name of a colour scheme, "dark" can be translated
+#: ../src/profile-editor.c:74
+msgid "Solarized dark"
+msgstr "Ақшыл қараңғы"
+
+#: ../src/profile-editor.c:438
+#, c-format
+msgid "Error parsing command: %s"
+msgstr "Команданы талдау қатесі: %s"
+
+#. This is the name of a colour scheme
+#: ../src/profile-editor.c:479 ../src/profile-preferences.ui.h:32
+msgid "Custom"
+msgstr "Таңдауыңызша"
+
+#: ../src/profile-editor.c:638
+#, c-format
+msgid "Editing Profile “%s”"
+msgstr "“%s” профилін түзету"
+
+#: ../src/profile-editor.c:842
+#, c-format
+msgid "Choose Palette Color %u"
+msgstr "%u палитра түсін таңдау"
+
+#: ../src/profile-editor.c:846
+#, c-format
+msgid "Palette entry %u"
+msgstr "Палитра элементі %u"
+
+#. Cursor shape
+#: ../src/profile-preferences.ui.h:2
+msgid "Block"
+msgstr "Блок"
+
+#. Cursor shape
+#: ../src/profile-preferences.ui.h:4
+msgid "I-Beam"
+msgstr "Вертикалды сызық"
+
+#. Cursor shape
+#: ../src/profile-preferences.ui.h:6
+msgid "Underline"
+msgstr "Астыңғы сызық"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:8
+msgid "Replace initial title"
+msgstr "Бастапқы атауды алмастыру"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:10
+msgid "Append initial title"
+msgstr "Бастапқы атауға қосу"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:12
+msgid "Prepend initial title"
+msgstr "Бастапқы атаудың алдына қою"
+
+#. When terminal commands set their own titles
+#: ../src/profile-preferences.ui.h:14
+msgid "Keep initial title"
+msgstr "Бастапқы атауды алып қалу"
+
+#. When command exits
+#: ../src/profile-preferences.ui.h:16
+msgid "Exit the terminal"
+msgstr "Терминал жұмысын аяқтау"
+
+#. When command exits
+#: ../src/profile-preferences.ui.h:18
+msgid "Restart the command"
+msgstr "Қайта қосу командасы"
+
+#. When command exits
+#: ../src/profile-preferences.ui.h:20
+msgid "Hold the terminal open"
+msgstr "Терминалды ашық ұстау"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:22
+msgid "Tango"
+msgstr "Tango"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:24
+msgid "Linux console"
+msgstr "Linux консолі"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:26
+msgid "XTerm"
+msgstr "XTerm"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:28
+msgid "Rxvt"
+msgstr "Rxvt"
+
+#. This is the name of a colour scheme
+#: ../src/profile-preferences.ui.h:30
+msgid "Solarized"
+msgstr "Ақшыл"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:34
+msgid "Automatic"
+msgstr "Авто"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:36
+msgid "Control-H"
+msgstr "Control-H"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:38
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:40
+msgid "Escape sequence"
+msgstr "Escape тізбегі"
+
+#. This refers to the Delete keybinding option
+#: ../src/profile-preferences.ui.h:42
+msgid "TTY Erase"
+msgstr "TTY өшіру"
+
+#. ambiguous-width characers are
+#: ../src/profile-preferences.ui.h:44
+msgid "Narrow"
+msgstr "Тар"
+
+#. ambiguous-width characers are
+#: ../src/profile-preferences.ui.h:46
+msgid "Wide"
+msgstr "Кең"
+
+#: ../src/profile-preferences.ui.h:47
+msgid "Profile Editor"
+msgstr "Профильдер түзетушісі"
+
+#: ../src/profile-preferences.ui.h:48
+msgid "_Profile name:"
+msgstr "_Профиль атауы"
+
+#: ../src/profile-preferences.ui.h:49
+msgid "Profile ID:"
+msgstr "Профиль ID:"
+
+#: ../src/profile-preferences.ui.h:50
+msgid "Initial terminal si_ze:"
+msgstr "Терминалдың _бастапқы өлшемі:"
+
+#: ../src/profile-preferences.ui.h:51
+msgid "columns"
+msgstr "баған"
+
+#: ../src/profile-preferences.ui.h:52
+msgid "rows"
+msgstr "жол"
+
+#: ../src/profile-preferences.ui.h:53
+msgid "Rese_t"
+msgstr "Тас_тау"
+
+#: ../src/profile-preferences.ui.h:54
+msgid "Cursor _shape:"
+msgstr "Курсор _пішімі:"
+
+#: ../src/profile-preferences.ui.h:55
+msgid "Terminal _bell"
+msgstr "Терминал қ_оңырауы"
+
+#: ../src/profile-preferences.ui.h:56
+msgid "Text Appearance"
+msgstr "Мәтіннің сыртқы түрі"
+
+#: ../src/profile-preferences.ui.h:57
+msgid "_Allow bold text"
+msgstr "Жуан мәтінді рұқс_ат ету"
+
+#: ../src/profile-preferences.ui.h:58
+msgid "_Rewrap on resize"
+msgstr "Өлшемін өзгерткенде қа_йта тасымалдау"
+
+#: ../src/profile-preferences.ui.h:59
+msgid "_Custom font"
+msgstr "Таңдау_ыңызша қаріп"
+
+#: ../src/profile-preferences.ui.h:60
+msgid "Choose A Terminal Font"
+msgstr "Terminal қарібін таңдаңыз"
+
+#: ../src/profile-preferences.ui.h:62
+msgid "_Run command as a login shell"
+msgstr "Команданы жүйеге кіру қ_оршамы ретінде орындау"
+
+#: ../src/profile-preferences.ui.h:63
+msgid "_Update login records when command is launched"
+msgstr "Команда орындалғанда жүйеге кіру жур_налын жаңарту"
+
+#: ../src/profile-preferences.ui.h:64
+msgid "Ru_n a custom command instead of my shell"
+msgstr "Менің қоршамым орнына таңдауыңызша команданы ор_ындау:"
+
+#: ../src/profile-preferences.ui.h:65
+msgid "Custom co_mmand:"
+msgstr "Таңдауыңызша к_оманда:"
+
+#: ../src/profile-preferences.ui.h:66
+msgid "When command _exits:"
+msgstr "Команда өз жұмысын а_яқтағанда:"
+
+#: ../src/profile-preferences.ui.h:67
+msgid "Command"
+msgstr "Команда"
+
+#: ../src/profile-preferences.ui.h:68
+msgid "Text and Background Color"
+msgstr "Мәтін және фон түсі"
+
+#: ../src/profile-preferences.ui.h:69
+msgid "_Use colors from system theme"
+msgstr "Жүйелік тема түстерін қо_лдану"
+
+#: ../src/profile-preferences.ui.h:70
+msgid "Built-in sche_mes:"
+msgstr "Құрамындағы те_малар:"
+
+#: ../src/profile-preferences.ui.h:71
+msgid "_Text color:"
+msgstr "Мә_тін түсі:"
+
+#: ../src/profile-preferences.ui.h:72
+msgid "_Background color:"
+msgstr "Ф_он түсі:"
+
+#: ../src/profile-preferences.ui.h:73
+msgid "Choose Terminal Background Color"
+msgstr "Терминалдың фон түсін таңдаңыз"
+
+#: ../src/profile-preferences.ui.h:74
+msgid "Choose Terminal Text Color"
+msgstr "Терминал мәтіннің түсін таңдаңыз"
+
+#: ../src/profile-preferences.ui.h:75
+msgid "_Underline color:"
+msgstr "Аст_ын сызу түсі:"
+
+#: ../src/profile-preferences.ui.h:76
+msgid "_Same as text color"
+msgstr "Мәтін түсімен бір_дей"
+
+#: ../src/profile-preferences.ui.h:77
+msgid "Bol_d color:"
+msgstr "Жу_ан түсі:"
+
+#: ../src/profile-preferences.ui.h:78
+msgid "Palette"
+msgstr "Палитра"
+
+#: ../src/profile-preferences.ui.h:79
+msgid "Built-in _schemes:"
+msgstr "Құрамындағы _темалар:"
+
+#: ../src/profile-preferences.ui.h:80
+msgid "<b>Note:</b> Terminal applications have these colors available to them."
+msgstr ""
+"<b>Ескерту:</b> Терминал қолданбаларына келесі түстер қолжетерлік болады."
+
+#: ../src/profile-preferences.ui.h:81
+msgid "Color p_alette:"
+msgstr "Түстер п_алитрасы:"
+
+#: ../src/profile-preferences.ui.h:82
+msgid "Colors"
+msgstr "Түстер"
+
+#: ../src/profile-preferences.ui.h:83
+msgid "Scroll on _keystroke"
+msgstr "Бат_ырмаларды басу кезінде айналдыру"
+
+#: ../src/profile-preferences.ui.h:84
+msgid "Scroll on _output"
+msgstr "Ш_ығыс болса, айналдыру"
+
+#: ../src/profile-preferences.ui.h:85
+msgid "_Limit scrollback to:"
+msgstr "Кері а_йналдыру шегі:"
+
+#: ../src/profile-preferences.ui.h:86
+msgid "lines"
+msgstr "жол"
+
+#: ../src/profile-preferences.ui.h:87
+msgid "_Show scrollbar"
+msgstr "Айналдыру жолағын көр_сету"
+
+#: ../src/profile-preferences.ui.h:88
+msgid "Scrolling"
+msgstr "Айналдыру"
+
+#: ../src/profile-preferences.ui.h:89
+msgid ""
+"<b>Note:</b> These options may cause some applications to behave "
+"incorrectly.  They are only here to allow you to work around certain "
+"applications and operating systems that expect different terminal behavior."
+msgstr ""
+
+#: ../src/profile-preferences.ui.h:90
+msgid "_Delete key generates:"
+msgstr "Delete баты_рмасы әрекеті:"
+
+#: ../src/profile-preferences.ui.h:91
+msgid "_Backspace key generates:"
+msgstr "Backspace ба_тырмасы әрекеті:"
+
+#: ../src/profile-preferences.ui.h:92
+msgid "_Encoding:"
+msgstr "Код_талуы:"
+
+#: ../src/profile-preferences.ui.h:93
+msgid "Ambiguous-_width characters:"
+msgstr "_Ендері екі мәнді таңбалар:"
+
+#: ../src/profile-preferences.ui.h:94
+msgid "_Reset Compatibility Options to Defaults"
+msgstr "Үйлесі_мділік опцияларын бастапқы түріне келтіру"
+
+#: ../src/profile-preferences.ui.h:95
+msgid "Compatibility"
+msgstr "Үйлесімділік"
+
+#: ../src/terminal-accels.c:148
+msgid "New Terminal in New Tab"
+msgstr "Жаңа терминал жаңа бетте"
+
+#: ../src/terminal-accels.c:149
+msgid "New Terminal in New Window"
+msgstr "Жаңа терминал жаңа терезеде"
+
+#: ../src/terminal-accels.c:150
+msgid "New Profile"
+msgstr "Жаңа профиль"
+
+#: ../src/terminal-accels.c:152
+msgid "Save Contents"
+msgstr "Құрамасын сақтау"
+
+#: ../src/terminal-accels.c:154
+msgid "Close Terminal"
+msgstr "Терминалды жабу"
+
+#: ../src/terminal-accels.c:155
+msgid "Close All Terminals"
+msgstr "Барлық терминалдарды жабу"
+
+#. Edit menu
+#: ../src/terminal-accels.c:159 ../src/terminal-window.c:2398
+#: ../src/terminal-window.c:2515
+msgid "Copy"
+msgstr "Көшіру"
+
+#: ../src/terminal-accels.c:160 ../src/terminal-window.c:2401
+#: ../src/terminal-window.c:2518
+msgid "Paste"
+msgstr "Кірістіру"
+
+#: ../src/terminal-accels.c:165
+msgid "Find Next"
+msgstr "Келесіні табу"
+
+#: ../src/terminal-accels.c:166
+msgid "Find Previous"
+msgstr "Алдыңғысын табу"
+
+#: ../src/terminal-accels.c:167
+msgid "Clear Find Highlight"
+msgstr "Түстпен ерекшелеуді алып тастау"
+
+#: ../src/terminal-accels.c:171
+msgid "Hide and Show toolbar"
+msgstr "Саймандар панелін жасыру/көрсету"
+
+#: ../src/terminal-accels.c:172
+msgid "Full Screen"
+msgstr "Толық экранға"
+
+#. View menu
+#: ../src/terminal-accels.c:173 ../src/terminal-window.c:2418
+msgid "Zoom In"
+msgstr "Үлкейту"
+
+#: ../src/terminal-accels.c:174 ../src/terminal-window.c:2421
+msgid "Zoom Out"
+msgstr "Кішірейту"
+
+#: ../src/terminal-accels.c:175 ../src/terminal-window.c:2424
+msgid "Normal Size"
+msgstr "Қалыпты өлшемі"
+
+#: ../src/terminal-accels.c:179
+msgid "Reset"
+msgstr "Тастау"
+
+#: ../src/terminal-accels.c:180
+msgid "Reset and Clear"
+msgstr "Тастау мен тазарту"
+
+#: ../src/terminal-accels.c:184
+msgid "Switch to Previous Terminal"
+msgstr "Алдыңғы терминалға өту"
+
+#: ../src/terminal-accels.c:185
+msgid "Switch to Next Terminal"
+msgstr "Келесі терминалға өту"
+
+#: ../src/terminal-accels.c:186
+msgid "Move Terminal to the Left"
+msgstr "Терминалды солға жылжыту"
+
+#: ../src/terminal-accels.c:187
+msgid "Move Terminal to the Right"
+msgstr "Терминалды оңға жылжыту"
+
+#: ../src/terminal-accels.c:188
+msgid "Detach Terminal"
+msgstr "Терминалды бөліп жіберу"
+
+#: ../src/terminal-accels.c:211
+msgid "Contents"
+msgstr "Құрамасы"
+
+#: ../src/terminal-accels.c:218
+msgid "File"
+msgstr "Файл"
+
+#: ../src/terminal-accels.c:219
+msgid "Edit"
+msgstr "Түзету"
+
+#: ../src/terminal-accels.c:220
+msgid "View"
+msgstr "Түрі"
+
+#: ../src/terminal-accels.c:223
+msgid "Tabs"
+msgstr "Беттер"
+
+#: ../src/terminal-accels.c:224
+msgid "Help"
+msgstr "Көмек"
+
+#: ../src/terminal-accels.c:321
+#, c-format
+msgid "Switch to Tab %u"
+msgstr "%u бетке ауысу"
+
+#: ../src/terminal-accels.c:529
+msgid "_Action"
+msgstr "Әр_екет"
+
+#: ../src/terminal-accels.c:548
+msgid "Shortcut _Key"
+msgstr "Жарлық пернесі"
+
+#: ../src/terminal-app.c:673
+msgid "User Defined"
+msgstr "Пайдаланушы функциялары"
+
+#: ../src/terminal-appmenu.ui.h:1
+msgid "_New Terminal"
+msgstr "Жаңа тер_минал"
+
+#: ../src/terminal-appmenu.ui.h:2
+msgid "_Preferences"
+msgstr "Қа_лаулар"
+
+#: ../src/terminal-appmenu.ui.h:3 ../src/terminal-window.c:2370
+msgid "_Help"
+msgstr "_Көмек"
+
+#: ../src/terminal-appmenu.ui.h:4 ../src/terminal-window.c:2486
+msgid "_About"
+msgstr "О_сы туралы"
+
+#: ../src/terminal-appmenu.ui.h:5
+msgid "_Quit"
+msgstr "_Шығу"
+
+#: ../src/terminal.c:236
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Аргументтерді өндеу қатемен аяқталды: %s\n"
+
+#: ../src/terminal-encoding.c:52 ../src/terminal-encoding.c:65
+#: ../src/terminal-encoding.c:79 ../src/terminal-encoding.c:101
+#: ../src/terminal-encoding.c:112
+msgid "Western"
+msgstr "Батыс"
+
+#: ../src/terminal-encoding.c:53 ../src/terminal-encoding.c:80
+#: ../src/terminal-encoding.c:91 ../src/terminal-encoding.c:110
+msgid "Central European"
+msgstr "Орта Еуропалық"
+
+#: ../src/terminal-encoding.c:54
+msgid "South European"
+msgstr "Оңтүстік Еуропалық"
+
+#: ../src/terminal-encoding.c:55 ../src/terminal-encoding.c:63
+#: ../src/terminal-encoding.c:117
+msgid "Baltic"
+msgstr "Балтық"
+
+#: ../src/terminal-encoding.c:56 ../src/terminal-encoding.c:81
+#: ../src/terminal-encoding.c:87 ../src/terminal-encoding.c:88
+#: ../src/terminal-encoding.c:93 ../src/terminal-encoding.c:111
+msgid "Cyrillic"
+msgstr "Кирил"
+
+#: ../src/terminal-encoding.c:57 ../src/terminal-encoding.c:84
+#: ../src/terminal-encoding.c:90 ../src/terminal-encoding.c:116
+msgid "Arabic"
+msgstr "Араб"
+
+#: ../src/terminal-encoding.c:58 ../src/terminal-encoding.c:96
+#: ../src/terminal-encoding.c:113
+msgid "Greek"
+msgstr "Грек"
+
+#: ../src/terminal-encoding.c:59
+msgid "Hebrew Visual"
+msgstr "Визуалды иврит"
+
+#: ../src/terminal-encoding.c:60 ../src/terminal-encoding.c:83
+#: ../src/terminal-encoding.c:99 ../src/terminal-encoding.c:115
+msgid "Hebrew"
+msgstr "Иврит"
+
+#: ../src/terminal-encoding.c:61 ../src/terminal-encoding.c:82
+#: ../src/terminal-encoding.c:103 ../src/terminal-encoding.c:114
+msgid "Turkish"
+msgstr "Түрік"
+
+#: ../src/terminal-encoding.c:62
+msgid "Nordic"
+msgstr "Скандинавтік"
+
+#: ../src/terminal-encoding.c:64
+msgid "Celtic"
+msgstr "Келттік"
+
+#: ../src/terminal-encoding.c:66 ../src/terminal-encoding.c:102
+msgid "Romanian"
+msgstr "Румын"
+
+#. These encodings do NOT pass-through ASCII, so are always rejected.
+#. * FIXME: why are they in this table; or rather why do we need
+#. * the ASCII pass-through requirement?
+#.
+#: ../src/terminal-encoding.c:67 ../src/terminal-encoding.c:124
+#: ../src/terminal-encoding.c:125 ../src/terminal-encoding.c:126
+#: ../src/terminal-encoding.c:127
+msgid "Unicode"
+msgstr "Юникод"
+
+#: ../src/terminal-encoding.c:68
+msgid "Armenian"
+msgstr "Армян"
+
+#: ../src/terminal-encoding.c:69 ../src/terminal-encoding.c:70
+#: ../src/terminal-encoding.c:74
+msgid "Chinese Traditional"
+msgstr "Қытайша дәстүрлі"
+
+#: ../src/terminal-encoding.c:71
+msgid "Cyrillic/Russian"
+msgstr "Кирил/Ресей"
+
+#: ../src/terminal-encoding.c:72 ../src/terminal-encoding.c:85
+#: ../src/terminal-encoding.c:105
+msgid "Japanese"
+msgstr "Жапон"
+
+#: ../src/terminal-encoding.c:73 ../src/terminal-encoding.c:86
+#: ../src/terminal-encoding.c:108 ../src/terminal-encoding.c:128
+msgid "Korean"
+msgstr "Корей"
+
+#: ../src/terminal-encoding.c:75 ../src/terminal-encoding.c:76
+#: ../src/terminal-encoding.c:77
+msgid "Chinese Simplified"
+msgstr "Қытайша жеңілдеткен"
+
+#: ../src/terminal-encoding.c:78
+msgid "Georgian"
+msgstr "Грузин"
+
+#: ../src/terminal-encoding.c:89 ../src/terminal-encoding.c:104
+msgid "Cyrillic/Ukrainian"
+msgstr "Кирил/Украина"
+
+#: ../src/terminal-encoding.c:92
+msgid "Croatian"
+msgstr "Хорват"
+
+#: ../src/terminal-encoding.c:94
+msgid "Hindi"
+msgstr "Хинди"
+
+#: ../src/terminal-encoding.c:95
+msgid "Persian"
+msgstr "Парсы"
+
+#: ../src/terminal-encoding.c:97
+msgid "Gujarati"
+msgstr "Гуджарати"
+
+#: ../src/terminal-encoding.c:98
+msgid "Gurmukhi"
+msgstr "Гурмукхи"
+
+#: ../src/terminal-encoding.c:100
+msgid "Icelandic"
+msgstr "Исланд"
+
+#: ../src/terminal-encoding.c:106 ../src/terminal-encoding.c:109
+#: ../src/terminal-encoding.c:118
+msgid "Vietnamese"
+msgstr "Вьетнам"
+
+#: ../src/terminal-encoding.c:107
+msgid "Thai"
+msgstr "Тай"
+
+#: ../src/terminal-nautilus.c:601
+msgid "Open in _Remote Terminal"
+msgstr "Қаш_ықтағы терминалда ашу"
+
+#: ../src/terminal-nautilus.c:603
+msgid "Open in _Local Terminal"
+msgstr "Жер_гілікті терминалда ашу"
+
+#: ../src/terminal-nautilus.c:607 ../src/terminal-nautilus.c:618
+msgid "Open the currently selected folder in a terminal"
+msgstr "Ағымдағы таңдалған буманы терминалда ашу"
+
+#: ../src/terminal-nautilus.c:609 ../src/terminal-nautilus.c:620
+#: ../src/terminal-nautilus.c:630
+msgid "Open the currently open folder in a terminal"
+msgstr "Ағымдағы ашық буманы терминалда ашу"
+
+#: ../src/terminal-nautilus.c:615 ../src/terminal-nautilus.c:629
+msgid "Open in T_erminal"
+msgstr "Терминалда а_шу"
+
+#: ../src/terminal-nautilus.c:626
+msgid "Open T_erminal"
+msgstr "Т_ерминалды ашу"
+
+#: ../src/terminal-nautilus.c:627
+msgid "Open a terminal"
+msgstr "Терминалды ашу"
+
+#: ../src/terminal-nautilus.c:645 ../src/terminal-nautilus.c:658
+msgid "Open in _Midnight Commander"
+msgstr "_Midnight Commander ішінде ашу"
+
+#: ../src/terminal-nautilus.c:647
+msgid ""
+"Open the currently selected folder in the terminal file manager Midnight "
+"Commander"
+msgstr ""
+"Ағымдағы таңдалған буманы Midnight Commander терминалдық файлдар "
+"басқарушысында ашу"
+
+#: ../src/terminal-nautilus.c:649 ../src/terminal-nautilus.c:659
+msgid ""
+"Open the currently open folder in the terminal file manager Midnight "
+"Commander"
+msgstr ""
+"Ағымдағы ашық буманы Midnight Commander терминалдық файлдар басқарушысында "
+"ашу"
+
+#: ../src/terminal-nautilus.c:655
+msgid "Open _Midnight Commander"
+msgstr "_Midnight Commander ашу"
+
+#: ../src/terminal-nautilus.c:656
+msgid "Open the terminal file manager Midnight Commander"
+msgstr "Midnight Commander терминалдық файлдар басқарушысын ашу"
+
+#: ../src/terminal-options.c:222 ../src/terminal-options.c:235
+#, c-format
+msgid "Option \"%s\" is no longer supported in this version of gnome-terminal."
+msgstr ""
+"\"%s\" опциясына gnome-terminal қолданбасының осы нұсқасында енді қолдау жоқ."
+
+#: ../src/terminal-options.c:247 ../src/terminal-util.c:229
+msgid "GNOME Terminal"
+msgstr "GNOME терминалы"
+
+#: ../src/terminal-options.c:287
+#, c-format
+msgid "Argument to \"%s\" is not a valid command: %s"
+msgstr "\"%s\" үшін аргумент дұрыс команда емес: %s"
+
+#: ../src/terminal-options.c:436
+msgid "Two roles given for one window"
+msgstr "Бір терезе үшін екі роль берілген"
+
+#: ../src/terminal-options.c:457 ../src/terminal-options.c:490
+#, c-format
+msgid "\"%s\" option given twice for the same window\n"
+msgstr "\"%s\" опциясы бір терезе үшін екі рет көрсетілген\n"
+
+#: ../src/terminal-options.c:664
+#, c-format
+msgid "Zoom factor \"%g\" is too small, using %g\n"
+msgstr "\"%g\" масштабы тым кіші, %g қолданылатын болады\n"
+
+#: ../src/terminal-options.c:672
+#, c-format
+msgid "Zoom factor \"%g\" is too large, using %g\n"
+msgstr "\"%g\" масштабы тым үлкен, %g қолданылатын болады\n"
+
+#: ../src/terminal-options.c:710
+#, c-format
+msgid ""
+"Option \"%s\" requires specifying the command to run on the rest of the "
+"command line"
+msgstr ""
+"\"%s\" опциясы командалық жолдың қалған бөлігіне орындау үшін команданы "
+"талап етеді"
+
+#: ../src/terminal-options.c:844
+msgid "Not a valid terminal config file."
+msgstr "Жарамды терминал баптаулар файлы емес."
+
+#: ../src/terminal-options.c:857
+msgid "Incompatible terminal config file version."
+msgstr "Үйлесімді емес терминал баптаулар файлының нұсқасы."
+
+#: ../src/terminal-options.c:995
+msgid ""
+"Do not register with the activation nameserver, do not re-use an active "
+"terminal"
+msgstr ""
+
+#: ../src/terminal-options.c:1004
+msgid "Load a terminal configuration file"
+msgstr "Терминал баптаулар файлын жүктеу"
+
+#: ../src/terminal-options.c:1005
+msgid "FILE"
+msgstr "ФАЙЛ"
+
+#: ../src/terminal-options.c:1026
+msgid "Open a new window containing a tab with the default profile"
+msgstr ""
+
+#: ../src/terminal-options.c:1035
+msgid "Open a new tab in the last-opened window with the default profile"
+msgstr ""
+
+#: ../src/terminal-options.c:1048
+msgid "Turn on the menubar"
+msgstr "Мәзір жолағын іске қосу"
+
+#: ../src/terminal-options.c:1057
+msgid "Turn off the menubar"
+msgstr "Мәзір жолағын сөндіру"
+
+#: ../src/terminal-options.c:1066
+msgid "Maximize the window"
+msgstr "Терезені жазық қылу"
+
+#: ../src/terminal-options.c:1102
+msgid "Set the last specified tab as the active one in its window"
+msgstr ""
+
+#: ../src/terminal-options.c:1115
+msgid "Execute the argument to this option inside the terminal"
+msgstr ""
+
+#: ../src/terminal-options.c:1125
+msgid "PROFILE-NAME"
+msgstr "ПРОФИЛЬ-АТАУЫ"
+
+#: ../src/terminal-options.c:1239 ../src/terminal-options.c:1245
+msgid "GNOME Terminal Emulator"
+msgstr "Gnome терминал эмуляторы"
+
+#: ../src/terminal-options.c:1246
+msgid "Show GNOME Terminal options"
+msgstr "GNOME терминал опцияларын көрсету"
+
+#: ../src/terminal-options.c:1256
+msgid ""
+"Options to open new windows or terminal tabs; more than one of these may be "
+"specified:"
+msgstr ""
+
+#: ../src/terminal-options.c:1265
+msgid ""
+"Window options; if used before the first --window or --tab argument, sets "
+"the default for all windows:"
+msgstr ""
+
+#: ../src/terminal-options.c:1266
+msgid "Show per-window options"
+msgstr ""
+
+#: ../src/terminal-options.c:1274
+msgid ""
+"Terminal options; if used before the first --window or --tab argument, sets "
+"the default for all terminals:"
+msgstr ""
+
+#: ../src/terminal-options.c:1275
+msgid "Show per-terminal options"
+msgstr ""
+
+#: ../src/terminal-prefs.c:214
+msgid "Click button to choose profile"
+msgstr "Профильді таңдау үшін батырманы шертіңіз"
+
+#: ../src/terminal-prefs.c:316
+msgid "Profile list"
+msgstr "Профильдер тізімі"
+
+#: ../src/terminal-prefs.c:371
+#, c-format
+msgid "Delete profile “%s”?"
+msgstr "“%s” профилін өшіру керек пе?"
+
+#: ../src/terminal-prefs.c:375 ../src/terminal-window.c:529
+msgid "_Cancel"
+msgstr "Ба_с тарту"
+
+#: ../src/terminal-prefs.c:377
+msgid "_Delete"
+msgstr "Ө_шіру"
+
+#: ../src/terminal-prefs.c:387
+msgid "Delete Profile"
+msgstr "Профильді өшіру"
+
+#: ../src/terminal-prefs.c:695
+msgid "Show"
+msgstr "Көрсету"
+
+#: ../src/terminal-prefs.c:706
+msgid "_Encoding"
+msgstr "Код_талуы"
+
+#: ../src/terminal-screen.c:1049
+msgid "No command supplied nor shell requested"
+msgstr "Команда көрсетілмеді, және ешбір қоршам сұралмады"
+
+#: ../src/terminal-screen.c:1304 ../src/terminal-window.c:2413
+msgid "_Profile Preferences"
+msgstr "_Профиль баптаулары"
+
+#: ../src/terminal-screen.c:1305 ../src/terminal-screen.c:1576
+msgid "_Relaunch"
+msgstr "Қа_йта жөнелту"
+
+#: ../src/terminal-screen.c:1308
+msgid "There was an error creating the child process for this terminal"
+msgstr "Бұл терминал үшін ұрпақ үрдісін жасауда қате кетті"
+
+#: ../src/terminal-screen.c:1580
+#, c-format
+msgid "The child process exited normally with status %d."
+msgstr "Ұрпақ үрдісі қалыпты түрде %d қалып-күйімен аяқталды."
+
+#: ../src/terminal-screen.c:1583
+#, c-format
+msgid "The child process was aborted by signal %d."
+msgstr "Ұрпақ үрдісі %d сигналымен үзілді."
+
+#: ../src/terminal-screen.c:1586
+msgid "The child process was aborted."
+msgstr "Ұрпақ үрдісі үзілді."
+
+#: ../src/terminal-tab-label.c:206
+msgid "Close tab"
+msgstr "Бетті жабу"
+
+#: ../src/terminal-tabs-menu.c:198
+msgid "Switch to this tab"
+msgstr "Бұл бетке ауысу"
+
+#: ../src/terminal-util.c:147
+msgid "There was an error displaying help"
+msgstr "Көмекті көрсету кезінде қате кетті"
+
+#: ../src/terminal-util.c:202
+msgid "Contributors:"
+msgstr "Үлесін қосқандар:"
+
+#: ../src/terminal-util.c:218
+#, c-format
+msgid "Using VTE version %u.%u.%u"
+msgstr "VTE нұсқасы %u.%u.%u қолданылуда"
+
+#: ../src/terminal-util.c:224
+msgid "A terminal emulator for the GNOME desktop"
+msgstr "GNOME жұмыс үстелі үшін терминал эмуляторы."
+
+#: ../src/terminal-util.c:239
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: ../src/terminal-util.c:312
+#, c-format
+msgid "Could not open the address “%s”"
+msgstr "“%s” адресін ашу мүмкін емес"
+
+#: ../src/terminal-util.c:381
+msgid ""
+"GNOME Terminal is free software: you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation, either version 3 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"GNOME терминалы еркін бағдарлама; сіз оны Free Software Foundation шығарған "
+"GNU General Public License аясында еркін тарата не/және өзгерте аласыз; "
+"лицензия нұсқасы 3 не (тандауыңызша) кез-келген кейін шыққан."
+
+#: ../src/terminal-util.c:385
+msgid ""
+"GNOME Terminal is distributed in the hope that it will be useful, but "
+"WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY "
+"or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details."
+msgstr ""
+"GNOME терминалы пайдалы болады деген сеніммен таратылады, бірақ ЕШҚАНДАЙ "
+"КЕПІЛДЕМЕ берілмейді; КОММЕРЦИЯЛЫҚ ҚҰНДЫЛЫҚ немесе белгілі бір МАҚСАТТАРҒА "
+"СӘЙКЕС КЕЛЕТІНІ үшін де.  Көбірек білу үшін GNU General Public License "
+"қараңыз."
+
+#: ../src/terminal-util.c:389
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"GNOME Terminal.  If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+"Сіз осы GNOME терминалы бағдарламасымен бірге GNU General Public License "
+"көшірмесін алуыңыз керек еді; олай болмаса, <http://www.gnu.org/licenses/> "
+"қараңыз."
+
+#: ../src/terminal-window.c:504
+msgid "Could not save contents"
+msgstr "Құрамасын сақтау мүмкін емес"
+
+#: ../src/terminal-window.c:526
+msgid "Save as…"
+msgstr "Қалайша сақтау..."
+
+#: ../src/terminal-window.c:530
+msgid "_Save"
+msgstr "_Сақтау"
+
+#. Translators: This is the label of a menu item to choose a profile.
+#. * _%u is used as the accelerator (with u between 1 and 9), and
+#. * the %s is the name of the terminal profile.
+#.
+#: ../src/terminal-window.c:1209
+#, c-format
+#| msgid "_%d. %s"
+msgid "_%u. %s"
+msgstr "_%u. %s"
+
+#. Translators: This is the label of a menu item to choose a profile.
+#. * _%c is used as the accelerator (it will be a character between A and Z),
+#. * and the %s is the name of the terminal profile.
+#.
+#: ../src/terminal-window.c:1215
+#, c-format
+msgid "_%c. %s"
+msgstr "_%c. %s"
+
+#. Toplevel
+#: ../src/terminal-window.c:2363
+msgid "_File"
+msgstr "_Файл"
+
+#. File menu
+#: ../src/terminal-window.c:2364 ../src/terminal-window.c:2375
+#: ../src/terminal-window.c:2381 ../src/terminal-window.c:2524
+msgid "Open _Terminal"
+msgstr "Терминалды а_шу"
+
+#: ../src/terminal-window.c:2365
+msgid "_Edit"
+msgstr "Тү_зету"
+
+#: ../src/terminal-window.c:2366
+msgid "_View"
+msgstr "_Түрі"
+
+#: ../src/terminal-window.c:2367
+msgid "_Search"
+msgstr "І_здеу"
+
+#: ../src/terminal-window.c:2368
+msgid "_Terminal"
+msgstr "Тер_минал"
+
+#: ../src/terminal-window.c:2369
+msgid "Ta_bs"
+msgstr "_Беттер"
+
+#: ../src/terminal-window.c:2378
+msgid "Open Ta_b"
+msgstr "_Бетті ашу"
+
+#: ../src/terminal-window.c:2384
+msgid "New _Profile"
+msgstr "Жаңа _профиль"
+
+#: ../src/terminal-window.c:2387
+msgid "_Save Contents"
+msgstr "Құрамасын _сақтау"
+
+#: ../src/terminal-window.c:2390 ../src/terminal-window.c:3652
+msgid "C_lose Terminal"
+msgstr "Терминалды _жабу"
+
+#: ../src/terminal-window.c:2393
+msgid "_Close All Terminals"
+msgstr "Барлық терминалдарды _жабу"
+
+#: ../src/terminal-window.c:2404 ../src/terminal-window.c:2521
+msgid "Paste _Filenames"
+msgstr "_Файлдар атауларын кірістіру"
+
+#: ../src/terminal-window.c:2407
+msgid "Select All"
+msgstr "Барлығын таңдау"
+
+#: ../src/terminal-window.c:2410
+msgid "Pre_ferences"
+msgstr "Ба_птаулар"
+
+#. Search menu
+#: ../src/terminal-window.c:2429
+msgid "_Find…"
+msgstr "Т_абу…"
+
+#: ../src/terminal-window.c:2432
+msgid "Find Ne_xt"
+msgstr "Ке_лесіні табу"
+
+#: ../src/terminal-window.c:2435
+msgid "Find Pre_vious"
+msgstr "Ал_дыңғысын табу"
+
+#: ../src/terminal-window.c:2438
+msgid "_Clear Highlight"
+msgstr "_Түстпен ерекшелеуді алып тастау"
+
+#: ../src/terminal-window.c:2442
+msgid "Go to _Line..."
+msgstr "Жо _лға өту..."
+
+#: ../src/terminal-window.c:2445
+msgid "_Incremental Search..."
+msgstr "_Инкременталды іздеу..."
+
+#. Terminal menu
+#: ../src/terminal-window.c:2451
+msgid "Change _Profile"
+msgstr "_Профильді ауыстыру"
+
+#: ../src/terminal-window.c:2452
+msgid "Set _Character Encoding"
+msgstr "Таңбалар _кодталуын орнату"
+
+#: ../src/terminal-window.c:2453
+msgid "_Reset"
+msgstr "_Тастау"
+
+#: ../src/terminal-window.c:2456
+msgid "Reset and C_lear"
+msgstr "Тастау мен та_зарту"
+
+#. Terminal/Encodings menu
+#: ../src/terminal-window.c:2461
+msgid "_Add or Remove…"
+msgstr "Қ_осу немесе өшіру…"
+
+#. Tabs menu
+#: ../src/terminal-window.c:2466
+msgid "_Previous Terminal"
+msgstr "А_лдыңғы терминал"
+
+#: ../src/terminal-window.c:2469
+msgid "_Next Terminal"
+msgstr "К_елесі терминал"
+
+#: ../src/terminal-window.c:2472
+msgid "Move Terminal _Left"
+msgstr "Терминалды со_лға жылжыту"
+
+#: ../src/terminal-window.c:2475
+msgid "Move Terminal _Right"
+msgstr "Терминалды _оңға жылжыту"
+
+#: ../src/terminal-window.c:2478
+msgid "_Detach Terminal"
+msgstr "Тер_миналды бөліп жіберу"
+
+#. Help menu
+#: ../src/terminal-window.c:2483
+msgid "_Contents"
+msgstr "Құра_масы"
+
+#: ../src/terminal-window.c:2490
+msgid "_Inspector"
+msgstr "_Инспектор"
+
+#. Popup menu
+#: ../src/terminal-window.c:2496
+msgid "_Send Mail To…"
+msgstr "Эл. поштаны жі_беру…"
+
+#: ../src/terminal-window.c:2499
+msgid "_Copy E-mail Address"
+msgstr "Эл. пошта адр_есін көшіру"
+
+#: ../src/terminal-window.c:2502
+msgid "C_all To…"
+msgstr "Қоңырау ш_алу…"
+
+#: ../src/terminal-window.c:2505
+msgid "_Copy Call Address"
+msgstr "Қоңырау шалу адресін _көшіру"
+
+#: ../src/terminal-window.c:2508
+msgid "_Open Link"
+msgstr "Сі_лтемені ашу"
+
+#: ../src/terminal-window.c:2511
+msgid "_Copy Link Address"
+msgstr "Сілтеме адр_есін көшіру"
+
+#: ../src/terminal-window.c:2514
+msgid "P_rofiles"
+msgstr "П_рофильдер"
+
+#: ../src/terminal-window.c:2527
+msgid "L_eave Full Screen"
+msgstr "Толық экраннан ш_ығу"
+
+#. View Menu
+#: ../src/terminal-window.c:2535
+msgid "Show _Menubar"
+msgstr "_Мәзірді көрсету"
+
+#: ../src/terminal-window.c:2539
+msgid "_Full Screen"
+msgstr "Толық _экранға"
+
+#. Terminal menu
+#: ../src/terminal-window.c:2544
+msgid "Read-_Only"
+msgstr "Тек-_оқу үшін"
+
+#: ../src/terminal-window.c:3639
+msgid "Close this window?"
+msgstr "Бұл терезені жабу керек пе?"
+
+#: ../src/terminal-window.c:3639
+msgid "Close this terminal?"
+msgstr "Бұл терминалды жабу керек пе?"
+
+#: ../src/terminal-window.c:3643
+msgid ""
+"There are still processes running in some terminals in this window. Closing "
+"the window will kill all of them."
+msgstr ""
+"Бұл терезенің кейбір терминалдарында орындалып тұрған үрдістер бар. Терезені "
+"жабу оларды үзеді."
+
+#: ../src/terminal-window.c:3647
+msgid ""
+"There is still a process running in this terminal. Closing the terminal will "
+"kill it."
+msgstr ""
+"Бұл терминалда орындалып тұрған үрдістер бар. Терминалды жабу оларды үзеді."
+
+#: ../src/terminal-window.c:3652
+msgid "C_lose Window"
+msgstr "Терезені жа_бу"
+
+#~ msgid "Set the terminal title"
+#~ msgstr "Терминал атауын орнату"
+
+#~ msgid "TITLE"
+#~ msgstr "TITLE"
+
+#~ msgid "Missing command"
+#~ msgstr "Команда жоқ болып тұр"
+
+#~ msgid "Whether to use a dark theme variant"
+#~ msgstr "Қараңғылау тема нұсқасын қолдану керек пе"
+
+#~ msgid "Use _dark theme variant"
+#~ msgstr "Теманың қ_араңғы нұсқасын қолдану"
+
+#~ msgid "COMMAND"
+#~ msgstr "КОМАНДА"
+
+#~ msgid "Be quiet"
+#~ msgstr "Тыныш болу"
