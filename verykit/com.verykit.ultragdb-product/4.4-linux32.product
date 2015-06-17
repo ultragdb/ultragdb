@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="UltraGDB" id="com.verykit.ultragdb-product.44linux64" application="org.eclipse.ui.ide.workbench" useFeatures="false" includeLaunchers="true">
+<product name="UltraGDB" id="com.verykit.ultragdb-product.44linux32" application="org.eclipse.ui.ide.workbench" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/com.verykit.ultragdb-product/images/ultragdb-logo-64.png"/>
       <text>
-         UltraGDB 1.0 for Linux 64-bit
+         UltraGDB 1.0 for Linux 32-bit
 Copyright 2015 Wuhan Heng Yi Hua Guang Technology, LLC.
 
 http://www.ultragdb.com/
@@ -56,7 +56,7 @@ http://www.ultragdb.com/
       <plugin id="org.eclipse.cdt.codan.ui.cxx"/>
       <plugin id="org.eclipse.cdt.core"/>
       <plugin id="org.eclipse.cdt.core.linux" fragment="true"/>
-      <plugin id="org.eclipse.cdt.core.linux.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.cdt.core.linux.x86" fragment="true"/>
       <plugin id="org.eclipse.cdt.core.native"/>
       <plugin id="org.eclipse.cdt.debug.core"/>
       <plugin id="org.eclipse.cdt.debug.mi.core"/>
@@ -86,10 +86,10 @@ http://www.ultragdb.com/
       <plugin id="org.eclipse.core.filebuffers"/>
       <plugin id="org.eclipse.core.filesystem"/>
       <plugin id="org.eclipse.core.filesystem.java7" fragment="true"/>
-      <plugin id="org.eclipse.core.filesystem.linux.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.core.filesystem.linux.x86" fragment="true"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.net"/>
-      <plugin id="org.eclipse.core.net.linux.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.core.net.linux.x86" fragment="true"/>
       <plugin id="org.eclipse.core.resources"/>
       <plugin id="org.eclipse.core.runtime"/>
       <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
@@ -143,7 +143,7 @@ http://www.ultragdb.com/
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.search"/>
       <plugin id="org.eclipse.swt"/>
-      <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
       <plugin id="org.eclipse.team.core"/>
       <plugin id="org.eclipse.team.ui"/>
       <plugin id="org.eclipse.text"/>

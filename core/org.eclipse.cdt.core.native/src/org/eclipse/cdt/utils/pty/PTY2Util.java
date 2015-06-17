@@ -26,7 +26,13 @@ public class PTY2Util {
 		} else {
 			throw new IOException("can not find terminal emulator executable of currrent platform"); //$NON-NLS-1$
 		}
-
+		{
+			URL url = FileLocator.find(bundle, new Path("$os$/"), null);
+			if (url != null) {
+				url = FileLocator.resolve(url);
+				String path = url.getFile();
+			}
+		}
 		URL url = FileLocator.find(bundle, new Path("$os$/" + terminalEmulatorExeName), null); //$NON-NLS-1$
 		if (url != null) {
 			url = FileLocator.resolve(url);
@@ -36,8 +42,9 @@ public class PTY2Util {
 				IPath p = Path.fromOSString(file.getCanonicalPath());
 				command = p.toPortableString();
 				if (Platform.getOS().equals(Platform.OS_WIN32)
-						&& Platform.getOSArch().equals(Platform.ARCH_X86_64) && WindowsGCC.isCygwin32()) {
-					command =  command.replaceAll("x86_64", "x86"); //$NON-NLS-1$ //$NON-NLS-2$
+						&& Platform.getOSArch().equals(Platform.ARCH_X86_64)
+						&& WindowsGCC.isCygwin32()) {
+					command = command.replaceAll("x86_64", "x86"); //$NON-NLS-1$ //$NON-NLS-2$
 				}
 			}
 		}
